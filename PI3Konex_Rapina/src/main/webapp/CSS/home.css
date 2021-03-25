@@ -3,11 +3,13 @@
 body{
     min-height:100vh;
     min-width:100vw;
-    background-color:#f2f3f5;
 }
 #container-landing{
-    margin:0 auto;
     min-width:980px;
+    position:relative;
+}
+#container-landing + container-page{
+    background:#f2f3f5;
 }
 .container-page{
     background:#f5f3f4;
@@ -33,7 +35,7 @@ body{
 }
 #container-landing .menu-bar img{
     width:200px;
-    background-color:none;
+    background:none;
 }
 #container-landing .menu-bar ul button{
     margin-left:42px;
@@ -104,13 +106,15 @@ body{
     font-weight: normal;
     font-style:normal;
 }
-#container-landing main h2{
+#container-landing main h1{
     font-family:"Inter", sans-serif;
     color:#3e3e3e;
     font-weight:500;
 }
 #container-landing main strong{
-    color:var(--color-primary);
+    background:-webkit-linear-gradient(45deg, var(--color-primary), var(--blue-twitter));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 #container-landing main p{
     margin:28px 0;
@@ -119,6 +123,9 @@ body{
 }
 .selection-content{
     margin:22px 63px;
+}
+.selection-content header{
+    font:normal 20px "Inter", sans-serif;
 }
 .selection-content .options-select{
     display:flex;
