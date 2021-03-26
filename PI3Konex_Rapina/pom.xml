@@ -14,12 +14,40 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
+    <developers>
+        <developer>
+            <id>samuelmclo</id>
+            <name>Samuel Minghui Camargo Lo</name>
+        </developer>
+        <developer>
+            <id>gabrielfelipe</id>
+            <name>Gabriel Felipe dos Santos Silva</name>
+        </developer>
+        <developer>
+            <id>gustavogomes</id>
+            <name>Gustavo Gomes Ferreira</name>
+        </developer>
+        <developer>
+            <id>alexkitahara</id>
+            <name>Alex Yudy Kitahara</name>
+        </developer>
+        <developer>
+            <id>rubensricci</id>
+            <name>Rubens Ricci</name>
+        </developer>
+    </developers>
+    
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.23</version>
         </dependency>
     </dependencies>
 
