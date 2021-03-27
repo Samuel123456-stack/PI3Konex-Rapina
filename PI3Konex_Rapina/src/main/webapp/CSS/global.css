@@ -68,6 +68,14 @@ li{
     margin:0 40px 86px 40px;
     position:relative;
 }
+#container-landing .menu-bar ul li:nth-child(3){
+    margin-right:40px;
+}
+#container-landing .menu-bar ul i{
+    font-size:22px;
+    color:var(--blue);
+    cursor:pointer;
+}
 #container-landing .menu-bar ul li{
     display:inline;
     padding:0 26px;

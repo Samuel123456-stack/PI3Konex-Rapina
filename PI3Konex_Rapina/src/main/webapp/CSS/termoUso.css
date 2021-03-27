@@ -1,9 +1,8 @@
 @import url('global.css');
 
-#container-landing{
-    max-width:1200px;
-    border:2px solid blue;
-    margin:0 auto;
+body{
+    font-family:Helvetica;
+    letter-spacing:0.5px;
 }
 #container-landing .menu-bar ul li:nth-child(3){
     margin-right:40px;
@@ -15,7 +14,6 @@
 }
 #container-landing .introduction-term-container{
     width:600px;
-    border:1px solid red;
     margin:0 auto;
 }
 #container-landing .introduction-term-container .term-content{
@@ -28,4 +26,32 @@
 #container-landing .term-content h2{
     margin-bottom: 9px;
 }
+#container-landing article{
+    margin-top:60px;
+}
+#container-landing .container-outline{
+    width:1000px;
+    margin:0 auto 25px auto;
+}
+#container-landing article h3{
+    margin-top:36px;
+}
+#container-landing article p{
+    margin:18px 0;
+    text-align: justify;
+}
+#container-landing .footer-section-copyright{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    align-content:center;
+    height:10vh;
+    font:normal 15px "Inter", sans-serif;
+    border-top:1px solid #444;
+}
+#container-landing .footer-section-copyright article{
+    margin:0 50px;
+}
+
 
