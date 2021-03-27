@@ -1,0 +1,31 @@
+@import url('global.css');
+
+#container-landing{
+    max-width:1200px;
+    border:2px solid blue;
+    margin:0 auto;
+}
+#container-landing .menu-bar ul li:nth-child(3){
+    margin-right:40px;
+}
+#container-landing .menu-bar ul i{
+    font-size:22px;
+    color:var(--blue);
+    cursor:pointer;
+}
+#container-landing .introduction-term-container{
+    width:600px;
+    border:1px solid red;
+    margin:0 auto;
+}
+#container-landing .introduction-term-container .term-content{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+}
+#container-landing .term-content h2{
+    margin-bottom: 9px;
+}
+

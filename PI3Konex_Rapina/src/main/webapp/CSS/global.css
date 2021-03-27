@@ -49,4 +49,38 @@ a{
 li{
     list-style: none;
 }
+#container-landing{
+    min-width:980px;
+    position:relative;
+}
+#container-landing + container-page{
+    background:#f2f3f5;
+}
+.container-page{
+    background:#f5f3f4;
+}
+#container-landing .menu-bar{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    height:15vh; 
+    margin:0 40px 86px 40px;
+    position:relative;
+}
+#container-landing .menu-bar ul li{
+    display:inline;
+    padding:0 26px;
+    color:#23286b;
+    font:600 16px "Poppins", sans-serif;
+    cursor:pointer;
+}
+#container-landing .menu-bar ul li:hover{
+    color:var(--blue-twitter);
+    transition-duration:250ms;
+}
+#container-landing .menu-bar img{
+    width:200px;
+    background:none;
+}
 

@@ -1,7 +1,13 @@
 {
     "elements": {
         "button": {},
-        "div": {}
+        "div": {
+            "attributes": {
+                "id": {},
+                "class": {}
+            }
+        },
+        "i": {}
     },
     "attributes": {}
 }
