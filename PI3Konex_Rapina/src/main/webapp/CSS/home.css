@@ -195,23 +195,3 @@ body{
 .grid-container .grid-subject article p{
     margin:20px 0;
 }
-.landing-footer{
-   border-top:1px solid #444;
-   padding:35px 0;
-   border-bottom:1px solid #444;
-}
-.landing-footer .desktop-container{
-    border:1px solid red;
-    width:1000px;
-    margin:0 auto;
-}
-#container-landing .footer-section-copyright{
-    display:flex;
-    flex-direction: row;
-    justify-content:space-between;
-    align-items: center;
-    align-content:center;
-    height:10vh;
-    font:lighter 15px "Inter", sans-serif;
-    margin:0 30px;
-}

@@ -1,0 +1,59 @@
+@import url('global.css');
+.page-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border:2px solid #ddd;
+    font-family:"Poppins", sans-serif;
+    max-width:350px;
+    margin:0 auto;
+    padding:2rem;
+    border-radius:.8rem;
+}
+.page-container form{
+    overflow:hidden;
+    width:100%;
+}
+.page-container h4{
+    font-weight:normal;
+    margin-bottom:1rem;
+}
+.page-container form .input-block{
+    position:relative;
+}
+.page-container form .input-block input, textarea{
+    outline:none;
+    font-size:0.9rem;
+    color:var(--title);
+    padding:9px 15px;
+    width:100%;
+    border-radius:3px;
+    border:1px solid #ccc;
+}
+.page-container form .input-block input::placeholder{
+    color:rgba(0,0,0,0.4);
+}
+.page-container form .input-block:first-child{
+    margin-bottom:1.5rem;
+    margin-top:0.7rem;
+}
+.page-container form .input-block:nth-child(3){
+    margin-top:1.5rem;
+}
+.page-container form .input-block textarea{
+    font-size:1rem;
+}
+.page-container form .submit-block{
+    margin-top:2rem;
+}
+.page-container form .submit-block input[type="submit"]{
+    width:100%;
+    padding:0.4rem;
+    margin-top:0.6rem;
+    border-radius:3px;
+    border:1px solid #ccc;
+    cursor:pointer;
+}
+
+

@@ -65,7 +65,7 @@ li{
     justify-content:space-between;
     align-items:center;
     height:15vh; 
-    margin:0 40px 86px 40px;
+    margin:0 40px 0 40px;
     position:relative;
 }
 #container-landing .menu-bar ul li:nth-child(3){
@@ -90,5 +90,18 @@ li{
 #container-landing .menu-bar img{
     width:200px;
     background:none;
+}
+#container-landing .footer-section-copyright{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    align-content:center;
+    height:5vh;
+    font:normal 15px "Inter", sans-serif;
+    border-top:1px solid #444;
+}
+#container-landing .footer-section-copyright article{
+    margin:0 50px;
 }
 
