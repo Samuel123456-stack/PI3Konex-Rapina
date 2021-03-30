@@ -176,8 +176,9 @@ body{
     grid-template-rows:30vh 30vh 10vh;
     grid-template-columns:50% 50%;
     grid-template-areas:"main article"
-                        "main article"
-                        "footer footer";
+                        "main article";
+                       
+   margin-bottom:100px;
 }
 .grid-container .grid-subject main{
     grid-area:main;
