@@ -9,6 +9,6 @@ package Classes;
  *
  * @author zica_
  */
-public class donoEst {
+public class Cobranca_mensalidade {
     
 }
