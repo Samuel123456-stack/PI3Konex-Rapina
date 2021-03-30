@@ -1,0 +1,57 @@
+@import url('global.css');
+
+body{
+    font-family:"Inter", sans-serif;
+}
+#modal-container{
+    height:100vh;
+    width:100vw;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+#modal-container .form-container{
+    border-radius:.8rem;
+    border:1px solid #ddd;
+    padding:100px;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    max-width:350px;
+    text-align: center;
+}
+#modal-container .form-container h2{
+    color:rgba(0,0,0,0.4);
+    width:350px;
+}
+#modal-container .form-container form{
+    overflow:hidden;
+    margin-top:1.5rem;
+    width:300px;
+}
+#modal-container .form-container .input-field{
+    position:relative;
+}
+#modal-container .form-container .input-field input:first-child{
+   background:rgba(223,223,223,0.4);
+}
+#modal-container .form-container .submit-block input:last-child{
+   background:none;
+}
+#modal-container .form-container .input-field input, input[type="submit"]{
+    width:100%;
+    padding:8px 15px;
+    outline:0;
+    border-radius:3px;
+    border:1px solid #ccc;
+    margin:1rem 0;
+    text-align: left;
+}
+.form-container .input-field input::placeholder{
+    color:rgba(0,0,0,0.4);
+}
+.form-container .submit-block input[type="submit"]{
+    cursor:pointer;
+}
+

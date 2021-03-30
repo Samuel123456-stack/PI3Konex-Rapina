@@ -34,11 +34,11 @@ body{
     transition-duration:250ms;
 }
 #container-landing .menu-bar img{
-    width:200px;
-    background:none;
+    width:120px;
+    border-radius:6px;
 }
 #container-landing .menu-bar ul button{
-    margin-left:42px;
+    margin-left:28px;
     border:2px solid var(--gray-line);
     background:none;
     font:400 1rem "Poppins", sans-serif;
