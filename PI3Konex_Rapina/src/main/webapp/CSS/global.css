@@ -38,6 +38,7 @@
     padding:0;
     outline:0;
     box-sizing:border-box;
+    font-family:"Blinker", sans-serif;
 }
 button{
     cursor:pointer;
@@ -92,19 +93,6 @@ li{
 #container-landing .menu-bar img{
     width:200px;
     background:none;
-}
-#container-landing .footer-section-copyright{
-    display:flex;
-    flex-direction: row;
-    justify-content:space-between;
-    align-items: center;
-    align-content:center;
-    height:5vh;
-    font:normal 15px "Inter", sans-serif;
-    border-top:1px solid #444;
-}
-#container-landing .footer-section-copyright article{
-    margin:0 50px;
 }
 .rodape{
     bottom: 0;
@@ -186,5 +174,9 @@ path:hover{
     width:24%;
     margin-left: 12%;
     height: 100%;
+}
+#container-landing .menu-bar .logo-icon{
+    width:120px;
+    border-radius:6px;
 }
 
