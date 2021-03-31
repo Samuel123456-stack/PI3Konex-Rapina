@@ -1,6 +1,10 @@
 {
     "elements": {
-        "button": {},
+        "button": {
+            "attributes": {
+                "type": {}
+            }
+        },
         "div": {
             "attributes": {
                 "id": {},

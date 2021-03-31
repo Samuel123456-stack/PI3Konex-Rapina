@@ -1,0 +1,86 @@
+@import url('global.css');
+
+#container-landing{
+    width:1150px;
+    max-width:1600px;
+    margin:0 auto;
+}
+.grid-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:20vh 0;
+}
+.grid-container .grid-layout-partner{
+    display:grid;
+    grid-template-rows:45vh 45vh;
+    grid-template-columns:85vh 85vh;
+    grid-template-areas:"article section"
+                        "article section";
+}
+.grid-container .grid-layout-partner article{
+    grid-area:article;
+}
+.grid-container .grid-layout-partner section{
+    grid-area:section;
+}
+.grid-container .grid-layout-partner article div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    width:350px;
+    margin:0 auto 26px auto;
+    text-align:center;
+}
+.grid-container .grid-layout-partner article div > h1{
+    font-size:30px;
+    letter-spacing:0.7px;
+    font-weight:400;
+}
+.grid-container .grid-layout-partner article .becomer-option{
+    margin-top:72px;
+}
+.grid-container .grid-layout-partner article .button-becomer-partner, .button-becomer-rap{
+    padding:20px 55px;
+    background:#f1f1f1;
+    border:1px solid #ccc;
+    border-radius:.6rem;
+    position:relative;
+    cursor:pointer;
+}
+.grid-container .grid-layout-partner article button{
+    background:none;
+}
+.grid-container .grid-layout-partner article button h3, p{
+    color:#afafaf;
+    text-align: left;
+}
+.grid-container .grid-layout-partner article .button-becomer-rap p{
+    color:#808080;
+}
+.becomer-option footer{
+    width:100%;
+    background:#c4c4c4;
+    border-radius:5px;
+    margin:24px 0;
+}
+.becomer-option footer button{
+    border:1px solid #ddd;
+    padding:9px 15px;
+    border-radius:5px;
+    color:#181818;
+    width:100%;
+}
+.grid-container .grid-layout-partner article .questions-box{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items:center;
+}
+.grid-layout-partner article .questions-box p{
+    color:#cccccc;
+}
+.grid-layout-partner article .questions-box span{
+    color:#5c9bf8;
+}

@@ -26,14 +26,13 @@ body{
     display:inline;
     padding:0 26px;
     color:#23286b;
-    font:600 16px "Poppins", sans-serif;
     cursor:pointer;
 }
 #container-landing .menu-bar ul li:hover{
     color:var(--blue-twitter);
     transition-duration:250ms;
 }
-#container-landing .menu-bar img{
+#container-landing .menu-bar .logo-icon{
     width:120px;
     border-radius:6px;
 }
@@ -41,7 +40,7 @@ body{
     margin-left:28px;
     border:2px solid var(--gray-line);
     background:none;
-    font:400 1rem "Poppins", sans-serif;
+    font:400 1rem "Blinker", sans-serif;
     cursor:pointer;
     width:140px;
     padding:15px 0;
@@ -75,7 +74,7 @@ body{
     outline:none;
     color:var(--color-primary-darker);
     line-height:34px;
-    font:600 16px "Inter", sans-serif;
+    font:600 16px "Blinker", sans-serif;
     padding:10px 10px;
     flex:100%;
     border-radius:20px;
@@ -118,7 +117,7 @@ body{
 }
 #container-landing main p{
     margin:28px 0;
-    font:400 15px "Poppins", sans-serif;
+    font:400 15px "Blinker", sans-serif;
     color:rgba(0,0,0,0.3);
 }
 .selection-content{
@@ -126,7 +125,7 @@ body{
     width:100%;
 }
 .selection-content header{
-    font:normal 20px "Inter", sans-serif;
+    font:normal 20px "Blinker", sans-serif;
 }
 .selection-content .options-select{
     display:flex;
