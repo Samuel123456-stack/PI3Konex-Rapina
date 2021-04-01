@@ -20,7 +20,7 @@ public class ConxaoJDBC {
         } catch (ClassNotFoundException ex) {
             throw new SQLException("Driver do MySQL não encontrado", ex);
         }
-        // o "exemplojdbc" é um exemplo de banco
+        // o "exemplojdbc" é um exemplo de banco devemos muda-lo quando o db estiver pronto
         Connection conexao = DriverManager.getConnection("jdbc:mysql://local"
                 + "host:3306/exemplojdbc?useUnicode=yes&"
                 + "characterEncoding=UTF-8&useTimezone=America/Sao_Paulo", "root", "");
