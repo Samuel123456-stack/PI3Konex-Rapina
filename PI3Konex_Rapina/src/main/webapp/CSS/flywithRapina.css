@@ -17,29 +17,23 @@
 #only-screen .outline-color h3{
     margin-bottom:25px;
     color:#333;
-}
-#only-screen .outline-color p{
-    color:#4d4d4d;
-    margin-bottom:50px;
-    width:300px;
+    width:310px;
 }
 #only-screen .outline-color footer{
     display:flex;
-    flex-direction:row;
     justify-content: center;
     align-items: center;
 }
 #only-screen .outline-color footer button{
-    width:100%;
-    padding:9px 0;
-    margin:0 5px;
+    padding:9px 18px;
+    margin-top:25px;
     border-radius:7px;
     font-size:16px;
 }
-#only-screen .outline-color footer button:first-child{
-    background:#e7e7e7;
+#only-screen .outline-color footer button{
+    background:#d6d6d6;
 }
-#only-screen .outline-color footer button:last-child{
-    background:#c4c4c4;
-}
+
+
+
 

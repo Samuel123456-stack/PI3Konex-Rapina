@@ -1,0 +1,62 @@
+@import url('global.css');
+
+#container-landing .rapina-campaign{
+    padding:74px 0;
+}
+#container-landing .introducing-context{
+    max-width:1150px;
+    margin:auto;
+}
+#container-landing .rapina-campaign .flying-with-rapina{
+    width:300px;
+}
+.rapina-campaign .flying-with-rapina p{
+    font-size:14px;
+    margin-bottom:3px;
+    color:#808080;
+}
+.donation-page{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:3rem 0;
+}
+.donation-page .grid-layout{
+    display:grid;
+    margin-bottom: 10px;
+    grid-template-rows:30vh 30vh;
+    grid-template-columns:80vh 80vh;
+    grid-template-areas:"section div"
+                        "section div";
+}
+.donation-page .grid-layout section{
+    grid-area:section;
+}
+.donation-page .grid-layout div{
+    grid-area:div;
+}
+#container-landing .image-layout{
+    display:grid;
+    grid-template-rows:25vh 25vh;
+    grid-template-columns:80vh 80vh;
+    grid-template-areas:"div section"
+                        "div section";
+}
+.image-layout div:first-child{
+    grid-area:div;
+    position:relative;
+}
+.image-layout .first-block img:last-child{
+    position:absolute;
+    right:0;
+}
+.image-layout .second-block img:last-child{
+    position:absolute;
+    right:0;
+}
+.image-layout .second-block{
+    position:absolute;
+    bottom:0;
+}
+
