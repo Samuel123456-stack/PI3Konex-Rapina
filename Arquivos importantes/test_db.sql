@@ -12,7 +12,7 @@ statusRes boolean
 
 
 
-insert into tbreserva (nomeCli,dataRes,statusRes) values('Arnaldo Soares','2021-03-28 11:45',false),('Rosimeire Silva','2021-03-28 11:45',true),('Caio Santos','2021-03-28 11:45',true);
+insert into tbreserva (nomeCli,dataRes,statusRes) values('Arnaldo Soares','2021-03-28 11:45',false),('Rosimeire Silva','2021-03-28 11:45',true),('Caio Santos','2021-03-28 11:45',true),('Caio Santosaaaaaaaaaaaaa','2021-03-28 11:45',true);
 
 
 select * from tbreserva;
