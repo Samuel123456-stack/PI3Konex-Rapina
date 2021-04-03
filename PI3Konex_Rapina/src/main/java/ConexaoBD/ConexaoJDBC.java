@@ -13,16 +13,16 @@ import java.sql.SQLException;
  *
  * @author gusta
  */
-public class ConxaoJDBC {
+public class ConexaoJDBC {
     public Connection obterConexaoBD() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
             throw new SQLException("Driver do MySQL não encontrado", ex);
         }
-        // o "exemplojdbc" é um exemplo de banco devemos muda-lo quando o db estiver pronto
+        // o "bd_test_rapina" será usado para testes, mudar o nome após todos os testes feitos
         Connection conexao = DriverManager.getConnection("jdbc:mysql://local"
-                + "host:3306/exemplojdbc?useUnicode=yes&"
+                + "host:3306/bd_test_rapina?useUnicode=yes&"
                 + "characterEncoding=UTF-8&useTimezone=America/Sao_Paulo", "root", "");
         return conexao;
 
