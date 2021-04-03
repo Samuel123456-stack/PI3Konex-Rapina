@@ -1,0 +1,66 @@
+@import url('global.css');
+#container-landing{
+    max-width:1150px;
+    margin:0 auto;
+}
+#container-landing .menu-bar{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#container-landing .button-return button{
+   background:none;
+   margin:40px 0 70px 0;
+} 
+#container-landing .button-return i, span{
+    font-size:16px;
+    margin:0 1px;
+}
+#container-landing .main-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    margin-bottom:40px;
+    position:relative;
+    padding:1rem 0;
+}
+#container-landing .main-container .code-image{
+    position:absolute;
+    right:0;
+    bottom:0;
+}
+#container-landing .main-container .code-reservation form{
+    margin: 19px 0;
+}
+#container-landing .main-container .code-reservation p:last-child{
+    margin-top:5px;
+}
+#container-landing .main-container .code-reservation h2{
+    line-height:50px;
+}
+#container-landing footer{
+    margin:86px 0;
+}
+#container-landing footer button{
+    width:100%;
+    padding:10px 15px;
+    border:0;
+    border-radius:5px;
+    font-size:16px;
+    background:#c4c4c4;
+}
+#container-landing footer button:first-child{
+    margin-bottom:25px;
+}
+#container-landing .sub-footer p{
+    text-align: center;
+    margin:auto;
+    font-style:normal;
+    color:rgba(0, 0, 0, 0.2);
+    font-weight:bold;
+    line-height: 32px;
+    vertical-align: top;
+    letter-spacing: -1.5%;
+    width:328px;
+}
