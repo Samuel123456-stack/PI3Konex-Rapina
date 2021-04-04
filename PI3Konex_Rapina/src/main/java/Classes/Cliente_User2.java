@@ -1,12 +1,15 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Classes;
 
 /**
  *
- * @author Gabriel Felipe
+ * @author Gabriel
  */
-public class Cliente {
-
+public class Cliente_User2 {
     //Atributos do usuário 
     public int id_usuario;
     public String nome;
@@ -21,7 +24,7 @@ public class Cliente {
     public int id_favoritado;
 
     //metodo construtor
-    public Cliente() {
+    public Cliente_User2() {
     }
 
     //metodos especiais(funcionalidades)
@@ -125,5 +128,4 @@ public class Cliente {
     public void setId_favoritado(int id_favoritado) {
         this.id_favoritado = id_favoritado;
     }
-
 }

@@ -1,11 +1,16 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Classes;
 
 /**
  *
- * @author Gabriel Felipe
+ * @author Gabriel
  */
-public class Favoritos {
-    //atributos da classe favoritos
+public class Favoritados {
+ //atributos da classe favoritos
     public int id_favorito;
     public int id_cliente;
     public String nome_estabelecimento;
@@ -15,7 +20,7 @@ public class Favoritos {
     
     //metodo construtor
     
-    public Favoritos() {
+    public Favoritados() {
     }
 
     //metodos especiais

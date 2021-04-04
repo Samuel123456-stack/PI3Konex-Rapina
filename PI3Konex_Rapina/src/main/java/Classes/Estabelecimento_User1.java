@@ -1,11 +1,15 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Classes;
 
 /**
  *
- * @author Gabriel Felipe
+ * @author Gabriel
  */
-public class Estabelecimento {
+public class Estabelecimento_User1 {
     //Atributos do Estabelecimento
     public int id_estabelecimento;
     public String nome_estabelecimento;
@@ -28,9 +32,8 @@ public class Estabelecimento {
     private int id_planos;
     private int id_pagamento_taxa;  
     
-    
     //metodo construtor 
-    public Estabelecimento() {
+    public Estabelecimento_User1(){
     }
     
     //metodos especiais(funcionalidades)
@@ -212,5 +215,5 @@ public class Estabelecimento {
     public void setId_pagamento_taxa(int id_pagamento_taxa) {
         this.id_pagamento_taxa = id_pagamento_taxa;
     }
-    
+   
 }

@@ -1,10 +1,15 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Classes;
 
 /**
  *
- * @author Gabriel Felipe
+ * @author Gabriel
  */
-public class Reserva {
+public class Reserva_Rapina{
 
     //atributos da reserva
     public int num_reserva;
@@ -18,7 +23,7 @@ public class Reserva {
     private String hora_valida_saida;
 
     //metodo construtor
-    public Reserva() {
+    public Reserva_Rapina() {
     }
 
     //metodos especiais(funcionalidades)

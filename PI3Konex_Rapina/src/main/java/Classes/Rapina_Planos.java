@@ -1,11 +1,15 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Classes;
 
 /**
  *
- * @author Gabriel Felipe
+ * @author Gabriel
  */
-public class Planos {
+public class Rapina_Planos{
     //Atributos plano rapina
     public int id_planos;
     public String nome_plano;
@@ -13,7 +17,7 @@ public class Planos {
     public String benefícios;
 
     //metodo construtor
-    public Planos(String nome_plano) {   
+    public Rapina_Planos(String nome_plano) {   
         //condição dos planos 
         if(null != this.nome_plano)switch (this.nome_plano) {
             case "Serrana":
