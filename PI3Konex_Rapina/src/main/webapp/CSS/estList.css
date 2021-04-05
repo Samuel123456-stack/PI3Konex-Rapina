@@ -1,0 +1,17 @@
+@import url('global.css');
+
+#container-landing .establishments{
+    padding:74px 0;
+}
+#container-landing .introducing-context{
+    max-width:1150px;
+    margin:auto;
+}
+#container-landing .establishments .security-search{
+    width:300px;
+}
+.establishments .security-search p{
+    font-size:14px;
+    margin-bottom:3px;
+    color:#808080;
+}
