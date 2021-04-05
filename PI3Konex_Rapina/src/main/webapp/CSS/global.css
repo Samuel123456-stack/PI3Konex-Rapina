@@ -92,9 +92,6 @@ li{
     width:200px;
 }
 .rodape{
-    bottom: 0;
-    left: 0;
-    position: absolute;
     width: 100%;
     background-color: #fff;
     height: auto;
