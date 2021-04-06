@@ -1,0 +1,173 @@
+@import 'globalRubens.css';
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap');
+
+html{
+    height: 100%;
+    width: 100%;
+}
+body{
+    height: 100%;
+    font-family: 'Hind Siliguri', sans-serif;
+    background-color: #fff;
+    color:#000;
+    margin: 0;
+}
+
+/* Rectangle */
+
+
+/* Rapina planos */
+
+.txtRap{
+width: 1400px;
+height: 350px;
+margin-left: auto;
+margin-right: auto;
+background: #FFFFFF;
+box-sizing: border-box;
+padding: 100px;
+}
+.txtRap p{
+    
+    width: 254px;
+    height: 25px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 0;
+    color: #000000;
+
+    opacity: 0.5;
+}
+.txtRap h1{
+width: 466px;
+height: 110px;
+font-style: normal;
+font-weight: 600;
+font-size: 45px;
+line-height: 45px;
+margin-top: 0;
+color: #000000;
+}
+
+.Planos{
+    width: 1400px;
+    height: 673px;
+    margin-top: 116px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.Planos svg{
+    margin-top: 60px;
+}
+.Planos h1{
+    width: 249px;
+    height: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 25px; 
+}
+.Planos button{
+    width: 249px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #C4C4C4;
+    border-radius: 10px;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+}
+.itensPlano P{
+    width: 288px;
+    height: 20px;
+    margin: 12px  auto;
+    background: #C4C4C4;
+    padding-top: 12px;
+    padding-bottom: 11px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+    align-items: center;
+    text-align: center;
+
+}
+
+.Serrana{
+    width: 348px;
+    height: 500px;
+    margin-top: 86.5px;
+    margin-left: 128px;
+    margin-right: 46px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    float: left;
+    box-sizing: border-box;
+    border-radius: 25px;
+}
+.Rarpy{
+    width: 348px;
+    height: 673px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    float: left;
+    box-sizing: border-box;
+    border-radius: 25px;
+}
+.Açor{
+    width: 348px;
+    height: 550px;
+    margin-top: 61.5px;
+    margin-left: 48px;
+    margin-right: 128px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    float: left;
+    box-sizing: border-box;
+    border-radius: 25px;
+}
+.valor{
+    width: 170px;
+    margin-left: auto;
+    margin-right: 80px;
+    margin-top: 20px;
+    margin-bottom: 23px;
+    text-align: center;
+    align-items: center;
+    height: 40px;
+}
+.valor p{
+    height: 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+    float: left;
+}
+.valor h1{
+    width: 98px;
+    margin-left: 5px;
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 25px;
+    float: left;
+}
+.retangulo{
+    width: 1144px;
+    height: 101px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 163px;
+    margin-bottom: 65px;
+}
