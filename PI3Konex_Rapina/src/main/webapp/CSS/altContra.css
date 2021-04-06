@@ -5,46 +5,36 @@ html{
     width: 100%;
 }
 body{
-    height: 100%;
     font-family: 'Hind Siliguri', sans-serif;
     background-color: #fff;
     color:#000;
     margin: 0;
 }
-
-.txtRap{
-width: 1400px;
-height: 350px;
-margin-left: auto;
-margin-right: auto;
-background: #FFFFFF;
-box-sizing: border-box;
-padding: 100px;
+.link{
+    width: 1200px;
+    margin-top: 72px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #fff;
 }
-.txtRap p{
-    
-    width: 254px;
-    height: 25px;
+
+.link a:link, 
+      a:hover, 
+      a:visited{
+    text-decoration: none;
+    color: #000;
+}
+.link svg{
+    float: left;
+}
+.link p{
+    margin-top: 0;
+    float: left;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
-    line-height: 25px;
-    margin-bottom: 0;
-    color: #000000;
-
-    opacity: 0.5;
+    line-height: 32px;
 }
-.txtRap h1{
-width: 466px;
-height: 110px;
-font-style: normal;
-font-weight: 600;
-font-size: 45px;
-line-height: 45px;
-margin-top: 0;
-color: #000000;
-}
-
 .Planos{
     width: 1400px;
     height: 673px;
@@ -156,12 +146,4 @@ color: #000000;
     font-size: 40px;
     line-height: 25px;
     float: left;
-}
-.retangulo{
-    width: 1144px;
-    height: 101px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 163px;
-    margin-bottom: 65px;
 }
