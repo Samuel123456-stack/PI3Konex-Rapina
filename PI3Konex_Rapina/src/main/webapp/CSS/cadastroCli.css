@@ -1,0 +1,188 @@
+@import 'globalRubens.css';
+
+html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Hind Siliguri', sans-serif;
+    background-color: #fff;
+    color:#000;
+    margin: 0;
+}
+.bloco{
+    width: 866px;
+    height: 656px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 48px;
+    margin-top: 48px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    border-radius: 25px;
+    padding: 0 50px;
+}
+.text{
+    width: 318px;
+    height: 55px;
+    margin-top: 50px;
+    background: #FFFFFF;
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 0 5px 5px 0;
+    padding-left: 22px;
+    float: left;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    letter-spacing: -0.015em;
+}
+.svg{
+    width: 55px;
+    height: 55px;
+    margin-top: 50px;
+    border: 1px solid #828282;
+    background: #DDDDDD;
+    box-sizing: border-box;
+    border-radius: 5px 0 0 5px;
+    float: left;
+}
+.svg svg{
+    width: 18px;
+    height: 19px;
+    margin: 18px;
+}
+.margin{
+    width: 18px;
+    height: 1px;
+    float: left;
+}
+
+#email{
+    width: 709px;
+}
+.genero{
+    width: 318px;
+    height: 55px;
+    margin-top: 50px;
+    margin-right: 71px;
+    float: left;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    letter-spacing: -0.015em;
+}
+.genero p{
+    margin: 0;
+}
+.radio{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    letter-spacing: -0.015em;
+}
+.radio label{
+    padding-top: 10px;
+}
+.radio input{
+    width: 25px;
+    height: 25px;
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    float: left;
+}
+.radio p{
+    width: 89px;
+    float: left;
+}
+.marginRadio{
+    width: 52px;
+    height: 1px;
+    float: left;
+}
+.data{
+    width: 318px;
+    height: 55px;
+    margin-top: 50px;
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 5px 0 0 5px;
+    padding-left: 22px;
+    float: left;
+
+    font-family: 'Hind Siliguri', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    text-align: left;
+    letter-spacing: -0.015em;
+}
+
+.svgdata svg{
+    width: 18px;
+    height: 19px;
+}
+.svgdata button {
+    width: 55px;
+    height: 55px;
+    margin-top: 50px;
+    border: 1px solid #828282;
+    background: #DDDDDD;
+    box-sizing: border-box;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+    float: left;
+}
+.terms{
+    width: 764px;
+    margin-top: 50px;
+    float: left;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 29px;
+    align-items: center;
+    letter-spacing: -0.015em;
+}
+.radioterms input{
+    width: 25px;
+    height: 25px;
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    float: left;
+}
+.radioterms p{
+    width: 340px;
+    margin: 0;
+    float: left;
+}
+.cadastrar button{
+    width: 763px;
+    height: 55px;
+    margin-top: 50px;
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: none;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+}
