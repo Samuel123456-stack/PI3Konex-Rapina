@@ -80,6 +80,8 @@
     background-color: #fff;
     height: auto;
     font-family:"Ubuntu", sans-serif;
+    bottom: 0;
+    position:relative;
 }
 .rodapeprin{
     border-top: 1px solid #333;
