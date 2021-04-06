@@ -1,0 +1,78 @@
+@import url('global.css');
+
+#container-landing .theme-liberty{
+    padding:74px 0;
+}
+#container-landing .theme-liberty header{
+    margin-left:140px;
+    width:300px;
+}
+#container-landing .content-wrapper{
+    margin:1rem 0;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+.content-wrapper .first-grid-container{
+    display:grid;
+    grid-template-columns:45vw 45vw;
+    grid-template-areas:"section div";
+    margin-bottom: 2.4rem;
+    margin-left:200px;
+    position:relative;
+}
+.content-wrapper .first-grid-container div p{
+    text-align: left;
+}
+.content-wrapper .second-grid-container{
+    display:grid;
+    grid-template-columns:45vw 45vw;
+    grid-template-areas:"div section";
+    margin-left:200px;
+    position:relative;
+}
+.content-wrapper .second-grid-container div p{
+    text-align: left;
+}
+#container-landing .member-container{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    margin-top:97px;
+}
+.member-container .member-description{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    align-items: center;
+    width:100%;
+}
+.member-container i{
+    color: rgba(0, 0, 0, 0.6);
+    font-size:37px;
+    cursor:pointer;
+}
+.member-container .member-description .member-photo{
+    height:150px;
+    width:150px;
+    background:#eee;
+    border-radius:50%;
+    margin:0 auto 17px auto;
+}
+.member-container .member-description h3, p{
+   text-align: center;
+   margin-bottom:18px;
+}
+.member-container .member-description > section{
+    width:407px;
+}
+#container-landing footer{
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    height:101px;
+    width:1144px;
+    margin:59px auto;
+}
+

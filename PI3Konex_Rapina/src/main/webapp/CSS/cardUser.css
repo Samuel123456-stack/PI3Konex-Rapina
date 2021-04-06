@@ -1,0 +1,90 @@
+@import url('global.css');
+
+#container-landing{
+    max-width:1150px;
+    margin:auto;
+}
+#container-landing .button-return{
+    margin:57px 0 82px 0;
+}
+#container-landing .button-return button{
+    background:none;
+}
+#container-landing .button-return i, span{
+    font-size:25px;
+    margin:0 3px;
+}
+#container-landing .button-return span{
+    color: rgba(0, 0, 0, 0.3);
+    font-weight:500;
+}
+.form-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.form-container .form-block .form-data{
+    padding:2rem;
+    border:2px solid #ddd;
+    border-radius:25px;
+    background: rgba(196, 196, 196, 0.15);
+}
+.form-container .form-block .form-data .input-field{
+    position:relative;
+}
+.form-container .form-block .form-data .input-field:nth-child(2){
+    display: flex;
+    flex-direction:row;
+}
+.form-container .form-block .form-data .input-field:nth-child(2) input:last-child{
+    width:160.3px;
+    margin-left:15px;
+}
+.form-container .form-block .form-data .input-field input::placeholder{
+    color:rgba(0, 0, 0, 0.3);
+}
+.form-container .form-block .form-data .input-field{
+    margin:22.9px 0;
+}
+.form-container .form-block .form-data .input-field input{
+    width:100%;
+    padding:9px 15px;
+    background: rgba(255, 255, 255, 1);
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+.form-container .form-block .submit-block input{
+    width:100%;
+    padding:9px 15px;
+    border-radius:5px;
+    border:1px solid #ccc;
+    cursor:pointer;
+}
+.card-user{
+    padding:2rem;
+    border:2px solid #ddd;
+    border-radius:25px;
+    width:395px;
+}
+.card-user .box{
+    width:58px;
+    height:42px;
+    background: rgba(196, 196, 196, 0.3);
+    border:0;
+    border-radius: 15px;
+    margin:30px 0 15px 0;
+}
+.card-user .username{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    margin:15px 0 10px 0;
+}
+.card-user .username section p:first-child{
+   color: rgba(0, 0, 0, 1);
+   font-size:10px;
+   margin-bottom:5px;
+}
+
