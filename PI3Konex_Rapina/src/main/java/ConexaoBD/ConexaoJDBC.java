@@ -20,11 +20,12 @@ public class ConexaoJDBC {
         } catch (ClassNotFoundException ex) {
             throw new SQLException("Driver do MySQL não encontrado", ex);
         }
-        // o "bd_test_rapina" será usado para testes, mudar para o nome definitivo
-        //após todos os testes serem feitos
+        /*Alteração 1: o "bd_test_rapina" será usado para testes, mudar para o
+        nome definitivo após todos os testes serem feitos.
+        Alteração 2: nome do user trocado para tads, referente a uma questão do Apache*/
         Connection conexao = DriverManager.getConnection("jdbc:mysql://local"
                 + "host:3306/bd_test_rapina?useUnicode=yes&"
-                + "characterEncoding=UTF-8&useTimezone=America/Sao_Paulo", "root", "");
+                + "characterEncoding=UTF-8&useTimezone=America/Sao_Paulo", "tads", "");
         return conexao;
 
     }
