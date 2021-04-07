@@ -1,0 +1,185 @@
+@import 'globalRubens.css';
+
+html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Hind Siliguri', sans-serif;
+    background-color: #fff;
+    color:#000;
+    margin: 0;
+}
+.img{
+    width: 120px;
+    height: 67.5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 104px;
+}
+.img img{
+    width: 120px;
+    height: 67.5px;
+}
+.bloco{
+    width: 540px;
+    height: 560px;
+    margin: 141px auto 110px auto;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    border-radius: 25px;
+    padding: 0 50px;
+}
+.link{
+    width: 440px;
+    height: 37px;
+    margin-top: 72px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 55px;
+    border: 1px solid transparent;
+}
+
+.link a:link, 
+      a:hover, 
+      a:visited{
+    text-decoration: none;
+    color: #000;
+}
+.link svg{
+    width: 14px;
+    height: 21px;
+    float: left;
+}
+.link p{
+    width: 426px;
+    margin-top: 0;
+    float: left;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    text-align: center;
+}
+.text{
+    width: 380px;
+    height: 55px;
+    margin-top: 23px;
+    background: #FFFFFF;
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 0 5px 5px 0;
+    padding-left: 22px;
+    
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    letter-spacing: -0.015em;
+}
+.svg{
+    width: 55px;
+    height: 55px;
+    margin-top: 23px;
+    border: 1px solid #828282;
+    background: #DDDDDD;
+    box-sizing: border-box;
+    border-radius: 5px 0 0 5px;
+    float: left;
+}
+.svg svg{
+    width: 18px;
+    height: 19px;
+    margin: 18px;
+}
+.Continuar button{
+    width: 440px;
+    height: 55px;
+    margin-top: 62px;
+    border: 1px solid #828282;
+    box-sizing: border-box;
+    border-radius: 10px;
+    outline: none;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+}
+/*
+link pro codigo desse select
+https://codepen.io/michmy/pen/jBQQpp
+*/
+
+.select{
+  position :relative;
+  display: inline-block;
+  margin-top: 23px;
+  width :435px;
+  height: 55px;
+  border: 1px solid #000;
+  border-radius: 5px;
+
+}
+.select  select{
+    width :435px;
+    height: 55px;
+    display :inline-block;
+    cursor: pointer;
+    padding: 10px 15px;
+    outline: 0;
+    border: 0;
+    border-radius: 5px;
+    background: #fff;
+    color: #000;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+  }
+.select option{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+  }
+  select::-ms-expand{
+      display: none;
+    }
+    select:hover,
+    select:focus{
+      color: #000;
+      background: #fff;
+    } 
+    select:disabled{
+      opacity:0.5;
+      pointer-events: none;
+    }
+.select__arrow{
+  position:absolute;
+  top:22.5px;
+  right:15px;
+  width:0;
+  height:0;
+  pointer-events:none;
+  border-style:solid;
+  border-width:8px 5px 0 5px;
+  border-color:#333 transparent transparent transparent;
+}
