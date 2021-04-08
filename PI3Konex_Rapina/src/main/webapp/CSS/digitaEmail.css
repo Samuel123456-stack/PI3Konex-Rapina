@@ -1,0 +1,151 @@
+@import 'globalRubens.css';
+
+html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Hind Siliguri', sans-serif;
+    background-color: #fff;
+    color:#000;
+    margin: 0;
+}
+.todo{
+    width: 570px;
+    height: 1013px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 52px;
+}
+.bloco{
+    width: 465px;
+    height: 630px;
+    padding: 50px;
+    border: 1px solid #000;
+    border-radius: 25px;
+}
+.link{
+    width: 494px;
+    height: 31px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 140px;
+    border: 1px solid #fff;
+    clear:both;
+}
+
+.link a:link, 
+      a:hover, 
+      a:visited{
+    text-decoration: none;
+    color: #000;
+}
+.link svg{
+    margin: 5px;
+    float: left;
+}
+.link p{
+    width: 305px;
+    margin-top: 0;
+    margin-left: 14px;
+    margin-right: 87px;
+    float: left;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 40px;
+    align-items: center;
+    letter-spacing: -0.015em;
+}
+#preen{
+    width: 290px;
+    height: 40px;
+    margin-bottom: 54px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 40px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+}
+
+.text465{
+    width: 465px;
+    height: 50px;
+    margin-bottom: 15px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 15px;
+    clear: both;
+}
+.text465 svg{
+    width: 18px;
+    height: 17px;
+    margin: 18px;
+    float: left;
+}
+.text465 input{
+    width: 409px;
+    height: 48px;
+    border-radius: 0 15px 15px 0;
+    border: 0;
+    padding: 0;
+    outline: 0;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    letter-spacing: -0.015em;
+}
+.text301{
+    width: 465px;
+    height: 301px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 15px;
+    clear: both;
+}
+.text301 svg{
+    width: 20px;
+    height: 20px;
+    margin: 18px;
+    float: left;
+}
+.text301 input{
+    width: 405px;
+    height: 299px;
+    border-radius: 0 15px 15px 0;
+    border: 0;
+    padding: 0;
+    outline: 0;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    letter-spacing: -0.015em;
+}
+#valOut{
+    width: 465px;
+    height: 50px;
+    margin-top: 38px;
+    padding: 0;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 40px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+}
