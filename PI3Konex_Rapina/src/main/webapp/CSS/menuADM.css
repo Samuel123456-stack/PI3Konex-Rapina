@@ -571,9 +571,6 @@ body{
     letter-spacing: -0.015em;
 }
 
-.linha{
-
-}
 .sublinha1{
     height: 30px;
 }
@@ -592,7 +589,9 @@ body{
 }
 
 .linha2{
-
+    margin-top: 6px;
+    height: 49px;
+    margin-bottom: 21px;
 }
 .sublinha21{
     width: 104px;
@@ -613,10 +612,13 @@ body{
     float: left;
 }
 .linha3{
-
+    margin-top: 8px;
 }
 .sublinha31{
     width: 405px;
+    height: 53px;
+    margin-top: 13px;
+    margin-bottom: 18px;
     clear: both;
 }
 .sublinha32{
@@ -634,14 +636,10 @@ body{
     margin-left: 15px;
     margin-right: 24px;
 }
-.linha4{
-
-}
 .sublinha41{
-
-}
-.sublinha42{
-    
+    margin-top: 28px;
+    margin-bottom: 18px;
+    height: 52px;
 }
 .sublinha42 p{
     float: left;
@@ -664,7 +662,7 @@ body{
 
 }
 .linha5{
-
+    margin-top: 6px;
 }
 
 .linha p,
@@ -687,13 +685,7 @@ body{
 .linha5{
     width: 405px;
 }
-.sublinha1,
-.sublinha21,
-.sublinha22,
-.sublinha31,
-.sublinha41,
-.sublinha42{
-}
+
 .pagtop{
     clear: both;
     height: 36px;
