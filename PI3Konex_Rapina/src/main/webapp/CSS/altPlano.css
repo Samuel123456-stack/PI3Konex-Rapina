@@ -144,3 +144,10 @@ body{
 #libcon{
     width: 233px;
 }
+
+a:link,
+a:hover,
+a:active,
+a:visited{
+    text-decoration: none;
+}
