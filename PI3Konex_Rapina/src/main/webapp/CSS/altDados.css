@@ -8,7 +8,7 @@ html{
 }
 body{
     font-family: 'Hind Siliguri', sans-serif;
-    background-color: #fff;
+    background-color: #d0e8f4;
     color:#000;
     margin: 0;
 }
@@ -21,7 +21,8 @@ body{
 .link{
     width: 565px;
     height: 31px;
-    margin-bottom: 140px;
+    margin-top: 69px;
+    margin-bottom: 10px;
     clear:both;
 }
 
@@ -37,7 +38,7 @@ body{
 }
 .link p{
     width: 305px;
-    margin-top: 0;
+    margin: 0;
     margin-left: 14px;
     margin-right: 87px;
     float: left;
@@ -49,20 +50,58 @@ body{
     letter-spacing: -0.015em;
 }
 .bloco{
-    width: 866px;
-    height: 583px;
+    width: 870px;
+    height: 683px;
     margin: 100px auto 100px auto;
-    border: 1px solid #000;
+    border: 3px solid #fff;
+    background-color: rgba(255, 255, 255, 0.4);
     box-sizing: border-box;
     border-radius: 25px;
     padding: 0 50px;
 }
+.topotext{
+    width: 318px;
+    height: 55px;
+    margin-top: 39px;
+    background: #FFFFFF;
+    border: 1px solid #828282;
+    border-left: 0;
+    box-sizing: border-box;
+    border-radius: 0 5px 5px 0;
+    padding-left: 22px;
+    float: left;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    letter-spacing: -0.015em;
+}
+.toposvg{
+    width: 55px;
+    height: 55px;
+    margin-top: 39px;
+    border: 1px solid #828282;
+    border-right: 0;
+    background: #fff;
+    box-sizing: border-box;
+    border-radius: 5px 0 0 5px;
+    float: left;
+}
+.toposvg svg{
+    width: 18px;
+    height: 19px;
+    margin: 18px;
+}
+
 .text{
     width: 318px;
     height: 55px;
     margin-top: 50px;
     background: #FFFFFF;
     border: 1px solid #828282;
+    border-left: 0;
     box-sizing: border-box;
     border-radius: 0 5px 5px 0;
     padding-left: 22px;
@@ -80,7 +119,8 @@ body{
     height: 55px;
     margin-top: 50px;
     border: 1px solid #828282;
-    background: #DDDDDD;
+    border-right: 0;
+    background: #fff;
     box-sizing: border-box;
     border-radius: 5px 0 0 5px;
     float: left;
@@ -116,6 +156,9 @@ body{
 .genero p{
     margin: 0;
 }
+#pergunta{
+    color: #4361ee;
+}
 .radio{
     font-style: normal;
     font-weight: normal;
@@ -148,6 +191,7 @@ body{
     height: 55px;
     margin-top: 50px;
     border: 1px solid #828282;
+    border-right: 0;
     box-sizing: border-box;
     border-radius: 5px 0 0 5px;
     padding-left: 22px;
@@ -167,7 +211,8 @@ body{
     height: 55px;
     margin-top: 50px;
     border: 1px solid #828282;
-    background: #DDDDDD;
+    border-left: 0;
+    background: #fff;
     box-sizing: border-box;
     border-radius: 0 5px 5px 0;
     float: left;
@@ -204,10 +249,12 @@ body{
 .cadastrar button{
     width: 763px;
     height: 55px;
-    margin-top: 50px;
+    margin-top: 43px;
     border: 1px solid #828282;
+    background: #4361EE;
+    color: #fff;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 100px;
     outline: none;
 
     font-style: normal;
