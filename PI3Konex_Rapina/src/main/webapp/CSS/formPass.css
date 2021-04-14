@@ -55,15 +55,22 @@ body{
     margin-top:1.5rem;
     width:100%;
 }
-#containner-landing .form-container .input-field{
+#container-landing .form-container .input-field{
     position:relative;
+}
+#container-landing .form-container .input-field img{
+    position:absolute;
+    right:14px;
+    top:10px;
+}
+#container-landing .form-container .input-field{
+     margin:1rem 0 2rem 0;
 }
 #container-landing .form-container .input-field input, input[type="submit"]{
     width:100%;
     padding:9px 15px;
     outline:0;
     border-radius:5px;
-    margin:1rem 0;
     border:0;
 }
 .form-container .input-field input::placeholder{

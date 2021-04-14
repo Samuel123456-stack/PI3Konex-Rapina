@@ -1,8 +1,7 @@
 @import url('global.css');
 
 body{
-    background: linear-gradient(70rad, #94B4D1, #CCDCEB);
-    position:relative;
+    background: linear-gradient(45deg, #94B4D1, #CCDCEB, #DBF6F5, #EDF2F4, #FFFFFF);
 }
 #container-landing .menu-bar{
     display:flex;
@@ -24,7 +23,7 @@ body{
     border-radius:30px;
     border: 2px solid #FFFFFF;
     margin: 20vh auto;
-    padding:3rem;
+    padding:2rem;
     display:flex;
     flex-direction:column;
     justify-content: center;
@@ -38,15 +37,21 @@ body{
     margin-top:1.5rem;
     width:100%;
 }
-#containner-landing .form-container .input-field{
+#container-landing .form-container form .input-field{
     position:relative;
+    margin:1rem 0 2rem 0;
+}
+#container-landing .form-container .input-field img{
+    position:absolute;
+    right:14px;
+    top:10px;
+    width:20px;
 }
 #container-landing .form-container .input-field input, input[type="submit"]{
     width:100%;
     padding:9px 15px;
     outline:0;
     border-radius:5px;
-    margin:1rem 0;
     border:0;
 }
 .form-container .input-field input::placeholder{
@@ -60,4 +65,3 @@ body{
     border-radius:30px;
     font-size:16px;
 }
-
