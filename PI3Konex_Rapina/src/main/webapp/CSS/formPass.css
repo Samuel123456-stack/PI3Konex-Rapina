@@ -1,7 +1,25 @@
 @import url('global.css');
 
 body{
-    background: linear-gradient(45deg, #94B4D1, #CCDCEB, #DBF6F5, #EDF2F4, #FFFFFF);
+    background: linear-gradient(70rad, #94B4D1, #CCDCEB);
+}
+#container-landing .principle-page{
+    max-width:1150px;
+    margin:0 auto;
+    position:relative;
+}
+#container-landing .principle-page .image-saly{
+    position:absolute;
+    left:0;
+    bottom:0;
+    position: relative;
+    width:540px;
+}
+#container-landing .principle-page .image-saly img{
+    width:500px;
+    height:500px;
+    position:absolute;
+    right:0;
 }
 #container-landing .menu-bar{
     display:flex;
@@ -21,31 +39,32 @@ body{
 }
 #container-landing .form-container{
     border-radius:30px;
-    border: 2px solid #FFFFFF;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     margin: 20vh auto;
-    padding:2rem;
+    padding:3rem;
     display:flex;
     flex-direction:column;
     justify-content: center;
     align-items: center;
     max-width:350px;
     text-align: center;
-    background:rgba(255, 255, 255, 0.4);
+    background:rgba(255, 255, 255, 0.1);
 }
 #container-landing .form-container form{
     overflow:hidden;
     margin-top:1.5rem;
     width:100%;
 }
-#container-landing .form-container form .input-field{
+#container-landing .form-container .input-field{
     position:relative;
-    margin:1rem 0 2rem 0;
 }
 #container-landing .form-container .input-field img{
     position:absolute;
     right:14px;
     top:10px;
-    width:20px;
+}
+#container-landing .form-container .input-field{
+     margin:1rem 0 2rem 0;
 }
 #container-landing .form-container .input-field input, input[type="submit"]{
     width:100%;
@@ -65,3 +84,6 @@ body{
     border-radius:30px;
     font-size:16px;
 }
+
+
+

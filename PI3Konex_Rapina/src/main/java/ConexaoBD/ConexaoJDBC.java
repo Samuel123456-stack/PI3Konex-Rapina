@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ConexaoBD;
 
 import java.sql.Connection;
@@ -25,7 +20,7 @@ public class ConexaoJDBC {
         Alteração 2: nome do user trocado para tads, referente a uma questão do Apache*/
         Connection conexao = DriverManager.getConnection("jdbc:mysql://local"
                 + "host:3306/bd_test_rapina?useUnicode=yes&"
-                + "characterEncoding=UTF-8&useTimezone=America/Sao_Paulo", "tads", "");
+                + "characterEncoding=UTF-8&useTimezone=America/Sao_Paulo", "tads", "senac");
         return conexao;
 
     }
