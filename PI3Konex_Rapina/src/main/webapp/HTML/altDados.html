@@ -7,25 +7,25 @@
 </head>
 <body>
     <div class="todo">
-
-    <div class="link">
-        <a href=""><svg width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path opacity="0.6" d="M10.4231 24.9999C10.1564 25.0008 9.89279 24.9419 9.65177 24.8276C9.41076 24.7133 9.19843 24.5464 9.03038 24.3392L0.40619 13.626C0.143569 13.3065 0 12.9057 0 12.4921C0 12.0786 0.143569 11.6778 0.40619 11.3583L9.33392 0.645033C9.637 0.280394 10.0725 0.0510867 10.5447 0.00755554C11.0168 -0.0359756 11.4869 0.109836 11.8515 0.412911C12.2162 0.715987 12.4455 1.1515 12.489 1.62365C12.5325 2.09579 12.3867 2.56589 12.0837 2.93053L4.10227 12.5011L11.8158 22.0716C12.0342 22.3337 12.1729 22.6528 12.2155 22.9913C12.2581 23.3297 12.2029 23.6733 12.0564 23.9814C11.9099 24.2894 11.6782 24.5491 11.3888 24.7296C11.0993 24.9101 10.7642 25.0039 10.4231 24.9999Z" fill="black"/>
-                    </svg>
-            <p>Voltar para o menu principal</p>
-        </a>
-    </div>
     <div class="bloco">
-        <div class="svg">
+        <div class="link">
+            <a href=""><svg width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path opacity="1" d="M10.4231 24.9999C10.1564 25.0008 9.89279 24.9419 9.65177 24.8276C9.41076 24.7133 9.19843 24.5464 9.03038 24.3392L0.40619 13.626C0.143569 13.3065 0 12.9057 0 12.4921C0 12.0786 0.143569 11.6778 0.40619 11.3583L9.33392 0.645033C9.637 0.280394 10.0725 0.0510867 10.5447 0.00755554C11.0168 -0.0359756 11.4869 0.109836 11.8515 0.412911C12.2162 0.715987 12.4455 1.1515 12.489 1.62365C12.5325 2.09579 12.3867 2.56589 12.0837 2.93053L4.10227 12.5011L11.8158 22.0716C12.0342 22.3337 12.1729 22.6528 12.2155 22.9913C12.2581 23.3297 12.2029 23.6733 12.0564 23.9814C11.9099 24.2894 11.6782 24.5491 11.3888 24.7296C11.0993 24.9101 10.7642 25.0039 10.4231 24.9999Z" fill="#4361ee"/>
+                        </svg>
+                <p>Voltar ao menu</p>
+            </a>
+        </div>
+
+        <div class="toposvg">
             <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path opacity="0.4" d="M9 0C6.243 0 4 2.243 4 5C4 7.757 6.243 10 9 10C11.757 10 14 7.757 14 5C14 2.243 11.757 0 9 0ZM9 8C7.346 8 6 6.654 6 5C6 3.346 7.346 2 9 2C10.654 2 12 3.346 12 5C12 6.654 10.654 8 9 8ZM18 19V18C18 14.141 14.859 11 11 11H7C3.14 11 0 14.141 0 18V19H2V18C2 15.243 4.243 13 7 13H11C13.757 13 16 15.243 16 18V19H18Z" fill="black"/>
             </svg>
         </div>                         
-        <input class="text" type="text" id="nome" name="username" placeholder="Digite seu nome">
+        <input class="topotext" type="text" id="nome" name="username" placeholder="Digite seu nome">
         
         <div class="margin"></div>
         
-        <div class="svg">
+        <div class="toposvg">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g opacity="0.4">
                 <path d="M1 5V3C1 2.46957 1.21071 1.96086 1.58579 1.58579C1.96086 1.21071 2.46957 1 3 1H5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -38,8 +38,8 @@
                 </g>
             </svg>                
         </div>                         
-        <input class="text" type="text" id="cpf" name="cpf" placeholder="Informe seu CPF">
-
+        <input class="topotext" type="text" id="cpf" name="cpf" placeholder="Informe seu CPF">
+        
         <div class="svg">
             <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path opacity="0.4" d="M20 2C20 0.9 19.1 0 18 0H2C0.9 0 0 0.9 0 2V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2ZM18 2L10 7L2 2H18ZM18 14H2V4L10 9L18 4V14Z" fill="black"/>
@@ -48,7 +48,7 @@
         <input class="text" type="text" id="email" name="email" placeholder="Email para login">
         
         <div class="genero">
-            <p>Qual é o seu gênero?</p>
+            <p id="pergunta">Qual é o seu gênero?</p>
             <div class="radio">
                 <label for="Masculino">
                     <input type="radio" id="Masculino" name="genero" value="Masculino">
