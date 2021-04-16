@@ -53,8 +53,10 @@ body{
     margin-left: auto;
     margin-right: auto;
     padding: 50px;
-    background: #fafafa;
+    background: #fff;
     border-radius: 25px;
+    border-bottom: 10px solid rgba(0, 0, 0, 0.05);
+    border-right: 10px solid rgba(0, 0, 0, 0.05);
 }
 
 .tabela table{
@@ -116,18 +118,20 @@ body{
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: #828282;
+    background:#49D983;
 }
 #visu{
-    margin-top: 54px;
     margin-bottom: 32px;
     margin-left: 50px;
+    color: #4361EE;
 }
 .info{
+    margin-top: 50px;
     width: 1157px;
-    height: 209px;
+    height: 309px;
     padding: 50px;
-    border: 1px solid #000;
+    border-bottom: 10px solid rgba(0, 0, 0, 0.05);
+    border-right: 10px solid rgba(0, 0, 0, 0.05);
     border-radius: 25px;
 }
 .info p{
@@ -142,6 +146,10 @@ body{
     align-items: center;
     letter-spacing: -0.015em;
 }
+#assunto{
+    margin-left: 120px;
+    margin-right: 180px;
+}
 .mensagem{
     width: 1151px;
     height: 176px;
@@ -151,7 +159,7 @@ body{
 .mensagem h2{
     margin: 0;
     margin-bottom: 25px;
-
+    color: #4EBAB5;
     font-style: normal;
     font-weight: normal;
     font-size: 25px;

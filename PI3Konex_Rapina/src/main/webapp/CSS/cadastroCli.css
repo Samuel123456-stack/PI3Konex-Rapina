@@ -8,15 +8,31 @@ html{
 }
 body{
     font-family: 'Hind Siliguri', sans-serif;
-    background-color: #fff;
+    background-image: linear-gradient(45deg, #fdd9d9, #dbf5ff);
     color:#000;
     margin: 0;
 }
-.bloco{
-    width: 866px;
-    height: 656px;
+.Foguete{
+    width: 1617px;
+    height: 777px;
     margin: 100px auto 100px auto;
-    border: 1px solid #000;
+    background-repeat:no-repeat;
+    background-image: url("../images/saly1.png");
+}
+.check{
+    width: 1617px;
+    height: 777px;
+    margin: auto;
+    background-repeat:no-repeat;
+    background-position: bottom right; 
+    background-image: url("../images/Tick1.png");
+}
+.bloco{
+    width: 868px;
+    height: 658px;
+    margin: 100px 0 0 700px;
+    border: 2px solid #fff;
+    background-color: rgba(255, 255, 255, 0.6);;
     box-sizing: border-box;
     border-radius: 25px;
     padding: 0 50px;
