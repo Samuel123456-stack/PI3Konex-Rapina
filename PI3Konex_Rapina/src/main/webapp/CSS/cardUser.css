@@ -10,13 +10,13 @@
 #container-landing .button-return button{
     background:none;
 }
-#container-landing .button-return i, span{
-    font-size:25px;
-    margin:0 3px;
+#container-landing .button-return span img{
+    width:12.29px;
+    height:24.59px;
 }
 #container-landing .button-return span{
-    color: rgba(0, 0, 0, 0.3);
-    font-weight:500;
+    font-size:18px;
+    margin: 3px;
 }
 .form-container{
     display:flex;
@@ -26,9 +26,10 @@
 }
 .form-container .form-block .form-data{
     padding:2rem;
-    border:2px solid #ddd;
     border-radius:25px;
-    background: rgba(196, 196, 196, 0.15);
+    background: #F9F9F9;
+    box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.1);
+    border: 3px solid #fff;
 }
 .form-container .form-block .form-data .input-field{
     position:relative;
@@ -51,8 +52,8 @@
     width:100%;
     padding:9px 15px;
     background: rgba(255, 255, 255, 1);
-    border:1px solid #ccc;
     border-radius:5px;
+    border:0;
 }
 .form-container .form-block .submit-block input{
     width:100%;
@@ -60,20 +61,27 @@
     border-radius:5px;
     border:1px solid #ccc;
     cursor:pointer;
+    background:#4361EE;
+    color:#fff;
+    font-size:15px;
 }
 .card-user{
     padding:2rem;
-    border:2px solid #ddd;
-    border-radius:25px;
+    border:0;
+    mix-blend-mode: soft-light;
+    border-radius: 40px;
     width:395px;
+    color:#fff;
+    background: linear-gradient(51.19deg, rgba(27, 55, 188, 0.2) 32.82%, rgba(255, 255, 255, 0) 110.28%), linear-gradient(0deg, #4361EE, #4361EE);
+    box-shadow: 0px 25px 25px rgba(67, 97, 238, 0.35);
 }
 .card-user .box{
     width:58px;
     height:42px;
-    background: rgba(196, 196, 196, 0.3);
+    background: rgba(255, 255, 255, 0.5);
     border:0;
     border-radius: 15px;
-    margin:30px 0 15px 0;
+    margin:30px 0 20px 0;
 }
 .card-user .username{
     display:flex;
@@ -81,10 +89,13 @@
     justify-content:space-between;
     align-items:center;
     margin:15px 0 10px 0;
+    position:relative;
 }
-.card-user .username section p:first-child{
-   color: rgba(0, 0, 0, 1);
-   font-size:10px;
-   margin-bottom:5px;
+.card-user .username section h5{
+    font-size:10px;
+    font-weight:normal;
+    margin-bottom:5px;
 }
+
+
 
