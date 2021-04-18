@@ -8,15 +8,31 @@ html{
 }
 body{
     font-family: 'Hind Siliguri', sans-serif;
-    background-color: #fff;
+    background-image: linear-gradient(15deg, #fdd9d9, #e0f6f9);
     color:#000;
     margin: 0;
 }
-.bloco{
-    width: 866px;
-    height: 656px;
+.Foguete{
+    width: 1617px;
+    height: 777px;
     margin: 100px auto 100px auto;
-    border: 1px solid #000;
+    background-repeat:no-repeat;
+    background-image: url("../images/saly1.png");
+}
+.check{
+    width: 1617px;
+    height: 777px;
+    margin: auto;
+    background-repeat:no-repeat;
+    background-position: bottom right; 
+    background-image: url("../images/Tick1.png");
+}
+.bloco{
+    width: 868px;
+    height: 658px;
+    margin: 100px 0 0 700px;
+    border: 2px solid #fff;
+    background-color: rgba(255, 255, 255, 0.6);
     box-sizing: border-box;
     border-radius: 25px;
     padding: 0 50px;
@@ -79,6 +95,18 @@ body{
 }
 .genero p{
     margin: 0;
+}
+.genero h1{
+    margin: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.015em;
+
+color: #4361EE;
 }
 .radio{
     font-style: normal;
@@ -169,11 +197,12 @@ body{
     width: 763px;
     height: 55px;
     margin-top: 50px;
-    border: 1px solid #828282;
+    border: 1px solid #4361EE;
+    background: #4361EE;
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 100px;
     outline: none;
-
+    color: #fff;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;

@@ -150,6 +150,7 @@ body{
 .acor h3{
     width: 86px;
     margin: 0;
+    color: #4361ee;
     font-style: normal;
     font-weight: 600;
     font-size: 35px;
@@ -161,8 +162,8 @@ body{
 .serrana svg,
 .rarpy svg,
 .acor svg{
-    width: 30px;
-    height: 25px;
+    width: 60px;
+    height: 60px;
     margin-left: auto;
     margin-right: auto;
     
@@ -173,6 +174,7 @@ body{
 }
 #usersH2{
     margin: 0;
+    color: #4361ee;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
@@ -282,13 +284,16 @@ body{
 #jornadasH2{
     margin: 0;
     margin-bottom: 37px;
-
+    color: #4361ee;
     font-style:normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 32px;
     align-items: center;
     letter-spacing: -0.015em;
+}
+.jornadas h3{
+    color:#4361ee;
 }
 
 .conInfo{
@@ -346,7 +351,7 @@ body{
 }
 .consulRap h2{
     margin: 0;
-
+    color: #4361ee;
     font-style:normal;
     font-weight: 500;
     font-size: 20px;
@@ -377,7 +382,7 @@ body{
 .ifoCont a{
     margin: 0;
     direction: none;
-    color: #006CE5;
+    color: #4EBAB5;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -385,7 +390,12 @@ body{
     align-items: center;
     letter-spacing: -0.015em;
 }
-
+.ifoCont a:link,
+.ifoCont a:hover,
+.ifoCont a:active,
+.ifoCont a:visited{
+    color: #4EBAB5;
+}
 .resdoa{
     width: 77px;
     margin-right: 30px;
@@ -413,6 +423,7 @@ body{
 }
 .infoRap h2{
     margin: 0;
+    color: #4361ee;
     font-style:normal;
     font-weight: 500;
     font-size: 20px;
@@ -426,7 +437,7 @@ body{
 .infoRap a{
     margin: 0;
     direction: none;
-    color: #006CE5;
+    color: #4EBAB5;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -434,6 +445,7 @@ body{
     align-items: center;
     letter-spacing: -0.015em;
 }
+
 .infoRap1{
     width: 148px;
     height: 52px;
@@ -498,6 +510,7 @@ body{
     line-height: 29px;
     align-items: center;
     letter-spacing: -0.015em;
+    color: #4361ee;
 }
 .consulLojas hr{
     width: 400px;
@@ -512,6 +525,7 @@ body{
     width: 208px;
     margin-right: 150px;
     float: left;
+    color: #4361ee;
 }
 
 .consulLojastop a{
@@ -522,8 +536,8 @@ body{
     height: 32px;
     margin-top: 32px;
     margin-bottom: 15px;
-    border: 1px solid #000;
-    background: #e9e9e9;
+    border: 3px solid rgba(0, 0, 0, 0.1);;
+    background: #fff;
     padding: 0;
     margin-right: 15px;
     border-radius: 5px;
@@ -541,8 +555,8 @@ body{
     width: 32px;
     height: 34px;
     padding-left: 4px;
-    border: 1px solid #000;
-    background: #9f9f9f;
+    border: 1px solid #fff;
+    background: #4361ee;
     border-radius: 5px;
 
     color: #fff;
@@ -557,7 +571,7 @@ body{
 #limpar{
     width: 47px;
     height: 26px;
-    color: #1200E5;
+    color: #4EBAB5;
     background: transparent;
     border: none;
     outline: none;
@@ -645,10 +659,10 @@ body{
     float: left;
 }
 #acessAzul{
-    color: #1200E5;
+    color: #1E3F9B;
 }
 #capLaranja{
-    color: #D94949;
+    color: #1E3F9B;
     float: left;
     margin-right: 50px;
 
@@ -657,12 +671,15 @@ body{
     margin-right: 27px;
 }
 #valRoxo{
-    color: #8000FF;
+    color: #1E3F9B;
     float: left;
 
 }
 .linha5{
     margin-top: 6px;
+}
+.linha5 h2{
+    color: #4361ee;
 }
 
 .linha p,
@@ -689,6 +706,7 @@ body{
 .pagtop{
     clear: both;
     height: 36px;
+    color: #4361ee;
 }
 .pagtop h2{
     float: left;
@@ -767,6 +785,6 @@ a:link,
 a:hover,
 a:active,
 a:visited{
-    color: #006CE5;
+    color: #4EBAB5;
     text-decoration: none;
 }

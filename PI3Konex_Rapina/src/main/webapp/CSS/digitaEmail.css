@@ -8,7 +8,7 @@ html{
 }
 body{
     font-family: 'Hind Siliguri', sans-serif;
-    background-color: #fff;
+    background-color: #d0e8f4;
     color:#000;
     margin: 0;
 }
@@ -21,9 +21,10 @@ body{
 }
 .bloco{
     width: 465px;
-    height: 630px;
+    height: 789px;
     padding: 50px;
-    border: 1px solid #000;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 3px solid #fff;
     border-radius: 25px;
 }
 .link{
@@ -31,8 +32,7 @@ body{
     height: 31px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 140px;
-    border: 1px solid #fff;
+    margin-bottom: 10px;
     clear:both;
 }
 
@@ -75,11 +75,12 @@ body{
 .text465{
     width: 465px;
     height: 50px;
-    margin-bottom: 15px;
+    margin-bottom: 50px;
     border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 15px;
     clear: both;
+    background-color: #fff;
 }
 .text465 svg{
     width: 18px;
@@ -105,9 +106,11 @@ body{
 .text301{
     width: 465px;
     height: 301px;
+    margin-bottom: 50px;
     border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 15px;
+    background-color: #fff;
     clear: both;
 }
 .text301 svg{
@@ -136,11 +139,13 @@ body{
     height: 50px;
     margin-top: 38px;
     padding: 0;
-    border: 1px solid #000000;
+    background: #4361ee;
+    border: 0;
     box-sizing: border-box;
     border-radius: 10px;
+    outline: none;
 
-
+    color: #fff;
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
