@@ -96,30 +96,20 @@ li{
     background-color: #fff;
     height: auto;
     font-family:"Ubuntu", sans-serif;
+    color:#fff;
 }
 .rodapeprin{
-    border-top: 1px solid #333;
-    background-color:#EDF2F4;
-    
+    background: rgba(67, 97, 238, 1);
+    padding:40px 0;
 }
 .grupos {
     margin:auto;
     width:90%;
-
-    }
-.grupos a:link{
-    color: #000;
+}
+.grupos a{
+    color: #fff;
     text-decoration: none;
 }
-.grupos a:visited{
-    color: #000;
-    text-decoration: none;
-}
-.grupos a:hover{
-    color: #4361EE;
-    text-decoration: none;
-}
-
 .top10 {
     display:inline;
     float:left;
@@ -131,16 +121,17 @@ li{
 }
 .social a{
     margin: 0px 5px 0px 5px;
+    color:#fff
 }
-path:hover{
-    fill: #4361EE;
+path{
+    fill: #fff;
 }
 
 /*segundo rodape*/
 
 .subRodape{
-    border-top: 1px solid #333;
     height: 40px;
+    color:#000;
 }
 .subRodape p{
     margin-top: 10px;
