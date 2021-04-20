@@ -137,25 +137,11 @@ path{
     margin-top: 10px;
 }
 .grupo{
-    margin:auto;
-    width:90%;
-    height: 100%;
-}
-
-.txt1{
-    display:inline;
-    float:left;
-    width:40%;
-    margin-left: 12%;
-    height: 100%;
-}
-.txt2{
-    display:inline;
-    float:right;
-    text-align: left;
-    width:24%;
-    margin-left: 12%;
-    height: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin:15px 55px;
 }
 #container-landing .menu-bar .logo-icon{
     width:120px;

@@ -30,6 +30,9 @@
     text-align:left;
     color: rgba(237, 242, 244, 0.4);
 }
+#container-landing .menu-bar ul{
+    cursor:pointer;
+}
 #container-landing .menu-bar ul .bar{
     width:35px;
     height:2px;
@@ -113,9 +116,6 @@
     width:407px;
 }
 #container-landing footer{
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    height:101px;
-    width:1144px;
     margin:59px auto;
 }
 

@@ -101,7 +101,7 @@ body{
     outline:0;
     box-shadow:none;
     filter:brightness(0.9);
-    transition:filter 200ms;
+    transition:filter  200ms, letter-spacing 250ms;
     letter-spacing:0.7px;
 }
 
