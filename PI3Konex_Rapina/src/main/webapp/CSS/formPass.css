@@ -46,7 +46,7 @@ body{
     flex-direction:column;
     justify-content: center;
     align-items: center;
-    max-width:350px;
+    max-width:400px;
     text-align: center;
     background:rgba(255, 255, 255, 0.1);
 }
@@ -95,6 +95,12 @@ body{
     filter:brightness(0.9);
     transition:filter  200ms, letter-spacing 250ms;
     letter-spacing:0.7px;
+}
+#container-landing footer{
+    margin-top:32px;
+}
+#container-landing footer a strong{
+    color:#2D2D2D;
 }
 
 
