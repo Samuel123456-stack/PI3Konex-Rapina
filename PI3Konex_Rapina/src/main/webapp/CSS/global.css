@@ -69,6 +69,9 @@ li{
     margin:0 40px 0 40px;
     position:relative;
 }
+#container-landing .menu-bar ul{
+    cursor:pointer;
+}
 #container-landing .menu-bar ul li:nth-child(3){
     margin-right:40px;
 }

@@ -7,13 +7,31 @@
     max-width:1150px;
     margin:auto;
 }
+#container-landing .menu-bar{
+    max-width:1150px;
+    margin:auto;
+}
+#container-landing .background-color{
+   background: rgba(67, 97, 238, 1);
+}
+#container-landing .menu-bar ul .bar{
+    width:35px;
+    height:2px;
+    margin-bottom:11px;
+    border-radius:50px;
+    background:#fff;
+}
 #container-landing .rapina-campaign .flying-with-rapina{
-    width:300px;
+    width:466px;
 }
 .rapina-campaign .flying-with-rapina p{
-    font-size:14px;
+    font-size:15px;
     margin-bottom:3px;
-    color:#808080;
+    color: rgba(237, 242, 244, 1);
+}
+.rapina-campaign .flying-with-rapina h1{
+    color: rgba(237, 242, 244, 1);
+    font-size:40px;
 }
 .donation-page{
     display:flex;
@@ -21,17 +39,37 @@
     justify-content: center;
     align-items: center;
     margin:3rem 0;
+    max-width:1150px;
+    margin:89px auto 66px auto;
 }
 .donation-page .grid-layout{
     display:grid;
     margin-bottom: 10px;
-    grid-template-rows:30vh 30vh;
+    grid-template-rows:25vh 25vh;
     grid-template-columns:80vh 80vh;
     grid-template-areas:"section div"
                         "section div";
+    grid-gap:0 50px;
 }
 .donation-page .grid-layout section{
     grid-area:section;
+}
+.donation-page .grid-layout section img{
+    height:100%;
+    width:100%;
+    border-top-left-radius: 85px;
+    border-bottom-left-radius: 85px;
+    border-bottom-right-radius: 85px;
+}
+.donation-page .grid-layout article p{
+    line-height: 20px;
+    margin-bottom:20px;
+}
+.donation-page .grid-layout article{
+    width:400px;
+}
+.donation-page .grid-layout article p:last-child{
+    color:#48D1CC;
 }
 .donation-page .grid-layout div{
     grid-area:div;
@@ -42,6 +80,25 @@
     grid-template-columns:80vh 80vh;
     grid-template-areas:"div section"
                         "div section";
+    margin:77px 0 86px 0;;
+}
+.image-layout section{
+    grid-area:section;
+}
+.image-layout div{
+    grid-area:div;
+}
+.donation-page div h1{
+    color:#4361EE;
+    margin-bottom:25px;
+    font-size:30px;
+}
+.image-layout .container-right-aside img{
+    height:100%;
+    width:100%;
+    border-top-right-radius: 85px;
+    border-bottom-right-radius: 85px;
+    border-bottom-left-radius: 85px;
 }
 .image-layout div:first-child{
     grid-area:div;
@@ -59,4 +116,5 @@
     position:absolute;
     bottom:0;
 }
+
 
