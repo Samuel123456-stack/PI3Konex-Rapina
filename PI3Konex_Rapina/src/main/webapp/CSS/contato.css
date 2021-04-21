@@ -1,22 +1,38 @@
 @import url('global.css');
+
 .page-container{
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border:2px solid #ddd;
+    border: 3px solid rgba(255, 255, 255, 1);
     max-width:350px;
-    margin:0 auto;
+    margin:30px auto 0 auto;
     padding:2rem;
     border-radius:.8rem;
+    background: rgba(255, 255, 255, 0.6);
+}
+#container-landing{
+    background: linear-gradient(224.77deg, #E9F9FF 19.1%, rgba(188, 209, 228, 0.67) 50.09%, rgba(255, 255, 255, 0) 73.69%),
+        linear-gradient(0deg, #7598B8, #7598B8);
+    height:100vh;
+
+}
+#container-landing .menu-bar ul .bar{
+    width:35px;
+    height:2px;
+    margin-bottom:11px;
+    border-radius:50px;
+    background: rgba(67, 97, 238, 1);
 }
 .page-container form{
     overflow:hidden;
     width:100%;
 }
-.page-container h4{
-    font-weight:normal;
+.page-container h3{
+    font-weight:500;
     margin-bottom:1rem;
+    color: rgba(45, 45, 45, 1);
 }
 .page-container form .input-block{
     position:relative;
@@ -28,10 +44,10 @@
     padding:9px 15px;
     width:100%;
     border-radius:3px;
-    border:1px solid #ccc;
+    border:0;
 }
-.page-container form .input-block input::placeholder{
-    color:rgba(0,0,0,0.4);
+.page-container form .input-block input::placeholder, textarea::placeholder{
+    color: rgba(45, 45, 45, 0.3);
 }
 .page-container form .input-block:first-child{
     margin-bottom:1.5rem;
@@ -42,17 +58,28 @@
 }
 .page-container form .input-block textarea{
     font-size:1rem;
+    border:0;
 }
 .page-container form .submit-block{
     margin-top:2rem;
 }
 .page-container form .submit-block input[type="submit"]{
     width:100%;
-    padding:0.4rem;
+    padding:9px 15px;
     margin-top:0.6rem;
-    border-radius:3px;
-    border:1px solid #ccc;
+    border-radius:100px;
+    border:0;
+    font-size:15px;
     cursor:pointer;
+    background: rgba(67, 97, 238, 1);
+    color:#fff;
+}
+.page-container form .submit-block input[type="submit"]:hover{
+    filter:brightness(0.9);
+    transition:filter 200ms ease-in-out;
+}
+#container-landing .subRodape{
+    color: rgba(45, 45, 45, 0.54);
 }
 
 
