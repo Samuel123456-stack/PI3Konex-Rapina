@@ -25,7 +25,7 @@ body{
     height:15vh; 
     margin:0 40px 86px 40px;
 }
-#container-landing .menu-bar ul .bar{
+#container-landing .bar{
     width:35px;
     height:2px;
     margin-bottom:11px;
@@ -82,7 +82,7 @@ body{
     outline:none;
     color:#2D2D2D;
     line-height:34px;
-    font:600 16px "Ubuntu", sans-serif;
+    font:500 16px "Ubuntu", sans-serif;
     padding:10px 10px;
     flex:100%;
     border-top-right-radius: 10px;
@@ -155,7 +155,7 @@ body{
     width:100%;
 }
 .landing-section div{
-   margin:0 30px;
+    margin:0 30px;
 }
 .landing-section div img{
     width:300px;
@@ -176,7 +176,7 @@ body{
     grid-template-rows:30vh 30vh;
     grid-template-columns:90vh 90vh;
     grid-template-areas:"main article"
-                        "main article";
+        "main article";
 }
 .grid-container .grid-subject main{
     grid-area:main;

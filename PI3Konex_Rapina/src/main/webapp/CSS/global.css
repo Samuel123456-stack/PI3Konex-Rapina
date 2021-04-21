@@ -31,6 +31,14 @@
 
     font-size:93.75%;
 }
+#container-landing .menu-bar ul .bar{
+    width:35px;
+    height:2px;
+    margin-bottom:11px;
+    border-radius:50px;
+    background: rgba(67, 97, 238, 1);
+    position:relative;
+}
 *{
     margin:0;
     padding:0;
@@ -74,11 +82,6 @@ li{
 }
 #container-landing .menu-bar ul li:nth-child(3){
     margin-right:40px;
-}
-#container-landing .menu-bar ul i{
-    font-size:22px;
-    color:var(--blue);
-    cursor:pointer;
 }
 #container-landing .menu-bar ul li{
     display:inline;
