@@ -46,7 +46,7 @@ body{
     flex-direction:column;
     justify-content: center;
     align-items: center;
-    max-width:350px;
+    max-width:400px;
     text-align: center;
     background:rgba(255, 255, 255, 0.1);
 }
@@ -61,7 +61,7 @@ body{
 #container-landing .form-container .input-field img{
     position:absolute;
     right:14px;
-    top:10px;
+    top:7px;
 }
 #container-landing .form-container .input-field input:focus{
    box-shadow: 0 0 1em 1px rgba(0 ,0 ,0, 0.07);
@@ -93,8 +93,14 @@ body{
     outline:0;
     box-shadow:none;
     filter:brightness(0.9);
-    transition:filter 200ms ease-in-out;
+    transition:filter  200ms, letter-spacing 250ms;
     letter-spacing:0.7px;
+}
+#container-landing footer{
+    margin-top:32px;
+}
+#container-landing footer a strong{
+    color:#2D2D2D;
 }
 
 

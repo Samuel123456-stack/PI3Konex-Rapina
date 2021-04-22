@@ -31,6 +31,14 @@
 
     font-size:93.75%;
 }
+#container-landing .menu-bar ul .bar{
+    width:35px;
+    height:2px;
+    margin-bottom:11px;
+    border-radius:50px;
+    background: rgba(67, 97, 238, 1);
+    position:relative;
+}
 *{
     margin:0;
     padding:0;
@@ -69,13 +77,11 @@ li{
     margin:0 40px 0 40px;
     position:relative;
 }
+#container-landing .menu-bar ul{
+    cursor:pointer;
+}
 #container-landing .menu-bar ul li:nth-child(3){
     margin-right:40px;
-}
-#container-landing .menu-bar ul i{
-    font-size:22px;
-    color:var(--blue);
-    cursor:pointer;
 }
 #container-landing .menu-bar ul li{
     display:inline;
@@ -96,30 +102,20 @@ li{
     background-color: #fff;
     height: auto;
     font-family:"Ubuntu", sans-serif;
+    color:#fff;
 }
 .rodapeprin{
-    border-top: 1px solid #333;
-    background-color:#EDF2F4;
-    
+    background: rgba(67, 97, 238, 1);
+    padding:40px 0;
 }
 .grupos {
     margin:auto;
     width:90%;
-
-    }
-.grupos a:link{
-    color: #000;
+}
+.grupos a{
+    color: #fff;
     text-decoration: none;
 }
-.grupos a:visited{
-    color: #000;
-    text-decoration: none;
-}
-.grupos a:hover{
-    color: #4361EE;
-    text-decoration: none;
-}
-
 .top10 {
     display:inline;
     float:left;
@@ -131,40 +127,27 @@ li{
 }
 .social a{
     margin: 0px 5px 0px 5px;
+    color:#fff
 }
-path:hover{
-    fill: #4361EE;
+path{
+    fill: #fff;
 }
 
 /*segundo rodape*/
 
 .subRodape{
-    border-top: 1px solid #333;
     height: 40px;
+    color:#000;
 }
 .subRodape p{
     margin-top: 10px;
 }
 .grupo{
-    margin:auto;
-    width:90%;
-    height: 100%;
-}
-
-.txt1{
-    display:inline;
-    float:left;
-    width:40%;
-    margin-left: 12%;
-    height: 100%;
-}
-.txt2{
-    display:inline;
-    float:right;
-    text-align: left;
-    width:24%;
-    margin-left: 12%;
-    height: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin:15px 55px;
 }
 #container-landing .menu-bar .logo-icon{
     width:120px;

@@ -18,55 +18,58 @@
     <body>
         <div id="container-landing">
             <div class="container-page">
-                <section class="menu-bar">
-                    <div>
-                        <img src="../images/icons/logo.jpeg" alt="logo-image" class="logo-icon" />
-                    </div>
-                    <div>
-                        <ul>
-                            <li>Institucional</li>
-                            <li>Voe com a Rapina</li>
-                            <li>Doações</li>
-                            <button>
-                                Login
-                            </button>
-                        </ul>
-                    </div>
-                </section>
-                <main>
-                    <h1>
-                        Bem-vindo ao grupo <strong>Rapina</strong>!
-                    </h1>
-                    <p>Torne-se um rapinante conosco;)</p>
-                    <div class="form-container">
-                        <form action="" name="searching">
-                            <div class="input-block">
-                                <input 
-                                    type="text" 
-                                    id="block-search" 
-                                    maxlength="40" 
-                                    name="text-name" 
-                                    placeholder="Buscar CEP ou Nome" 
-                                    data-toggle="modal"
-                                    data-target="#windowModal"
-                                    />
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                                </svg>
-                            </div>
-                            <div class="input-submit">
-                                <input type="submit" value="Search" />
-                            </div>
-                        </form>
-                    </div>
-                </main>  
+                <div class="background-image">
+                    <section class="menu-bar">
+                        <div>
+                            <img src="../images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
+                        </div>
+                        <div>
+                            <ul>
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <main>
+                        <h1>Liberdade com segurança</h1>
+                        <p>Encontre estabelecimentos proximos de você e reserve</p>
+                        <div class="form-container">
+                            <form action="" name="searching">
+                                <div class="input-block">
+                                    <input 
+                                        type="text" 
+                                        id="block-search" 
+                                        maxlength="40" 
+                                        name="text-name" 
+                                        data-toggle="modal"
+                                        data-target="#windowModal"
+                                        />
+                                    <button type="button">
+                                        <img src="../images/icons/search-icon.png" alt="search-image" />
+                                    </button>
+                                </div>
+                                <div class="input-submit">
+                                    <input type="submit" value="Buscar" />
+                                </div>
+                            </form>
+                        </div>
+                    </main>  
+                </div>
             </div>
 
             <main class="outline-container-situation">
                 <div class="landing-section">
-                    <div class="first-content"></div>
-                    <div class="second-content"></div>
-                    <div class="third-content"></div>
+                    <div class="first-content">
+                        <img src="../images/freeReser.png" alt="image" />
+                    </div>
+                    <div class="second-content">
+                        <img src="../images/dream-liberty.png" alt="image" />
+                    </div>
+                    <div class="third-content">
+                        <img src="../images/search-secure.png" alt="image" />
+                    </div>
                 </div>
 
                 <section class="selection-content">
@@ -75,36 +78,42 @@
                     </header>
                     <div class="options-select">
                         <div class="first-option">
-
+                            <img src="../images/mcDonald.png" alt="donald-image" />
                         </div>
                         <div class="second-option">
-
+                            <img src="../images/grill.png" alt="grill-image" />
                         </div>
                         <div class="third-option">
-
+                            <img src="../images/yakisoba.png" alt="yakisoba-image" />
                         </div>
                         <div class="forth-option">
-
+                            <img src="../images/burger.png" alt="burger-image" />
                         </div>
                     </div>
                 </section>
 
                 <div class="grid-container">
                     <div class="grid-subject">
-                        <main></main>
+                        <main>
+                            <img src="../images/business.png" alt="image-business" />
+                        </main>
                         <article>
-                            <h2>Texto inicial</h2>
-                            <p>Aqui voce encontra os estabelecimentos com os
-                                melhores gerenciamentos de entrada e saida dos nossos clientes.</p>
-                            <footer>
-                                <a href="">
-                                    <p>Clique aqui para continuar</p>
-                                </a>
-                            </footer>
+                            <h2>Voe com a gente</h2>
+                            <p>
+                                Venha fazer parte do maior grupo de busca por restaurantes,
+                                bares e lanchonetes. Nesse momento da pandemia você pode
+                                ter liberdade com segurança.
+                            </p>
+                            <a href="">
+                                <p>Saiba mais</p>
+                            </a>
                         </article>
-                        <footer></footer>
                     </div>
                 </div>
+
+                <footer class="footer-image">
+                    <img src="../images/footer-image.png" alt="image-footer" />
+                </footer>
             </main>
 
             <div class="rodape">
