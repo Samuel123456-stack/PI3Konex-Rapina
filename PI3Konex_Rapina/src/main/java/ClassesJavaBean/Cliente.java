@@ -15,10 +15,11 @@ public class Cliente {
     private String genero;
     private String data_nascimento;
     private String senha;
-    private String concorda;
-    public String concorda_newstalleter;
+    private boolean concorda;
+    public boolean concorda_newstalleter;
     public int num_cartao;
     public int id_favoritado;
+    public int tipo_user;
 
     //metodo construtor
     public Cliente() {
@@ -94,19 +95,19 @@ public class Cliente {
         this.senha = senha;
     }
 
-    public String getConcorda() {
+    public boolean getConcorda() {
         return concorda;
     }
 
-    public void setConcorda(String concorda) {
+    public void setConcorda(boolean concorda) {
         this.concorda = concorda;
     }
 
-    public String getConcorda_newstalleter() {
+    public boolean getConcorda_newstalleter() {
         return concorda_newstalleter;
     }
 
-    public void setConcorda_newstalleter(String concorda_newstalleter) {
+    public void setConcorda_newstalleter(boolean concorda_newstalleter) {
         this.concorda_newstalleter = concorda_newstalleter;
     }
 
@@ -126,4 +127,13 @@ public class Cliente {
         this.id_favoritado = id_favoritado;
     }
 
+    public int getTipo_user() {
+        return tipo_user;
+    }
+
+    public void setTipo_user(int tipo_user) {
+        this.tipo_user = tipo_user;
+    }
+
+    
 }

@@ -6,13 +6,14 @@ package ClassesJavaBean;
  * @author Gabriel Felipe
  */
 public class Pagamento_taxa {
+    
     //atributos pagamento taxa
     private int id_pagamento_taxa;
-    public int id_usuário;
     public String describe_taxa;
     public String data_cobranca;
     private float valor_rapina_adm;
     private float valor_estabelecimento;
+    public int id_usuário;
     private int id_adm;
     public int id_estabelecimento;
 

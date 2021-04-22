@@ -10,21 +10,21 @@ public class Estabelecimento {
     public int id_estabelecimento;
     public String nome_estabelecimento;
     private int cpnj;
+    private String email;
+    private String senha;
+    public int capacidade;
     public int cep_estabelecimento;
     public String logadouro_estabelecimento;
     public int numero;
+    public String horario_funcionamento;
+    public boolean disponibilidade;
     public String acessi_auditiva ;
     public String acessi_fisico ;
-    public String acessi_nenhuma ;
-    public String horario_funcionamento;
-    public int capacidade;
     public float taxa_cancelamento;
     private int celular;
-    private String email;
-    private String senha;
     private String concorda;
     public String concorda_newstalleter;
-    public boolean disponibilidade;
+    public int tipo_user;
     private int id_planos;
     private int id_pagamento_taxa;  
     
@@ -117,14 +117,6 @@ public class Estabelecimento {
         this.acessi_fisico = acessi_fisico;
     }
 
-    public String getAcessi_nenhuma() {
-        return acessi_nenhuma;
-    }
-
-    public void setAcessi_nenhuma(String acessi_nenhuma) {
-        this.acessi_nenhuma = acessi_nenhuma;
-    }
-
     public String getHorario_funcionamento() {
         return horario_funcionamento;
     }
@@ -211,6 +203,14 @@ public class Estabelecimento {
 
     public void setId_pagamento_taxa(int id_pagamento_taxa) {
         this.id_pagamento_taxa = id_pagamento_taxa;
+    }
+
+    public int getTipo_user() {
+        return tipo_user;
+    }
+
+    public void setTipo_user(int tipo_user) {
+        this.tipo_user = tipo_user;
     }
     
 }

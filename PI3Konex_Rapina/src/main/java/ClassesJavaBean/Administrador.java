@@ -11,6 +11,7 @@ public class Administrador {
     private String email;
     private String senha;
     public String nome_adm;
+    public int tipo_user;
     
     //metodo construtor
     
@@ -61,5 +62,15 @@ public class Administrador {
     public void setNome_adm(String nome_adm) {
         this.nome_adm = nome_adm;
     }
+
+    public int getTipo_user() {
+        return tipo_user;
+    }
+
+    public void setTipo_user(int tipo_user) {
+        this.tipo_user = tipo_user;
+    }
+    
+    
     
 }

@@ -7,6 +7,7 @@ package ClassesJavaBean;
  */
 public class Cartao {
     //atributos do cartão
+    public int id_card;
     public int num_cartao;
     private String validade;
     private int cvv;

@@ -19,7 +19,7 @@ public class ConexaoJDBC {
         nome definitivo após todos os testes serem feitos.
         Alteração 2: nome do user trocado para tads, referente a uma questão do Apache*/
         Connection conexao = DriverManager.getConnection("jdbc:mysql://local"
-                + "host:3306/bd_test_rapina?useUnicode=yes&"
+                + "host:3306/rapina?useUnicode=yes&"
                 + "characterEncoding=UTF-8&useTimezone=America/Sao_Paulo", "tads", "senac");
         return conexao;
 
