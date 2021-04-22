@@ -12,9 +12,14 @@
    background:none;
    margin:40px 0 70px 0;
 } 
-#container-landing .button-return i, span{
-    font-size:16px;
-    margin:0 1px;
+#container-landing .button-return button img{
+    width:14px;
+    height:21px;
+}
+#container-landing .button-return button span{
+    font-size:22px;
+    margin-left:10px;
+    color: rgba(67, 97, 238, 1);
 }
 #container-landing .main-container{
     display:flex;

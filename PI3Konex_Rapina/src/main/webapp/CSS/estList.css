@@ -3,15 +3,65 @@
 #container-landing .establishments{
     padding:74px 0;
 }
-#container-landing .introducing-context{
+#container-landing .background-color{
+    background: rgba(67, 97, 238, 1);
+}
+#container-landing .margin{
     max-width:1150px;
     margin:auto;
 }
+#container-landing .establishments p, h1{
+    color: rgba(237, 242, 244, 1);
+}
+#container-landing .menu-bar ul .bar{
+    width:35px;
+    height:2px;
+    margin-bottom:11px;
+    border-radius:50px;
+    background:#fff;
+}
 #container-landing .establishments .security-search{
-    width:300px;
+    width:537px;
+    margin-left:129px;
 }
 .establishments .security-search p{
     font-size:14px;
     margin-bottom:3px;
     color:#808080;
 }
+.establishments .security-search h1{
+    font-size:40px;
+}
+#container-landing .sort-button p{
+    display:inline;
+    background: rgba(78, 186, 181, 1);
+    color:#fff;
+    padding:5px 40px;
+    border-radius:100px;
+    margin-right:9px;
+}
+#container-landing .sort-button{
+    margin:99px 0 121px 0;
+}
+#container-landing .sort-button button{
+    background: rgba(238, 125, 20, 1);
+    padding:5px 9px;
+    border-radius:100px;
+}
+#container-landing .sort-button button img{
+    width:9px;
+    margin:2px 0;
+}
+#container-landing .list-est{
+    max-width:1143px;
+    margin:99px auto 87px auto;
+}
+#container-landing .more-store button{
+    width:100%;
+    padding:9px 15px;
+    background: rgba(67, 97, 238, 1);
+    color:#fff;
+    border-radius:5px;
+    border: 1px solid rgba(130, 130, 130, 1)
+}
+
