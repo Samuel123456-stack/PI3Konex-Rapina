@@ -2,30 +2,30 @@ create database rapina;
 use rapina;
 
 create table administrador(
-id_adm smallint(5) UNSIGNED not null primary key,
+id_adm int unsigned auto_increment not null primary key,
 login varchar(20)  not null,
 senha varchar(20) not null,
 nome varchar(30) not null,
-tipo_usuario smallint(5) UNSIGNED not null
+tipo_usuario smallint unsigned not null
 );
 
 create table planos(
-id_planos smallint(5) UNSIGNED not null primary key,
+id_planos int unsigned auto_increment not null primary key,
 nome varchar(30) not null,
-valor decimal(5,0) not null,
+valor decimal(5,2) not null,
 beneficio text null
 );
 
 create table estabelecimento(
-id_esta smallint(5) UNSIGNED not null primary key, 
+id_esta int unsigned auto_increment not null primary key, 
 nome_esta varchar(30) not null,
 cnpj varchar(30) not null unique,
 email varchar(30) not null,
 senha varchar(20) not null,
-capacidade tinyint(3) not null,
+capacidade tinyint not null,
 endereco varchar(50) null,
 cep varchar(10) null,
-numero tinyint(5) null,
+numero smallint null,
 horario_de_fun varchar(20) not null,
 disponibilidade enum('Sim','Não') not null,
 taxa_cancelamento decimal(5,2) not null,
@@ -33,33 +33,33 @@ concordar enum('Sim','Não') not null,
 newslatter enum('Sim','Não') not null,
 def_aud enum('Sim','Não') not null,
 def_fis enum('Sim','Não') not null,
-tipo_usuario smallint(5) UNSIGNED not null,
-id_planos smallint(5) UNSIGNED null,
+tipo_usuario smallint unsigned not null,
+id_planos int unsigned not null,
 constraint `fk_idplanosesta_pk_idplanosesta` foreign key(`id_planos`)
  references `planos`(`id_planos`)
 );
 
 create table cartao(
-id_cartao smallint(5) UNSIGNED not null primary key,
+id_cartao int unsigned auto_increment not null primary key,
 num_cartao varchar(30) not null,
 validade date not null,
-cvv tinyint(3) not null ,
-bandeira varchar(5) not null,
+cvv smallint not null ,
+bandeira varchar(20) not null,
 titular varchar(20) not null
 );
 
 create table favorito(
-id_favorito smallint(5) UNSIGNED not null primary key,
+id_favorito int unsigned auto_increment not null primary key,
 nome_esta varchar(30)  null,
 horario_fun varchar(20) null,
 endereco varchar(50) null,
-id_esta smallint(5) UNSIGNED not null,
+id_esta int unsigned not null,
 constraint `fk_idestafav_pk_idestafav` foreign key(`id_esta`)
  references `estabelecimento`(`id_esta`)
 );
 
 create table usuario(
-id_usuario smallint(5) UNSIGNED not null primary key,
+id_usuario int unsigned auto_increment not null primary key,
 nome varchar(30) not null,
 genero enum('Masculino','Feminino') not null,
 cpf varchar(15) not null unique,
@@ -68,24 +68,22 @@ senha varchar(20)  not null,
 nascimento date  null,
 concordar enum('Sim','Não') not null,
 newslatter enum('Sim','Não') not null,
-id_cartao smallint(5) UNSIGNED not null,
-id_favorito smallint(5) UNSIGNED not null,
-tipo_usuario smallint(5) UNSIGNED not null,
+id_cartao int unsigned not null,
+id_favorito int unsigned not null,
+tipo_usuario smallint unsigned not null,
 constraint `fk_idcartaousu_pk_idcartaousu` foreign key(`id_cartao`)
  references `cartao`(`id_cartao`),
  constraint `fk_idfavusu_pk_idfavusu` foreign key(`id_favorito`)
  references `favorito`(`id_favorito`)
 );
 
-
-
 create table doacao(
-id_doacao smallint(5) UNSIGNED not null primary key,
+id_doacao int unsigned auto_increment not null primary key,
 nome varchar(30) not null,
 valor decimal(5,2)  null,
 data_doacao DATE DEFAULT (CURRENT_DATE),
-id_usuario smallint(5) UNSIGNED not null,
-id_esta smallint(5) UNSIGNED not null,
+id_usuario int unsigned not null,
+id_esta int unsigned not null,
 constraint `fk_idusudoa_pk_idusudoa` foreign key(`id_usuario`)
  references `usuario`(`id_usuario`),
  constraint `fk_idestadoa_pk_idestadoa` foreign key(`id_esta`)
@@ -93,12 +91,12 @@ constraint `fk_idusudoa_pk_idusudoa` foreign key(`id_usuario`)
 );
 
 create table notificacao(
-id_noti smallint(5) UNSIGNED not null primary key ,
+id_noti int unsigned auto_increment not null primary key ,
 mensagem text null,
 num_reserva varchar(5) not null,
-data_noti date null,
-id_esta smallint(5)UNSIGNED null,
-id_usuario smallint(5) UNSIGNED null,
+data_noti DATE DEFAULT (CURRENT_DATE),
+id_esta int unsigned null,
+id_usuario int unsigned null,
 constraint `fk_idusunot_pk_idusunot` foreign key(`id_usuario`)
  references `usuario`(`id_usuario`),
  constraint `fk_idestanot_pk_idestanot` foreign key(`id_esta`)
@@ -106,9 +104,9 @@ constraint `fk_idusunot_pk_idusunot` foreign key(`id_usuario`)
 );
 
 create table pagamento_mensalidade(
-id_pag smallint(5)UNSIGNED not null primary key, 
-id_esta smallint(5)UNSIGNED null,
-id_planos smallint(5)UNSIGNED null,
+id_pag int unsigned auto_increment not null primary key, 
+id_esta int unsigned null,
+id_planos int unsigned null,
 data_cobranca DATE DEFAULT (CURRENT_DATE),
  constraint `fk_idestapagM_pk_idestapagM` foreign key(`id_esta`)
  references `estabelecimento`(`id_esta`),
@@ -117,14 +115,14 @@ data_cobranca DATE DEFAULT (CURRENT_DATE),
 );
 
 create table pagamento_taxa(
-id_pag_taxa smallint(5) UNSIGNED not null primary key, 
+id_pag_taxa int unsigned auto_increment not null primary key, 
 desc_taxa tinytext not null,
 data_cobranca DATE DEFAULT (CURRENT_DATE),
 valor_adm decimal(5,2) not null,
 valor_esta decimal(5,2) not null,
-id_adm smallint(5) UNSIGNED not null,
-id_esta smallint(5) UNSIGNED not null,
-id_usuario smallint(5) UNSIGNED not null,
+id_adm int unsigned not null,
+id_esta int unsigned not null,
+id_usuario int unsigned not null,
 valor_total decimal(5,2) not null,
 constraint `fk_idadmpagT_pk_idadmpagT` foreign key(`id_adm`)
  references `administrador`(`id_adm`),
@@ -135,95 +133,96 @@ constraint `fk_idusupagT_pk_idusupagT` foreign key(`id_usuario`)
 );
 
 create table reserva(
-num_reserva varchar(5) not null primary key, 
-quant_pessoas tinyint(2) not null,
+num_reserva int auto_increment not null primary key, 
+quant_pessoas tinyint not null,
 data_criacao DATE DEFAULT (CURRENT_DATE),
 data_reserva date null,
 hora_reserva time null,
 hora_entrada time  null,
 hora_saida date  null,
-id_usuario smallint(5) UNSIGNED not null,
-id_esta smallint(5) UNSIGNED not null,
+id_usuario int unsigned not null,
+id_esta int unsigned not null,
 constraint `fk_idusues_pk_idusues` foreign key(`id_usuario`)
  references `usuario`(`id_usuario`),
  constraint `fk_idestares_pk_idestares` foreign key(`id_esta`)
  references `estabelecimento`(`id_esta`)
 );
 
-insert into administrador(id_adm, login, senha, nome, tipo_usuario) values 
-('11111', 'gabriel@admsilva', 'analistaADM', 'Gabriel Felipe', 1001),
-('22222', 'alexyudy@admkitahara', 'analistaADM', 'Alex Yudy Kitahara', 1002),
-('33333', 'samuel@admlo', 'analistaADM', 'Samuel Lo', 1003),
-('44444', 'gustavo@admgomes', 'analistaADM', 'Gustavo Gomes', 1004),
-('55555', 'rubens@admricci', 'analistaADM', 'Rubens Ricci', 1005);
+insert into administrador(login, senha, nome, tipo_usuario) values 
+('gabriel@admsilva', 'analistaADM', 'Gabriel Felipe',1),
+('alexyudy@admkitahara', 'analistaADM', 'Alex Yudy Kitahara',2),
+('samuel@admlo', 'analistaADM', 'Samuel Lo',3),
+('gustavo@admgomes', 'analistaADM', 'Gustavo Gomes',2),
+('rubens@admricci', 'analistaADM', 'Rubens Ricci', 1);
                                                                            
                                                                            
- insert into planos(id_planos, nome, valor) values 
-('11111', 'Plano Basic', '19.90'),
-('22222', 'Plano Dinamic', '29.90'),
-('33333', 'Plano Explorador', '49.90');
+ insert into planos(nome, valor,beneficio) values 
+('Plano Basic', '19.90','1 reserva por mês'),
+('Plano Dinamic', '29.90','5 reservas por mês'),
+('Plano Explorador', '49.90','20 reservas por mês');
 
-insert into estabelecimento(id_esta,nome_esta,cnpj,email,senha,capacidade,horario_de_fun,disponibilidade, taxa_cancelamento,concordar,newslatter,def_aud,def_fis,tipo_usuario,id_planos) values 
-('10001', 'Burger King', '00.000.000/0000-00', 'bkatende@burgerking.com.br', 'comaburger', '30', '13:00/20:00', 'Sim', '42.90', 'Sim', 'Não', 'Não', 'Sim', '10001', 22222),
-('10002', 'McDonald', '11.111.111/1111-11', 'sac@sacmcdonalds.com.br', 'mcDonaldFeliz45', '40', '10:00/20:00', 'Sim', '19.90', 'Sim', 'Não', 'Sim', 'Sim', '10002', 11111),
-('10003', 'Chifu', '22.222.222/2222-22', '@​RestauranteChiFu', 'chifuFanDian', '50', '11:00/20:00', 'Sim', '19.90', 'Sim', 'Sim', 'Sim', 'Sim', '10003', 11111),
-('10004', 'IFood', '33.333.333/3333-33', 'suporte@ifood.com.br', 'ifoodComida', '60', '08:00/18:00', 'Sim', '42.90', 'Sim', 'Não', 'Sim', 'Sim', '10004', 22222),
-('10005', 'Solare', '44.444.444/4444-44', '@solarerestaurante', 'solareBufe', '70', '11:30/23:00', 'Sim', '29.90', 'Sim', 'Não', 'Não', 'Não', '10005', 33333),
-('10006', 'Tony Roma', '55.555.555/5555-55', 'None', 'comaburger', '80', '12:00/22:00', 'Sim', '29.90', 'Sim', 'Não', 'Não', 'Não', '10006', 33333);                                                                          
+insert into estabelecimento(nome_esta,cnpj,email,senha,capacidade,endereco,cep,numero,horario_de_fun,disponibilidade, taxa_cancelamento,concordar,newslatter,def_aud,def_fis,tipo_usuario,id_planos) values 
+( 'Burger King', '00.000.000/0000-00', 'bkatende@burgerking.com.br', 'comaburger', '30','RUA SETE DE SETEMBRO','04536-000','121', '13:00/20:00', 'Sim', '42.90', 'Sim', 'Não', 'Não', 'Sim', '10001', 1),
+('McDonald', '11.111.111/1111-11', 'sac@sacmcdonalds.com.br', 'mcDonaldFeliz45', '40','RUA DEZESSEIS','13331-260','11', '10:00/20:00', 'Sim', '19.90', 'Sim', 'Não', 'Sim', 'Sim', '10002', 2),
+('Chifu', '22.222.222/2222-22', '@​RestauranteChiFu', 'chifuFanDian', '50','RUA SANTA LUZIA','11701-750','15', '11:00/20:00', 'Sim', '19.90', 'Sim', 'Sim', 'Sim', 'Sim', '10003', 3),
+('IFood', '33.333.333/3333-33', 'suporte@ifood.com.br', 'ifoodComida', '60','RUA SANTOS DUMONT','14177-138','1876', '08:00/18:00', 'Sim', '42.90', 'Sim', 'Não', 'Sim', 'Sim', '10004', 1),
+('Solare', '44.444.444/4444-44', '@solarerestaurante', 'solareBufe', '70','RUA TREZE DE MAIO','13050-086','207', '11:30/23:00', 'Sim', '29.90', 'Sim', 'Não', 'Não', 'Não', '10005', 3),
+('Tony Roma', '55.555.555/5555-55', 'None', 'comaburger', '80','RUA QUINZE DE MAIO','13050-086','17', '12:00/22:00', 'Sim', '29.90', 'Sim', 'Não', 'Não', 'Não', '10006', 1);                                                                          
 
-insert into cartao(id_cartao, num_cartao, validade, cvv, bandeira, titular) values 
-('10001', '1111111111111111', '2024/05/27', '111', 'Visa', 'Cássia Alves Barros'),
-('10002', '2222222222222222', '2024/07/12', '222', 'Visa', 'Mayara Rosado Sodré'),
-('10003', '3333333333333333', '2026/11/02', '333', 'Visa', 'Jonathan Boga Ruela'),
-('10004', '4444444444444444', '2028/09/13', '444', 'Elo', 'Rayane de Novais'),
-('10005', '5555555555555555', '2028/05/30', '555', 'Elo', 'Mario Soares Santos');
+insert into cartao(num_cartao, validade, cvv, bandeira, titular) values 
+('1111111111111111', '2024/05/27', '111', 'Visa', 'Cássia Alves Barros'),
+('2222222222222222', '2024/07/12', '222', 'Visa', 'Mayara Rosado Sodré'),
+('3333333333333333', '2026/11/02', '333', 'visa', 'Jonathan Boga Ruela'),
+('4444444444444444', '2028/09/13', '444', 'Elo', 'Rayane de Novais'),
+('5555555555555555', '2028/05/30', '555', 'MasterCard', 'Mario Soares Santos');
 
-insert into favorito(id_favorito, nome_esta, id_esta) values 
-('10001', 'Burger King', '10001'),
-('10002', 'Mcdonald', '10002'),
-('10003', 'IFood', '10004'),
-('10004', 'Solare', '10005'),
-('10005', 'Chifu', '10003');
+insert into favorito(nome_esta,horario_fun,endereco,id_esta) values 
+('Burger King','09:00/17:00','RUA SETE DE SETEMBRO', '1'),
+('Mcdonald','08:00/19:00','RUA DEZESSEIS', '2'),
+( 'IFood','10:30/20:00','RUA SANTOS DUMONT', '4'),
+('Solare','12:00/19:00','RUA TREZE DE MAIO', '5'),
+('Chifu','12:00/20:00','RUA SANTA LUZIA', '3');
 
-insert into usuario(id_usuario, nome, genero, cpf, email, senha, concordar, newslatter, id_cartao, id_favorito, tipo_usuario) values 
-('11111', 'Rodrigo Pacheco', 'Masculino', '111-111-111-11', 'rodrigo@hotmail.com.br', 'rodrigo_pacheco@6', 'Sim', 'Sim', '10005', '10001', '10001'),
-('22222', 'Gabriela Araújo', 'Feminino', '222-222-222-22', 'bibiaraujo@gmail.com.br', 'gabiraujo_vetkit', 'Sim', 'Sim', '10001', '10004', '10002'),
-('33333', 'Janira Travassos Sequeira', 'Feminino', '333-333-333-33', 'jani1@outlook.com', 'janira@#crush', 'Sim', 'Não', '10002', '10003', '10003'),
-('44444', 'Derek Oleiro Malho', 'Masculino', '444-444-444-44', 'deroleiro@gmail.com.br', 'derekYG@#65', 'Não', 'Sim', '10003', '10002', '10004'),
-('55555', 'Marcus Teles Lima', 'Masculino', '555-555-555-55', 'marquinhos@gmail.com.br', 'marcolaNUB', 'Não', 'Não', '10004', '10005', '10005');
+insert into usuario(nome, genero, cpf, email, senha, concordar,nascimento, newslatter, id_cartao, id_favorito, tipo_usuario) values 
+('Rodrigo Pacheco', 'Masculino', '111-111-111-11', 'rodrigo@hotmail.com.br', 'rodrigo_pacheco@6','Sim','1990/06/11', 'Sim', '1', '1', '1'),
+('Gabriela Araújo', 'Feminino', '222-222-222-22', 'bibiaraujo@gmail.com.br', 'gabiraujo_vetkit','Sim','1990/07/22', 'Sim', '1', '4', '2'),
+('Janira Travassos Sequeira', 'Feminino', '333-333-333-33', 'jani1@outlook.com', 'janira@#crush','Sim','1990/02/14', 'Não', '2', '3', '3'),
+('Derek Oleiro Malho', 'Masculino', '444-444-444-44', 'deroleiro@gmail.com.br', 'derekYG@#65','Não','1990/04/13', 'Sim', '3', '2', '4'),
+('Marcus Teles Lima', 'Masculino', '555-555-555-55', 'marquinhos@gmail.com.br', 'marcolaNUB','Não','1990/05/09','Não', '4', '5', '5');
 
-insert into doacao(id_doacao, nome, valor, data_doacao, id_usuario, id_esta)values
-('11111', 'Doação Melhor', '4.00', curdate(), '33333', '10002'),
-('22222', 'Doação Indicativo', '3.20', curdate(), '44444', '10001'),
-('33333', 'Doação Caseiros', '2.50', curdate(), '11111', '10004'),
-('44444', 'Doação Ocasional', '1.50', curdate(), '22222', '10005');
+insert into doacao(nome, valor, id_usuario, id_esta)values
+('Doação Melhor', '4.00','3', '2'),
+('Doação Indicativo', '3.20','4', '1'),
+('Doação Caseiros', '2.50','1', '4'),
+('Doação Ocasional', '1.50','2', '5');
 
-insert into notificacao(id_noti, num_reserva, id_esta, id_usuario) values 
-('11111', '0000', '10001', '55555'),
-('22222', '1111', '10002', '44444'),
-('33333', '2222', '10003', '33333'),
-('44444', '3333', '10004', '22222'),
-('55555', '4444', '10005', '11111');
+insert into reserva(quant_pessoas,data_reserva,hora_reserva,id_usuario,id_esta) values 
+('2','2021/07/21','10:10','1','5'),
+('3','2021/05/13','12:10','2','4'),
+('7','2021/06/30','14:00','3','3'),
+('2','2021/03/11','13:00','4','2'),
+('1','2021/02/21','13:10','5','1');
 
-insert into pagamento_mensalidade(id_pag, id_esta, id_planos) values 
-('1', '10004', '11111'),
-('2', '10005','22222'),
-('3', '10001', '33333'),
-('4', '10003', '11111'),
-('5', '10002', '22222');
+insert into notificacao(mensagem,num_reserva,id_esta,id_usuario) values 
+('Reserva realizada com sucesso!','5','1', '5'),
+('Reserva desmarcada','4','2', '4'),
+('Falha ao realizar reserva','3','3', '3'),
+('Está tudo certo para hoje?','2','4', '2'),
+('Obrigado por escolher nosso serviço','1','5', '1');
 
-insert into pagamento_taxa(id_pag_taxa, desc_taxa, valor_adm, valor_esta, id_adm, id_usuario, valor_total, id_esta) values 
-('1', 'Descrição 1', '20.00', '35.90', '22222', '44444', '55.90', '10004'),
-('2', 'Descrição 2','20.00', '25.90', '44444', '55555', '45.90', '10001'),
-('3', 'Descrição 3','20.00', '25.90', '55555', '11111', '45.90', '10005'),
-('4', 'Descrição 4','20.00', '40.90', '11111', '33333', '60.90', '10003'),
-('5', 'Descrição 5','20.00', '20.90', '33333', '22222', '40.90', '10002');
+insert into pagamento_mensalidade(id_esta, id_planos) values 
+('4', '1'),
+('5','2'),
+('1', '3'),
+('3', '1'),
+('2', '2');
 
-insert into reserva(num_reserva, quant_pessoas, data_criacao, hora_saida, id_usuario, id_esta) values 
-('1', 10, curdate(), '2021/09/08', '33333', '10001'),
-('2', 20, curdate(), '2021/06/11', '22222', '10004'),
-('3', 30, curdate(), '2021/02/27', '11111', '10002'),
-('4', 40, curdate(), '2021/09/16', '55555', '10005'),
-('5', 50, curdate(), '2021/12/24', '44444', '10003');
+insert into pagamento_taxa(desc_taxa, valor_adm, valor_esta, id_adm, id_usuario, valor_total, id_esta) values 
+('Atraso na reserva', '20.00', '35.90', '2', '4', '55.90', '4'),
+('dessistencia da reserva','20.00', '25.90', '4', '5', '45.90', '1'),
+('Atraso na reserva','20.00', '25.90', '5', '1', '45.90', '5'),
+('Mais pessoas compareceram na data do que o reservado','20.00', '40.90', '1', '3', '60.90', '3'),
+('Atraso na reserva','20.00', '20.90', '3', '4', '40.90', '2');
+
 
 
