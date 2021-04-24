@@ -1,7 +1,11 @@
 @import url('global.css');
-
+body{
+    background: linear-gradient(46.34deg, #FDD9D9 21.61%, #FEE7E8 42.71%, #DBF5FE 80.6%, #DBF7F5 97.23%),
+    linear-gradient(0deg, #FFFFFF, #FFFFFF);
+}
 #container-landing{
     max-width: 1695px;
+    margin:auto;
 }
 .form-container .form-doubt{
     display:flex;
@@ -12,39 +16,37 @@
 }
 .form-container .form-doubt .form-content{
     padding:2rem;
-    border:2px solid #ddd;
+    border: 2px solid rgba(255, 255, 255, 1);
     border-radius:25px;
-    width:600px;
+    width:500px;
+    background: rgba(255, 255, 255, 0.4);
 }
 .form-container .form-doubt .form-content section{
     margin:25px 0;
-}
-.form-container .form-doubt .form-content section p:first-child{
-    font-size:18px;
-}
-.form-container .form-doubt .form-content section p:last-child{
-    font-size:15px;
-    margin-top:10px;
-}
-.form-container .form-doubt .form-content h3{
-    text-align: center;
 }
 .form-container .form-contact{
     padding:1.5rem;
     border:2px solid #ddd;
     border-radius:25px;
-    width:540px;
+    width:400px;
 }
-.form-container .form-contact .form-contact-content h3{
-    text-align: center;
-    line-height: 43.66px;
-    margin-bottom:15px;
+.form-container .form-doubt .form-content h2{
+    color: rgba(67, 97, 238, 1);
+    margin:30.17px 0;
+}
+.form-container .form-doubt .form-content p{
+    margin-top:16.38px;
+    color: rgba(130, 130, 130, 1);
 }
 .form-container .form-contact form{
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.form-container .form-contact h2{
+    margin:20px 0;
+    color: rgba(45, 45, 45, 1);
 }
 .form-container .form-contact form .input-field{
     position:relative;
@@ -57,27 +59,42 @@
     width:100%;
     padding:9px 15px;
     border-radius:3px;
-    border:1px solid #ccc;
     margin-bottom:1.5rem;
+    border:0;
 }
 .form-container .form-contact form .textarea-field, textarea{
     width:100%;
+    border:0;
 }
 .form-container .form-contact form textarea{
     border:1px solid #ccc;
     border-radius:3px;
     padding:8px;
+    border:0;
+}
+.form-container .form-contact form textarea::placeholder{
+    color:rgba(0,0,0,0.3);
 }
 .form-container .form-contact form .submit-block{
     margin:1.8rem;
     width:100%;
+    background: rgba(67, 97, 238, 1);
+    border-radius:100px;
+    border:0;
+    cursor:pointer;
+}
+.form-container .form-contact form .submit-block:hover{
+    filter:brightness(0.9);
+    transition:filter 200ms;
 }
 .form-container .form-contact form .submit-block input{
     width:100%;
     padding:9px 15px;
-    border:1px solid #ccc;
-    border-radius:3px;
-    background:#c4c4c4;
-    cursor: pointer;
+    background: rgba(67, 97, 238, 1);
+    border-radius:100px;
+    border:0;
+    color:#fff;
+    cursor:pointer;
+    font-size:15px;
 }
 
