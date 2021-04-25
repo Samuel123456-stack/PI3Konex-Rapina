@@ -10,13 +10,13 @@ public class Cliente {
     //Atributos do usuário 
     public int id_usuario;
     public String nome;
-    private int cpf;
+    private String cpf;
     private String email;
     private String genero;
     private String data_nascimento;
     private String senha;
-    private boolean concorda;
-    public boolean concorda_newstalleter;
+    private String concorda;
+    public String concorda_newstalleter;
     public int num_cartao;
     public int id_favoritado;
     public int tipo_user;
@@ -55,11 +55,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -95,19 +95,19 @@ public class Cliente {
         this.senha = senha;
     }
 
-    public boolean getConcorda() {
+    public String getConcorda() {
         return concorda;
     }
 
-    public void setConcorda(boolean concorda) {
+    public void setConcorda(String concorda) {
         this.concorda = concorda;
     }
 
-    public boolean getConcorda_newstalleter() {
+    public String getConcorda_newstalleter() {
         return concorda_newstalleter;
     }
 
-    public void setConcorda_newstalleter(boolean concorda_newstalleter) {
+    public void setConcorda_newstalleter(String concorda_newstalleter) {
         this.concorda_newstalleter = concorda_newstalleter;
     }
 
