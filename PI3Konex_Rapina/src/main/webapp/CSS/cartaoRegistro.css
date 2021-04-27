@@ -40,7 +40,7 @@ body{
     height: 700px;
     margin: 100px auto 0 auto;
     border: 2px solid #fff;
-    background-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.4);
     box-sizing: border-box;
     border-radius: 25px;
     padding: 0 50px;
@@ -107,7 +107,7 @@ body{
     padding: 18px;
     float: left;
     background: #fff;
-    border: 1px solid #828282;
+    border: 1px transparent;
     border-right: 0;
     border-radius: 5px 0px 0px 5px;
 }
@@ -117,7 +117,7 @@ body{
     padding: 18px;
     float: left;
     background: #fff;
-    border: 1px solid #828282;
+    border: 1px transparent;
     border-left: 0;
     border-radius: 0px 5px 5px 0px;
 }
@@ -126,8 +126,8 @@ body{
 .text279 input,
 .text526 input{
     padding: 0;
-    border: 1px solid #828282;
-    border-left: 0;
+    background: #fff;
+    border: 1px transparent;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
@@ -137,7 +137,7 @@ body{
     
 }
 .val{
-    width: 139px;
+    width: 138px;
     height: 55px;
     margin-bottom: 55px;
     float: left;
@@ -149,8 +149,8 @@ body{
     text-align: center;
 
     padding: 0;
-    border: 1px solid #828282;
-    border-right: 0;
+    background: #fff;
+    border: 1px transparent;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;

@@ -14,9 +14,10 @@ public class Administrador {
     public int tipo_user;
     
     //metodo construtor
-    
+
     //metodos especiais (metodos de funcionalidades)
     public void excluirUsuario() {
+        
     }
 
     public void consultarCliente(){

@@ -9,11 +9,11 @@ public class Estabelecimento {
     //Atributos do Estabelecimento
     public int id_estabelecimento;
     public String nome_estabelecimento;
-    private int cpnj;
+    private String cpnj;
     private String email;
     private String senha;
     public int capacidade;
-    public int cep_estabelecimento;
+    public String cep_estabelecimento;
     public String logadouro_estabelecimento;
     public int numero;
     public String horario_funcionamento;
@@ -69,19 +69,19 @@ public class Estabelecimento {
         this.nome_estabelecimento = nome_estabelecimento;
     }
 
-    public int getCpnj() {
+    public String getCpnj() {
         return cpnj;
     }
 
-    public void setCpnj(int cpnj) {
+    public void setCpnj(String cpnj) {
         this.cpnj = cpnj;
     }
 
-    public int getCep_estabelecimento() {
+    public String getCep_estabelecimento() {
         return cep_estabelecimento;
     }
 
-    public void setCep_estabelecimento(int cep_estabelecimento) {
+    public void setCep_estabelecimento(String cep_estabelecimento) {
         this.cep_estabelecimento = cep_estabelecimento;
     }
 
