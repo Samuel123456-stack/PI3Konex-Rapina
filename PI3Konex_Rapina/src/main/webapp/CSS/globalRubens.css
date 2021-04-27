@@ -119,9 +119,7 @@
 .social a{
     margin: 0px 5px 0px 5px;
 }
-path{
-    fill: #fff;
-}
+
 
 /*segundo rodape*/
 
@@ -157,4 +155,6 @@ path{
     width:120px;
     border-radius:6px;
 }
-
+input{
+    outline: none;
+}
