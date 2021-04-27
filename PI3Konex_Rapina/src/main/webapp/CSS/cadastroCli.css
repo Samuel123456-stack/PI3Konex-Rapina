@@ -31,7 +31,7 @@ body{
 .bloco{
     width: 868px;
     height: 765px;
-    margin: 100px auto 0 666;
+    margin: 100px auto 0 666px;
     border: 2px solid #fff;
     background-color: rgba(255, 255, 255, 0.6);
     box-sizing: border-box;
