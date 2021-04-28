@@ -8,7 +8,7 @@ package ClassesJavaBean;
 public class Cartao {
     //atributos do cartão
     public int id_card;
-    public int num_cartao;
+    public long num_cartao;
     private String validade;
     private int cvv;
     private String bandeira;
@@ -17,14 +17,20 @@ public class Cartao {
     //metodo construtor
     public Cartao() {
     }
-    
+    public Cartao(long num_cartao, String validade, int cvv, String bandeira, String titular) {
+        this.num_cartao = num_cartao;
+        this.validade = validade;
+        this.cvv = cvv;
+        this.bandeira = bandeira;
+        this.titular = titular;
+    }
     //metodos getters e setters
 
-    public int getNum_cartao() {
+    public long getNum_cartao() {
         return num_cartao;
     }
 
-    public void setNum_cartao(int num_cartao) {
+    public void setNum_cartao(long num_cartao) {
         this.num_cartao = num_cartao;
     }
 
@@ -59,5 +65,12 @@ public class Cartao {
     public void setTitular(String titular) {
         this.titular = titular;
     }
-    
+    public int getId_card() {
+        return id_card;
+    }
+
+    public void setId_card(int id_card) {
+        this.id_card = id_card;
+    }
+
 }

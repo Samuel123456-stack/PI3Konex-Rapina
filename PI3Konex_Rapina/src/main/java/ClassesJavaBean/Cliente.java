@@ -24,19 +24,21 @@ public class Cliente {
     //metodo construtor
     public Cliente() {
     }
-
-    //metodos especiais(funcionalidades)
-    public void cadastro() {
+    
+    public Cliente(String nome,String cpf, String email, String genero, 
+            String data_nascimento, String senha, String concorda, 
+            String concorda_newstalleter, int tipo_user) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.genero = genero;
+        this.data_nascimento = data_nascimento;
+        this.senha = senha;
+        this.concorda = concorda;
+        this.concorda_newstalleter = concorda_newstalleter;
+        this.tipo_user = tipo_user;
     }
 
-    public void login() {
-    }
-
-    public void atualizarPerfil() {
-    }
-
-    public void buscarFavoritos() {
-    }
 
     //metodos getters e setters
     public int getId_usuario() {
