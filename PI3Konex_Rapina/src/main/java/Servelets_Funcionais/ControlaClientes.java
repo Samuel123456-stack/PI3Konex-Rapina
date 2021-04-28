@@ -43,12 +43,12 @@ public class ControlaClientes extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         HttpSession sessao1 = request.getSession();
         int tipoCli =0;
-         if (sessao1.getAttribute("cli") != null) {
+        if (sessao1.getAttribute("cli") != null) {
              Cliente cliente = (Cliente) sessao1.getAttribute("cli");
               sessao1.setAttribute("cli", cliente);
               tipoCli = cliente.getTipo_user();
               request.setAttribute("cli", cliente);
-         }
+        }
 
         String nome = request.getParameter("nome");
         String genero = request.getParameter("genero");

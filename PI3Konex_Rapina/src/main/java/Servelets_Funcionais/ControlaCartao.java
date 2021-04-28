@@ -38,9 +38,12 @@ public class ControlaCartao extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        
         //pega os dados do Cadastro
         HttpSession sessao = request.getSession();
-        int idCli = 0;//id do cliente da sessão
+        
+        //id do cliente da sessão
+        int idCli = 0;
         if (sessao.getAttribute("cliente") != null) {
             Cliente cliente = (Cliente) sessao.getAttribute("cliente");
             
@@ -58,9 +61,9 @@ public class ControlaCartao extends HttpServlet {
         String numCartaoStr = request.getParameter("numCartao");
         String validade = request.getParameter("val");
         String cvvStr = request.getParameter("cvv");
-        String bandeira = request.getParameter("bandeira");
         String titular = request.getParameter("titular");
-
+        String bandeira ="Visa";
+        
         //Declarções de Erros
         boolean temErro = false;
         if (numCartaoStr != null && numCartaoStr.trim().length() > 0) {
@@ -94,16 +97,7 @@ public class ControlaCartao extends HttpServlet {
             }
 
         }
-        if (bandeira != null && bandeira.trim().length() > 0) {
-            try {
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                request.setAttribute("erroBandeira", "Bandeira é Obrigatoria");
-            }
-
-        }
+        
         if (titular != null && titular.trim().length() > 0) {
             try {
                 temErro = false;
@@ -114,6 +108,7 @@ public class ControlaCartao extends HttpServlet {
             }
 
         }
+        
         //Conversao
         long numCartao = Long.parseLong(numCartaoStr);
         int cvv = Integer.parseInt(cvvStr);
@@ -121,29 +116,36 @@ public class ControlaCartao extends HttpServlet {
         //Instancia as Classes
         Cartao cartao = new Cartao(numCartao, validade, cvv, bandeira, titular);
         ClienteDAO cliCartao = new ClienteDAO();
+        
         request.setAttribute("cartao", cartao);
 
         try {
             int verificaCadastro = cliCartao.cadastraCartao(cartao);
-            if (verificaCadastro == 1) {
-                temErro = false;
-                cliCartao.vinculaCartao(cartao, idCli);
-            } else if (verificaCadastro == 0) {
-                temErro = true;
-            } else {
-                temErro = true;
+            //faz a verificação
+            switch (verificaCadastro) {
+                case 1:
+                    temErro = false;
+                    cliCartao.vinculaCartao(cartao, idCli);
+                    break;
+                case 0:
+                    temErro = true;
+                    break;
+                default:
+                    temErro = true;
+                    break;
             }
+            
         } catch (SQLException ex) {
             Logger.getLogger(ControlaCartao.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Verifica se tem Erro
         if (temErro) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/ListaCliente.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCartaoCli.jsp");
             dispatcher.forward(request, response);
         } else {
             //Logica caso tenha Erro
-            
-
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuCliente.jsp");
+            dispatcher.forward(request, response);
         }
     }
 }

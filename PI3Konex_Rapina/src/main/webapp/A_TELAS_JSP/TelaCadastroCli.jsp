@@ -10,18 +10,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    
-    <!-- Optional, if we want the stylesheet to get preloaded. Note that this line causes stylesheet to get downloaded, but not applied to the page. Use strategically — while preloading will push this resource up the priority list, it may cause more important resources to be pushed down the priority list. This may not be the desired effect for non-critical CSS, depending on other resources your app needs. -->
-    <link rel="preload" href="../CSS/cadastroCli.css" as="style">
-
-    <!-- Media type (print) doesn't match the current environment, so browser decides it's not that important and loads the stylesheet asynchronously (without delaying page rendering). On load, we change media type so that the stylesheet gets applied to screens. -->
-    <link rel="stylesheet" href="../CSS/cadastroCli.css" media="print" onload="this.media='all'">
-
-    <!-- Fallback that only gets inserted when JavaScript is disabled, in which case we can't load CSS asynchronously. -->
-    <noscript><link rel="stylesheet" href="../CSS/cadastroCli.css"></noscript>
-    
-    
-
+    <link href="../CSS/cadastroCli.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
@@ -62,6 +51,7 @@
             </svg>
         </div>
         <!-- INPUT 1-->
+        <h1><c:out value="${sessionScope.cli.tipo_user}"/></h1>
         <input class="text" type="text" id="nome" name="nome" placeholder="Digite seu nome" value="${cliente.nome}">
         
         <div class="margin"></div>
@@ -80,7 +70,7 @@
             </svg>                
         </div>           
         <!-- INPUT 2-->
-        <input class="text" type="text" id="cpf" name="cpf" placeholder="Informe seu CPF" value="${cliente.cpf}" class="${not empty erroCpf ? 'erro-input' : ''}"/>
+        <input class="text" type="text" id="cpf" name="cpf" maxlength="15" placeholder="Informe seu CPF" value="${cliente.cpf}" class="${not empty erroCpf ? 'erro-input' : ''}"/>
 
         <div class="svg">
             <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -143,10 +133,10 @@
 
         <div class="terms">
             <!-- INPUT 8-->
-            <input type="checkbox" id="condicoes" name="concordar" value="condicoes" value="${cliente.concorda}">
+            <input type="checkbox" id="condicoes" name="concordar" value="Sim" value="${cliente.concorda}">
             <label for="condicoes"><p id="Pcond">Concordo com os termos e condições de uso</p></label>
             <!-- INPUT 9-->
-            <input type="checkbox" id="novidades" name="concordarNews" value="novidades" value="${cliente.concorda_newstalleter}">
+            <input type="checkbox" id="novidades" name="concordarNews" value="Sim" value="${cliente.concorda_newstalleter}">
             <label for="novidades"><p>Eu aceito receber novidades e ofertas Rapina</p></label>
         </div>
 
