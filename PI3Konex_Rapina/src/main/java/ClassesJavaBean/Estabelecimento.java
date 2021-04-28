@@ -1,4 +1,3 @@
-
 package ClassesJavaBean;
 
 /**
@@ -6,10 +5,11 @@ package ClassesJavaBean;
  * @author Gabriel Felipe
  */
 public class Estabelecimento {
+
     //Atributos do Estabelecimento
     public int id_estabelecimento;
     public String nome_estabelecimento;
-    private String cpnj;
+    private String cnpj;
     private String email;
     private String senha;
     public int capacidade;
@@ -17,42 +17,52 @@ public class Estabelecimento {
     public String logadouro_estabelecimento;
     public int numero;
     public String horario_funcionamento;
-    public boolean disponibilidade;
-    public String acessi_auditiva ;
-    public String acessi_fisico ;
+    public String disponibilidade;
+    public String acessi_auditiva;
+    public String acessi_fisico;
+    public String acessi_nenhuma;
     public float taxa_cancelamento;
     private int celular;
     private String concorda;
     public String concorda_newstalleter;
     public int tipo_user;
     private int id_planos;
-    private int id_pagamento_taxa;  
-    
-    
-    //metodo construtor 
+    private int id_pagamento_taxa;
+
     public Estabelecimento() {
-    }
-    
-    //metodos especiais(funcionalidades)
-    public void cadastro() {
+
     }
 
-    public void login() {
+    public Estabelecimento(String nome_estabelecimento, String cnpj,
+            String cep_estabelecimento, String logadouro_estabelecimento,
+            int numero, String acessi_auditiva, String acessi_fisico,
+            String horario_funcionamento, int capacidade,
+            float taxa_cancelamento, String email, String senha,
+            String concorda, String concorda_newstalleter,
+            String disponibilidade, int id_planos, int tipo_user) {
+        this.nome_estabelecimento = nome_estabelecimento;
+        this.cnpj = cnpj;
+        this.cep_estabelecimento = cep_estabelecimento;
+        this.logadouro_estabelecimento = logadouro_estabelecimento;
+        this.numero = numero;
+        this.acessi_auditiva = acessi_auditiva;
+        this.acessi_fisico = acessi_fisico;
+        this.horario_funcionamento = horario_funcionamento;
+        this.capacidade = capacidade;
+        this.taxa_cancelamento = taxa_cancelamento;
+        this.email = email;
+        this.senha = senha;
+        this.concorda = concorda;
+        this.concorda_newstalleter = concorda_newstalleter;
+        this.disponibilidade = disponibilidade;
+        this.id_planos = id_planos;
+        this.tipo_user = tipo_user;
+        if (concorda_newstalleter == null) {
+            this.concorda_newstalleter = "Não";
+        }
+
     }
 
-    public void atualizarDados() {
-    }
-
-    public void atualziarDispositivo() {
-    }
-
-    public void renovarMensalidade() {
-    }
-
-    public void alterarPlanoContrado() {
-    }
-    
-    //metodos getters e setters
     public int getId_estabelecimento() {
         return id_estabelecimento;
     }
@@ -69,12 +79,12 @@ public class Estabelecimento {
         this.nome_estabelecimento = nome_estabelecimento;
     }
 
-    public String getCpnj() {
-        return cpnj;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setCpnj(String cpnj) {
-        this.cpnj = cpnj;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public String getCep_estabelecimento() {
@@ -115,6 +125,14 @@ public class Estabelecimento {
 
     public void setAcessi_fisico(String acessi_fisico) {
         this.acessi_fisico = acessi_fisico;
+    }
+
+    public String getAcessi_nenhuma() {
+        return acessi_nenhuma;
+    }
+
+    public void setAcessi_nenhuma(String acessi_nenhuma) {
+        this.acessi_nenhuma = acessi_nenhuma;
     }
 
     public String getHorario_funcionamento() {
@@ -181,11 +199,11 @@ public class Estabelecimento {
         this.concorda_newstalleter = concorda_newstalleter;
     }
 
-    public boolean isDisponibilidade() {
+    public String getDisponibilidade() {
         return disponibilidade;
     }
 
-    public void setDisponibilidade(boolean disponibilidade) {
+    public void setDisponibilidade(String disponibilidade) {
         this.disponibilidade = disponibilidade;
     }
 
@@ -212,5 +230,4 @@ public class Estabelecimento {
     public void setTipo_user(int tipo_user) {
         this.tipo_user = tipo_user;
     }
-    
 }
