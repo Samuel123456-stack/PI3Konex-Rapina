@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author gusta
  */
-@WebServlet(name = "IniciaSessao", urlPatterns = {"/Pre-Cadastro"})
+@WebServlet(name = "IniciaSessao", urlPatterns = {"/IniciaCadastro"})
 public class IniciaSessao extends HttpServlet {
 
     @Override

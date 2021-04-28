@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gusta
  */
-@WebServlet(name = "CriaInicia", urlPatterns = {"/Pre-Cadrasto"})
+@WebServlet(name = "CriaInicia", urlPatterns = {"/Pre_Cadastro"})
 public class CriaInicia extends HttpServlet {
 
     @Override
@@ -26,7 +26,7 @@ public class CriaInicia extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         //partnerStore.html
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/Pre-Cadrasto.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/Pre_Cadastro.jsp");
         dispatcher.forward(request, response);
     }
 

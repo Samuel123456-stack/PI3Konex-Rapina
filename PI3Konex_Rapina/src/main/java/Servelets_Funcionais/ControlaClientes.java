@@ -59,7 +59,7 @@ public class ControlaClientes extends HttpServlet {
         String dataNascStr = request.getParameter("dataNasc");
         String concordar = request.getParameter("concordar");
         String concordarNews = "Não";
-         int tipoUsuarioStr = tipoCli;
+        int tipoUsuarioStr = tipoCli;
         
         //Tratamento de Exceções
          boolean temErro = false;
