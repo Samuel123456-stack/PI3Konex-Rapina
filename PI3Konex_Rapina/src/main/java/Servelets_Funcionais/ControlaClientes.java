@@ -139,8 +139,8 @@ public class ControlaClientes extends HttpServlet {
 
         }
         //Instancia as Classes
-        Cliente cliente = new Cliente(nome,cpf,email,genero
-                ,dataNascStr,senha,concordar,concordarNews,tipoCli);
+        Cliente cliente = new Cliente(nome,cpf,email,genero,dataNascStr,senha,concordar,concordarNews,tipoCli);
+        
         ClienteDAO casCli = new ClienteDAO();
         request.setAttribute("cliente", cliente);
         

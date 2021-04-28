@@ -13,10 +13,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="HTML, CSS, JAVASCRIPT">
         <meta name="description" content="Crowd Control">
-        <meta name="author" content="konex-group">
-
-
-        <link rel="stylesheet" href="../CSS/partnerStore.css">
+        <meta name="author" content="konex-group">  
+        <link rel="stylesheet" type='text/css' href="../CSS/partnerStore.css">
+        <!--
+        <link rel='stylesheet' type='text/css' href='" + request.getContextPath() +  "/../CSS/partnerStore.css'/>
+        -->
         <link rel="shortcut icon" href="../images/icons/logotipo.png">
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -81,7 +82,6 @@
                             </footer>
                         </section>
                     </article>
-
                     <section class="aside-image">
                         <img src="../images/icons/rapina.png" alt="landscape-image">
                     </section>

@@ -44,15 +44,15 @@ public class ControlaCartao extends HttpServlet {
         
         //id do cliente da sessão
         int idCli = 0;
-        if (sessao.getAttribute("cliente") != null) {
-            Cliente cliente = (Cliente) sessao.getAttribute("cliente");
+        if (sessao.getAttribute("cli") != null) {
+            Cliente cli = (Cliente) sessao.getAttribute("cliente");
             
-            sessao.setAttribute("cliente", cliente);
-            idCli = cliente.getId_usuario();
-            request.setAttribute("cliente", cliente);
+            sessao.setAttribute("cli", cli);
+            idCli = cli.getId_usuario();
+            request.setAttribute("cli", cli);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuCliente.jsp");
-            dispatcher.forward(request, response);
+            //RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuCliente.jsp");
+            //dispatcher.forward(request, response);
         } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCartaoCli.jsp");
             dispatcher.forward(request, response);
@@ -138,6 +138,7 @@ public class ControlaCartao extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(ControlaCartao.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         //Verifica se tem Erro
         if (temErro) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCartaoCli.jsp");
@@ -147,5 +148,6 @@ public class ControlaCartao extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuCliente.jsp");
             dispatcher.forward(request, response);
         }
+        
     }
 }

@@ -1,16 +1,10 @@
-<%-- 
-    Document   : TelaCadastroCli
-    Created on : 27 de abr de 2021, 21:49:32
-    Author     : Gabriel
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <link href="../CSS/cadastroCli.css" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href='" + request.getContextPath() +  "/../CSS/cadastroCli.css'/>
     <title>Document</title>
 </head>
 <body>
@@ -51,7 +45,6 @@
             </svg>
         </div>
         <!-- INPUT 1-->
-        <h1><c:out value="${sessionScope.cli.tipo_user}"/></h1>
         <input class="text" type="text" id="nome" name="nome" placeholder="Digite seu nome" value="${cliente.nome}">
         
         <div class="margin"></div>
@@ -141,7 +134,7 @@
         </div>
 
         <div class="cadastrar">
-            <button value="Submit">Cadastrar</button>  
+            <button type="Submit">Cadastrar</button>  
         </div>
     </form>
     </div>
