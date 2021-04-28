@@ -44,15 +44,15 @@ public class ControlaCartao extends HttpServlet {
 
         //id do cliente da sessão
         int idCli = 0;
+        
         if (sessao.getAttribute("cli") != null) {
             Cliente cli = (Cliente) sessao.getAttribute("cliente");
-
-            sessao.removeAttribute("cli");
+            sessao.setAttribute("cli", cli);
+            
             idCli = cli.getId_usuario();
             request.setAttribute("cli", cli);
 
-            //RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuCliente.jsp");
-            //dispatcher.forward(request, response);
+            
         } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCartaoCli.jsp");
             dispatcher.forward(request, response);

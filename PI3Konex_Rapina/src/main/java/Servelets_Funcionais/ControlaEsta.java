@@ -40,9 +40,11 @@ public class ControlaEsta extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        
         //Sessao
         HttpSession sessao1 = request.getSession();
         int tipoEsta = 0;
+        
         if (sessao1.getAttribute("esta") != null) {
             Estabelecimento esta = (Estabelecimento) sessao1.getAttribute("esta");
             sessao1.setAttribute("esta", esta);
@@ -237,7 +239,7 @@ public class ControlaEsta extends HttpServlet {
         }
         //Verifica se tem Erro
         if (temErro) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Telas/TelaCadastroEsta.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCadastroEsta.jsp");
             dispatcher.forward(request, response);
         } else {
             HttpSession sessao = request.getSession();

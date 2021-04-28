@@ -6,6 +6,7 @@
 package CriadoresServelets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,15 +16,15 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author gusta
+ * @author Gabriel
  */
-@WebServlet(name = "CriaTelaCadastroEsta", urlPatterns = {"/TelaCadastroEsta"})
-public class CriaTelaCadastroEsta extends HttpServlet {
-
+@WebServlet(name = "CriaTelaMenuEsta", urlPatterns = {"/MenuEsta"})
+public class CriaTelaMenuEsta extends HttpServlet {
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCadastroEsta.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuEsta.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -32,5 +33,4 @@ public class CriaTelaCadastroEsta extends HttpServlet {
             throws ServletException, IOException {
 
     }
-
 }
