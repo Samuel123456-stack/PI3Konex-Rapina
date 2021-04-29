@@ -222,7 +222,7 @@ public class ClienteDAO {
             //passa os parametros do cartao
             stmt.setLong(1, dadoCartao.getNum_cartao());
             stmt.setString(2, dadoCartao.getValidade());
-            stmt.setInt(3, dadoCartao.getCvv());
+            stmt.setLong(3, dadoCartao.getCvv());
             stmt.setString(4, dadoCartao.getBandeira());
             stmt.setString(5, dadoCartao.getTitular());
 
@@ -276,7 +276,7 @@ public class ClienteDAO {
             //Executa a Query
             stmt.setLong(1, dado.getNum_cartao());
             stmt.setString(2, dado.getValidade());
-            stmt.setInt(3, dado.getCvv());
+            stmt.setLong(3, dado.getCvv());
             stmt.setString(4, dado.getBandeira());
             stmt.setString(5, dado.getTitular());
             stmt.setInt(6, dado.getId_card());
@@ -321,7 +321,7 @@ public class ClienteDAO {
                 Cartao cartao = new Cartao();
                 cartao.setNum_cartao(rs.getLong("num_cartao"));
                 cartao.setValidade(rs.getString("validade"));
-                cartao.setCvv(rs.getInt("cvv"));
+                cartao.setCvv(rs.getLong("cvv"));
                 cartao.setBandeira(rs.getString("bandeira"));
                 cartao.setTitular(rs.getString("titular"));
                 cartao.setId_card(rs.getInt("id_cartao"));
