@@ -50,6 +50,9 @@ public class ControlaEsta extends HttpServlet {
             sessao1.setAttribute("esta", esta);
             tipoEsta = esta.getTipo_user();
             request.setAttribute("esta", esta);
+        }else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCadastroEsta.jsp");
+            dispatcher.forward(request, response);
         }
 
         String nomeEst = request.getParameter("nome");
@@ -244,7 +247,7 @@ public class ControlaEsta extends HttpServlet {
         } else {
             HttpSession sessao = request.getSession();
             sessao.setAttribute("estabelecimento", esta);
-            response.sendRedirect(request.getContextPath() + "/MenuEsta");
+            response.sendRedirect(request.getContextPath() + "/TelaCartaoCli");
         }
     }
   

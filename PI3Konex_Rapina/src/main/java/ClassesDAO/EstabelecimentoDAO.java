@@ -5,12 +5,15 @@
  */
 package ClassesDAO;
 
+
+import ClassesJavaBean.Cartao;
 import ClassesJavaBean.Estabelecimento;
 import ConexaoBD.ConexaoJDBC;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,6 +88,15 @@ public class EstabelecimentoDAO {
                 stmt.setInt(17, dado.getId_planos());
                 //Executa a Query
                 cadastrado = stmt.executeUpdate();
+                //Pega o id inserido no bd da tabela estabelecimento
+                ResultSet rs = stmt.getGeneratedKeys();
+                int id = 0;
+                if (rs.next()) {
+                    id = rs.getInt(1);
+                }
+                dado.setId_estabelecimento(id);
+                cadastrado = 2;
+                return cadastrado;
             } catch (SQLException e) {
                 System.out.println(e);
             }
@@ -221,6 +233,58 @@ public class EstabelecimentoDAO {
             System.out.println(e);
         }
         return esta;
+    }
+    public int cadastraCartaoEsta(Cartao dadoCartao) throws SQLException {
+        //Cadastra o Cartao do Estabelecimento
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        Estabelecimento esta = new Estabelecimento();
+        int a = 0;
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("insert into cartao(num_cartao,validade"
+                        + ",cvv,bandeira,titular) values(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
+
+            //passa os parametros do cartao
+            stmt.setLong(1, dadoCartao.getNum_cartao());
+            stmt.setString(2, dadoCartao.getValidade());
+            stmt.setLong(3, dadoCartao.getCvv());
+            stmt.setString(4, dadoCartao.getBandeira());
+            stmt.setString(5, dadoCartao.getTitular());
+
+            //Executa a Query
+            stmt.executeUpdate();
+            //Pega o ultimo id do cartao
+            ResultSet rs = stmt.getGeneratedKeys();
+            int idCartaoEsta = 0;
+            if (rs.next()) {
+                idCartaoEsta = rs.getInt(1);
+
+            }
+            dadoCartao.setId_card(idCartaoEsta);
+            esta.setId_cartao(idCartaoEsta);
+            a = 1;
+            return a;
+        } catch (SQLException e) {
+            System.out.println(e);
+
+        }
+        return a;
+    }
+    public void vinculaCartaoEsta(Cartao dado, int esta) throws SQLException {
+        //Vincula cartão com o ultimo estabelecimento
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        String sql = "update estabelecimento set id_cartao= (?) where id_esta= (?)";
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt2 = conn.prepareStatement(sql)) {
+
+            //Setando Parametros
+            stmt2.setInt(1, dado.getId_card());
+            stmt2.setInt(2, esta);
+            stmt2.executeUpdate();
+        }
     }
 }
 
