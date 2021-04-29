@@ -53,10 +53,9 @@ body{
     margin-left: auto;
     margin-right: auto;
     padding: 50px;
-    background: #fff;
+    background: #FFF;
+    box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.08);
     border-radius: 25px;
-    border-bottom: 10px solid rgba(0, 0, 0, 0.05);
-    border-right: 10px solid rgba(0, 0, 0, 0.05);
 }
 
 .tabela table{
@@ -75,7 +74,7 @@ body{
     height: 80px;
 }
 .tabela td{
-    background: #e4e4e4;
+    background: rgba(196, 196, 196, 0.15);
 }
 .selec{
     width: 142px;
@@ -122,19 +121,23 @@ body{
 }
 #visu{
     margin-bottom: 32px;
-    margin-left: 50px;
     color: #4361EE;
+}
+#visu svg{
+    margin-right: 12px;
+    margin-top: 8px;
+    float: left;
 }
 .info{
     margin-top: 50px;
     width: 1157px;
     height: 309px;
     padding: 50px;
-    border-bottom: 10px solid rgba(0, 0, 0, 0.05);
-    border-right: 10px solid rgba(0, 0, 0, 0.05);
+    background: #FFF;
+    box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.08);
     border-radius: 25px;
 }
-.info p{
+.info h3{
     margin: 0;
     float: left;
 
@@ -146,9 +149,25 @@ body{
     align-items: center;
     letter-spacing: -0.015em;
 }
-#assunto{
+    .info p{
+    margin: 0;
+    float: left;
+
+    min-height: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 40px;
+    align-items: center;
+    letter-spacing: -0.015em;
+    color: rgba(0, 0, 0, 0.3);
+}
+#assuntoh3 {
     margin-left: 120px;
+}
+#assuntop{
     margin-right: 180px;
+    margin-left: 5px;
 }
 .mensagem{
     width: 1151px;
@@ -157,8 +176,7 @@ body{
     clear: both;
 }
 .mensagem h2{
-    margin: 0;
-    margin-bottom: 25px;
+    margin: 25px 0 25px 0;
     color: #4EBAB5;
     font-style: normal;
     font-weight: normal;
@@ -166,4 +184,16 @@ body{
     line-height: 40px;
     align-items: center;
     letter-spacing: -0.015em;
+}
+.mensagem p{
+    margin: 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 35px;
+    /* or 140% */
+
+    letter-spacing: -0.015em;
+
+    color: rgba(0, 0, 0, 0.3);
 }
