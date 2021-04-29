@@ -1,5 +1,11 @@
-<!DOCTYPE html>
+<%-- 
+    Document   : Pre-Cadrasto
+    Created on : 27 de abr de 2021, 22:28:53
+    Author     : Gabriel
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Loja parceira</title>
@@ -7,10 +13,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="HTML, CSS, JAVASCRIPT">
         <meta name="description" content="Crowd Control">
-        <meta name="author" content="konex-group">
-
-
-        <link rel="stylesheet" href="../CSS/partnerStore.css">
+        <meta name="author" content="konex-group">  
+        <link rel="stylesheet" type='text/css' href="../CSS/partnerStore.css">
+        <!--
+        <link rel='stylesheet' type='text/css' href='" + request.getContextPath() +  "/../CSS/partnerStore.css'/>
+        -->
         <link rel="shortcut icon" href="../images/icons/logotipo.png">
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -41,12 +48,13 @@
                             </p>
                         </div>
                         <div class="becomer-option">
-                            <form action="/nomedaAtion">
+                            <form action="${pageContext.request.contextPath}/IniciaCadastro">
+                                
                                 <div class="button-becomer-partner">
                                     <span>
                                         <img src="../images/icons/house.png" alt="icon-house" />
                                     </span>
-                                    <button type="button">
+                                    <button type="submit" name="button" value="Cadastro Estabelecimento">
                                         <h3>Loja parceira</h3>
                                         <p>Eu quero fazer parte do grupo de lojas</p>
                                     </button>
@@ -55,7 +63,7 @@
                                     <span>
                                         <img src="../images/icons/bird.png" alt="icon-house" />
                                     </span>
-                                    <button type="button">
+                                    <button type="submit" name="button" value="Cadastro Cliente">
                                         <h3>Rapinista</h3>
                                         <p>Eu quero fazer reservas e favoritar restauraurantes.</p>
                                     </button>
@@ -74,7 +82,6 @@
                             </footer>
                         </section>
                     </article>
-
                     <section class="aside-image">
                         <img src="../images/icons/rapina.png" alt="landscape-image">
                     </section>

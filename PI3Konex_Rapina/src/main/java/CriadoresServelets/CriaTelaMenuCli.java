@@ -18,20 +18,24 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Gabriel
  */
-@WebServlet(name = "CriaTelaLogin", urlPatterns = {"/TelaLoginEmail"})
-public class CriaTelaLogin extends HttpServlet {
+@WebServlet(name = "CriaTelaMenuCli", urlPatterns = {"/MenuCliente"})
+public class CriaTelaMenuCli extends HttpServlet {
 
+    
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Despacha tela
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Telas/TelaLoginEmail.jsp");
-        dispatcher.forward(request, response);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuCliente.jsp");
+            dispatcher.forward(request, response);
     }
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
     }
+
 
 }

@@ -10,14 +10,14 @@ public class Cartao {
     public int id_card;
     public long num_cartao;
     private String validade;
-    private int cvv;
+    private long cvv;
     private String bandeira;
     private String titular;
     
     //metodo construtor
     public Cartao() {
     }
-    public Cartao(long num_cartao, String validade, int cvv, String bandeira, String titular) {
+    public Cartao(long num_cartao, String validade, long cvv, String bandeira, String titular) {
         this.num_cartao = num_cartao;
         this.validade = validade;
         this.cvv = cvv;
@@ -42,11 +42,11 @@ public class Cartao {
         this.validade = validade;
     }
 
-    public int getCvv() {
+    public long getCvv() {
         return cvv;
     }
 
-    public void setCvv(int cvv) {
+    public void setCvv(long cvv) {
         this.cvv = cvv;
     }
 

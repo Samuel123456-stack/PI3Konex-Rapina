@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author gusta
  */
-@WebServlet(name = "IniciaSessao", urlPatterns = {"/Pre-Cadastro"})
+@WebServlet(name = "IniciaSessao", urlPatterns = {"/IniciaCadastro"})
 public class IniciaSessao extends HttpServlet {
 
     @Override
@@ -32,6 +32,7 @@ public class IniciaSessao extends HttpServlet {
         Cliente cli = new Cliente();
         Estabelecimento esta = new Estabelecimento();
         int tipoUsuario = 0;
+        
         HttpSession sessao = request.getSession();
         if (botao != null) {
             if (botao.equals("Cadastro Cliente")) {
@@ -39,6 +40,7 @@ public class IniciaSessao extends HttpServlet {
                 cli.setTipo_user(tipoUsuario);
                 sessao.setAttribute("cli", cli);
                 response.sendRedirect(request.getContextPath() + "/TelaCadastroCli");
+                
             } else if (botao.equals("Cadastro Estabelecimento")) {
                 tipoUsuario = 3;
                 esta.setTipo_user(tipoUsuario);

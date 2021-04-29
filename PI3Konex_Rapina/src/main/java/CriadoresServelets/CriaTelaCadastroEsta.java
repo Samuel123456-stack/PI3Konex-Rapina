@@ -17,16 +17,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gusta
  */
-@WebServlet(name = "CriaInicia", urlPatterns = {"/Pre_Cadastro"})
-public class CriaInicia extends HttpServlet {
+@WebServlet(name = "CriaTelaCadastroEsta", urlPatterns = {"/TelaCadastroEsta"})
+public class CriaTelaCadastroEsta extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        //partnerStore.html
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/Pre_Cadastro.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCadastroEsta.jsp");
         dispatcher.forward(request, response);
     }
 
