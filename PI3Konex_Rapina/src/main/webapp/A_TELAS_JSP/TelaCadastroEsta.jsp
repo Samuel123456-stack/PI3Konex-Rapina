@@ -17,7 +17,7 @@
     <div id="container-landing">
         <section class="menu-bar">
             <div>
-                 <img src="../images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
+                 <img src="./images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
             </div>
             <div>
                 <ul>
@@ -43,7 +43,6 @@
                         </svg>
                     </div>  
                     
-                    <h1><c:out value="${sessionScope.esta.tipo_user}"/></h1>
                     
                     <!--INPUT NOME-->
                     <input class="text373" type="text" id="nome" name="nome" placeholder="Digite seu nome" value="${estabelecimento.nome_estabelecimento}">

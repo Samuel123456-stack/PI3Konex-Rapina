@@ -26,11 +26,56 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "ControlaCartao", urlPatterns = {"/ControlaCartao"})
 public class ControlaCartao extends HttpServlet {
+    private static String ListaCli = "/A_TELAS_JSP/ListaCliente.jsp";
+    private static String editar = "/A_TELAS_JSP/TelaCadastroCli.jsp";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        
+        String action = request.getParameter("action");
+        String forward="";//Prossegue para a proxima tela com ação
+        ClienteDAO cliDao = new ClienteDAO();
+        Cliente cli = new Cliente();
+        //ações
+        //Deleta o Cliente por ID
+        if(action.equalsIgnoreCase("deletar")){
+           int idCli = Integer.parseInt(request.getParameter("id_usuario"));
+            try {
+                cliDao.remove(idCli);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlaClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            forward = ListaCli;
+            try {
+                request.setAttribute("clientes", cliDao.listarTodos());
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlaClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //Edita o Usuario por ID
+        }else if(action.equalsIgnoreCase("editar")){
+            forward=editar;
+            int idCli = Integer.parseInt(request.getParameter("id_usuario"));
+            try {
+                cli= cliDao.cliPorID(idCli);
+                cliDao.atualiza(cli);
+                request.setAttribute("cli", cli);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlaClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //Listagem de Clientes
+        }else if(action.equalsIgnoreCase("listaCli")){
+            forward=ListaCli;
+            try {
+                request.setAttribute("clientes", cliDao.listarTodos());
+            } catch (SQLException ex) {
+                Logger.getLogger(ControlaClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher(forward);
+        dispatcher.forward(request, response);
     }
 
     @Override
@@ -38,11 +83,13 @@ public class ControlaCartao extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        
         //pega os dados do Cadastro
         HttpSession sessao = request.getSession();
+        Cliente cliente = new Cliente();
         int idCli = 0;//id do cliente da sessão
         if (sessao.getAttribute("cliente") != null) {
-            Cliente cliente = (Cliente) sessao.getAttribute("cliente");
+             cliente = (Cliente) sessao.getAttribute("cliente");
             sessao.setAttribute("cliente", cliente);
             idCli = cliente.getId_usuario();
 
@@ -164,8 +211,9 @@ public class ControlaCartao extends HttpServlet {
         } else {
             //Logica caso não tenha Erro
            request.getSession();
+           sessao.setAttribute("clientes", cliente);
            sessao.setAttribute("cartao", cartao);
-           response.sendRedirect(request.getContextPath()+"/MenuCliente");
+           response.sendRedirect(request.getContextPath()+"/ListaCliente");
         }
     }
 }
