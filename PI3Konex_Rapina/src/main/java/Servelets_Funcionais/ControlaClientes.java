@@ -74,7 +74,6 @@ public class ControlaClientes extends HttpServlet {
                 //Declaração de Erro
                 request.setAttribute("erroNome", "Nome é Obrigatorio");
             }
-
         }
 
         if (genero != null && genero.trim().length() > 0) {
@@ -89,14 +88,17 @@ public class ControlaClientes extends HttpServlet {
         }
         if (cpf != null && cpf.trim().length() > 0) {
             try {
-                temErro = true;
-            } catch (StringIndexOutOfBoundsException ex) {
                 temErro = false;
+            } catch (StringIndexOutOfBoundsException ex) {
+                temErro = true;
                 //Declaração de Erro
                 request.setAttribute("erroCpf", "CPF é Obrigatorio");
             }
-
+        }else{
+            temErro=true;
+            request.setAttribute("erroCpf", "CPF é não informado");
         }
+        
         if (email != null && email.trim().length() > 0) {
             try {
                 temErro = true;
@@ -122,6 +124,9 @@ public class ControlaClientes extends HttpServlet {
                 request.setAttribute("ErroSenhaObg", "Senha é Obrigatoria");
             }
 
+        }else{
+            temErro=true;
+            request.setAttribute("erroCpf", "CPF é não informado");
         }
         if (dataNascStr != null && dataNascStr.trim().length() > 0) {
             try {
@@ -167,6 +172,7 @@ public class ControlaClientes extends HttpServlet {
         } catch (SQLException ex) {
             System.out.println("Erro:" + ex);
         }
+        
         //Verifica se tem Erro
         if (temErro) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCadastroCli.jsp");
@@ -175,8 +181,6 @@ public class ControlaClientes extends HttpServlet {
             HttpSession sessao = request.getSession();
             sessao.setAttribute("cliente", cliente);
             response.sendRedirect(request.getContextPath() + "/TelaCartaoCli");
-
         }
-
     }
 }
