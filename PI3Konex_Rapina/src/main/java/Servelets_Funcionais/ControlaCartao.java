@@ -38,6 +38,7 @@ public class ControlaCartao extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        
         //pega os dados do Cadastro
         HttpSession sessao = request.getSession();
         int idCli = 0;//id do cliente da sessão

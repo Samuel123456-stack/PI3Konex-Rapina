@@ -43,7 +43,7 @@
                         </svg>
                     </div>  
                     
-                    <h1><c:out value="${sessionScope.esta.tipo_user}"/></h1>
+                    <!-- <h1><c:out value="${sessionScope.esta.tipo_user}"/></h1> -->
                     
                     <!--INPUT NOME-->
                     <input class="text373" type="text" id="nome" name="nome" placeholder="Digite seu nome" value="${estabelecimento.nome_estabelecimento}">
