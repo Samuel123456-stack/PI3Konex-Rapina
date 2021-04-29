@@ -99,15 +99,13 @@ public class ClienteDAO {
     public void atualiza(Cliente dado) throws SQLException {
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
-
+       String sql = "update usuario set nome=?,genero=?,cpf=?,email=?,senha=?"
+                        + ",nascimento=?,concordar=?,"
+                        + "newslatter=? where id_usuario= ?";
         //declarações do preparedStatement
         try (
                 Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("update usuario "
-                        + "set nome=?,genero=?,cpf=?,email=?,senha=?"
-                        + ",nascimento=?,concordar=?,"
-                        + "newslatter=?,id_cartao=?,id_favorito=?,tipo_usuario=? "
-                        + "where id_usuario=?");) {
+                PreparedStatement stmt = conn.prepareStatement(sql);){
             //Executa a Query
             stmt.setString(1, dado.getNome());
             stmt.setString(2, dado.getGenero());
@@ -117,10 +115,7 @@ public class ClienteDAO {
             stmt.setString(6, dado.getData_nascimento());
             stmt.setString(7, dado.getConcorda());
             stmt.setString(8, dado.getConcorda_newstalleter());
-            stmt.setInt(9, dado.getNum_cartao());
-            stmt.setInt(10, dado.getId_favoritado());
-            stmt.setInt(11, dado.getTipo_user());
-            stmt.setInt(12, dado.getId_usuario());
+            stmt.setInt(9, dado.getId_usuario());
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -167,7 +162,6 @@ public class ClienteDAO {
                 cliente.setConcorda(rs.getString("concordar"));
                 cliente.setConcorda_newstalleter(rs.getString("newslatter"));
                 cliente.setNum_cartao(rs.getInt("id_cartao"));
-                cliente.setId_favoritado(rs.getInt("id_favorito"));
                 cliente.setTipo_user(rs.getInt("tipo_usuario"));
                 lista.add(cliente);
             }
@@ -199,7 +193,6 @@ public class ClienteDAO {
                 cli.setConcorda(rs.getString("concordar"));
                 cli.setConcorda_newstalleter(rs.getString("newslatter"));
                 cli.setNum_cartao(rs.getInt("id_cartao"));
-                cli.setId_favoritado(rs.getInt("id_favorito"));
                 cli.setTipo_user(rs.getInt("tipo_usuario"));
             }
         } catch (SQLException e) {
