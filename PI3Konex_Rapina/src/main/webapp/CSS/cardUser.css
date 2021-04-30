@@ -57,10 +57,29 @@
     margin-bottom:70px;
 }
 .form-container .form-block .form-data .input-field{
-    position:relative;
     height:38px;
 }
-.form-container .form-block .form-data .input-field button{
+.form-container .input-field img{
+    margin: 10px 0 0 18px;
+}
+.form-container .input-field .data{
+    width:10px;
+}
+.form-container .data-icon svg{
+    margin:10px 18px 0 0;
+}
+.form-container .form-block .form-data .input-field .data-icon{
+    float:right;
+    width:10%;
+    height:100%;
+    background:#fff;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.form-container .form-block .form-data .input-field .card,
+.form-container .form-block .form-data .input-field .cvv,
+.form-container .form-block .form-data .input-field .user{
+    float:left;
     width:10%;
     height:100%;
     background:#fff;
@@ -71,9 +90,6 @@
     display: flex;
     flex-direction:row;
 }
-.form-container .form-block .form-data .input-field:nth-child(2) input:last-child{
-    margin-left:15px;
-}
 .form-container .form-block .form-data .input-field input::placeholder{
     color:rgba(0, 0, 0, 0.3);
 }
@@ -82,6 +98,7 @@
 }
 .form-container .form-block .form-data .input-field input{
     width:90%;
+    height:100%;
     float:right;
     padding:9px 15px;
     background: rgba(255, 255, 255, 1);
