@@ -28,6 +28,7 @@ public class Estabelecimento {
     public int tipo_user;
     private int id_planos;
     private int id_pagamento_taxa;
+    public int id_cartao;
 
     public Estabelecimento() {
 
@@ -230,4 +231,13 @@ public class Estabelecimento {
     public void setTipo_user(int tipo_user) {
         this.tipo_user = tipo_user;
     }
+
+    public int getId_cartao() {
+        return id_cartao;
+    }
+
+    public void setId_cartao(int id_cartao) {
+        this.id_cartao = id_cartao;
+    }
+    
 }

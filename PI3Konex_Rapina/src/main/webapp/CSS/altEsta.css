@@ -18,10 +18,20 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
+.bloco{
+    width: 1120px;
+    height: 817px;
+    margin: 48px auto 48px auto;
+    box-sizing: border-box;
+    background: #FFF;
+    box-shadow: 0px 6px 20px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 25px;
+    padding: 50px;
+    
+}
+
 .link{
     height: 31px;
-    margin-bottom: 53px;
-    border: 1px solid #fff;
     clear:both;
 }
 
@@ -32,7 +42,6 @@ body{
     color: #000;
 }
 .link svg{
-    margin-top: 6px;
     float: left;
 }
 .link p{
@@ -46,15 +55,7 @@ body{
     align-items: center;
     letter-spacing: -0.015em;
 }
-.bloco{
-    width: 1120px;
-    height: 700px;
-    margin: 48px auto 48px auto;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 25px;
-    padding: 0 50px;
-}
+
 .status{
     width: 247px;
     margin-top: 50px;
@@ -67,6 +68,7 @@ body{
     margin-left: 27px;
     float: left;
 
+    color: #E5E5E5;;
     font-style: normal;
     font-weight: normal;
     font-size: 22px;
@@ -86,9 +88,10 @@ body{
     width: 318px;
     height: 55px;
     margin-top: 50px;
-    background: #FFFFFF;
-    border: 1px solid #828282;
+    border: none;
     box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.06);
     border-radius: 0 5px 5px 0;
     padding-left: 22px;
     float: left;
@@ -103,10 +106,10 @@ body{
 .text270{
     width: 215px;
     height: 55px;
-    margin-top: 50px;
-    background: #FFFFFF;
-    border: 1px solid #828282;
+    border: none;
     box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.06);
     border-radius: 0 5px 5px 0;
     padding-left: 22px;
     float: left;
@@ -121,10 +124,10 @@ body{
 .text373{
     width: 318px;
     height: 55px;
-    margin-top: 50px;
-    background: #FFFFFF;
-    border: 1px solid #828282;
+    
+    border: none;
     box-sizing: border-box;
+    background: #FFFFFF;
     border-radius: 0 5px 5px 0;
     padding-left: 22px;
     float: left;
@@ -139,10 +142,9 @@ body{
 .text697{
     width: 642px;
     height: 55px;
-    margin-top: 50px;
-    background: #FFFFFF;
-    border: 1px solid #828282;
+    border: none;
     box-sizing: border-box;
+    background: #FFFFFF;
     border-radius: 0 5px 5px 0;
     padding-left: 22px;
     float: left;
@@ -154,12 +156,39 @@ body{
     align-items: center;
     letter-spacing: -0.015em;
 }
+.sombra270{
+    width: 270px;
+    height: 55px;
+    margin-top: 50px;
+    float: left;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.06);
+    border-radius: 0 5px 5px 0;
+}
+.sombra373{
+    width: 377px;
+    height: 55px;
+    margin-top: 50px;
+    float: left;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.06);
+    border-radius: 0 5px 5px 0;
+}
+
+.sombra697{
+    width: 697px;
+    height: 55px;
+    margin-top: 50px;
+    float: left;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.06);
+    border-radius: 0 5px 5px 0;
+}
+
 .svg{
     width: 55px;
     height: 55px;
-    margin-top: 50px;
-    border: 1px solid #828282;
-    background: #DDDDDD;
+    border: none;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.06);
     box-sizing: border-box;
     border-radius: 5px 0 0 5px;
     float: left;
@@ -192,6 +221,18 @@ body{
 .acessi p{
     margin: 0;
 }
+.acessi h1{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.015em;
+
+    color: #4361EE;
+    margin: 0;
+}
 .radio{
     font-style: normal;
     font-weight: normal;
@@ -222,8 +263,7 @@ body{
 .horario{
     width: 318px;
     height: 55px;
-    margin-top: 50px;
-    border: 1px solid #828282;
+    border: none;
     box-sizing: border-box;
     border-radius: 5px 0 0 5px;
     padding-left: 22px;
@@ -241,9 +281,7 @@ body{
 .svghora{
     width: 55px;
     height: 55px;
-    margin-top: 50px;
-    border: 1px solid #828282;
-    background: #DDDDDD;
+    background: #fff;
     box-sizing: border-box;
     border-radius: 0 5px 5px 0;
     float: left;
@@ -257,11 +295,13 @@ body{
     width: 1023px;
     height: 55px;
     margin-top: 58px;
-    border: 1px solid #828282;
+    border: 1px transparent;
     box-sizing: border-box;
-    border-radius: 10px;
+    background: #4361EE;
+    border-radius: 100px;
     outline: none;
 
+    color: #fff;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
