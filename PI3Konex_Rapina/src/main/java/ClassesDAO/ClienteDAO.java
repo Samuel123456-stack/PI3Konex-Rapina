@@ -210,14 +210,13 @@ public class ClienteDAO {
         try (
                 Connection conn = conexao.obterConexaoBD();
                 PreparedStatement stmt = conn.prepareStatement("insert into cartao(num_cartao,validade"
-                        + ",cvv,bandeira,titular) values(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
+                        + ",cvv,titular) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
 
             //passa os parametros do cartao
             stmt.setLong(1, dadoCartao.getNum_cartao());
             stmt.setString(2, dadoCartao.getValidade());
             stmt.setLong(3, dadoCartao.getCvv());
-            stmt.setString(4, dadoCartao.getBandeira());
-            stmt.setString(5, dadoCartao.getTitular());
+            stmt.setString(4, dadoCartao.getTitular());
 
             //Executa a Query
             stmt.executeUpdate();
@@ -256,76 +255,34 @@ public class ClienteDAO {
     }
 
     public int atualizaCartao(Cartao dado) throws SQLException {
-        //Atualiza o Cartao
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
+        
+        //var verificador
         int a = 0;
 
         //declarações do preparedStatement
         try (
                 Connection conn = conexao.obterConexaoBD();
                 PreparedStatement stmt = conn.prepareStatement("update cartao "
-                        + "set num_cartao=?,validade=?,cvv=?,bandeira=?,titular=? where id_cartao=?");) {
+                        + "set num_cartao= ?, validade= ?, cvv= ?, titular= ? where id_cartao= ?");) {
+            
             //Executa a Query
             stmt.setLong(1, dado.getNum_cartao());
             stmt.setString(2, dado.getValidade());
             stmt.setLong(3, dado.getCvv());
-            stmt.setString(4, dado.getBandeira());
-            stmt.setString(5, dado.getTitular());
-            stmt.setInt(6, dado.getId_card());
+            stmt.setString(4, dado.getTitular());
+            stmt.setInt(5, dado.getId_card());
+            
+            //executa
             stmt.executeUpdate();
+            
+            //novo valor de A
             a = 1;
-            return a;
         } catch (SQLException e) {
             System.out.println(e);
 
         }
         return a;
     }
-
-    public void removeCartao(int valor) throws SQLException {
-        //Remove o Cartao
-        //Elementos para a conexão e verificação
-        ConexaoJDBC conexao = new ConexaoJDBC();
-
-        //declarações do preparedStatement
-        try (
-                Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("delete from "
-                        + "cartao where id_cartao= ?");) {
-            //Executa a Query
-            stmt.setInt(1, valor);
-            stmt.executeUpdate();
-
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-
-    }
-
-    public List<Cartao> listaTodosCartao() throws SQLException {
-        //Lista todos os Cartoes cadastrados
-        ConexaoJDBC conexao = new ConexaoJDBC();
-        try {
-            Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("select*from cartao;");
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                Cartao cartao = new Cartao();
-                cartao.setNum_cartao(rs.getLong("num_cartao"));
-                cartao.setValidade(rs.getString("validade"));
-                cartao.setCvv(rs.getLong("cvv"));
-                cartao.setBandeira(rs.getString("bandeira"));
-                cartao.setTitular(rs.getString("titular"));
-                cartao.setId_card(rs.getInt("id_cartao"));
-                listaCartao.add(cartao);
-            }
-
-        } catch (SQLException erro) {
-            System.out.println(erro);
-        }
-        return listaCartao;
-    }
 }
-/*Mais Metodos serao atribuidos nesta classe, apenas precisam 
-ser mais trabalhados e revisados*/

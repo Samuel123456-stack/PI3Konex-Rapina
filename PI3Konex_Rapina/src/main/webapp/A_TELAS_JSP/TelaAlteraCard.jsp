@@ -1,3 +1,11 @@
+<%-- 
+    Document   : TelaAlteraCard
+    Created on : 30 de abr de 2021, 18:18:27
+    Author     : Gabriel
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,10 +16,18 @@
         <meta name="description" content="Crowd Control">
         <meta name="author" content="konex-group">
 
-        <link rel="stylesheet" href="../CSS/cardUser.css">
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="../images/icons/logotipo.png">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+        
+        <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/cardUser.css">
+        <style>
+            .erroInput{
+                border: 2px solid red;
+                border-radius: 5px;
+            }
+        </style>
+        
     </head>
     <body>
         <div id="container-landing">
@@ -24,19 +40,25 @@
             <div class="form-container">
                 <div class="form-block">
                     <section class="form-data">
-                        <form action="" method="get">
-                            <div class="input-field">
+                        
+                        <form action="${pageContext.request.contextPath}/AlteraCartao" method="get">
+                            <div class="input-field ${not empty erro ? 'erroInput' : ''}">
                                 <div class="card">
-                                    <img src="../images/icons/card-number.png" alt="cardnumber-icon" />
+                                    <img src="${pageContext.request.contextPath}/images/icons/card-number.png" alt="cardnumber-icon" />
                                 </div>
-                                <input type="text" name="card-number" placeholder="Digite o número do cartão" />
+
+                                <!--INPUT NUM CARTAO-->
+                                <input type="text" name="numCartao" placeholder="Digite o número do cartão" value="${cartaoAtt.num_cartao}" maxlength="16" />
                             </div>
-                            <div class="input-field">
+                            <div class="input-field ${not empty erro ? 'erroInput' : ''}">
                                 <div class="cvv">
-                                    <img src="../images/icons/cvv-number.png" alt="cvv-icon" />
+                                    <img src="${pageContext.request.contextPath}/images/icons/cvv-number.png" alt="cvv-icon" />
                                 </div>
-                                <input type="text" name="number-cvv" placeholder="CVV" />
-                                <input type="text" name="date-block" placeholder="Validade" class="data"/>
+                                <!--INPUT CVV-->
+                                <input type="text" name="cvv" placeholder="CVV" />
+
+                                <!--INPUT VALIDADE-->
+                                <input type="text" name="val" placeholder="Validade" class="data"/>
                                 <div class="data-icon">
                                     <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g opacity="0.15">
@@ -48,11 +70,13 @@
                                     </svg>
                                 </div>
                             </div>
-                            <div class="input-field">
+                            <div class="input-field ${not empty erro ? 'erroInput' : ''}">
                                 <div class="user">
-                                    <img src="../images/icons/user-icon.png" alt="user-icon" />
+                                    <img src="${pageContext.request.contextPath}/images/icons/user-icon.png" alt="user-icon" />
                                 </div>
-                                <input type="text" name="name-person" placeholder="Nome do titular do cartão" />
+
+                                <!--TITULAR-->
+                                <input type="text" name="titular" placeholder="Nome do titular do cartão" value="${cartaoAtt.titular}"/>
                             </div>
                             <div class="submit-block">
                                 <input type="submit" name="submit-block" value="Salvar cartão" />

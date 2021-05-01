@@ -243,14 +243,13 @@ public class EstabelecimentoDAO {
         try (
                 Connection conn = conexao.obterConexaoBD();
                 PreparedStatement stmt = conn.prepareStatement("insert into cartao(num_cartao,validade"
-                        + ",cvv,bandeira,titular) values(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
+                        + ",cvv,titular) values(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
 
             //passa os parametros do cartao
             stmt.setLong(1, dadoCartao.getNum_cartao());
             stmt.setString(2, dadoCartao.getValidade());
             stmt.setLong(3, dadoCartao.getCvv());
-            stmt.setString(4, dadoCartao.getBandeira());
-            stmt.setString(5, dadoCartao.getTitular());
+            stmt.setString(4, dadoCartao.getTitular());
 
             //Executa a Query
             stmt.executeUpdate();

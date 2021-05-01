@@ -11,17 +11,15 @@ public class Cartao {
     public long num_cartao;
     private String validade;
     private long cvv;
-    private String bandeira;
     private String titular;
     
     //metodo construtor
     public Cartao() {
     }
-    public Cartao(long num_cartao, String validade, long cvv, String bandeira, String titular) {
+    public Cartao(long num_cartao, String validade, long cvv,String titular) {
         this.num_cartao = num_cartao;
         this.validade = validade;
         this.cvv = cvv;
-        this.bandeira = bandeira;
         this.titular = titular;
     }
     //metodos getters e setters
@@ -50,13 +48,6 @@ public class Cartao {
         this.cvv = cvv;
     }
 
-    public String getBandeira() {
-        return bandeira;
-    }
-
-    public void setBandeira(String bandeira) {
-        this.bandeira = bandeira;
-    }
 
     public String getTitular() {
         return titular;
