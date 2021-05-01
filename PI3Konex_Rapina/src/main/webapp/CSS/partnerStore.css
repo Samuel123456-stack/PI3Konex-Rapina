@@ -1,15 +1,17 @@
 @import url('global.css');
 
 #container-landing{
-    width:1150px;
-    max-width:1600px;
-    margin:0 auto;
+    max-width:1150px;
+    margin:auto;
 }
 .grid-container{
     display:flex;
-    justify-content: center;
-    align-items: center;
-    margin:20vh 0;
+    margin:10vh 0 0 100px;
+    padding:50px 0;
+    background-image:url('../images/icons/rapina.png');
+    background-repeat: no-repeat;
+    background-size:auto;
+    background-position: center right;
 }
 #container-landing .menu-bar ul .bar{
     width:35px;
@@ -20,10 +22,7 @@
 }
 .grid-container .grid-layout-partner{
     display:flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items:center;
-    margin-left:150px;
+    flex-direction: column;  
 }
 .grid-container .grid-layout-partner .welcome p{
     text-align:center;
