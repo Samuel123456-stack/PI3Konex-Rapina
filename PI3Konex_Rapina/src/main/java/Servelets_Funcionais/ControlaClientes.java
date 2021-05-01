@@ -9,8 +9,6 @@ import ClassesJavaBean.Cliente;
 import ClassesDAO.ClienteDAO;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,12 +35,14 @@ public class ControlaClientes extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        HttpSession sessao1 = request.getSession();
+        
+        //session
+        HttpSession sessao = request.getSession();
         int tipoCli = 0;
         
-        if (sessao1.getAttribute("cli") != null) {
-            Cliente cliente = (Cliente) sessao1.getAttribute("cli");
-            sessao1.setAttribute("cli", cliente);
+        if (sessao.getAttribute("cli") != null) {
+            Cliente cliente = (Cliente) sessao.getAttribute("cli");
+            sessao.setAttribute("cli", cliente);
             
             tipoCli = cliente.getTipo_user();
             request.setAttribute("cli", cliente);
@@ -62,7 +62,6 @@ public class ControlaClientes extends HttpServlet {
         String dataNascStr = request.getParameter("dataNasc");
         String concordar = request.getParameter("concordar");
         String concordarNews = "Não";
-        int tipoUsuarioStr = tipoCli;
 
         //Tratamento de Exceções
         boolean temErro = false;
@@ -178,8 +177,8 @@ public class ControlaClientes extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCadastroCli.jsp");
             dispatcher.forward(request, response);
         } else {
-            HttpSession sessao = request.getSession();
-            sessao.setAttribute("cliente", cliente);
+            HttpSession sessao2 = request.getSession();
+            sessao2.setAttribute("cli", cliente);
             response.sendRedirect(request.getContextPath() + "/TelaCartaoCli");
         }
     }

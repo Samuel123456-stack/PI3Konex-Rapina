@@ -18,7 +18,6 @@ body{
     margin: 50px auto 100px auto;
     background-repeat:no-repeat;
     background-position: bottom left;
-    background-image: url("../images/saly1.png");
 }
 .check{
     width: 1617px;
@@ -182,7 +181,7 @@ color: #4361EE;
 
     font-family: 'Hind Siliguri', sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 700;
     font-size: 20px;
     line-height: 32px;
     align-items: center;

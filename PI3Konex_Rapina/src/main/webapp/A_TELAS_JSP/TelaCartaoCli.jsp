@@ -10,14 +10,22 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel='stylesheet' type='text/css' href='" + request.getContextPath() +  "/../CSS/cartaoRegistro.css'/>
+        <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/cartaoRegistro.css"/>
         <title>Document</title>
+        
+        <style>
+            .erroInput{
+                border: 2px solid red;
+                border-radius: 5px;
+            }
+        </style>
+        
     </head>
     <body>
         <div id="container-landing">
             <section class="menu-bar">
                 <div>
-                    <img src="../images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
+                    <img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
                 </div>
                 <div>
                     <ul>
@@ -34,11 +42,11 @@
                 <div class="linha">
                     <div class="bloco">
                         <form action="${pageContext.request.contextPath}/ControlaCartao" method="post">
-                            <!--TENTEI USAR cli. E NÃO DEU CERTO-->
+                            
                             <h1>Registrar cartão</h1>
                             <p>Para o cadastro ser concluido é necessário que tenha 1 cartão cadastrado.</p>
 
-                            <div class="text526">
+                            <div class="text526 ${not empty erro ? 'erroInput' : ''}" >
                                 <div class="svg">
                                     <svg width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M20.1245 1.4375C20.5058 1.4375 20.8714 1.58895 21.141 1.85853C21.4106 2.12812 21.562 2.49375 21.562 2.875V14.375C21.562 14.7562 21.4106 15.1219 21.141 15.3915C20.8714 15.661 20.5058 15.8125 20.1245 15.8125H2.87451C2.49326 15.8125 2.12763 15.661 1.85805 15.3915C1.58846 15.1219 1.43701 14.7562 1.43701 14.375V2.875C1.43701 2.49375 1.58846 2.12812 1.85805 1.85853C2.12763 1.58895 2.49326 1.4375 2.87451 1.4375H20.1245ZM2.87451 0C2.11201 0 1.38075 0.302901 0.84158 0.842068C0.302413 1.38123 -0.000488281 2.1125 -0.000488281 2.875L-0.000488281 14.375C-0.000488281 15.1375 0.302413 15.8688 0.84158 16.4079C1.38075 16.9471 2.11201 17.25 2.87451 17.25H20.1245C20.887 17.25 21.6183 16.9471 22.1574 16.4079C22.6966 15.8688 22.9995 15.1375 22.9995 14.375V2.875C22.9995 2.1125 22.6966 1.38123 22.1574 0.842068C21.6183 0.302901 20.887 0 20.1245 0H2.87451Z" fill="black" fill-opacity="0.3"/>
@@ -48,7 +56,7 @@
                                 <input type="text" placeholder="Digite o número do cartão" name="numCartao" maxlength="16" minlength="16">
                             </div>
 
-                            <div class="text279">
+                            <div class="text279 ${not empty erro ? 'erroInput' : ''}">
                                 <div class="svg">
                                     <svg width="23" height="18" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M20.1245 1.4375C20.5058 1.4375 20.8714 1.58895 21.141 1.85853C21.4106 2.12812 21.562 2.49375 21.562 2.875V14.375C21.562 14.7562 21.4106 15.1219 21.141 15.3915C20.8714 15.661 20.5058 15.8125 20.1245 15.8125H2.87451C2.49326 15.8125 2.12763 15.661 1.85805 15.3915C1.58846 15.1219 1.43701 14.7562 1.43701 14.375V2.875C1.43701 2.49375 1.58846 2.12812 1.85805 1.85853C2.12763 1.58895 2.49326 1.4375 2.87451 1.4375H20.1245ZM2.87451 0C2.11201 0 1.38075 0.302901 0.84158 0.842068C0.302413 1.38123 -0.000488281 2.1125 -0.000488281 2.875L-0.000488281 14.375C-0.000488281 15.1375 0.302413 15.8688 0.84158 16.4079C1.38075 16.9471 2.11201 17.25 2.87451 17.25H20.1245C20.887 17.25 21.6183 16.9471 22.1574 16.4079C22.6966 15.8688 22.9995 15.1375 22.9995 14.375V2.875C22.9995 2.1125 22.6966 1.38123 22.1574 0.842068C21.6183 0.302901 20.887 0 20.1245 0H2.87451Z" fill="black" fill-opacity="0.3"/>
@@ -58,7 +66,7 @@
                                 <input type="text" placeholder="Código de segurança" name="cvv" maxlength="3" minlength="3">
                             </div>
 
-                            <div class="val">
+                            <div class="val ${not empty erro ? 'erroInput' : ''}">
                                 <input type="text" placeholder="Validade" name="val" >
                             </div>
                             <div class="svgval">
@@ -72,7 +80,7 @@
                                 </svg>
                             </div>
 
-                            <div class="text526">
+                            <div class="text526 ${not empty erro ? 'erroInput' : ''}">
                                 <div class="svg">
                                     <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.4" d="M9 0C6.243 0 4 2.243 4 5C4 7.757 6.243 10 9 10C11.757 10 14 7.757 14 5C14 2.243 11.757 0 9 0ZM9 8C7.346 8 6 6.654 6 5C6 3.346 7.346 2 9 2C10.654 2 12 3.346 12 5C12 6.654 10.654 8 9 8ZM18 19V18C18 14.141 14.859 11 11 11H7C3.14 11 0 14.141 0 18V19H2V18C2 15.243 4.243 13 7 13H11C13.757 13 16 15.243 16 18V19H18Z" fill="black"/>
