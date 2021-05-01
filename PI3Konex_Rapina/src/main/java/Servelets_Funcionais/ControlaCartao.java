@@ -206,7 +206,7 @@ public class ControlaCartao extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCartaoCli.jsp");
             dispatcher.forward(request, response);
         } else {
-
+            sessao.setAttribute("cartao", cartao);
             response.sendRedirect(request.getContextPath() + "/MenuCliente");
         }
     }

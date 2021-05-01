@@ -40,11 +40,11 @@ public class TelaAlteraCartao extends HttpServlet {
         HttpSession session = request.getSession();
         
         int idCartao = 0;
-        if (session.getAttribute("cli") != null) {
-            Cliente cliente = (Cliente) session.getAttribute("cli");
+        if (session.getAttribute("cartao") != null) {
+            Cartao cartao = (Cartao) session.getAttribute("cartao");
             
-            idCartao = cliente.getNum_cartao();
-            request.setAttribute("cli", cliente);
+            idCartao = cartao.getId_card();
+            request.setAttribute("cartao", cartao);
             
         } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaAlteraCard.jsp");

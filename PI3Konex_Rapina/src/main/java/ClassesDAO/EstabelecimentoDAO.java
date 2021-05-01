@@ -67,7 +67,7 @@ public class EstabelecimentoDAO {
                             + "capacidade,endereco,cep,numero,horario_de_fun,"
                             + "disponibilidade,taxa_cancelamento,concordar,"
                             + "newslatter,def_aud,def_fis,tipo_usuario,id_planos)"
-                            + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");) {
+                            + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);) {
                 //passa os parametros
                 stmt.setString(1, dado.getNome_estabelecimento());
                 stmt.setString(2, dado.getCnpj());
@@ -95,7 +95,7 @@ public class EstabelecimentoDAO {
                     id = rs.getInt(1);
                 }
                 dado.setId_estabelecimento(id);
-                cadastrado = 2;
+                cadastrado = 1;
                 return cadastrado;
             } catch (SQLException e) {
                 System.out.println(e);
@@ -283,6 +283,35 @@ public class EstabelecimentoDAO {
             stmt2.setInt(1, dado.getId_card());
             stmt2.setInt(2, esta);
             stmt2.executeUpdate();
+        }
+    }
+    public void atualizaCartaoEsta(Cartao dado) throws SQLException {
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        
+        //var verificador
+
+        //declarações do preparedStatement
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("update cartao "
+                        + "set num_cartao= ?, validade= ?, cvv= ?, titular= ? where id_cartao= ?");) {
+            
+            //Executa a Query
+            stmt.setLong(1, dado.getNum_cartao());
+            stmt.setString(2, dado.getValidade());
+            stmt.setLong(3, dado.getCvv());
+            stmt.setString(4, dado.getTitular());
+            stmt.setInt(5, dado.getId_card());
+            
+            //executa
+            stmt.executeUpdate();
+            
+            //novo valor de A
+
+        } catch (SQLException e) {
+            System.out.println(e);
+
         }
     }
 }
