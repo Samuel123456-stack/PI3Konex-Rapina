@@ -56,6 +56,7 @@
                                     </span>
                                     <button type="submit" name="button" value="Cadastro Estabelecimento">
                                         <h3>Loja parceira</h3>
+                                        <br>
                                         <p>Eu quero fazer parte do grupo de lojas</p>
                                     </button>
                                 </div>
