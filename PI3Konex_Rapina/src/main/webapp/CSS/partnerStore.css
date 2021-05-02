@@ -6,12 +6,7 @@
 }
 .grid-container{
     display:flex;
-    margin:10vh 0 0 100px;
-    padding:50px 0;
-    background-image:url('../images/icons/rapina.png');
-    background-repeat: no-repeat;
-    background-size:auto;
-    background-position: center right;
+    margin:20vh 0;
 }
 #container-landing .menu-bar ul .bar{
     width:35px;
@@ -23,6 +18,8 @@
 .grid-container .grid-layout-partner{
     display:flex;
     flex-direction: column;  
+    justify-content: center;
+    align-items: center;
 }
 .grid-container .grid-layout-partner .welcome p{
     text-align:center;
