@@ -103,6 +103,14 @@ public class TelaLoginSenha extends HttpServlet {
                 //É um adm
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaResultado.jsp");
                 dispatcher.forward(request, response);
+            }else if(userTipo == 2){
+                //É um Cliente
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuCliente.jsp");
+                dispatcher.forward(request, response);
+            }else{
+                //É um Cliente
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuEsta.jsp");
+                dispatcher.forward(request, response);
             }
         }
     }

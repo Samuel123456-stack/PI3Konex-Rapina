@@ -10,7 +10,7 @@
     
     <style>
         .erroInput{
-            border: 2px solid #4361ee;
+            border: 1px solid red;
         }
     </style>
 </head>
@@ -49,7 +49,7 @@
                         </svg>
                     </div>
                     <!-- INPUT 1-->
-                    <input class="text" type="text" id="nome" name="nome" placeholder="Digite seu nome" value="${cliente.nome}">
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" value="${cliente.nome}" class="text ${not empty erroNome ? 'erroInput' : '' }">
 
                     <div class="margin"></div>
 
@@ -67,7 +67,7 @@
                         </svg>                
                     </div>           
                     <!-- INPUT 2-->
-                    <input type="text"  name="cpf" maxlength="15" placeholder="Informe seu CPF" value="${cliente.cpf}" class="text ${not empty erroCpf ? 'erroInput' : '' }"/>
+                    <input type="text"  name="cpf" maxlength="15" placeholder="Informe seu CPF" value="${cliente.cpf}" class="text ${not empty erroCpf ? 'erroInput' : '' }">
                     <div class="svg">
                         <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path opacity="0.4" d="M20 2C20 0.9 19.1 0 18 0H2C0.9 0 0 0.9 0 2V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2ZM18 2L10 7L2 2H18ZM18 14H2V4L10 9L18 4V14Z" fill="black"/>
@@ -75,7 +75,7 @@
                     </div> 
 
                     <!-- INPUT 3-->
-                    <input class="text" type="text" id="email" name="email" placeholder="Email para login" value="${cliente.email}"/>
+                    <input type="text" id="email" name="email" placeholder="Email para login" value="${cliente.email}" class="text ${not empty erroEmail ? 'erroInput' : '' }">
 
                     <div class="genero">
                         <h1 style="font-weight: bold;" >Qual é o seu gênero?</h1>
@@ -95,7 +95,7 @@
                     </div>
 
                     <!-- INPUT 6-->                         
-                    <input class="data" type="text" id="data" name="dataNasc" placeholder="Qual é a sua data de nascimento?" value="${cliente.data_nascimento}">
+                    <input type="text" id="data" name="dataNasc" placeholder="Qual é a sua data de nascimento?" value="${cliente.data_nascimento}" class="data ${not empty erroDataNasc ? 'erroInput' : '' }">
                     <div class="svgdata">
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g opacity="0.4">
@@ -114,7 +114,7 @@
                     </div>  
 
                     <!-- INPUT 6-->
-                    <input class="text" type="password" id="senha" name="senha" placeholder="Digite uma senha">
+                    <input type="password" id="senha" name="senha" placeholder="Digite uma senha" minlength="8" class="text ${not empty ErroSenhaRe ? 'erroInput' : ''}">
 
                     <div class="margin"></div>
 
@@ -125,7 +125,7 @@
                     </div> 
 
                     <!-- INPUT 7-->
-                    <input class="text" type="password" id="senhacon" name="senhaRepete" placeholder="Confirme a sua senha"  class="${not empty ErroSenhaRe ? 'erroInput' : ''}">
+                    <input  type="password" id="senhacon" name="senhaRepete" placeholder="Confirme a sua senha"  class="text ${not empty ErroSenhaRe ? 'erroInput' : ''}">
 
                     <div class="terms">
                         <!-- INPUT 8-->

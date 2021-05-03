@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -71,8 +71,11 @@ public class ControlaClientes extends HttpServlet {
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = false;
                 //Declaração de Erro
-                request.setAttribute("erroNome", "Nome é Obrigatorio");
+                request.setAttribute("erroNome", " ");
             }
+        }else{
+            temErro=true;
+            request.setAttribute("erroNome", " ");
         }
 
         if (genero != null && genero.trim().length() > 0) {
@@ -81,7 +84,7 @@ public class ControlaClientes extends HttpServlet {
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = false;
                 //Declaração de Erro
-                request.setAttribute("erroGenero", "Genero é Obrigatorio");
+                request.setAttribute("erroGenero", " ");
             }
 
         }
@@ -91,11 +94,11 @@ public class ControlaClientes extends HttpServlet {
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = true;
                 //Declaração de Erro
-                request.setAttribute("erroCpf", "CPF é Obrigatorio");
+                request.setAttribute("erroCpf", " ");
             }
         }else{
             temErro=true;
-            request.setAttribute("erroCpf", "CPF é não informado");
+            request.setAttribute("erroCpf", " ");
         }
         
         if (email != null && email.trim().length() > 0) {
@@ -104,46 +107,54 @@ public class ControlaClientes extends HttpServlet {
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = false;
                 //Declaração de Erro
-                request.setAttribute("erroEmail", "Email é Obrigatorio");
+                request.setAttribute("erroEmail", " ");
             }
 
+        }else{
+            temErro=true;
+            request.setAttribute("erroEmail", " ");
         }
+        
         if (senha != null && senha.trim().length() > 0) {
             try {
                 if (!senha.equals(senhaRe)) {
                     temErro = true;
                     senha = null;
-                    request.setAttribute("ErroSenhaRe", "Senha Repetida não é igual");
+                    request.setAttribute("ErroSenhaRe", " ");
                 } else {
                     temErro = false;
                 }
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = false;
                 //Declaração de Erro
-                request.setAttribute("ErroSenhaObg", "Senha é Obrigatoria");
+                request.setAttribute("ErroSenhaRe", " ");
             }
-
         }else{
             temErro=true;
-            request.setAttribute("erroCpf", "CPF é não informado");
+            request.setAttribute("ErroSenhaRe", " ");
         }
+        
         if (dataNascStr != null && dataNascStr.trim().length() > 0) {
             try {
                 temErro = true;
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = false;
                 //Declaração de Erro
-                request.setAttribute("erroDataNasc", "Data de Nascimento é Obrigatoria");
+                request.setAttribute("erroDataNasc", " ");
             }
-
+        }else{
+            temErro=true;
+            request.setAttribute("erroDataNasc", " ");
         }
+        
+        
         if (concordar != null && concordar.trim().length() > 0) {
             try {
                 temErro = true;
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = false;
                 //Declaração de Erro
-                request.setAttribute("erroConcorda", "Concordar é Obrigatiorio");
+                request.setAttribute("erroConcorda", " ");
             }
 
         }

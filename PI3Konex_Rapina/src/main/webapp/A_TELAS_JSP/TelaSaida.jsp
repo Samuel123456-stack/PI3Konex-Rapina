@@ -19,7 +19,7 @@
         <h1>Até a próxima Rapinante</h1>
         <br>
         <!--ENVIA PARA INDEX-->
-        <a href="${pageContext.request.contextPath}/TelaInicial" id="btnSair"><button>Voltar pra a Index</button></a>
+        <a href="${pageContext.request.contextPath}/TelaInicial" id="btnSair"><button>Home</button></a>
     </div>
     
 </body>

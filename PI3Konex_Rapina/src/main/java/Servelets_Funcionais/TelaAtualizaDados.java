@@ -37,12 +37,17 @@ public class TelaAtualizaDados extends HttpServlet {
         HttpSession session = request.getSession();
         
         int idUsuario = 0;
+        String senha="";
+        String concordar = "Sim";
+        
         if (session.getAttribute("cli") != null) {
             Cliente cliente = (Cliente) session.getAttribute("cli");
             
-            idUsuario =cliente.getId_usuario();
+            idUsuario = cliente.getId_usuario();
+            concordar = cliente.getConcorda();
+            senha = cliente.getSenha();
             request.setAttribute("cli", cliente);
-            
+        
         } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaAlteraDados.jsp");
             dispatcher.forward(request, response);
@@ -68,8 +73,11 @@ public class TelaAtualizaDados extends HttpServlet {
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = false;
                 //Declaração de Erro
-                request.setAttribute("erroNome", "Nome é Obrigatorio");
+                request.setAttribute("erroNome", " ");
             }
+        }else{
+            temErro=true;
+            request.setAttribute("erroNome", " ");
         }
 
         if (genero != null && genero.trim().length() > 0) {
@@ -78,21 +86,21 @@ public class TelaAtualizaDados extends HttpServlet {
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = false;
                 //Declaração de Erro
-                request.setAttribute("erroGenero", "Genero é Obrigatorio");
+                request.setAttribute("erroGenero", " ");
             }
-
         }
+        
         if (cpf != null && cpf.trim().length() > 0) {
             try {
                 temErro = false;
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = true;
                 //Declaração de Erro
-                request.setAttribute("erroCpf", "CPF é Obrigatorio");
+                request.setAttribute("erroCpf", " ");
             }
         }else{
             temErro=true;
-            request.setAttribute("erroCpf", "CPF é não informado");
+            request.setAttribute("erroCpf", " ");
         }
         
         if (email != null && email.trim().length() > 0) {
@@ -101,44 +109,72 @@ public class TelaAtualizaDados extends HttpServlet {
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = false;
                 //Declaração de Erro
-                request.setAttribute("erroEmail", "Email é Obrigatorio");
+                request.setAttribute("erroEmail", " ");
             }
-
+        }else{
+            temErro=true;
+            request.setAttribute("erroEmail", " ");
         }
+        
+        
         if (senhaNova != null && senhaNova.trim().length() > 0) {
             try {
                 if (!senhaNova.equals(senhaAntiga)) {
-                    temErro = true;
-                    senhaNova = null;
-                    request.setAttribute("ErroSenhaRe", "Senha Repetida não é igual");
-                } else {
                     temErro = false;
+                } else {
+                    temErro = true;
+                    
+                    //força ao erro
+                    senhaNova = null;
+                    request.setAttribute("erroSenha", " ");
                 }
             } catch (StringIndexOutOfBoundsException ex) {
-                temErro = false;
+                temErro = true;
                 //Declaração de Erro
-                request.setAttribute("ErroSenhaObg", "Senha é Obrigatoria");
+                request.setAttribute("erroSenha", " ");
             }
-
         }else{
             temErro=true;
-            request.setAttribute("erroCpf", "CPF é não informado");
+            request.setAttribute("erroSenha", " ");
         }
+        
+        //data
         if (dataNascStr != null && dataNascStr.trim().length() > 0) {
             try {
-                temErro = true;
-            } catch (StringIndexOutOfBoundsException ex) {
                 temErro = false;
+            } catch (StringIndexOutOfBoundsException ex) {
+                temErro = true;
                 //Declaração de Erro
-                request.setAttribute("erroDataNasc", "Data de Nascimento é Obrigatoria");
+                request.setAttribute("erroDataNasc", " ");
             }
-
+        }else{
+            temErro = true;
+                //Declaração de Erro
+                request.setAttribute("erroDataNasc", " ");
         }
-
         
         //Constroe os objetos 
         Cliente cliente = new Cliente();
-
+        
+        //objeto teste onde verifica se a senha antiga é igual a do BD
+        Cliente clienteAux = new Cliente();
+        clienteAux.setSenha(senhaAntiga);
+        clienteAux.setId_usuario(idUsuario);
+        
+        //metodo DAO
+        ClienteDAO clienteAtt = new ClienteDAO();
+        
+        //verifica se a senha é a que está cadastrada no bd
+        int verificador= clienteAtt.verificaSenha(clienteAux);
+        
+        if(verificador == 1){
+            //Não há erro, ou seja a senha verificada está contida no BD
+            temErro = false;
+        }else if(verificador == -1){
+            temErro=true;
+        }
+        
+        //setamos as informações
         //Seta as informacoes para o objeto
         cliente.setId_usuario(idUsuario);
         cliente.setNome(nome);
@@ -147,12 +183,11 @@ public class TelaAtualizaDados extends HttpServlet {
         cliente.setGenero(genero);
         cliente.setEmail(email);
         cliente.setSenha(senhaNova);
+        cliente.setConcorda(concordar);
+        
         //request do Objeto
         request.setAttribute("clienteAt", cliente);
 
-        //Objeto para atualização
-        ClienteDAO clienteAtt = new ClienteDAO();
-        
         try {
             //Chama o metodo de atualizar
             int atualiza= clienteAtt.atualiza(cliente);
@@ -165,7 +200,6 @@ public class TelaAtualizaDados extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(TelaAtualizaDados.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         
         //verifica se há erros
         if(temErro){
@@ -182,7 +216,5 @@ public class TelaAtualizaDados extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
     }
-
 }
