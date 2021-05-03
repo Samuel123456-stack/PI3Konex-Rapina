@@ -19,11 +19,11 @@ body{
     margin: auto;
     background: #fff;
     text-align: center;
+    
 }
 .todo img{
     width: 120px;
     height: 70px;
-    display: block;
     margin: auto;
 }
 .todo h1{
@@ -36,7 +36,6 @@ body{
     line-height: 28px;
     text-align: center;
     letter-spacing: -0.015em;
-
     color: #000000;
 }
 .todo p{
@@ -52,11 +51,10 @@ body{
 
     color: rgba(45, 45, 45, 0.7);
 }
-#btnVol button,
-#btnSair button{
-    width: 170px;
-    height: 50px;
-    border-radius: 100px;
+#btnVol button, #btnSair button{
+    width: 150px;
+    height: 70px;
+    border-radius: 10px;
     border: none;
         
     font-style: normal;
@@ -67,11 +65,54 @@ body{
     text-align: center;
     letter-spacing: -0.015em;
     color: #FFFFFF;
+    cursor: pointer;
 }
 #btnVol button{
-    background: #4EBAB5;
     margin-right: 25px;
+    background: #4EBAB5;
 }
 #btnSair button{
     background: #4361EE;
+}
+
+.floatleft{
+    float: left;
+    margin-left: 55px;
+}
+
+#btn{
+    width: 150px;
+    height: 70px;
+    border-radius: 10px;
+    border: none;
+    margin-right: 25px;
+    background: #4EBAB5;
+        
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+#btn2{
+    width: 150px;
+    height: 70px;
+    border-radius: 10px;
+    border: none;
+    background: red; 
+    
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+    cursor: pointer;
 }

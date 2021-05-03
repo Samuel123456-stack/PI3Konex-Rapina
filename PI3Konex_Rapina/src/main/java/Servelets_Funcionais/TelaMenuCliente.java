@@ -39,9 +39,9 @@ public class TelaMenuCliente extends HttpServlet {
             if (botao.equals("att card")){
                 response.sendRedirect(request.getContextPath() + "/TelaAltCard");
             }else if (botao.equals("att dados")){
-                response.sendRedirect(request.getContextPath() + "/TelaAltDados");
+                response.sendRedirect(request.getContextPath() + "/TelaAlteraDados");
             }else if (botao.equals("sub exclusao")){
-                response.sendRedirect(request.getContextPath() + "/TelaSolicitaEclusao");
+                response.sendRedirect(request.getContextPath() + "/TelaSolicitaExclusao");
             }
         }
     }

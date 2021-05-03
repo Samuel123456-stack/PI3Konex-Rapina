@@ -18,6 +18,10 @@ public class Notification {
     private int id_estabelecimento;
 
     //metodo consultar verificar
+
+    public Notification() {
+    
+    }
     
     
     //Getters e Setters

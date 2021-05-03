@@ -12,6 +12,7 @@
         <meta name="author" content="konex-group">
 
         <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/altCard.css">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logotipo.png">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
         
     </head>

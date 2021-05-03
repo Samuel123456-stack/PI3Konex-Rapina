@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/cadastroCli.css"/>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logotipo.png">
     <title>Cadastro- Rapinante</title>
     
     <style>

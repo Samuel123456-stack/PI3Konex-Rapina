@@ -13,9 +13,9 @@
         <meta name="keywords" content="HTML, CSS, JAVASCRIPT">
         <meta name="description" content="Crowd Control">
         <meta name="author" content="konex-group">  
-        <link rel='stylesheet' type='text/css' href="../CSS/partnerStore.css">
+        <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/partnerStore.css">
         
-        <link rel="shortcut icon" href="../images/icons/logotipo.png">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logotipo.png">
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     </head>
@@ -23,7 +23,7 @@
         <div id="container-landing">
             <section class="menu-bar">
                 <div>
-                    <img src="../images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
+                    <img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
                 </div>
                 <div>
                     <ul>
@@ -49,7 +49,7 @@
                                 
                                 <div class="button-becomer-partner">
                                     <span>
-                                        <img src="../images/icons/house.png" alt="icon-house" />
+                                        <img src="${pageContext.request.contextPath}/images/icons/house.png" alt="icon-house" />
                                     </span>
                                     <button type="submit" name="button" value="Cadastro Estabelecimento">
                                         <h3>Loja parceira</h3>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="button-becomer-rap">
                                     <span>
-                                        <img src="../images/icons/bird.png" alt="icon-house" />
+                                        <img src="${pageContext.request.contextPath}/images/icons/bird.png" alt="icon-house" />
                                     </span>
                                     <button type="submit" name="button" value="Cadastro Cliente">
                                         <h3>Rapinista</h3>

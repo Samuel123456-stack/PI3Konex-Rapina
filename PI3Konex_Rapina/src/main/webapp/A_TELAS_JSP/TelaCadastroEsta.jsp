@@ -11,7 +11,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' type='text/css' href='" + request.getContextPath() +  "/../CSS/cadastroEsta.css'/>
-    <title>Document</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logotipo.png">
+    <title>Loja Parceira- Cadastro</title>
 </head>
 <body>
     <div id="container-landing">
