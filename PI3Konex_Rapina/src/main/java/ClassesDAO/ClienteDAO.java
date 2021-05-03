@@ -96,9 +96,11 @@ public class ClienteDAO {
 
     }
 
-    public void atualiza(Cliente dado) throws SQLException {
+    public int atualiza(Cliente dado) throws SQLException {
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
+        //Var verificador
+        int atualiza=0;
        String sql = "update usuario set nome=?,genero=?,cpf=?,email=?,senha=?"
                         + ",nascimento=?,concordar=?,"
                         + "newslatter=? where id_usuario= ?";
@@ -117,10 +119,13 @@ public class ClienteDAO {
             stmt.setString(8, dado.getConcorda_newstalleter());
             stmt.setInt(9, dado.getId_usuario());
             stmt.executeUpdate();
+            
+            atualiza=1;
 
         } catch (SQLException e) {
             System.out.println(e);
         }
+        return atualiza;
     }
 
     public void remove(int valor) throws SQLException {
