@@ -66,6 +66,7 @@ public class ControlaClientes extends HttpServlet {
 
         //Tratamento de Exceções
         boolean temErro = false;
+        
         if (nome != null && nome.trim().length() > 0) {
             try {
                 temErro = true;

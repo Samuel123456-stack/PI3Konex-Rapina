@@ -71,7 +71,7 @@ public class EstabelecimentoDAO {
                 stmt.setInt(5, dado.getCapacidade());
                 stmt.setString(6, dado.getLogadouro_estabelecimento());
                 stmt.setString(7, dado.getCep_estabelecimento());
-                stmt.setInt(8, dado.getNumero());
+                stmt.setString(8, dado.getNumero());
                 stmt.setString(9, dado.getCelular());
                 stmt.setString(10, dado.getHorario_funcionamento());
                 stmt.setString(11, dado.getDisponibilidade());
@@ -117,7 +117,7 @@ public class EstabelecimentoDAO {
             stmt.setInt(4, dado.getCapacidade());
             stmt.setString(5, dado.getLogadouro_estabelecimento());
             stmt.setString(6, dado.getCep_estabelecimento());
-            stmt.setInt(7, dado.getNumero());
+            stmt.setString(7, dado.getNumero());
             stmt.setString(8, dado.getCelular());
             stmt.setString(9, dado.getHorario_funcionamento());
             stmt.setFloat(10, dado.getTaxa_cancelamento());
@@ -169,7 +169,7 @@ public class EstabelecimentoDAO {
                 esta.setCnpj(rs.getString("cnpj"));
                 esta.setCep_estabelecimento(rs.getString("cep"));
                 esta.setLogadouro_estabelecimento(rs.getString("endereco"));
-                esta.setNumero(rs.getInt("numero"));
+                esta.setNumero(rs.getString("numero"));
                 esta.setAcessi_auditiva(rs.getString("def_aud"));
                 esta.setAcessi_fisico(rs.getString("def_fis"));
                 esta.setHorario_funcionamento(rs.getString("horario_de_fun"));
@@ -207,7 +207,7 @@ public class EstabelecimentoDAO {
                 esta.setCnpj(rs.getString("cnpj"));
                 esta.setCep_estabelecimento(rs.getString("cep"));
                 esta.setLogadouro_estabelecimento(rs.getString("endereco"));
-                esta.setNumero(rs.getInt("numero"));
+                esta.setNumero(rs.getString("numero"));
                 esta.setAcessi_auditiva(rs.getString("def_aud"));
                 esta.setAcessi_fisico(rs.getString("def_fis"));
                 esta.setHorario_funcionamento(rs.getString("horario_de_fun"));
@@ -239,9 +239,9 @@ public class EstabelecimentoDAO {
                         + ",cvv,titular) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
 
             //passa os parametros do cartao
-            stmt.setLong(1, dadoCartao.getNum_cartao());
+            stmt.setString(1, dadoCartao.getNum_cartao());
             stmt.setString(2, dadoCartao.getValidade());
-            stmt.setLong(3, dadoCartao.getCvv());
+            stmt.setInt(3, dadoCartao.getCvv());
             stmt.setString(4, dadoCartao.getTitular());
 
             //Executa a Query
@@ -291,9 +291,9 @@ public class EstabelecimentoDAO {
                         + "set num_cartao= ?, validade= ?, cvv= ?, titular= ? where id_cartao= ?");) {
             
             //Executa a Query
-            stmt.setLong(1, dado.getNum_cartao());
+            stmt.setString(1, dado.getNum_cartao());
             stmt.setString(2, dado.getValidade());
-            stmt.setLong(3, dado.getCvv());
+            stmt.setInt(3, dado.getCvv());
             stmt.setString(4, dado.getTitular());
             stmt.setInt(5, dado.getId_card());
             

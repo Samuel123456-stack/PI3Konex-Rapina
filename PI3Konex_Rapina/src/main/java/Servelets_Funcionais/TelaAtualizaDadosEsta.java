@@ -179,7 +179,6 @@ public class TelaAtualizaDadosEsta extends HttpServlet {
             defAud = "Sim";
             defFis = "Sim";
         }
-        int numeroEst = Integer.parseInt(numeroStr);
         int capEst = Integer.parseInt(capacidadeStr);
         float taxaCancela = Float.parseFloat(taxaStr);
         
@@ -209,7 +208,7 @@ public class TelaAtualizaDadosEsta extends HttpServlet {
         esta.setNome_estabelecimento(nomeEst);
         esta.setCep_estabelecimento(cep);
         esta.setLogadouro_estabelecimento(endereco);
-        esta.setNumero(numeroEst);
+        esta.setNumero(numeroStr);
         esta.setHorario_funcionamento(horario);
         esta.setCapacidade(capEst);
         esta.setTaxa_cancelamento(taxaCancela);

@@ -15,7 +15,7 @@ public class Estabelecimento {
     public int capacidade;
     public String cep_estabelecimento;
     public String logadouro_estabelecimento;
-    public int numero;
+    public String numero;
     public String horario_funcionamento;
     public String disponibilidade;
     public String acessi_auditiva;
@@ -36,7 +36,7 @@ public class Estabelecimento {
 
     public Estabelecimento(String nome_estabelecimento, String cnpj,
             String cep_estabelecimento, String logadouro_estabelecimento,
-            int numero, String acessi_auditiva, String acessi_fisico,
+            String numero, String acessi_auditiva, String acessi_fisico,
             String horario_funcionamento, int capacidade,
             float taxa_cancelamento, String celular, String email, String senha,
             String concorda, String concorda_newstalleter,
@@ -104,11 +104,11 @@ public class Estabelecimento {
         this.logadouro_estabelecimento = logadouro_estabelecimento;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 

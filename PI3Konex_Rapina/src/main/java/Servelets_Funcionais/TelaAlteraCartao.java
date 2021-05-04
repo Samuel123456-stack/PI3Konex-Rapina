@@ -58,8 +58,7 @@ public class TelaAlteraCartao extends HttpServlet {
         String titu = request.getParameter("titular");
         
         //converte os parametros
-        long numCard = 0L;
-        long codV = 0L;
+        int codV = 0;
         
         //Variavel verificadora de erros
         boolean temErro = false;
@@ -67,7 +66,8 @@ public class TelaAlteraCartao extends HttpServlet {
         //verifica os campos
         if(num != null && num.trim().length() > 0){
             temErro = false;
-            numCard=Long.parseLong(num);
+        }else{
+            temErro = true;
         }
         
         if(validade != null && validade.trim().length() > 0){
@@ -79,7 +79,7 @@ public class TelaAlteraCartao extends HttpServlet {
         
         if(cvv != null && cvv.trim().length() > 0){
             temErro = false;
-            codV= Long.parseLong(cvv);
+            codV= Integer.parseInt(cvv);
         }else{
             temErro = true;
             request.setAttribute("erro", " ");
@@ -97,7 +97,7 @@ public class TelaAlteraCartao extends HttpServlet {
 
         //Seta as informacoes para o objeto
         cartaoAtt.setId_card(idCartao);
-        cartaoAtt.setNum_cartao(numCard);
+        cartaoAtt.setNum_cartao(num);
         cartaoAtt.setCvv(codV);
         cartaoAtt.setValidade(validade);
         cartaoAtt.setTitular(titu);

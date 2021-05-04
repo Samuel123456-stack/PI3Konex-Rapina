@@ -30,13 +30,8 @@
         
     </head>
     <body>
-        <div id="container-landing">
-            <div class="button-return">
-                <button type="button">
-                    Voltar
-                </button>
-            </div>
-
+        
+        <div id="container-landing" style="margin-top: 250px;">
             <div class="form-container">
                 <div class="form-block">
                     <section class="form-data">
@@ -55,10 +50,10 @@
                                     <img src="${pageContext.request.contextPath}/images/icons/cvv-number.png" alt="cvv-icon" />
                                 </div>
                                 <!--INPUT CVV-->
-                                <input type="text" name="cvv" placeholder="CVV" />
+                                <input type="text" name="cvv" placeholder="CVV" maxlength="3" minlength="3" />
 
                                 <!--INPUT VALIDADE-->
-                                <input type="text" name="val" placeholder="Validade" class="data"/>
+                                <input type="text" name="val" placeholder="Validade" class="data" maxlength="7" minlength="7" />
                                 <div class="data-icon">
                                     <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g opacity="0.15">

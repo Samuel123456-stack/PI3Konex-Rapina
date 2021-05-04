@@ -79,7 +79,7 @@ public class ControlaCartao extends HttpServlet {
         }
 
         //PEGANDO  OS ARIBUTOS DA JSP
-        String numCartaoStr = request.getParameter("numCartao");
+        String numCard = request.getParameter("numCartao");
         String validade = request.getParameter("val");
         String cvvStr = request.getParameter("cvv");
         String titular = request.getParameter("titular");
@@ -88,31 +88,17 @@ public class ControlaCartao extends HttpServlet {
         boolean temErro = false;
         
         //VAR DE CONVERSAO
-        long numCartao = 0L;
         int cvv = 0;
         
-        //VERIFICA NUM CARTAO
-        if (numCartaoStr != null && numCartaoStr.trim().length() > 0) {
-            try {
-                numCartao = Long.parseLong(numCartaoStr);
-                if (numCartaoStr.trim().length() > 16) {
-                    temErro = true;
-                    request.setAttribute("erro", " ");
-                } else {
-                    temErro = false;
-                }
-
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                request.setAttribute("erro", " ");
-            }
-
+        //VERIFICA TITULAR
+        if (numCard != null && numCard.trim().length() > 0) {
+            temErro = false;
         } else {
             temErro = true;
+            numCard=null;
             request.setAttribute("erro", " ");
         }
-
+        
         //VERIFICA VALIDADE
         if (validade != null && validade.trim().length() > 0) {
             try {
@@ -135,6 +121,7 @@ public class ControlaCartao extends HttpServlet {
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = true;
                 //Declaração de Erro
+                cvvStr=null;
                 request.setAttribute("erro", " ");
             }
         } else {
@@ -144,21 +131,14 @@ public class ControlaCartao extends HttpServlet {
 
         //VERIFICA TITULAR
         if (titular != null && titular.trim().length() > 0) {
-            try {
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                request.setAttribute("erroTitular", "Titular é Obrigatorio");
-            }
-
+            temErro = false;
         } else {
             temErro = true;
+            titular=null;
             request.setAttribute("erro", " ");
         }
-
-        //INSTANCIAMENTO DE CLASSES
-        Cartao cartao = new Cartao(numCartao, validade, cvv, titular);
+        
+        Cartao cartao = new Cartao(numCard, validade, cvv, titular);
         ClienteDAO cliCartao = new ClienteDAO();
         EstabelecimentoDAO estaCartao = new EstabelecimentoDAO();
 
