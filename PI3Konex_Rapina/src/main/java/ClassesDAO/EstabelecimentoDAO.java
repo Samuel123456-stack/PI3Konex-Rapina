@@ -239,9 +239,9 @@ public class EstabelecimentoDAO {
                         + ",cvv,titular) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
 
             //passa os parametros do cartao
-            stmt.setLong(1, dadoCartao.getNum_cartao());
+            stmt.setString(1, dadoCartao.getNum_cartao());
             stmt.setString(2, dadoCartao.getValidade());
-            stmt.setLong(3, dadoCartao.getCvv());
+            stmt.setInt(3, dadoCartao.getCvv());
             stmt.setString(4, dadoCartao.getTitular());
 
             //Executa a Query
@@ -291,9 +291,9 @@ public class EstabelecimentoDAO {
                         + "set num_cartao= ?, validade= ?, cvv= ?, titular= ? where id_cartao= ?");) {
             
             //Executa a Query
-            stmt.setLong(1, dado.getNum_cartao());
+            stmt.setString(1, dado.getNum_cartao());
             stmt.setString(2, dado.getValidade());
-            stmt.setLong(3, dado.getCvv());
+            stmt.setInt(3, dado.getCvv());
             stmt.setString(4, dado.getTitular());
             stmt.setInt(5, dado.getId_card());
             
