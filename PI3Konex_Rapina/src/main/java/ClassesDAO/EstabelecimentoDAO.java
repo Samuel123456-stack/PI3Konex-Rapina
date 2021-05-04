@@ -71,7 +71,7 @@ public class EstabelecimentoDAO {
                 stmt.setInt(5, dado.getCapacidade());
                 stmt.setString(6, dado.getLogadouro_estabelecimento());
                 stmt.setString(7, dado.getCep_estabelecimento());
-                stmt.setInt(8, dado.getNumero());
+                stmt.setString(8, dado.getNumero());
                 stmt.setString(9, dado.getCelular());
                 stmt.setString(10, dado.getHorario_funcionamento());
                 stmt.setString(11, dado.getDisponibilidade());
@@ -117,7 +117,7 @@ public class EstabelecimentoDAO {
             stmt.setInt(4, dado.getCapacidade());
             stmt.setString(5, dado.getLogadouro_estabelecimento());
             stmt.setString(6, dado.getCep_estabelecimento());
-            stmt.setInt(7, dado.getNumero());
+            stmt.setString(7, dado.getNumero());
             stmt.setString(8, dado.getCelular());
             stmt.setString(9, dado.getHorario_funcionamento());
             stmt.setFloat(10, dado.getTaxa_cancelamento());
@@ -169,7 +169,7 @@ public class EstabelecimentoDAO {
                 esta.setCnpj(rs.getString("cnpj"));
                 esta.setCep_estabelecimento(rs.getString("cep"));
                 esta.setLogadouro_estabelecimento(rs.getString("endereco"));
-                esta.setNumero(rs.getInt("numero"));
+                esta.setNumero(rs.getString("numero"));
                 esta.setAcessi_auditiva(rs.getString("def_aud"));
                 esta.setAcessi_fisico(rs.getString("def_fis"));
                 esta.setHorario_funcionamento(rs.getString("horario_de_fun"));
@@ -207,7 +207,7 @@ public class EstabelecimentoDAO {
                 esta.setCnpj(rs.getString("cnpj"));
                 esta.setCep_estabelecimento(rs.getString("cep"));
                 esta.setLogadouro_estabelecimento(rs.getString("endereco"));
-                esta.setNumero(rs.getInt("numero"));
+                esta.setNumero(rs.getString("numero"));
                 esta.setAcessi_auditiva(rs.getString("def_aud"));
                 esta.setAcessi_fisico(rs.getString("def_fis"));
                 esta.setHorario_funcionamento(rs.getString("horario_de_fun"));

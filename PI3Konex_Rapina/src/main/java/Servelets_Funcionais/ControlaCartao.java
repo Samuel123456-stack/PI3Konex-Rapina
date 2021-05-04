@@ -90,14 +90,12 @@ public class ControlaCartao extends HttpServlet {
         //VAR DE CONVERSAO
         int cvv = 0;
         
-        //VERIFICA NUM CARTAO
-        if( numCard != null || numCard.trim().length() > 0){
-            temErro= false;
-            
-        }else if(numCard == null && numCard.trim().length() == 0){
+        //VERIFICA TITULAR
+        if (numCard != null && numCard.trim().length() > 0) {
+            temErro = false;
+        } else {
             temErro = true;
-            //induzir o erro
-            //Declaração de Erro
+            numCard=null;
             request.setAttribute("erro", " ");
         }
         

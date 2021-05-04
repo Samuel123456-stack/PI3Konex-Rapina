@@ -40,16 +40,32 @@ public class TelaDeletaConta extends HttpServlet {
         //para deletar a conta será necessário ter o ID do User da Sessão
         HttpSession session = request.getSession();
         
+        int idEsta = 0;
         int idCliente = 0;
+        int tipoUsuario = 0;
         
-        if (session.getAttribute("cli") != null) {
-            Cliente cliente = (Cliente) session.getAttribute("cli");
+        //VERIFICA QUAL USER ESTÁ NA SESSAO
+        if (sessao.getAttribute("cli") != null && sessao.getAttribute("esta") == null) {
+            cliente = (Cliente) sessao.getAttribute("cli");
             
+            //pega o id do Cliente
             idCliente = cliente.getId_usuario();
+            tipoUsuario = cliente.getTipo_user();
+            
+            //Request
             request.setAttribute("cli", cliente);
             
+        } else if (sessao.getAttribute("cli") == null && sessao.getAttribute("esta") != null) {
+            esta = (Estabelecimento) sessao.getAttribute("esta");
+            
+            //pega o Id do Estabelecimento e o tipo do usuário
+            idEsta = esta.getId_estabelecimento();
+            tipoUsuario = esta.getTipo_user();
+            
+            //Request do objeto
+            request.setAttribute("esta", esta);
         } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaAlteraCard.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaInicial.jsp");
             dispatcher.forward(request, response);
         }
         

@@ -26,13 +26,13 @@ public class NotificaDAO {
         
         try (
             Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO  notificacao (mensagem, data_noti, id_usuario) values (?,?,?)");) {
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO  notificacao (mensagem, data_noti, id_usuario, id_esta) values (?,?,?,?)");) {
             
             //passa o parametro recebido para o STMT usando o dado.get(atributo)
             stmt.setString(1, dados.getMensagem());
             stmt.setString(2, dados.getData());
             stmt.setInt(3, dados.getId_user());
-            
+            stmt.setInt(4, dados.getId_estabelecimento());
             stmt.executeUpdate();
             deuCerto=1;
         }

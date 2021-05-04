@@ -69,7 +69,7 @@
                             </div>
 
                             <div class="val ${not empty erro ? 'erroInput' : ''}">
-                                <input type="text" placeholder="Validade" name="val" value="${cartao.validade}">
+                                <input type="text" placeholder="Validade" name="val" value="${cartao.validade}" maxlength="7" minlength="7">
                             </div>
                             <div class="svgval">
                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
