@@ -22,7 +22,7 @@ public class Estabelecimento {
     public String acessi_fisico;
     public String acessi_nenhuma;
     public float taxa_cancelamento;
-    private int celular;
+    private String celular;
     private String concorda;
     public String concorda_newstalleter;
     public int tipo_user;
@@ -38,9 +38,9 @@ public class Estabelecimento {
             String cep_estabelecimento, String logadouro_estabelecimento,
             int numero, String acessi_auditiva, String acessi_fisico,
             String horario_funcionamento, int capacidade,
-            float taxa_cancelamento, String email, String senha,
+            float taxa_cancelamento, String celular, String email, String senha,
             String concorda, String concorda_newstalleter,
-            String disponibilidade, int id_planos, int tipo_user) {
+            String disponibilidade,int tipo_user) {
         this.nome_estabelecimento = nome_estabelecimento;
         this.cnpj = cnpj;
         this.cep_estabelecimento = cep_estabelecimento;
@@ -54,9 +54,9 @@ public class Estabelecimento {
         this.email = email;
         this.senha = senha;
         this.concorda = concorda;
+        this.celular = celular;
         this.concorda_newstalleter = concorda_newstalleter;
         this.disponibilidade = disponibilidade;
-        this.id_planos = id_planos;
         this.tipo_user = tipo_user;
         if (concorda_newstalleter == null) {
             this.concorda_newstalleter = "Não";
@@ -160,11 +160,11 @@ public class Estabelecimento {
         this.taxa_cancelamento = taxa_cancelamento;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 

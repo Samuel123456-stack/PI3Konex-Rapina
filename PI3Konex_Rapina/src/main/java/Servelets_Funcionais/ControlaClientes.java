@@ -58,6 +58,7 @@ public class ControlaClientes extends HttpServlet {
         String cpf = request.getParameter("cpf");
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
+        String telefone = request.getParameter("celular");
         String senhaRe = request.getParameter("senhaRepete");
         String dataNascStr = request.getParameter("dataNasc");
         String concordar = request.getParameter("concordar");
@@ -160,7 +161,7 @@ public class ControlaClientes extends HttpServlet {
         }
         //Instancia as Classes
         Cliente cliente = new Cliente(nome, cpf, email, genero,
-                dataNascStr, senha, concordar, concordarNews, tipoCli);
+                dataNascStr, senha,concordar, concordarNews, tipoCli);
         ClienteDAO casCli = new ClienteDAO();
         request.setAttribute("cliente", cliente);
 

@@ -3,7 +3,7 @@
     Created on : 3 de mai de 2021, 19:07:34
     Author     : Gabriel
 --%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +15,10 @@
     <div class="todo">
 
     <div class="bloco">
-        
+        <!--FORMULARIO-->
+        <form action="${pageContext.request.contextPath}/AtualizaDadosEsta" method="get">
         <div class="link">
-            <a href="${pageContext.request.contextPath}/MenuEsta">
+            <a href="${pageContext.request.contextPath}/TelaMenu">
                 <svg width="16" height="32" viewBox="0 0 16 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.3416 31.9998C13.0001 32.001 12.6628 31.9256 12.3543 31.7793C12.0458 31.633 11.774 31.4194 11.5589 31.1542L0.519924 17.4412C0.183768 17.0323 0 16.5193 0 15.9899C0 15.4605 0.183768 14.9476 0.519924 14.5386L11.9474 0.825642C12.3354 0.358905 12.8928 0.0653909 13.4972 0.00967109C14.1015 -0.0460487 14.7032 0.140589 15.17 0.528527C15.6367 0.916464 15.9302 1.47392 15.9859 2.07827C16.0417 2.68262 15.855 3.28434 15.4671 3.75108L5.25091 16.0014L15.1243 28.2516C15.4037 28.5871 15.5813 28.9956 15.6358 29.4288C15.6904 29.862 15.6198 30.3018 15.4322 30.6961C15.2447 31.0904 14.9481 31.4228 14.5776 31.6538C14.2071 31.8849 13.7782 32.0049 13.3416 31.9998Z" fill="#4361EE"/>
                 </svg>                    
@@ -27,7 +28,7 @@
 
         <div class="status">
             <div class="bola"></div>
-            <p>Cadastro está ativo</p>
+            <p>Cadastro estÃ¡ ativo</p>
         </div>
         
         <div class="margin"></div>
@@ -39,7 +40,7 @@
                 </svg>
             </div> 
             
-            <input class="text373" type="text" id="nome" name="username" placeholder="Digite seu nome">
+            <input class="text373" type="text" id="nome" name="nome" placeholder="Digite seu nome" value="${esta.nome_estabelecimento}">
         </div>
 
         <div class="margin"></div>
@@ -58,7 +59,7 @@
                     </svg>
                     
             </div>                         
-            <input class="text270" type="text" id="cep" name="cep" placeholder="Digite o CEP">
+            <input class="text270" type="text" id="cep" name="cep" placeholder="Digite o CEP" value="${esta.cep_estabelecimento}">
         </div>
 
         <div class="sombra697">
@@ -67,7 +68,7 @@
                     <path opacity="0.4" d="M20 2C20 0.9 19.1 0 18 0H2C0.9 0 0 0.9 0 2V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2ZM18 2L10 7L2 2H18ZM18 14H2V4L10 9L18 4V14Z" fill="black"/>
                 </svg>                               
             </div>                         
-            <input class="text697" type="text" id="endereco" name="endereco" placeholder="Qual é o endereço do estabelecimento? ">
+            <input class="text697" type="text" id="endereco" name="endereco" placeholder="Qual Ã© o endereÃ§o do estabelecimento?" value="${esta.logadouro_estabelecimento}">
         </div>
         
         <div class="margin"></div>
@@ -87,31 +88,31 @@
                     </svg>
                     
             </div>                         
-            <input class="text270" type="text" id="num" name="num" placeholder="Número">
+            <input class="text270" type="text" id="num" name="numero" placeholder="NÃºmero" value="${esta.numero}">
         </div>
         
         <div class="acessi">
-            <h1>Seu estabelecimento tem normas de acessibilidade para esses públicos?</h1>
+            <h1>Seu estabelecimento tem normas de acessibilidade para esses pÃºblicos?</h1>
             <div class="radio">
                 <label for="Cadeirantes">
-                    <input type="radio" id="Cadeirantes" name="acessi" value="Cadeirantes">
+                    <input type="checkbox" id="Cadeirantes" name="defFis" value="Cadeirantes" value="${esta.acessi_fisico}">
                     <p>Cadeirantes</p>
                 </label>
                 <div class="marginRadio"></div>
                 <label for="audi">
-                    <input type="radio" id="audi" name="acessi" value="auditivos">
+                    <input type="checkbox" id="audi" name="defAud" value="auditivos" value="${esta.acessi_auditiva}">
                     <p>Deficientes auditivos</p>
                 </label>
                 <div class="marginRadio"></div>
-                <label for="Nãotenho">
-                    <input type="radio" id="Nãotenho" name="acessi" value="Nãotenho">
-                    <p>Não tenho</p>
+                <label for="NÃ£otenho">
+                    <input type="checkbox" id="NÃ£otenho" name="acessi" value="NÃ£otenho" value="${esta.acessi_nenhuma}">
+                    <p>NÃ£o tenho</p>
                 </label>
             </div>
         </div>
 
         <div class="sombra373">                       
-            <input class="horario" type="text" id="horario" name="horariofun" placeholder="Horário de funcionamento">
+            <input class="horario" type="text" id="horario" name="horariofun" placeholder="HorÃ¡rio de funcionamento" value="${esta.horario_funcionamento}">
             <div class="svghora">
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g opacity="0.4">
@@ -130,7 +131,7 @@
                 <path opacity="0.4" d="M9 0C6.243 0 4 2.243 4 5C4 7.757 6.243 10 9 10C11.757 10 14 7.757 14 5C14 2.243 11.757 0 9 0ZM9 8C7.346 8 6 6.654 6 5C6 3.346 7.346 2 9 2C10.654 2 12 3.346 12 5C12 6.654 10.654 8 9 8ZM18 19V18C18 14.141 14.859 11 11 11H7C3.14 11 0 14.141 0 18V19H2V18C2 15.243 4.243 13 7 13H11C13.757 13 16 15.243 16 18V19H18Z" fill="black"/>
             </svg>
         </div>                         
-        <input class="text373" type="text" id="capmes" name="capmes" placeholder="Qual é a capacidade de mesas?">
+        <input class="text373" type="text" id="capmes" name="capacidade" placeholder="Qual Ã© a capacidade de mesas?" value="${esta.capacidade}">
         </div>
 
         <div class="margin"></div>
@@ -150,7 +151,7 @@
                     </svg>
                     
             </div>                         
-            <input class="text270" type="text" id="valcan" name="valcan" placeholder="Valor do Cancelamento">
+            <input class="text270" type="text" id="valcan" name="valCancela" placeholder="Valor do Cancelamento" value="${esta.taxa_cancelamento}">
         </div>
 
         <div class="margin"></div>
@@ -170,7 +171,7 @@
                 </svg>
                 
             </div>                         
-            <input class="text270" type="text" id="cel" name="cel" placeholder="Informe o celular">
+            <input class="text270" type="text" id="cel" name="celular" placeholder="Informe o celular" value="${esta.celular}">
         </div>
         <div class="sombra373">
             <div class="svg">
@@ -179,7 +180,7 @@
                 </svg>
                     
             </div>                         
-            <input class="text373" type="text" id="email" name="email" placeholder="Email para login">
+            <input class="text373" type="text" id="email" name="email" placeholder="Email para login" value="${esta.email}">
         </div>
         
         <div class="margin"></div>
@@ -191,7 +192,7 @@
                 </svg>                
             </div>   
                               
-            <input class="text270" type="password" id="senha" name="senha" placeholder="Digite a senha antiga">
+            <input class="text270" type="password" id="senha" name="senha" placeholder="Digite a senha antiga" >
         </div>
         <div class="margin"></div>
         
@@ -201,13 +202,12 @@
                     <path opacity="0.4" d="M15 7H17C17.2652 7 17.5196 7.10536 17.7071 7.29289C17.8946 7.48043 18 7.73478 18 8V20C18 20.2652 17.8946 20.5196 17.7071 20.7071C17.5196 20.8946 17.2652 21 17 21H1C0.734784 21 0.48043 20.8946 0.292893 20.7071C0.105357 20.5196 0 20.2652 0 20V8C0 7.73478 0.105357 7.48043 0.292893 7.29289C0.48043 7.10536 0.734784 7 1 7H3V6C3 4.4087 3.63214 2.88258 4.75736 1.75736C5.88258 0.632141 7.4087 0 9 0C10.5913 0 12.1174 0.632141 13.2426 1.75736C14.3679 2.88258 15 4.4087 15 6V7ZM2 9V19H16V9H2ZM8 13H10V15H8V13ZM4 13H6V15H4V13ZM12 13H14V15H12V13ZM13 7V6C13 4.93913 12.5786 3.92172 11.8284 3.17157C11.0783 2.42143 10.0609 2 9 2C7.93913 2 6.92172 2.42143 6.17157 3.17157C5.42143 3.92172 5 4.93913 5 6V7H13Z" fill="black"/>
                 </svg>                   
             </div>                         
-            <input class="text270" type="password" id="senhanew" name="senhanew" placeholder="Digite a nova senha">
+            <input class="text270" type="password" id="senhanew" name="newsenha" placeholder="Digite a nova senha">
         </div>
         <div class="altcada">
-            <button >
-                Confirmar alterações
-            </button>  
+            <button  type="submit">Confirmar alteraÃ§Ãµes</button>  
         </div>
+        </form>
     </div>
 </div>
     

@@ -35,7 +35,7 @@
                     </p>
                 </div>
                 <footer class="option">
-                    <form action="${pageContext.request.contextPath}/Menu" method="get">
+                    <form action="${pageContext.request.contextPath}/MenuEstabelecimento" method="get">
                         <button type="submit" name="btn" value="att card">Alterar cartão</button>
                         <button type="submit" name="btn" value="att dados">Alterar dados</button>
                         <button type="submit" name="btn" value="sub exclusao">Solicitar exclusão da conta</button>

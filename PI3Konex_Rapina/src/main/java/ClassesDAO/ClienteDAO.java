@@ -101,7 +101,7 @@ public class ClienteDAO {
         ConexaoJDBC conexao = new ConexaoJDBC();
         //Var verificador
         int atualiza=0;
-       String sql = "update usuario set nome=?, genero=?, cpf=?, email=?, senha=? , nascimento=?, concordar=? where id_usuario= ?";
+       String sql = "update usuario set nome=?, genero=?, cpf=?, email=?, senha=?,nascimento=?, concordar=? where id_usuario= ?";
         //declarações do preparedStatement
         try (
                 Connection conn = conexao.obterConexaoBD();

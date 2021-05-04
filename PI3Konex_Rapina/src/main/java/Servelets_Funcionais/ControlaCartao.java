@@ -54,7 +54,7 @@ public class ControlaCartao extends HttpServlet {
         int idEsta = 0;
         
         //VERIFICA QUAL USER ESTÁ NA SESSAO
-        if (sessao.getAttribute("cli") != null && sessao.getAttribute("estabelecimento") == null) {
+        if (sessao.getAttribute("cli") != null && sessao.getAttribute("esta") == null) {
             cliente = (Cliente) sessao.getAttribute("cli");
             
             //pega o id do Cliente
@@ -64,15 +64,15 @@ public class ControlaCartao extends HttpServlet {
             //Request
             request.setAttribute("cli", cliente);
             
-        } else if (sessao.getAttribute("cli") == null && sessao.getAttribute("estabelecimento") != null) {
-            esta = (Estabelecimento) sessao.getAttribute("estabelecimento");
+        } else if (sessao.getAttribute("cli") == null && sessao.getAttribute("esta") != null) {
+            esta = (Estabelecimento) sessao.getAttribute("esta");
             
             //pega o Id do Estabelecimento e o tipo do usuário
             idEsta = esta.getId_estabelecimento();
             tipoUsuario = esta.getTipo_user();
             
             //Request do objeto
-            request.setAttribute("estabelecimento", esta);
+            request.setAttribute("esta", esta);
         } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCartaoCli.jsp");
             dispatcher.forward(request, response);
@@ -207,7 +207,11 @@ public class ControlaCartao extends HttpServlet {
             dispatcher.forward(request, response);
         } else {
             sessao.setAttribute("cartao", cartao);
+            if(tipoUsuario==2){                          
             response.sendRedirect(request.getContextPath() + "/MenuCliente");
+            }else if(tipoUsuario==3){
+             response.sendRedirect(request.getContextPath() + "/MenuEsta");   
+            } 
         }
     }
 }

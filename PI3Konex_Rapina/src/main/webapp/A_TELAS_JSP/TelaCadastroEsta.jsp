@@ -46,7 +46,7 @@
                     
                     
                     <!--INPUT NOME-->
-                    <input class="text373" type="text" id="nome" name="nome" placeholder="Digite seu nome" value="${estabelecimento.nome_estabelecimento}">
+                    <input class="text373" type="text" id="nome" name="nome" placeholder="Digite seu nome" value="${esta.nome_estabelecimento}">
 
                     <div class="margin"></div>
 
@@ -65,7 +65,7 @@
                     </div> 
                     
                     <!--INPUT CNPJ-->
-                    <input class="text270" type="text" id="cnpj" name="cnpj" placeholder="Informe o CNPJ" value="${estabelecimento.cnpj}">
+                    <input class="text270" type="text" id="cnpj" name="cnpj" placeholder="Informe o CNPJ" value="${esta.cnpj}">
 
                     <div class="margin"></div>
 
@@ -79,7 +79,7 @@
                         </svg>                
                     </div>    
                     <!--INPUT CEP-->
-                    <input class="text270" type="text" id="cep" name="cep" placeholder="Digite o CEP" value="${estabelecimento.cep_estabelecimento}">
+                    <input class="text270" type="text" id="cep" name="cep" placeholder="Digite o CEP" value="${esta.cep_estabelecimento}">
 
                     <div class="svg">
                         <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +88,7 @@
                     </div>    
                     
                     <!--INPUT ENDEREÇO-->
-                    <input class="text697" type="text" id="endereco" name="endereco" placeholder="Qual é o endereço do estabelecimento?" value="${estabelecimento.logadouro_estabelecimento}">
+                    <input class="text697" type="text" id="endereco" name="endereco" placeholder="Qual é o endereço do estabelecimento?" value="${esta.logadouro_estabelecimento}">
 
                     <div class="margin"></div>
 
@@ -98,7 +98,7 @@
                         </svg>                
                     </div>     
                     <!--INPUT NUMERO-->                    
-                    <input class="text270" type="text" id="num" name="numero" placeholder="Número" alue="${estabelecimento.numero}">
+                    <input class="text270" type="text" id="num" name="numero" placeholder="Número" alue="${esta.numero}">
 
 
                     <div class="acessi">
@@ -106,26 +106,26 @@
                         <div class="radio">
                             <label for="Cadeirantes">
                                 <!--INPUT CADEIRANTES-->
-                                <input type="radio" id="Cadeirantes" name="defFis" value="Sim" value="${estabelecimento.acessi_fisico}">
+                                <input type="radio" id="Cadeirantes" name="defFis" value="Sim" value="${esta.acessi_fisico}">
                                 <p>Cadeirantes</p>
                             </label>
                             <div class="marginRadio"></div>
                             <label for="audi">
                                 <!--INPUT AUDITIVO-->
-                                <input type="radio" id="audi" name="defAud" value="Sim" value="${estabelecimento.acessi_auditiva}">
+                                <input type="radio" id="audi" name="defAud" value="Sim" value="${esta.acessi_auditiva}">
                                 <p>Deficientes auditivos</p>
                             </label>
                             <div class="marginRadio"></div>
                             <label for="Nãotenho">
                                 <!--INPUT NENHUM-->
-                                <input type="radio" id="Nãotenho" name="Não" value="Nãotenho" value="${estabelecimento.acessi_nenhuma}">
+                                <input type="radio" id="Nãotenho" name="Não" value="Nãotenho" value="${esta.acessi_nenhuma}">
                                 <p>Não tenho</p>
                             </label>
                         </div>
                     </div>
 
                     <!--INPUT HORARIO-->
-                    <input class="horario" type="text" id="horario" name="horario_de_fun" placeholder="Horário de funcionamento" value="${estabelecimento.horario_funcionamento}">
+                    <input class="horario" type="text" id="horario" name="horario_de_fun" placeholder="Horário de funcionamento" value="${esta.horario_funcionamento}">
                     <div class="svghora">
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g opacity="0.4">
@@ -143,7 +143,7 @@
                         </svg>                
                     </div>   
                     <!--INPUT CAPACIDADE-->
-                    <input class="text373" type="text" id="capmes" name="capacidade" placeholder="Qual é a capacidade de mesas?" maxlength="2" value="${estabelecimento.capacidade}">
+                    <input class="text373" type="text" id="capmes" name="capacidade" placeholder="Qual é a capacidade de mesas?" maxlength="2" >
 
                     <div class="margin"></div>
 
@@ -153,7 +153,7 @@
                         </svg>                
                     </div>        
                     <!--INPUT VALOR TAXA-->
-                    <input class="text270" type="text" id="valcan" name="valCancela" placeholder="Valor do Cancelamento" value="${estabelecimento.taxa_cancelamento}">
+                    <input class="text270" type="text" id="valcan" name="valCancela" placeholder="Valor do Cancelamento">
 
                     <div class="margin"></div>
 
@@ -163,7 +163,7 @@
                         </svg>                
                     </div>               
                     <!--INPUT CELULAR-->
-                    <input class="text270" type="text" id="cel" name="cel" placeholder="Informe o celular" value="${estabelecimento.celular}">
+                    <input class="text270" type="text" id="cel" name="celular" placeholder="Informe o celular" >
 
                     <div class="svg">
                         <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -171,7 +171,7 @@
                         </svg>                
                     </div>      
                     <!--INPUT EMAIL-->
-                    <input class="text373" type="text" id="email" name="email" placeholder="Email para login" value="${estabelecimento.email}">
+                    <input class="text373" type="text" id="email" name="email" placeholder="Email para login" value="${esta.email}">
 
                     <div class="margin"></div>
 
@@ -195,11 +195,11 @@
 
                     <div class="terms">
                         <!--INPUT CONDIÇÃO TERMOS-->
-                        <input type="checkbox" id="condicoes" name="concordar" value="Sim" value="${estabelecimento.concorda}">
+                        <input type="checkbox" id="condicoes" name="concordar" value="Sim" value="${esta.concorda}">
                         <label for="condicoes"><p id="Pcond">Concordo com os termos e condições de uso</p></label>
                         
                         <!--INPUT NEWS-->
-                        <input type="checkbox" id="novidades" name="concordarNews" value="Sim" value="${estabelecimento.concorda_newstalleter}">
+                        <input type="checkbox" id="novidades" name="concordarNews" value="Sim" value="${esta.concorda_newstalleter}">
                         <label for="novidades"><p>Eu aceito receber novidades e ofertas Rapina</p></label>
 
                     </div>

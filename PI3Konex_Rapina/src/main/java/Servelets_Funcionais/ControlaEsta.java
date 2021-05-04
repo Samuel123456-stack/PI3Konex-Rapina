@@ -63,6 +63,7 @@ public class ControlaEsta extends HttpServlet {
         String senhaRe = request.getParameter("senhaRe");
         String endereco = request.getParameter("endereco");
         String numeroStr = request.getParameter("numero");
+        String cel = request.getParameter("celular");
         String horario = request.getParameter("horario_de_fun");
         String capacidadeStr = request.getParameter("capacidade");
         String taxaStr = request.getParameter("valCancela");
@@ -72,132 +73,98 @@ public class ControlaEsta extends HttpServlet {
         String defFis = request.getParameter("defFis");
         String disponibilidade = "Sim";
         int tipoUsuario = tipoEsta;
-        String idPlanosStr = "1";
+        int numeroEst =0; 
+        int capEst = 0;
+        float taxaCancela = 0f;
 
         //Tratamento de Erros
         boolean temErro = false;
         if (nomeEst != null && nomeEst.trim().length() > 0) {
-            try {
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                request.setAttribute("erroNomeEst", "Nome é Obrigatorio");
-            }
-
+            temErro = false;
+        } else {
+            temErro = true;
+            request.setAttribute("ErroNome", "");
         }
-
         if (cnpj != null && cnpj.trim().length() > 0) {
-            try {
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                request.setAttribute("erroCnpj", "CNPJ é Obrigatorio");
-            }
-
+            temErro = false;
+        } else {
+            temErro = true;
+            request.setAttribute("ErroCnpj", "");
         }
         if (cep != null && cep.trim().length() > 0) {
-            try {
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                request.setAttribute("erroCep", "CEP é Obrigatorio");
-            }
-
+            temErro = false;
+        } else {
+            temErro = true;
+            request.setAttribute("ErroCep", "");
         }
         if (email != null && email.trim().length() > 0) {
-            try {
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                request.setAttribute("erroEmail", "Email é Obrigatorio");
-            }
-
+            temErro = false;
+        } else {
+            temErro = true;
+            request.setAttribute("ErroEmail", "");
         }
         if (senha != null && senha.trim().length() > 0) {
             try {
                 if (!senha.equals(senhaRe)) {
                     temErro = true;
                     senha = null;
-                    request.setAttribute("ErroSenhaRe", "Senha Repetida não é igual");
+                    request.setAttribute("ErroSenhaRe", " ");
                 } else {
                     temErro = false;
                 }
             } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
+                temErro = false;
                 //Declaração de Erro
-                request.setAttribute("ErroSenhaObg", "Senha é Obrigatoria");
+                request.setAttribute("ErroSenhaRe", " ");
             }
-
+        } else {
+            temErro = true;
+            request.setAttribute("ErroSenhaRe", " ");
         }
         if (endereco != null && endereco.trim().length() > 0) {
-            try {
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                request.setAttribute("erroEndereco", "Endereço é Obrigatorio");
-            }
-
+            temErro = false;
+        } else {
+            temErro = true;
+            request.setAttribute("ErroEndereco", "");
         }
         if (numeroStr != null && numeroStr.trim().length() > 0) {
-            try {
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                request.setAttribute("erroNumero", "Numero é Obrigatorio");
-            }
-
+            temErro = false;
+            numeroEst = Integer.parseInt(numeroStr);
+        } else {
+            temErro = true;
+            request.setAttribute("ErroNumero", "");
         }
-        if (horario != null && horario.trim().length() > 0) {
-            try {
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                request.setAttribute("erroHorario", "Horario é Obrigatorio");
-            }
-
+        if (cel != null && cel.trim().length() > 0) {
+            temErro = false;
+        } else {
+            temErro = true;
+            request.setAttribute("ErroCelular", "");
         }
         if (capacidadeStr != null && capacidadeStr.trim().length() > 0) {
-            try {
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                request.setAttribute("erroCap", "Capacidade é Obrigatoria");
-            }
-
+            temErro = false;
+            capEst = Integer.parseInt(capacidadeStr);
+        } else {
+            temErro = true;
+            request.setAttribute("ErroCap", "");
         }
         if (taxaStr != null && taxaStr.trim().length() > 0) {
-            try {
-                if (taxaStr == "20.00") {
-                    temErro = true;
-                    request.setAttribute("ErroTaxaValor", "O valor maximo da taxa deve ser de até R$19.99");
-                } else {
-                    temErro = false;
-                }
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                request.setAttribute("erroTaxaCancela", "Taxa de Cancelamento não informada");
-            }
-
+            temErro = false;
+            taxaCancela = Float.parseFloat(taxaStr);
+        } else {
+            temErro = true;
+            request.setAttribute("ErroTaxa", "");
         }
         if (concordar != null && concordar.trim().length() > 0) {
             try {
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
                 temErro = true;
+            } catch (StringIndexOutOfBoundsException ex) {
+                temErro = false;
                 //Declaração de Erro
-                request.setAttribute("erroConcorda", "Concordar é Obrigatorio");
+                request.setAttribute("erroConcorda", " ");
             }
 
         }
+      
         //Condição caso não tenha Assistencia auditiva e fisica
         if (defAud == null && defFis == null) {
             defAud = "Não";
@@ -207,11 +174,6 @@ public class ControlaEsta extends HttpServlet {
             defFis = "Sim";
         }
 
-        //Conversao
-        int numeroEst = Integer.parseInt(numeroStr);
-        int capEst = Integer.parseInt(capacidadeStr);
-        float taxaCancela = Float.parseFloat(taxaStr);
-        int idPlanos = Integer.parseInt(idPlanosStr);
         //Condição da Taxa
         if (taxaCancela > 20.00) {//Erro
             temErro = true;
@@ -222,8 +184,8 @@ public class ControlaEsta extends HttpServlet {
 
         //Instancia as Classes
         Estabelecimento esta = new Estabelecimento(nomeEst, cnpj, cep, endereco,
-                 numeroEst, defAud, defFis, horario, capEst, taxaCancela, email, senha,
-                 concordar, concordarNews, disponibilidade, idPlanos, tipoUsuario);
+                 numeroEst, defAud, defFis, horario, capEst, taxaCancela,cel, email, senha,
+                 concordar, concordarNews, disponibilidade, tipoUsuario);
         EstabelecimentoDAO casEsta = new EstabelecimentoDAO();
         request.setAttribute("estabelecimento", esta);
 
@@ -246,7 +208,7 @@ public class ControlaEsta extends HttpServlet {
             dispatcher.forward(request, response);
         } else {
             HttpSession sessao = request.getSession();
-            sessao.setAttribute("estabelecimento", esta);
+            sessao.setAttribute("esta", esta);
             response.sendRedirect(request.getContextPath() + "/TelaCartaoCli");
         }
     }

@@ -38,7 +38,7 @@
                     </svg>
                 </div>     
                 <!--NOME-->
-                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" value="${cliente.nome}" class="topotext ${not empty erroNome ? 'erroInput' : '' }">
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" value="${cli.nome}" class="topotext ${not empty erroNome ? 'erroInput' : '' }">
 
                 <div class="margin"></div>
 
@@ -56,7 +56,7 @@
                     </svg>                
                 </div>  
                 <!--CPF-->
-                <input type="text" id="cpf" name="cpf" placeholder="Informe seu CPF" value="${cliente.cpf}" class="topotext ${not empty erroCpf ? 'erroInput' : '' }">
+                <input type="text" id="cpf" name="cpf" placeholder="Informe seu CPF" value="${cli.cpf}" class="topotext ${not empty erroCpf ? 'erroInput' : '' }">
 
                 <div class="svg">
                     <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +64,7 @@
                     </svg>                               
                 </div>
                 <!--EMAIL-->
-                <input type="text" id="email" name="email" placeholder="Email para login" value="${cliente.email}" class="text ${not empty erroEmail ? 'erroInput' : '' }">
+                <input type="text" id="email" name="email" placeholder="Email para login" value="${cli.email}" class="text ${not empty erroEmail ? 'erroInput' : '' }">
 
                 <div class="genero">
                     <p id="pergunta">Qual é o seu gênero?</p>
@@ -84,7 +84,7 @@
                 </div>
 
                 <!--DATA NASCIMENTO-->
-                <input type="text" id="data" name="dataNasc" placeholder="Qual é a sua data de nascimento?" value="${cliente.data_nascimento}" class="data ${not empty erroDataNasc ? 'erroInput' : '' }">
+                <input type="text" id="data" name="dataNasc" placeholder="Qual é a sua data de nascimento?" value="${cli.data_nascimento}" class="data ${not empty erroDataNasc ? 'erroInput' : '' }">
                 
                 <div class="svgdata">
                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
