@@ -11,6 +11,7 @@ package ClassesJavaBean;
  */
 public class Notification {
     public int id_notification;
+    public String nome_noti;
     public String mensagem;
     public int num_reserva;
     public String data;
@@ -31,6 +32,14 @@ public class Notification {
 
     public void setId_notification(int id_notification) {
         this.id_notification = id_notification;
+    }
+
+    public String getNome_noti() {
+        return nome_noti;
+    }
+
+    public void setNome_noti(String nome_noti) {
+        this.nome_noti = nome_noti;
     }
 
     public String getMensagem() {
