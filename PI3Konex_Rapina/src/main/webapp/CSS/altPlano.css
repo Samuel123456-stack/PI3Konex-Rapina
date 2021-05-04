@@ -13,17 +13,21 @@ body{
     margin: 0;
 }
 .todo{
-    width: 1074px;
-    height: 597px;
+    margin-top: 90px;
+    width: 1070px;
+    height: 380px;
     margin-left: auto;
     margin-right: auto;
     padding: 52px;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 15px 7px rgba(0, 0, 0, 0.08);
+    border-radius: 25px;
 }
 .link{
-    width: 1200px;
+    width: 1070px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 140px;
+    margin-bottom: 18px;
     border: 1px solid #fff;
     clear:both;
 }
@@ -35,16 +39,21 @@ body{
     color: #000;
 }
 .link svg{
+    margin-top: 10px;
+    margin-right: 5px;
     float: left;
 }
 .link p{
-    margin-top: 0;
-    margin-left: 5px;
-    float: left;
+    margin: 0;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
-    line-height: 32px;
+    font-size: 30px;
+    line-height: 49px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.015em;
+
+    color: #2D2D2D;
 }
 .circulo{
     width: 120px;
@@ -56,6 +65,7 @@ body{
     float: left;
 }
 .nomepla{
+    width: 297px;
     margin-top: 41px;
     margin-bottom: 1px;
     float: left;
@@ -81,10 +91,21 @@ body{
     color: #006CE5;
 }
 .infos{
-    margin-left: 345px;
+    margin-left: 45px;
     margin-top: 41px;
     margin-bottom: 1px;
     float: left;
+}
+.infos h1{
+    margin: 1px;
+
+   font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.015em;
 }
 .infos p{
     margin: 1px;
@@ -95,9 +116,13 @@ body{
     line-height: 32px;
     align-items: center;
     letter-spacing: -0.015em;
+    float: left;
 }
 #status{ 
     color: #49D983;
+}
+#nextData{
+    margin-left: 50px;
 }
 .beneficios{
     height: 60px;
@@ -114,7 +139,7 @@ body{
     letter-spacing: -0.015em;
 }
 .beneficios p{
-    background: #C4C4C4;
+    background: #4361EE;
     border-radius: 100px;
     margin: 3px;
     float: left;
@@ -127,6 +152,7 @@ body{
     line-height: 25px;
     align-items: center;
     text-align: center;
+    color: #fff;
 }
 #alt{
     width: 162px;
