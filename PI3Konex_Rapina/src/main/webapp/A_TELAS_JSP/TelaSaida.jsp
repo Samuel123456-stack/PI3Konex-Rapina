@@ -10,7 +10,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/ateProx.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logotipo.png">
+    <title>Até em breve</title>
 </head>
 <body>
     <div class="todo">
@@ -18,7 +19,7 @@
         <h1>Até a próxima Rapinante</h1>
         <br>
         <!--ENVIA PARA INDEX-->
-        <a href="" id="btnSair"><button>Sair</button></a>
+        <a href="${pageContext.request.contextPath}/TelaInicial" id="btnSair"><button>Home</button></a>
     </div>
     
 </body>

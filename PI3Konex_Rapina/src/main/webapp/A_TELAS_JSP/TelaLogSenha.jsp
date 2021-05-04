@@ -23,7 +23,7 @@
 
         <style>
             .erroInput{
-                border: 2px solid red;
+                border: 1px solid red;
             }
         </style>
     </head>
@@ -43,8 +43,9 @@
                     <h3>Confirmar login com a senha</h3>
 
                     <form action="${pageContext.request.contextPath}/LogSenha" method="get">
+                        
                         <div class="input-field ${not empty erroSenha ? 'erroInput' : ''}">
-                            <input type="password" name="senha" placeholder="Digite a senha" maxlength="28" />
+                            <input type="password" name="senha" placeholder="Digite a senha" maxlength="28" minlength="1" />
                             <span>
                                 <img src="${pageContext.request.contextPath}/images/icons/lock-pass.png" alt="password-icon" />
                             </span>

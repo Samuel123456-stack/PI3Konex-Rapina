@@ -11,7 +11,8 @@
     <head>
         <meta charset="UTF-8">
         <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/cartaoRegistro.css"/>
-        <title>Document</title>
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logotipo.png">
+        <title>Registrar Cartão</title>
         
         <style>
             .erroInput{

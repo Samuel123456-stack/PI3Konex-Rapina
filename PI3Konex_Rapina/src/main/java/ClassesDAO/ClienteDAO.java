@@ -96,12 +96,12 @@ public class ClienteDAO {
 
     }
 
-    public void atualiza(Cliente dado) throws SQLException {
+    public int atualiza(Cliente dado) throws SQLException {
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
-       String sql = "update usuario set nome=?,genero=?,cpf=?,email=?,senha=?"
-                        + ",nascimento=?,concordar=?,"
-                        + "newslatter=? where id_usuario= ?";
+        //Var verificador
+        int atualiza=0;
+       String sql = "update usuario set nome=?, genero=?, cpf=?, email=?, senha=?,nascimento=?, concordar=? where id_usuario= ?";
         //declarações do preparedStatement
         try (
                 Connection conn = conexao.obterConexaoBD();
@@ -114,13 +114,14 @@ public class ClienteDAO {
             stmt.setString(5, dado.getSenha());
             stmt.setString(6, dado.getData_nascimento());
             stmt.setString(7, dado.getConcorda());
-            stmt.setString(8, dado.getConcorda_newstalleter());
-            stmt.setInt(9, dado.getId_usuario());
+            stmt.setInt(8, dado.getId_usuario());
             stmt.executeUpdate();
-
+            
+            atualiza=1;
         } catch (SQLException e) {
             System.out.println(e);
         }
+        return atualiza;
     }
 
     public void remove(int valor) throws SQLException {
@@ -284,5 +285,35 @@ public class ClienteDAO {
 
         }
         return a;
+    }
+    
+    public int verificaSenha(Cliente dado){
+        int verifica = 0;
+       
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        
+        //verifica a senha
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select * from usuario where id_usuario = ?");
+            
+            stmt.setInt(1, dado.getId_usuario());
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                String senha = rs.getString("senha");
+                
+                if(senha.equals(dado.getSenha())){
+                    verifica = 1;
+                   
+                }else{
+                    verifica = -1;
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return verifica;        
     }
 }

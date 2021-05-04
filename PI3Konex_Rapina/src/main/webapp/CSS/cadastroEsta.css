@@ -283,4 +283,5 @@ body{
     align-items: center;
     text-align: center;
     letter-spacing: -0.015em;
+    cursor: pointer;
 }

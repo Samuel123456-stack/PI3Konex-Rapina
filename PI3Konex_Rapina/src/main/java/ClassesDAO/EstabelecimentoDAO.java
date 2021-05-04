@@ -62,12 +62,7 @@ public class EstabelecimentoDAO {
             //declarações do prepareStatement
             try (
                     Connection conn = conexao.obterConexaoBD();
-                    PreparedStatement stmt = conn.prepareStatement("insert into"
-                            + " estabelecimento(nome_esta,cnpj,email,senha,"
-                            + "capacidade,endereco,cep,numero,horario_de_fun,"
-                            + "disponibilidade,taxa_cancelamento,concordar,"
-                            + "newslatter,def_aud,def_fis,tipo_usuario,id_planos)"
-                            + " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);) {
+                    PreparedStatement stmt = conn.prepareStatement("insert into estabelecimento(nome_esta,cnpj,email,senha,capacidade,endereco,cep,numero,celular,horario_de_fun,disponibilidade,taxa_cancelamento,concordar,newslatter,def_aud,def_fis,tipo_usuario) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);) {
                 //passa os parametros
                 stmt.setString(1, dado.getNome_estabelecimento());
                 stmt.setString(2, dado.getCnpj());
@@ -77,15 +72,15 @@ public class EstabelecimentoDAO {
                 stmt.setString(6, dado.getLogadouro_estabelecimento());
                 stmt.setString(7, dado.getCep_estabelecimento());
                 stmt.setInt(8, dado.getNumero());
-                stmt.setString(9, dado.getHorario_funcionamento());
-                stmt.setString(10, dado.getDisponibilidade());
-                stmt.setFloat(11, dado.getTaxa_cancelamento());
-                stmt.setString(12, dado.getConcorda());
-                stmt.setString(13, dado.getConcorda_newstalleter());
-                stmt.setString(14, dado.getAcessi_auditiva());
-                stmt.setString(15, dado.getAcessi_fisico());
-                stmt.setInt(16, dado.getTipo_user());
-                stmt.setInt(17, dado.getId_planos());
+                stmt.setString(9, dado.getCelular());
+                stmt.setString(10, dado.getHorario_funcionamento());
+                stmt.setString(11, dado.getDisponibilidade());
+                stmt.setFloat(12, dado.getTaxa_cancelamento());
+                stmt.setString(13, dado.getConcorda());
+                stmt.setString(14, dado.getConcorda_newstalleter());
+                stmt.setString(15, dado.getAcessi_auditiva());
+                stmt.setString(16, dado.getAcessi_fisico());
+                stmt.setInt(17, dado.getTipo_user());
                 //Executa a Query
                 cadastrado = stmt.executeUpdate();
                 //Pega o id inserido no bd da tabela estabelecimento
@@ -105,40 +100,38 @@ public class EstabelecimentoDAO {
         return cadastrado;
     }
 
-    public void atualiazaEst(Estabelecimento dado) throws SQLException {
+    public int atualiazaEst(Estabelecimento dado) throws SQLException {
         //Atualiza o Estabelecimento 
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
-
+        //var verificadora
+        int atualiza = 0;
         //declarações do prepareStatement
         try (
                 Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("update estabelecimento set"
-                        + "nome_esta=?, cnpj=?, email=?, senha=?"
-                        + ", capacidade=?, endereco=?, cep=?, "
-                        + "numero=?, horario_de_fun=?, disponibilidade=?,"
-                        + "taxa_cancelamento=?,concordar=?,newstalleter=?,def_aud=?, def_fis=?"
-                        + ",id_planos=? where id_esta=?");) {
+                PreparedStatement stmt = conn.prepareStatement("update estabelecimento set nome_esta=?,email=?, senha=?, capacidade=?, endereco=?, cep=?, numero=?, celular=?, horario_de_fun=?,taxa_cancelamento=?,concordar=?,def_aud=?, def_fis=? where id_esta=?");) {
             //passa os parametros
             stmt.setString(1, dado.getNome_estabelecimento());
-            stmt.setString(2, dado.getCnpj());
-            stmt.setString(3, dado.getCep_estabelecimento());
-            stmt.setString(4, dado.getLogadouro_estabelecimento());
-            stmt.setInt(5, dado.getNumero());
-            stmt.setString(6, dado.getAcessi_auditiva());
-            stmt.setString(7, dado.getAcessi_fisico());
-            stmt.setString(8, dado.getAcessi_nenhuma());
+            stmt.setString(2, dado.getEmail());
+            stmt.setString(3, dado.getSenha());
+            stmt.setInt(4, dado.getCapacidade());
+            stmt.setString(5, dado.getLogadouro_estabelecimento());
+            stmt.setString(6, dado.getCep_estabelecimento());
+            stmt.setInt(7, dado.getNumero());
+            stmt.setString(8, dado.getCelular());
             stmt.setString(9, dado.getHorario_funcionamento());
-            stmt.setInt(10, dado.getCapacidade());
-            stmt.setFloat(11, dado.getTaxa_cancelamento());
-            stmt.setString(12, dado.getEmail());
-            stmt.setString(13, dado.getSenha());
-            stmt.setString(14, dado.getConcorda());
-            stmt.setString(15, dado.getConcorda_newstalleter());
-            stmt.setString(16, dado.getDisponibilidade());
-            stmt.setInt(17, dado.getId_planos());
-            stmt.setInt(18, dado.getId_estabelecimento());
+            stmt.setFloat(10, dado.getTaxa_cancelamento());
+            stmt.setString(11, dado.getConcorda());
+            stmt.setString(12, dado.getAcessi_auditiva());
+            stmt.setString(13, dado.getAcessi_fisico());
+            stmt.setInt(14, dado.getId_estabelecimento());
+            stmt.executeUpdate();
+            
+            atualiza= 1;
+        }catch(SQLException e){
+            System.out.println(e);
         }
+        return atualiza;
 
     }
 
@@ -243,7 +236,7 @@ public class EstabelecimentoDAO {
         try (
                 Connection conn = conexao.obterConexaoBD();
                 PreparedStatement stmt = conn.prepareStatement("insert into cartao(num_cartao,validade"
-                        + ",cvv,titular) values(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
+                        + ",cvv,titular) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
 
             //passa os parametros do cartao
             stmt.setLong(1, dadoCartao.getNum_cartao());
@@ -313,6 +306,36 @@ public class EstabelecimentoDAO {
             System.out.println(e);
 
         }
+    }
+    
+    public int verificaSenha(Estabelecimento dado){
+        int verifica = 0;
+       
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        
+        //verifica a senha
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select * from estabelecimento where id_esta = ?");
+            
+            stmt.setInt(1, dado.getId_estabelecimento());
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                String senha = rs.getString("senha");
+                
+                if(senha.equals(dado.getSenha())){
+                    verifica = 1;
+                   
+                }else{
+                    verifica = -1;
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return verifica;        
     }
 }
 

@@ -26,7 +26,7 @@ public class Cliente {
     }
     
     public Cliente(String nome,String cpf, String email, String genero, 
-            String data_nascimento, String senha, String concorda, 
+            String data_nascimento, String senha,String concorda, 
             String concorda_newstalleter, int tipo_user) {
         this.nome = nome;
         this.cpf = cpf;
@@ -136,6 +136,5 @@ public class Cliente {
     public void setTipo_user(int tipo_user) {
         this.tipo_user = tipo_user;
     }
-
     
 }

@@ -17,7 +17,7 @@
         <meta name="author" content="konex-group">
 
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
-        <link rel="shortcut icon" href="../images/icons/logotipo.png">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logotipo.png">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
         
         <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/cardUser.css">
