@@ -64,12 +64,32 @@ public class NotificaDAO {
         return deuCerto;
     }
 
-    public List<Notification> listarTodos() throws SQLException {
-        //Lista as Notificacao
+    public ArrayList<Notification> listarCli() throws SQLException {
+        //Lista as Notificacaoes
         ConexaoJDBC conexao = new ConexaoJDBC();
         try {
             Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("select * from notificacao inner join usuario on notificacao.id_usuario = usuario.id_usuario");
+            PreparedStatement stmt = conn.prepareStatement("select n.mensagem, n.data_noti, l.nome from notificacao as n join login as l on n.id_usuario=l.id_usuario");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Notification not = new Notification();
+                not.setNome_noti(rs.getString("nome"));
+                not.setMensagem(rs.getString("mensagem"));
+                not.setData(rs.getString("data_noti"));
+                lista.add(not);
+            }
+
+        } catch (SQLException erro) {
+            System.out.println(erro);
+        }
+        return lista;
+    }
+    public ArrayList<Notification> listarEsta() throws SQLException {
+        //Lista as Notificacaoes
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select n.mensagem, n.data_noti, l.nome from notificacao as n join login as l on n.id_esta=l.id_esta");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Notification not = new Notification();
