@@ -47,7 +47,6 @@ font-size: 45px;
 line-height: 45px;
 margin-top: 0;
 }
-
 .Planos{
     width: 1400px;
     height: 673px;
@@ -57,9 +56,9 @@ margin-top: 0;
     text-align: center;
 }
 .Planos img{
-    width: 90px; 
-    height: 90px;
-    margin-top: 60px;
+    width: 120px;
+    height: 120px;
+    margin-top: 30px;
 }
 .Planos h1{
     width: 249px;
@@ -76,23 +75,21 @@ margin-top: 0;
     height: 50px;
     margin-left: auto;
     margin-right: auto;
-    background: #4361EE;
-    border-radius: 100px;
-    border: 0;
-    outline: none;
+    background: #C4C4C4;
+    border-radius: 10px;
 
-    color: #fff;
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
     line-height: 25px;
     text-align: center;
 }
-.itensPlano P{
+.itensSerrana P,
+.itensRarpy P,
+.itensAçor P{
     width: 288px;
     height: 20px;
     margin: 12px  auto;
-    background: #C4C4C4;
     padding-top: 12px;
     padding-bottom: 11px;
     font-style: normal;
@@ -101,41 +98,61 @@ margin-top: 0;
     line-height: 25px;
     align-items: center;
     text-align: center;
-
+    border-radius: 5px;
 }
-
+.itensSerrana P{
+    background: #f0f0f0;
+}
+.itensRarpy P{
+    background: #e8ecf5;
+}
+.itensAçor P{
+    background: #ffd5af;
+}
 .Serrana{
     width: 348px;
     height: 500px;
     margin-top: 86.5px;
     margin-left: 128px;
-    margin-right: 46px;
-    border: 2px solid #000;
+    margin-right: 44px;
     float: left;
-    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 2px solid #444444;
     border-radius: 25px;
 }
+.Serrana button,
+.Rarpy button,
+.Açor button{
+    color: #FFF;
+    border: transparent;
+    background: #444444;
+    background: #4361EE;
+    border-radius: 100px;
+}
+
 .Rarpy{
     width: 348px;
     height: 673px;
     margin-left: auto;
     margin-right: auto;
-    border: 2px solid #4361EE;
     float: left;
-    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 2px solid #4361EE;
     border-radius: 25px;
 }
+    
 .Açor{
     width: 348px;
     height: 550px;
     margin-top: 61.5px;
-    margin-left: 48px;
+    margin-left: 44px;
     margin-right: 128px;
-    border: 2px solid #F85404;
     float: left;
-    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 2px solid #FF7A00;
     border-radius: 25px;
 }
+
 .valor{
     width: 170px;
     margin-left: auto;
