@@ -80,6 +80,9 @@ body{
     width: 142px;
     padding-left: 31px;
 }
+.idU{
+    width: 130px;
+}
 
 .selec button{
     background: transparent;
@@ -87,13 +90,13 @@ body{
     outline: none;
 }
 .remetente{
-    width: 324px;
+    width: 250px;
 }
 .assunto{
-    width: 254px;
+    width: 450px;
 }
 .data{
-    width: 338px;
+    width: 300px;
 }
 .status{
     width: 86px;
@@ -107,6 +110,7 @@ body{
     margin-left: 9px;
     float: left;
 }
+
 .selec,
 .remetente,
 .assunto,

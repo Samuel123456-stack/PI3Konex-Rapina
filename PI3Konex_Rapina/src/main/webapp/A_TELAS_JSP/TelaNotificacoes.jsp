@@ -22,16 +22,30 @@
                     <p>Voltar para o menu principal</p>
                 </a>
             </div>
-
+            <div class="info">
+                <form>
+                    <!--BUSCA MENSAGEM  TIPO DE USUARIO-->
+                    <h3>Busca Mensagem por tipo de usuário</h3><br><br>
+                    <input type="text" name="pegaTipo" placeholder="Qual é o tipo de usuário" class="inputR">
+                    <input type="submit" value="buscar" class="btn">
+                    <br><br>
+                    <h3>Retorna o identificador do usário que enviou a mensagem</h3><br><br>
+                    <input type="text" name="pegaId" placeholder="Digite o id da notificação" class="inputR">
+                    <input type="submit" value="buscar" class="btn"> <br><br>
+                    <h3>Cliente identificado: </h3><br><br>
+                    <input type="submit" value="Responder Mensagem" class="btn">
+                </form>
+            </div>    
+            <br><br><br><br>
             <div class="tabela">
                 <table>
                     <thead>
                         <tr>
-                            <th class="selec">Selec.</th>
-                            <th class="remetente">Remetente</th>
-                            <th class="assunto">Assunto</th>
+                            <th class="selec">Deletar</th>
+                            <th class="idU">ID. Msg.</th>
+                            <th class="remetente">Nome</th>
+                            <th class="assunto">Mensagem</th>
                             <th class="data">Data de recebimento</th>
-                            <th class="status">Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +58,12 @@
                                     </svg>                                    
                                 </button>
                             </td>
+                            <!--ID-->
+                            <td class="idU">
+                                <p></p>
+                            </td
+                            
+                            <!--NOME-->
                             <td class="remetente">
                                 <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.8215 36.649L11.5969 36.9794L11.8696 37.2713C15.1541 40.7871 19.8167 43 25 43C30.1833 43 34.8459 40.7871 38.1304 37.2713L38.4031 36.9794L38.1786 36.649C35.8498 33.222 31.9623 30.93 27.5 30.93H22.5C18.0402 30.93 14.1503 33.222 11.8215 36.649ZM0.5 25C0.5 11.7236 11.7236 0.5 25 0.5C38.2764 0.5 49.5 11.7236 49.5 25C49.5 38.2764 38.2764 49.5 25 49.5C11.7236 49.5 0.5 38.2764 0.5 25ZM33 20C33 15.4037 29.5935 12 25 12C20.4091 12 17 15.4036 17 20C17 24.5964 20.4091 28 25 28C29.5935 28 33 24.5963 33 20Z" stroke="black"/>
@@ -55,32 +75,13 @@
                             <td class="assunto"><c:out value="${noti.mensagem}"/></td>
 
                             <td class="data"><c:out value="${noti.data}"/></td>
-                            <td class="status"><div id="status"></div></td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
             </div>
 
-            <div class="info">
-                <h2 id="visu">
-                    <svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M29.9396 10.66C28.7634 7.61765 26.7216 4.98662 24.0664 3.09209C21.4112 1.19756 18.2591 0.122573 14.9996 0C11.7401 0.122573 8.58796 1.19756 5.93278 3.09209C3.27759 4.98662 1.23574 7.61765 0.0595746 10.66C-0.0198582 10.8797 -0.0198582 11.1203 0.0595746 11.34C1.23574 14.3824 3.27759 17.0134 5.93278 18.9079C8.58796 20.8024 11.7401 21.8774 14.9996 22C18.2591 21.8774 21.4112 20.8024 24.0664 18.9079C26.7216 17.0134 28.7634 14.3824 29.9396 11.34C30.019 11.1203 30.019 10.8797 29.9396 10.66ZM14.9996 20C9.69957 20 4.09957 16.07 2.06957 11C4.09957 5.93 9.69957 2 14.9996 2C20.2996 2 25.8996 5.93 27.9296 11C25.8996 16.07 20.2996 20 14.9996 20Z" fill="#4361EE" fill-opacity="0.7"/>
-                    <path d="M15 5C13.8133 5 12.6533 5.35189 11.6666 6.01118C10.6799 6.67047 9.91085 7.60754 9.45673 8.7039C9.0026 9.80026 8.88378 11.0067 9.11529 12.1705C9.3468 13.3344 9.91825 14.4035 10.7574 15.2426C11.5965 16.0818 12.6656 16.6532 13.8295 16.8847C14.9933 17.1162 16.1997 16.9974 17.2961 16.5433C18.3925 16.0892 19.3295 15.3201 19.9888 14.3334C20.6481 13.3467 21 12.1867 21 11C21 9.4087 20.3679 7.88258 19.2426 6.75736C18.1174 5.63214 16.5913 5 15 5ZM15 15C14.2089 15 13.4355 14.7654 12.7777 14.3259C12.1199 13.8864 11.6072 13.2616 11.3045 12.5307C11.0017 11.7998 10.9225 10.9956 11.0769 10.2196C11.2312 9.44371 11.6122 8.73098 12.1716 8.17157C12.731 7.61216 13.4437 7.2312 14.2196 7.07686C14.9956 6.92252 15.7998 7.00173 16.5307 7.30448C17.2616 7.60723 17.8864 8.11992 18.3259 8.77772C18.7654 9.43552 19 10.2089 19 11C19 12.0609 18.5786 13.0783 17.8284 13.8284C17.0783 14.5786 16.0609 15 15 15Z" fill="#4361EE" fill-opacity="0.7"/>
-                    </svg>
-                    Visualização da mensagem
-                </h2>
-                <h3>Remetente: Rapina Suporte</h3>
-
-                <h3 id="assuntoh3">Assunto: </h3>
-                <p id="assuntop"> Lorem Ipsum </p>
-
-                <p>xx/xx/xxxx xx:xxh</p>
-                <div class="mensagem">
-                    <h2>Mensagem</h2>
-                    <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.</p>
-                </div>
-            </div>    
+            
 
         </div>
     </body>

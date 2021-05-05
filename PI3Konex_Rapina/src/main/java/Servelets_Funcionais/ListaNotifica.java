@@ -31,33 +31,39 @@ public class ListaNotifica extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // boas praticas
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        
+        //pegando os parametros
         String valor = request.getParameter("btn");
-        String abre = request.getParameter("abre");
+        
+        //
         int tipoUsuario = Integer.parseInt(valor);
+        
+        //
         NotificaDAO notiDao = new NotificaDAO();
         ArrayList<Notification> lista = new ArrayList<>();
-        if(valor.equals("2")){
+        if (valor.equals("2")) {
             try {
-            lista = notiDao.listarCli();
-            request.setAttribute("listaNoti",lista);
-            //Rever estas questoes
-            //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/JSP/Lista.jsp");
-            //dispatcher.forward(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }else if(valor.equals("3")){
+                lista = notiDao.listarCli();
+                request.setAttribute("listaNoti", lista);
+                //Rever estas questoes
+                //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/JSP/Lista.jsp");
+                //dispatcher.forward(request, response);
+            } catch (SQLException ex) {
+                Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (valor.equals("3")) {
             try {
-            lista = notiDao.listarEsta();
-            request.setAttribute("listaNoti",lista);
-            //Rever estas Questoes
-            //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/JSP/Lista.jsp");
-            //dispatcher.forward(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                lista = notiDao.listarEsta();
+                request.setAttribute("listaNoti", lista);
+                //Rever estas Questoes
+                //RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/JSP/Lista.jsp");
+                //dispatcher.forward(request, response);
+            } catch (SQLException ex) {
+                Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
     }
