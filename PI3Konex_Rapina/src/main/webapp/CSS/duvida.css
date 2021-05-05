@@ -11,6 +11,17 @@ body{
     background-position: top right;
     background-size: 18%;
 }
+.form-contact .user-icon, .subject-icon{
+    width:10%;
+    height:100%;
+    float:left;
+    background:#fff;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.form-contact img, svg{
+   margin:10px 0 0 15px;
+}
 .form-container .form-doubt{
     display:flex;
     flex-direction:row;
@@ -56,24 +67,29 @@ body{
 .form-container .form-contact form .input-field{
     position:relative;
     width:100%;
+    margin-bottom:1.5rem;
+    background:#fff;
+    border:0;
 }
 .form-container .form-contact form .input-field input::placeholder{
     color:rgba(0,0,0,0.3);
 }
 .form-container .form-contact form .input-field input{
-    width:100%;
+    width:90%;
     padding:9px 15px;
-    border-radius:3px;
-    margin-bottom:1.5rem;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
     border:0;
+    float:right;
 }
 .form-container .form-contact form .textarea-field, textarea{
     width:100%;
     border:0;
 }
-.form-container .input-field input:focus, textarea:focus{
+.form-container .input-field:hover, textarea:focus{
     outline:0;
     box-shadow: 0 0 10px #9ecaed;
+    transition:box-shadow 250ms
 }
 .form-container .form-contact form textarea{
     border:1px solid #ccc;
