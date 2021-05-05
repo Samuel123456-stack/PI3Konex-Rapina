@@ -4,7 +4,7 @@
     Author     : gusta
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,15 +23,15 @@
                 </a>
             </div>
             <div class="info">
-                <form>
+                <form action="${pageContext.request.contextPath}/FazListagem" method="get">
                     <!--BUSCA MENSAGEM  TIPO DE USUARIO-->
                     <h3>Busca Mensagem por tipo de usuário</h3><br><br>
-                    <input type="text" name="pegaTipo" placeholder="Qual é o tipo de usuário" class="inputR">
-                    <input type="submit" value="buscar" class="btn">
+                    <input type="text" name="btn" placeholder="Qual é o tipo de usuário" class="inputR">
+                    <button type="submit" >Mostrar</button>
                     <br><br>
                     <h3>Retorna o identificador do usário que enviou a mensagem</h3><br><br>
-                    <input type="text" name="pegaId" placeholder="Digite o id da notificação" class="inputR">
-                    <input type="submit" value="buscar" class="btn"> <br><br>
+                    <input type="text" name="id" placeholder="Digite o id da notificação" class="inputR">
+                    <button type="submit" >Identificar</button>
                     <h3>Cliente identificado: </h3><br><br>
                     <input type="submit" value="Responder Mensagem" class="btn">
                 </form>
@@ -49,39 +49,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${listaNotifica}" var="noti">
-                        <tr>
-                            <td class="selec">
-                                <button type="submit" name="btnDeleta" value="deletaNoti">
-                                    <svg width="30" height="36" viewBox="0 0 30 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15.0004 4.43916e-09C16.6457 -6.14459e-05 18.2269 0.637863 19.4115 1.77963C20.5962 2.92139 21.2919 4.47803 21.3524 6.1222L21.3565 6.35712L28.2211 6.3561C28.6803 6.35631 29.1216 6.53399 29.4528 6.85199C29.7841 7.17 29.9796 7.60373 29.9985 8.06252C30.0174 8.52132 29.8582 8.96966 29.5543 9.31385C29.2504 9.65804 28.8251 9.87143 28.3675 9.90942L28.2211 9.91552H27.0343L25.3797 31.8517C25.2976 32.9386 24.8079 33.9543 24.0087 34.6955C23.2094 35.4366 22.1597 35.8484 21.0697 35.8484H8.93109C7.8411 35.8484 6.79136 35.4366 5.99213 34.6955C5.1929 33.9543 4.70321 32.9386 4.62114 31.8517L2.9655 9.91552H1.77971C1.3329 9.91548 0.902454 9.74738 0.573872 9.44461C0.245289 9.14184 0.042612 8.72655 0.00610142 8.28124L0 8.13581C3.76961e-05 7.689 0.168138 7.25856 0.470909 6.92997C0.77368 6.60139 1.18897 6.39871 1.63428 6.3622L1.77971 6.3561H8.6443C8.6443 3.00211 11.2427 0.254244 14.5367 0.0162714L14.7675 0.0040681L15.0004 4.43916e-09ZM18.8141 13.2207C18.4994 13.2205 18.1958 13.3371 17.9621 13.5479C17.7284 13.7587 17.5812 14.0487 17.5489 14.3617L17.5428 14.4919V26.6956L17.5489 26.8258C17.5798 27.1399 17.7265 27.4313 17.9603 27.6432C18.1941 27.8552 18.4985 27.9726 18.8141 27.9726C19.1297 27.9726 19.434 27.8552 19.6678 27.6432C19.9017 27.4313 20.0483 27.1399 20.0792 26.8258L20.0853 26.6956V14.4919L20.0792 14.3617C20.047 14.0487 19.8997 13.7587 19.666 13.5479C19.4324 13.3371 19.1288 13.2205 18.8141 13.2207ZM11.1867 13.2207C10.872 13.2205 10.5685 13.3371 10.3348 13.5479C10.1011 13.7587 9.95385 14.0487 9.92162 14.3617L9.91552 14.4919V26.6956L9.92162 26.8258C9.95251 27.1399 10.0991 27.4313 10.333 27.6432C10.5668 27.8552 10.8711 27.9726 11.1867 27.9726C11.5024 27.9726 11.8067 27.8552 12.0405 27.6432C12.2743 27.4313 12.421 27.1399 12.4519 26.8258L12.458 26.6956V14.4919L12.4519 14.3617C12.4196 14.0487 12.2724 13.7587 12.0387 13.5479C11.805 13.3371 11.5015 13.2205 11.1867 13.2207ZM15.1713 3.5645L15.0004 3.55942C14.2882 3.55938 13.6029 3.83104 13.0841 4.31899C12.5654 4.80694 12.2523 5.47441 12.2088 6.18525L12.2037 6.35712L17.7971 6.3561C17.7971 5.64393 17.5255 4.95857 17.0375 4.43982C16.5496 3.92107 15.8821 3.60801 15.1713 3.5645Z" fill="#4361EE" fill-opacity="1"/>
-                                    </svg>                                    
-                                </button>
-                            </td>
-                            <!--ID-->
-                            <td class="idU">
-                                <p></p>
-                            </td
-                            
-                            <!--NOME-->
-                            <td class="remetente">
-                                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.8215 36.649L11.5969 36.9794L11.8696 37.2713C15.1541 40.7871 19.8167 43 25 43C30.1833 43 34.8459 40.7871 38.1304 37.2713L38.4031 36.9794L38.1786 36.649C35.8498 33.222 31.9623 30.93 27.5 30.93H22.5C18.0402 30.93 14.1503 33.222 11.8215 36.649ZM0.5 25C0.5 11.7236 11.7236 0.5 25 0.5C38.2764 0.5 49.5 11.7236 49.5 25C49.5 38.2764 38.2764 49.5 25 49.5C11.7236 49.5 0.5 38.2764 0.5 25ZM33 20C33 15.4037 29.5935 12 25 12C20.4091 12 17 15.4036 17 20C17 24.5964 20.4091 28 25 28C29.5935 28 33 24.5963 33 20Z" stroke="black"/>
-                                </svg>
-
-                                <p><c:out value="${noti.nome_noti}"/></p>
-                            </td>
-
-                            <td class="assunto"><c:out value="${noti.mensagem}"/></td>
-
-                            <td class="data"><c:out value="${noti.data}"/></td>
-                        </tr>
-                    </c:forEach>
+                        <c:forEach var="item" items="${listaNoti}">
+                            <tr>
+                                <td class="selec" >
+                                    <a style="background-color: #4361EE; width: 70px; height: 20px; border-radius: 5px; color: white;" href="FazListagem?action=deletar&id_notification=<c:out value="${item.id_notification}"/>"><img src="${pageContext.request.contextPath}/images/icons/delete.png" width="auto" height="16px" ></a>
+                                </td>
+                                <!--ID-->
+                                <td class="idU"><p><c:out value="${item.id_notification}"/></p></td>
+                                    
+                               
+                                <!--NOME-->
+                                <td class="remetente">
+                                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.8215 36.649L11.5969 36.9794L11.8696 37.2713C15.1541 40.7871 19.8167 43 25 43C30.1833 43 34.8459 40.7871 38.1304 37.2713L38.4031 36.9794L38.1786 36.649C35.8498 33.222 31.9623 30.93 27.5 30.93H22.5C18.0402 30.93 14.1503 33.222 11.8215 36.649ZM0.5 25C0.5 11.7236 11.7236 0.5 25 0.5C38.2764 0.5 49.5 11.7236 49.5 25C49.5 38.2764 38.2764 49.5 25 49.5C11.7236 49.5 0.5 38.2764 0.5 25ZM33 20C33 15.4037 29.5935 12 25 12C20.4091 12 17 15.4036 17 20C17 24.5964 20.4091 28 25 28C29.5935 28 33 24.5963 33 20Z" stroke="black"/>
+                                    </svg>
+                                    <p><c:out value="${item.nome_noti}"/></p>
+                                </td>
+                                <td class="assunto"><c:out value="${item.mensagem}"/></td>
+                                <td class="data"><c:out value="${item.data}"/></td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
 
-            
+
 
         </div>
     </body>
