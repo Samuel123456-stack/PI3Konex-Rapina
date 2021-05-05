@@ -127,7 +127,7 @@ public class TelaDeletaConta extends HttpServlet {
 
                     try {
                         //7º Executa o metodo
-                        int x = notification.solicitaExclusao(solicitaEst);
+                        int x = notification.solicitaExclusaoEsta(solicitaEst);
 
                         if (x == 1) {
                             //prossegue com a tela pos atualiza
