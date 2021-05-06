@@ -18,7 +18,7 @@
                     <h1>Olá </h1><p>Name user</p><h1>, essa é a sua área :)</h1>
                 </div>
                 <div class="direitamenuadm">
-                    <div width="32" height="34" viewBox="0 0 32 34" fill="none"><a style="cursor:pointer;" href="${pageContext.request.contextPath}/TelaCriaMsg"><img src="${pageContext.request.contextPath}/images/edit.svg" color:white></a></div>
+                    <div width="32" height="34" viewBox="0 0 32 34" fill="none"><a style="cursor:pointer;" href="${pageContext.request.contextPath}/CriaTelaResposta"><img src="${pageContext.request.contextPath}/images/edit.svg" color:white></a></div>
                     <div width="32" height="34" viewBox="0 0 32 34" fill="none" style="margin-left: 100px;"><a style="cursor:pointer;" href="${pageContext.request.contextPath}/CriaListaNotifica"><img src="${pageContext.request.contextPath}/images/notificatio.svg" color:white></a></div>
                 </div>
             </section>

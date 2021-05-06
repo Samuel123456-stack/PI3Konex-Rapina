@@ -172,10 +172,8 @@ public class ControlaClientes extends HttpServlet {
             if (verificaCadastro == 1) {
 
                 temErro = false;
-                System.out.println(temErro);
             } else if (verificaCadastro == 0) {
                 temErro = true;
-                System.out.println(temErro);
             } else {
                 temErro = true;
                 request.setAttribute("erroCpf", temErro);

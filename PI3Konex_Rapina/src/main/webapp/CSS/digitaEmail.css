@@ -88,21 +88,7 @@ body{
     margin: 18px;
     float: left;
 }
-.text465 input{
-    width: 409px;
-    height: 48px;
-    border-radius: 0 15px 15px 0;
-    border: 0;
-    padding: 0;
-    outline: 0;
 
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 32px;
-    align-items: center;
-    letter-spacing: -0.015em;
-}
 .text301{
     width: 465px;
     height: 301px;
@@ -153,4 +139,39 @@ body{
     align-items: center;
     text-align: center;
     letter-spacing: -0.015em;
+}
+.inputID{
+    width: 445px;
+    height: 48px;
+    padding-left: 20px;
+    border-radius:15px;
+    border: 0;
+    margin-top: -20px;
+    outline: 0;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    align-items: center;
+    letter-spacing: -0.015em;
+}
+.InputM{
+        width: 445px;
+    height: 350px;
+    padding-left: 20px;
+    border-radius:15px;
+    border: 0;
+    margin-top: 50px;
+    outline: 0;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    letter-spacing: -0.015em;
+}
+
+input inputM {
+    padding-top: -120px;
 }

@@ -72,7 +72,7 @@
                             <footer>
                                 <p>
                                     Tem dúvidas sobre a rapina?
-                                    <a href="">
+                                    <a href="${pageContext.request.contextPath}/CriaTelaDuvidas">
                                         <span>Clique aqui</span>
                                     </a>
                                 </p>

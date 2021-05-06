@@ -10,21 +10,33 @@ package ClassesJavaBean;
  * @author Gabriel
  */
 public class Notification {
+
     public int id_notification;
     public String nome_noti;
+    public String email_noti;
     public String mensagem;
     public int num_reserva;
     public String data;
     private int id_user;
     private int id_estabelecimento;
 
-    //metodo consultar verificar
-
     public Notification() {
-    
+
     }
-    
-    
+
+    //Construtor para as Duvidas
+    public Notification(String nome_noti, String email_noti, String mensagem) {
+        this.nome_noti = nome_noti;
+        this.email_noti = email_noti;
+        this.mensagem = mensagem;
+
+    }
+    //Construtor para as Respostas
+    public Notification(int id_user,String mensagem){
+        this.id_user = id_user;
+        this.mensagem=mensagem;
+    }
+
     //Getters e Setters
     public int getId_notification() {
         return id_notification;
@@ -40,6 +52,14 @@ public class Notification {
 
     public void setNome_noti(String nome_noti) {
         this.nome_noti = nome_noti;
+    }
+
+    public String getEmail_noti() {
+        return email_noti;
+    }
+
+    public void setEmail_noti(String email_noti) {
+        this.email_noti = email_noti;
     }
 
     public String getMensagem() {
@@ -81,6 +101,5 @@ public class Notification {
     public void setId_estabelecimento(int id_estabelecimento) {
         this.id_estabelecimento = id_estabelecimento;
     }
-    
-    
+
 }
