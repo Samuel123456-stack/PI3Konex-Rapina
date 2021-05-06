@@ -32,9 +32,10 @@ public class Notification {
 
     }
     //Construtor para as Respostas
-    public Notification(int id_user,String mensagem){
+    public Notification(int id_user,String mensagem, String data){
         this.id_user = id_user;
         this.mensagem=mensagem;
+        this.data= data;
     }
 
     //Getters e Setters

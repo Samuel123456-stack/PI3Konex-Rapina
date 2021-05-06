@@ -24,12 +24,11 @@
             </div>
 
             <h1 id="preen">Preencha os campos abaixo</h1>
-
-                <input class="inputID" type="text" name="idUser" placeholder="Digite o código do destinatário" required>
-
-
-                                      
-                <input class="InputM" type="text" name="assunto" placeholder="Digite o assunto da mensagem" required>
+                <input class="inputID" type="text" name="tipoDestinatario" placeholder="Tipo de Destinatário" required>
+                
+                <input class="inputD" type="text" name="idUser" placeholder="Código do destinatário" required>
+                                 
+                <textarea class="InputM" name="assunto" placeholder="Escreva a mensagem" required rows="5"></textarea>
 
             <button id="valOut"  value="Submit">Enviar</button>
         </form>

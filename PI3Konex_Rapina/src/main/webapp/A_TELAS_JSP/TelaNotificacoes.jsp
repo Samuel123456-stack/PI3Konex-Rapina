@@ -37,7 +37,7 @@
                     </div>
                     <div style="margin-top: 50px;">
                         <h3>Cliente identificado: </h3><br><br>
-                        <button type="submit" class="btn3"><a href="${pageContext.request.contextPath}/TelaCriaMsg" style="color:white; text-decoration: none;">Responder Mensagem</a></button>
+                        <button type="submit" class="btn3"><a href="${pageContext.request.contextPath}/CriaTelaResposta" style="color:white; text-decoration: none;">Responder Mensagem</a></button>
                     </div>
                     
                 </form>

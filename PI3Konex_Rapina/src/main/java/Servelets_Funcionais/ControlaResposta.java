@@ -10,6 +10,8 @@ import ClassesJavaBean.Notification;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -69,8 +71,13 @@ public class ControlaResposta extends HttpServlet {
             request.setAttribute("ErroMensagem", " ");
         }
           
+          //declaro a data e horario da solicitação
+        Date dataAtual = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String data = formatter.format(dataAtual);
+          
           //Instancio os Objetos
-          Notification noti = new Notification(idUser,mensagem);
+          Notification noti = new Notification(idUser,mensagem,data);
           NotificaDAO notiDao = new NotificaDAO();
           int verificaResposta = notiDao.criaResposta(noti);
           if(verificaResposta==1){
