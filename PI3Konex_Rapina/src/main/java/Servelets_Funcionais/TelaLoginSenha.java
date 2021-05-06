@@ -100,9 +100,9 @@ public class TelaLoginSenha extends HttpServlet {
         }else{
             //prossegue de acordo  tipo de usuario
             if(userTipo == 1){
-                //É um adm
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaResultado.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuADM.jsp");
                 dispatcher.forward(request, response);
+                
             }else if(userTipo == 2){
                 //É um Cliente
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuCliente.jsp");
