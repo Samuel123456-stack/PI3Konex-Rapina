@@ -25,15 +25,21 @@
             <div class="info">
                 <form action="${pageContext.request.contextPath}/FazListagem" method="get">
                     <!--BUSCA MENSAGEM  TIPO DE USUARIO-->
-                    <h3>Busca Mensagem por tipo de usuário</h3><br><br>
-                    <input type="text" name="btn" placeholder="Qual é o tipo de usuário" class="inputR">
-                    <button type="submit" >Mostrar</button>
-                    <br><br>
-                    <h3>Retorna o identificador do usário que enviou a mensagem</h3><br><br>
-                    <input type="text" name="id" placeholder="Digite o id da notificação" class="inputR">
-                    <button type="submit" >Identificar</button>
-                    <h3>Cliente identificado: </h3><br><br>
-                    <input type="submit" value="Responder Mensagem" class="btn">
+                    <div style="float: left; margin-right: 100px;">
+                        <h3>Busca Mensagem por tipo de usuário</h3><br><br>
+                        <input type="text" name="btn" placeholder="Qual é o tipo de usuário" class="inputR">
+                        <button type="submit" class="btn1">Mostrar</button>
+                    </div>
+                    <div>
+                        <h3>Selecionar Mensagem por ID</h3><br><br>
+                        <input type="text" name="id" placeholder="Digite o id da notificação" class="inputR">
+                        <button type="submit" class="btn2">Identificar</button><br><br>
+                    </div>
+                    <div style="margin-top: 50px;">
+                        <h3>Cliente identificado: </h3><br><br>
+                        <button type="submit" class="btn3">Responder Mensagem</button>
+                    </div>
+                    
                 </form>
             </div>    
             <br><br><br><br>
@@ -57,7 +63,6 @@
                                 <!--ID-->
                                 <td class="idU"><p><c:out value="${item.id_notification}"/></p></td>
                                     
-                               
                                 <!--NOME-->
                                 <td class="remetente">
                                     <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,8 +77,6 @@
                     </tbody>
                 </table>
             </div>
-
-
 
         </div>
     </body>

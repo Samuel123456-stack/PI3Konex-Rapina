@@ -337,6 +337,69 @@ public class EstabelecimentoDAO {
         }
         return verifica;        
     }
+    
+    public List<Estabelecimento> listarDadosADM(int id) throws SQLException {
+        //Lista os Estabelecimento
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select esta_status, id_planos, nome_esta, cnpj, endereco, cep, numero, celular, def_aud, def_fis, taxa_cancelamento, capacidade, email, newslatter, senha from estabelecimento where id_esta=?");
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Estabelecimento esta = new Estabelecimento();
+                
+                /////*PRIMEIRA LINHA*////
+                //Status
+                esta.setEsta_status(rs.getString("esta_status"));
+                
+                /////*SEGUNDA LINHA*////
+                
+                esta.setId_planos(rs.getInt("id_planos"));
+                
+                //quantidade de reservas
+                
+                /////*TERCEIRA LINHA*////
+                //nome
+                esta.setNome_estabelecimento(rs.getString("nome_esta"));
+                //cnpj
+                esta.setCnpj(rs.getString("cnpj"));
+                //endereco
+                esta.setLogadouro_estabelecimento(rs.getString("endereco"));
+                //cep
+                esta.setCep_estabelecimento(rs.getString("cep"));
+                //num
+                esta.setNumero(rs.getString("numero"));
+                //celular
+                esta.setCelular(rs.getString("celular"));
+                
+                /////*TERCEIRA LINHA*////
+                //deficiencias
+                esta.setAcessi_auditiva(rs.getString("def_aud"));
+                esta.setAcessi_fisico(rs.getString("def_fis"));
+                
+                //valor taxa
+                esta.setTaxa_cancelamento(rs.getFloat("taxa_cancelamento"));
+                //capacidades
+                esta.setCapacidade(rs.getInt("capacidade"));
+                
+                //email
+                esta.setEmail(rs.getString("email"));
+                
+                //News
+                esta.setConcorda_newstalleter(rs.getString("newslatter"));
+                
+                /////*QUINTA LINHA*////
+                esta.setSenha(rs.getString("senha"));
+               
+                lista.add(esta);
+            }
+
+        } catch (SQLException erro) {
+            System.out.println(erro);
+        }
+        return lista;
+    }
 }
 
     /*Mais Metodos serão atribuidos nesta classe, apenas precisam serem mais 

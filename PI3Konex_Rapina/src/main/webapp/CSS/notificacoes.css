@@ -201,3 +201,49 @@ body{
 
     color: rgba(0, 0, 0, 0.3);
 }
+input{
+    background-color: white;
+    font-weight: normal;
+    font-size: 18px;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+    width: 250px;
+    padding: 8px;
+    padding-left: 20px;
+}
+
+.btn1{
+    width: 120px;
+    height: 39px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4361ee;
+    margin-left: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn2{
+    width: 120px;
+    height: 39px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: orange;
+    margin-left: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn3{
+    width: 200px;
+    height: 39px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00aeef;
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+}

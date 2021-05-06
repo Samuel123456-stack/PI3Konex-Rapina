@@ -29,7 +29,9 @@ public class Estabelecimento {
     private int id_planos;
     private int id_pagamento_taxa;
     public int id_cartao;
-
+    public String esta_status;
+    public String auxPlano;
+    
     public Estabelecimento() {
 
     }
@@ -239,5 +241,20 @@ public class Estabelecimento {
     public void setId_cartao(int id_cartao) {
         this.id_cartao = id_cartao;
     }
-    
+    public String getEsta_status() {
+        return esta_status;
+    }
+
+    public void setEsta_status(String esta_status) {
+        this.esta_status = esta_status;
+    }
+
+    public String getAuxPlano() {
+        return auxPlano;
+    }
+
+    public void setAuxPlano(String auxPlano) {
+        this.auxPlano = auxPlano;
+    }
+
 }

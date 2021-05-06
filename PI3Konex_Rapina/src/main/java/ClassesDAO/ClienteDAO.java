@@ -316,4 +316,34 @@ public class ClienteDAO {
         }
         return verifica;        
     }
+    public List<Cliente> listarDadosRapina(int id) throws SQLException {
+        //Lista os Estabelecimento
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select nome,cpf, nascimento, genero, newslatter, email, senha from usuario where id_usuario=?");
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Cliente cli = new Cliente();
+                
+                /////*PRIMEIRA LINHA*////
+                cli.setNome(rs.getString("nome"));
+                cli.setCpf(rs.getString("cpf"));
+                cli.setData_nascimento(rs.getString("nascimento"));
+                cli.setGenero(rs.getString("genero"));
+                
+                /////*SEGUNDA LINHA*////
+                cli.setConcorda_newstalleter(rs.getString("newslatter"));
+                cli.setEmail(rs.getString("email"));
+                cli.setSenha(rs.getString("senha"));
+                
+                lista.add(cli);
+            }
+
+        } catch (SQLException erro) {
+            System.out.println(erro);
+        }
+        return lista;
+    }
 }
