@@ -171,7 +171,7 @@ DROP TRIGGER IF EXISTS `rapina`.`usuario_AFTER_INSERT`;
 
 DELIMITER $$
 USE `rapina`$$
-CREATE DEFINER=`tads`@`localhost` TRIGGER `usuario_AFTER_INSERT` AFTER INSERT ON `usuario` FOR EACH ROW BEGIN
+CREATE DEFINER=`root`@`localhost` TRIGGER `usuario_AFTER_INSERT` AFTER INSERT ON `usuario` FOR EACH ROW BEGIN
 INSERT INTO login(email,senha,id_usuario,tipo_usuario,nome) 
 VALUES(NEW.email,NEW.senha,NEW.id_usuario,NEW.tipo_usuario,NEW.nome);
 END$$
