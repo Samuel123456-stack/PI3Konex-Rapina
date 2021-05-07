@@ -5,16 +5,12 @@
  */
 package Servelets_Funcionais;
 
-import ClassesJavaBean.Cliente;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -29,28 +25,27 @@ public class TelaMenuCliente extends HttpServlet {
         //boas praticas
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        
+
         //Pegar o parametro
         String botao = request.getParameter("btn");
-        
+
         //condição
-        if(botao != null){
+        if (botao != null) {
             //condição
-            if (botao.equals("att card")){
+            if (botao.equals("att card")) {
                 response.sendRedirect(request.getContextPath() + "/TelaAltCard");
-            }else if (botao.equals("att dados")){
+            } else if (botao.equals("att dados")) {
                 response.sendRedirect(request.getContextPath() + "/TelaAlteraDados");
-            }else if (botao.equals("sub exclusao")){
+            } else if (botao.equals("sub exclusao")) {
                 response.sendRedirect(request.getContextPath() + "/TelaSolicitaExclusao");
             }
         }
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
 }

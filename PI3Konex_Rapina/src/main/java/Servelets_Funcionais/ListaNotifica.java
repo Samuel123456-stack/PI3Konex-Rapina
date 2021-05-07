@@ -26,12 +26,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ListaNotifica", urlPatterns = {"/FazListagem"})
 public class ListaNotifica extends HttpServlet {
-   
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-request.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
         String botao = request.getParameter("btn");
@@ -136,15 +135,12 @@ request.setCharacterEncoding("UTF-8");
             dispatcher.forward(request, response);
         }
 
-
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
     }
-
 
 }

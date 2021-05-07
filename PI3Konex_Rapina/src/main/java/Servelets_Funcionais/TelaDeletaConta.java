@@ -30,7 +30,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "TelaDeletaConta", urlPatterns = {"/DeletaConta"})
 public class TelaDeletaConta extends HttpServlet {
 
-  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -160,6 +159,6 @@ public class TelaDeletaConta extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 }

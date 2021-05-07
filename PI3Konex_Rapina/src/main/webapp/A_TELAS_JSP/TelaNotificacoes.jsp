@@ -1,4 +1,6 @@
 <%-- 
+    TELA REFERENTE AO MARCO II
+
     Document   : TelaNotificacoes
     Created on : 4 de mai de 2021, 19:56:55
     Author     : gusta
@@ -39,7 +41,7 @@
                         <h3>Cliente identificado: </h3><br><br>
                         <button type="submit" class="btn3"><a href="${pageContext.request.contextPath}/CriaTelaResposta" style="color:white; text-decoration: none;">Responder Mensagem</a></button>
                     </div>
-                    
+
                 </form>
             </div>    
             <br><br><br><br>
@@ -59,11 +61,11 @@
                             <tr>
                                 <td class="selec" >
                                     <a style="text-decoration: none; color: red; font-weight: bold;" href="${pageContext.request.contextPath}/FazListagem?action=deletar&id_notification=<c:out value="${item.id_notification}"/>">(X)</a>
-                                   
+
                                 </td>
                                 <!--ID-->
                                 <td class="idU"><p><c:out value="${item.id_notification}"/></p></td>
-                                    
+
                                 <!--NOME-->
                                 <td class="remetente">
                                     <p><c:out value="${item.nome_noti}"/></p>

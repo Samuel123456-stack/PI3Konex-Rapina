@@ -35,18 +35,18 @@ public class ControlaClientes extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        
+
         //session
         HttpSession sessao = request.getSession();
         int tipoCli = 0;
-        
+
         if (sessao.getAttribute("cli") != null) {
             Cliente cliente = (Cliente) sessao.getAttribute("cli");
             sessao.setAttribute("cli", cliente);
-            
+
             tipoCli = cliente.getTipo_user();
             request.setAttribute("cli", cliente);
-            
+
         } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCadastroCli.jsp");
             dispatcher.forward(request, response);
@@ -66,7 +66,7 @@ public class ControlaClientes extends HttpServlet {
 
         //Tratamento de Exceções
         boolean temErro = false;
-        
+
         if (nome != null && nome.trim().length() > 0) {
             try {
                 temErro = true;
@@ -75,8 +75,8 @@ public class ControlaClientes extends HttpServlet {
                 //Declaração de Erro
                 request.setAttribute("erroNome", " ");
             }
-        }else{
-            temErro=true;
+        } else {
+            temErro = true;
             request.setAttribute("erroNome", " ");
         }
 
@@ -98,11 +98,11 @@ public class ControlaClientes extends HttpServlet {
                 //Declaração de Erro
                 request.setAttribute("erroCpf", " ");
             }
-        }else{
-            temErro=true;
+        } else {
+            temErro = true;
             request.setAttribute("erroCpf", " ");
         }
-        
+
         if (email != null && email.trim().length() > 0) {
             try {
                 temErro = true;
@@ -112,11 +112,11 @@ public class ControlaClientes extends HttpServlet {
                 request.setAttribute("erroEmail", " ");
             }
 
-        }else{
-            temErro=true;
+        } else {
+            temErro = true;
             request.setAttribute("erroEmail", " ");
         }
-        
+
         if (senha != null && senha.trim().length() > 0) {
             try {
                 if (!senha.equals(senhaRe)) {
@@ -131,11 +131,11 @@ public class ControlaClientes extends HttpServlet {
                 //Declaração de Erro
                 request.setAttribute("ErroSenhaRe", " ");
             }
-        }else{
-            temErro=true;
+        } else {
+            temErro = true;
             request.setAttribute("ErroSenhaRe", " ");
         }
-        
+
         if (dataNascStr != null && dataNascStr.trim().length() > 0) {
             try {
                 temErro = true;
@@ -144,12 +144,11 @@ public class ControlaClientes extends HttpServlet {
                 //Declaração de Erro
                 request.setAttribute("erroDataNasc", " ");
             }
-        }else{
-            temErro=true;
+        } else {
+            temErro = true;
             request.setAttribute("erroDataNasc", " ");
         }
-        
-        
+
         if (concordar != null && concordar.trim().length() > 0) {
             try {
                 temErro = true;
@@ -162,7 +161,9 @@ public class ControlaClientes extends HttpServlet {
         }
         //Instancia as Classes
         Cliente cliente = new Cliente(nome, cpf, email, genero,
-                dataNascStr, senha,concordar, concordarNews, tipoCli);
+                dataNascStr, senha, concordar, concordarNews, tipoCli);
+        
+        //Metodo DAO que realiza o cadastro
         ClienteDAO casCli = new ClienteDAO();
         request.setAttribute("cliente", cliente);
 
@@ -182,7 +183,7 @@ public class ControlaClientes extends HttpServlet {
         } catch (SQLException ex) {
             System.out.println("Erro:" + ex);
         }
-        
+
         //Verifica se tem Erro
         if (temErro) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCadastroCli.jsp");

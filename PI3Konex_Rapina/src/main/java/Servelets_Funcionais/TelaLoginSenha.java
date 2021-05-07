@@ -26,11 +26,10 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "TelaLoginSenha", urlPatterns = {"/LogSenha"})
 public class TelaLoginSenha extends HttpServlet {
 
-   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         //boas praticas de uso
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -61,53 +60,53 @@ public class TelaLoginSenha extends HttpServlet {
 
         //pego o atributo da JSP
         String senhaInf = request.getParameter("senha");
-        
+
         //verifico a senha
         if (senhaInf != null && senhaInf.trim().length() > 0) {
-            temErro=false;
+            temErro = false;
         }
-        
+
         //Objetos que serão utilizados
         Login loginUser = new Login(email);
-        LoginDAO acesso = new LoginDAO(email,senhaInf);
+        LoginDAO acesso = new LoginDAO(email, senhaInf);
 
         loginUser.setSenha(senhaInf);
-        
+
         //Requests
         request.setAttribute("userLogado", loginUser);
-        
+
         try {
             //verifica
             int x = acesso.validaSenha();
-            
-            if( x == 1){
+
+            if (x == 1) {
                 //não tem erro
-                temErro=false;
-            }else{
-                temErro=true;
+                temErro = false;
+            } else {
+                temErro = true;
             }
             request.setAttribute("rtSenha", x);
         } catch (SQLException ex) {
             Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         //verifica se há erros
-        if(temErro){
+        if (temErro) {
             //não deixa prosseguir
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaLogSenha.jsp");
             dispatcher.forward(request, response);
-            
-        }else{
+
+        } else {
             //prossegue de acordo  tipo de usuario
-            if(userTipo == 1){
+            if (userTipo == 1) {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuADM.jsp");
                 dispatcher.forward(request, response);
-                
-            }else if(userTipo == 2){
+
+            } else if (userTipo == 2) {
                 //É um Cliente
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuCliente.jsp");
                 dispatcher.forward(request, response);
-            }else{
+            } else {
                 //É um Cliente
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuEsta.jsp");
                 dispatcher.forward(request, response);

@@ -1,4 +1,6 @@
 <%-- 
+    TELA REFERENTE AO MARCO II
+    
     Document   : TelaAlteraCard
     Created on : 30 de abr de 2021, 18:18:27
     Author     : Gabriel
@@ -19,7 +21,7 @@
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logotipo.png">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-        
+
         <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/cardUser.css">
         <style>
             .erroInput{
@@ -27,15 +29,15 @@
                 border-radius: 5px;
             }
         </style>
-        
+
     </head>
     <body>
-        
+
         <div id="container-landing" style="margin-top: 250px;">
             <div class="form-container">
                 <div class="form-block">
                     <section class="form-data">
-                        
+
                         <form action="${pageContext.request.contextPath}/AlteraCartao" method="get">
                             <div class="input-field ${not empty erro ? 'erroInput' : ''}">
                                 <div class="card">

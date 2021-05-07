@@ -5,7 +5,6 @@
  */
 package ClassesDAO;
 
-
 import ClassesJavaBean.Cartao;
 import ClassesJavaBean.Estabelecimento;
 import ConexaoBD.ConexaoJDBC;
@@ -62,7 +61,7 @@ public class EstabelecimentoDAO {
             //declarações do prepareStatement
             try (
                     Connection conn = conexao.obterConexaoBD();
-                    PreparedStatement stmt = conn.prepareStatement("insert into estabelecimento(nome_esta,cnpj,email,senha,capacidade,endereco,cep,numero,celular,horario_de_fun,disponibilidade,taxa_cancelamento,concordar,newslatter,def_aud,def_fis,tipo_usuario) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);) {
+                    PreparedStatement stmt = conn.prepareStatement("insert into estabelecimento(nome_esta,cnpj,email,senha,capacidade,endereco,cep,numero,celular,horario_de_fun,disponibilidade,taxa_cancelamento,concordar,newslatter,def_aud,def_fis,tipo_usuario) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
                 //passa os parametros
                 stmt.setString(1, dado.getNome_estabelecimento());
                 stmt.setString(2, dado.getCnpj());
@@ -126,9 +125,9 @@ public class EstabelecimentoDAO {
             stmt.setString(13, dado.getAcessi_fisico());
             stmt.setInt(14, dado.getId_estabelecimento());
             stmt.executeUpdate();
-            
-            atualiza= 1;
-        }catch(SQLException e){
+
+            atualiza = 1;
+        } catch (SQLException e) {
             System.out.println(e);
         }
         return atualiza;
@@ -227,6 +226,7 @@ public class EstabelecimentoDAO {
         }
         return esta;
     }
+
     public int cadastraCartaoEsta(Cartao dadoCartao) throws SQLException {
         //Cadastra o Cartao do Estabelecimento
         //Elementos para a conexão e verificação
@@ -263,6 +263,7 @@ public class EstabelecimentoDAO {
         }
         return a;
     }
+
     public void vinculaCartaoEsta(Cartao dado, int esta) throws SQLException {
         //Vincula cartão com o ultimo estabelecimento
         //Elementos para a conexão e verificação
@@ -278,66 +279,65 @@ public class EstabelecimentoDAO {
             stmt2.executeUpdate();
         }
     }
+
     public void atualizaCartaoEsta(Cartao dado) throws SQLException {
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
-        
-        //var verificador
 
+        //var verificador
         //declarações do preparedStatement
         try (
                 Connection conn = conexao.obterConexaoBD();
                 PreparedStatement stmt = conn.prepareStatement("update cartao "
                         + "set num_cartao= ?, validade= ?, cvv= ?, titular= ? where id_cartao= ?");) {
-            
+
             //Executa a Query
             stmt.setString(1, dado.getNum_cartao());
             stmt.setString(2, dado.getValidade());
             stmt.setInt(3, dado.getCvv());
             stmt.setString(4, dado.getTitular());
             stmt.setInt(5, dado.getId_card());
-            
+
             //executa
             stmt.executeUpdate();
-            
-            //novo valor de A
 
+            //novo valor de A
         } catch (SQLException e) {
             System.out.println(e);
 
         }
     }
-    
-    public int verificaSenha(Estabelecimento dado){
+
+    public int verificaSenha(Estabelecimento dado) {
         int verifica = 0;
-       
+
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
-        
+
         //verifica a senha
         try {
             Connection conn = conexao.obterConexaoBD();
             PreparedStatement stmt = conn.prepareStatement("select * from estabelecimento where id_esta = ?");
-            
+
             stmt.setInt(1, dado.getId_estabelecimento());
             ResultSet rs = stmt.executeQuery();
-            
+
             if (rs.next()) {
                 String senha = rs.getString("senha");
-                
-                if(senha.equals(dado.getSenha())){
+
+                if (senha.equals(dado.getSenha())) {
                     verifica = 1;
-                   
-                }else{
+
+                } else {
                     verifica = -1;
                 }
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
-        return verifica;        
+        return verifica;
     }
-    
+
     public List<Estabelecimento> listarDadosADM(int id) throws SQLException {
         //Lista os Estabelecimento
         ConexaoJDBC conexao = new ConexaoJDBC();
@@ -348,17 +348,15 @@ public class EstabelecimentoDAO {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Estabelecimento esta = new Estabelecimento();
-                
+
                 /////*PRIMEIRA LINHA*////
                 //Status
                 esta.setEsta_status(rs.getString("esta_status"));
-                
+
                 /////*SEGUNDA LINHA*////
-                
                 esta.setId_planos(rs.getInt("id_planos"));
-                
+
                 //quantidade de reservas
-                
                 /////*TERCEIRA LINHA*////
                 //nome
                 esta.setNome_estabelecimento(rs.getString("nome_esta"));
@@ -372,26 +370,26 @@ public class EstabelecimentoDAO {
                 esta.setNumero(rs.getString("numero"));
                 //celular
                 esta.setCelular(rs.getString("celular"));
-                
+
                 /////*TERCEIRA LINHA*////
                 //deficiencias
                 esta.setAcessi_auditiva(rs.getString("def_aud"));
                 esta.setAcessi_fisico(rs.getString("def_fis"));
-                
+
                 //valor taxa
                 esta.setTaxa_cancelamento(rs.getFloat("taxa_cancelamento"));
                 //capacidades
                 esta.setCapacidade(rs.getInt("capacidade"));
-                
+
                 //email
                 esta.setEmail(rs.getString("email"));
-                
+
                 //News
                 esta.setConcorda_newstalleter(rs.getString("newslatter"));
-                
+
                 /////*QUINTA LINHA*////
                 esta.setSenha(rs.getString("senha"));
-               
+
                 lista.add(esta);
             }
 
@@ -401,7 +399,3 @@ public class EstabelecimentoDAO {
         return lista;
     }
 }
-
-    /*Mais Metodos serão atribuidos nesta classe, apenas precisam serem mais 
-    trabalhados e revisados*/
-

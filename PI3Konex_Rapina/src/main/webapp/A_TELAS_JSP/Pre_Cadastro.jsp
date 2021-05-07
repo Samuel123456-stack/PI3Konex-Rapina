@@ -1,4 +1,6 @@
 <%-- 
+    TELA REFERENTE AO MARCO II
+
     Document   : Pre-Cadrasto
     Created on : 27 de abr de 2021, 22:28:53
     Author     : Gabriel
@@ -14,7 +16,7 @@
         <meta name="description" content="Crowd Control">
         <meta name="author" content="konex-group">  
         <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/partnerStore.css">
-        
+
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logotipo.png">
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -46,7 +48,7 @@
                         </div>
                         <div class="becomer-option">
                             <form action="${pageContext.request.contextPath}/IniciaCadastro">
-                                
+
                                 <div class="button-becomer-partner">
                                     <span>
                                         <img src="${pageContext.request.contextPath}/images/icons/house.png" alt="icon-house" />

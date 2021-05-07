@@ -36,19 +36,19 @@ public class BuscaLojas extends HttpServlet {
         //pegar o parametro id do estabelecimento e Rapinante
         String id = request.getParameter("pegaIdEsta");
         String botao = request.getParameter("btn");
-        
+
         //VAR
-        boolean temErro= false;
+        boolean temErro = false;
         int idEs = 0;
 
         //validar o parametro id
         if (id != null && id.trim().length() > 0) {
             idEs = Integer.parseInt(id);
-            temErro= false;
-        }else{
-            temErro= false;
+            temErro = false;
+        } else {
+            temErro = false;
         }
-        
+
         if (temErro) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuADM.jsp");
             dispatcher.forward(request, response);
@@ -73,7 +73,7 @@ public class BuscaLojas extends HttpServlet {
                 }
             }
         }
-           
+
     }
 
     @Override

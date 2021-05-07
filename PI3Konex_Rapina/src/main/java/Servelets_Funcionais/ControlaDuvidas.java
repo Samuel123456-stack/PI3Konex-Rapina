@@ -8,7 +8,6 @@ package Servelets_Funcionais;
 import ClassesDAO.NotificaDAO;
 import ClassesJavaBean.Notification;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,19 +23,16 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlaDuvidas", urlPatterns = {"/ControlaDuvidas"})
 public class ControlaDuvidas extends HttpServlet {
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
 
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         //Boas Praticas
+        //Boas Praticas
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         //Pega os Parametros
@@ -44,8 +40,8 @@ public class ControlaDuvidas extends HttpServlet {
         String email = request.getParameter("email");
         String mensagem = request.getParameter("mensagem");
         //Var que verifica se tem erro algum campo
-        boolean temErro=false;
-        
+        boolean temErro = false;
+
         if (nome != null && nome.trim().length() > 0) {
             try {
                 temErro = true;
@@ -85,26 +81,30 @@ public class ControlaDuvidas extends HttpServlet {
             temErro = true;
             request.setAttribute("erroMensagem", " ");
         }
-        
+
         //Instancio os Objetos
-        Notification noti = new Notification(nome,email,mensagem);
+        Notification noti = new Notification(nome, email, mensagem);
         NotificaDAO notiDao = new NotificaDAO();
-        try{
+        
+        try {
+            //var que auxilia no retorno da resposta pelo metodo
             int verificaDuvida = notiDao.criaDuvida(noti);
-            if(verificaDuvida==1){
-                temErro=false;
-            }else if(verificaDuvida==0){
-                temErro=true;
-            }else{
-                temErro=true;
-            }
-        }catch(SQLException ex){
             
+            //condições
+            if (verificaDuvida == 1) {
+                temErro = false;
+            } else if (verificaDuvida == 0) {
+                temErro = true;
+            } else {
+                temErro = true;
+            }
+        } catch (SQLException ex) {
+
         }
-        if(temErro){
+        if (temErro) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaDuvidas.jsp");
             dispatcher.forward(request, response);
-        }else{
+        } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/Pre_Cadastro.jsp");
             dispatcher.forward(request, response);
         }

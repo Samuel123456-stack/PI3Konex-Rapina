@@ -1,4 +1,5 @@
 <%-- 
+    TELA REFERENTE AO MARCO II
     Document   : TelaLogSenha
     Created on : 29 de abr de 2021, 20:24:04
     Author     : Gabriel
@@ -43,7 +44,7 @@
                     <h3>Confirmar login com a senha</h3>
 
                     <form action="${pageContext.request.contextPath}/LogSenha" method="get">
-                        
+
                         <div class="input-field ${not empty erroSenha ? 'erroInput' : ''}">
                             <input type="password" name="senha" placeholder="Digite a senha" maxlength="28" minlength="1" />
                             <span>

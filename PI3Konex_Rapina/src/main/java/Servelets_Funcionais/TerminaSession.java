@@ -22,23 +22,22 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "TerminaSession", urlPatterns = {"/ExitSession"})
 public class TerminaSession extends HttpServlet {
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        HttpSession sessao= request.getSession();
-        
-        if(sessao.getAttribute("cli") != null){
+
+        HttpSession sessao = request.getSession();
+
+        if (sessao.getAttribute("cli") != null) {
             sessao.invalidate();
         }
-        
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
 }

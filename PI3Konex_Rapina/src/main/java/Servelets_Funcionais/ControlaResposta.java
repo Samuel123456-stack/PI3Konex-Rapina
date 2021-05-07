@@ -26,8 +26,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlaResposta", urlPatterns = {"/ControlaResposta"})
 public class ControlaResposta extends HttpServlet {
 
-
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,68 +37,71 @@ public class ControlaResposta extends HttpServlet {
         String mensagem = request.getParameter("assunto");
         //var conversao
         int idUser = 0;
-        
+
         //Tratamento de Erros
-        boolean temErro=false;
-         if (idStr != null && idStr.trim().length() > 0) {
+        boolean temErro = false;
+        if (idStr != null && idStr.trim().length() > 0) {
             try {
                 temErro = false;
-                idUser=Integer.parseInt(idStr);
+                idUser = Integer.parseInt(idStr);
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = true;
                 //Declaração de Erro
-                idStr=null;
+                idStr = null;
                 request.setAttribute("ErroID", " ");
             }
-        }else{
-            temErro=true;
+        } else {
+            temErro = true;
             request.setAttribute("ErroID", " ");
         }
-          if (mensagem != null && mensagem.trim().length() > 0) {
+        if (mensagem != null && mensagem.trim().length() > 0) {
             try {
                 temErro = false;
-                
+
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = true;
                 //Declaração de Erro
-                mensagem=null;
+                mensagem = null;
                 request.setAttribute("ErroMensagem", " ");
             }
-        }else{
-            temErro=true;
+        } else {
+            temErro = true;
             request.setAttribute("ErroMensagem", " ");
         }
-          
-          //declaro a data e horario da solicitação
+
+        //declaro a data e horario da solicitação
         Date dataAtual = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String data = formatter.format(dataAtual);
-          
-          //Instancio os Objetos
-          Notification noti = new Notification(idUser,mensagem,data);
-          NotificaDAO notiDao = new NotificaDAO();
-          int verificaResposta = notiDao.criaResposta(noti);
-          if(verificaResposta==1){
-              temErro=false;
-          }else if(verificaResposta==0){
-              temErro=true;
-          }else{
-              temErro=true;
-          }
-          if(temErro){
+
+        //Instancio os Objetos
+        Notification noti = new Notification(idUser, mensagem, data);
+        NotificaDAO notiDao = new NotificaDAO();
+        
+        //var que retorna a reposta
+        int verificaResposta = notiDao.criaResposta(noti);
+        
+        //retorno da verificação
+        if (verificaResposta == 1) {
+            temErro = false;
+        } else if (verificaResposta == 0) {
+            temErro = true;
+        } else {
+            temErro = true;
+        }
+        if (temErro) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaResposta.jsp");
             dispatcher.forward(request, response);
-        }else{
+        } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaNotificacoes.jsp");
             dispatcher.forward(request, response);
         }
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
 }

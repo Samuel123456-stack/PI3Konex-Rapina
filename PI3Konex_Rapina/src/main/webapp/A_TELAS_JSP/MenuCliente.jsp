@@ -1,3 +1,7 @@
+<!--
+    TELA REFERENTE AO MARCO II
+-->
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -14,7 +18,7 @@
         <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/altCard.css">
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logotipo.png">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-        
+
     </head>
     <body>
         <br>
@@ -24,11 +28,11 @@
                     <img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
                 </div>
             </section>
-            
+
             <div class="outline-color">
                 <div class="query-select">
                     <h2>Obrigado por se cadastrar. Em breve você
-                    poderá utilizar o melhor da Rapina.</h2>
+                        poderá utilizar o melhor da Rapina.</h2>
                     <p>
                         Estamos em fase de construção, por isso estamos
                         com funcionalidades limitadas.

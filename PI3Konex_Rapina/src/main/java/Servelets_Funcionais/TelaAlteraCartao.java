@@ -7,9 +7,7 @@ package Servelets_Funcionais;
 
 import ClassesDAO.ClienteDAO;
 import ClassesJavaBean.Cartao;
-import ClassesJavaBean.Cliente;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,70 +26,69 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "TelaAlteraCartao", urlPatterns = {"/AlteraCartao"})
 public class TelaAlteraCartao extends HttpServlet {
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //boas praticas
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        
+
         //Buscar o id do cliente da Session anterior
         HttpSession session = request.getSession();
-        
+
         int idCartao = 0;
         if (session.getAttribute("cartao") != null) {
             Cartao cartao = (Cartao) session.getAttribute("cartao");
-            
+
             idCartao = cartao.getId_card();
             request.setAttribute("cartao", cartao);
-            
+
         } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaAlteraCard.jsp");
             dispatcher.forward(request, response);
         }
-        
+
         //pega os parametros
         String num = request.getParameter("numCartao");
         String validade = request.getParameter("val");
         String cvv = request.getParameter("cvv");
         String titu = request.getParameter("titular");
-        
+
         //converte os parametros
         int codV = 0;
-        
+
         //Variavel verificadora de erros
         boolean temErro = false;
-        
+
         //verifica os campos
-        if(num != null && num.trim().length() > 0){
+        if (num != null && num.trim().length() > 0) {
             temErro = false;
-        }else{
+        } else {
             temErro = true;
         }
-        
-        if(validade != null && validade.trim().length() > 0){
+
+        if (validade != null && validade.trim().length() > 0) {
             temErro = false;
-        }else{
-            temErro = true;
-            request.setAttribute("erro", " ");
-        }
-        
-        if(cvv != null && cvv.trim().length() > 0){
-            temErro = false;
-            codV= Integer.parseInt(cvv);
-        }else{
+        } else {
             temErro = true;
             request.setAttribute("erro", " ");
         }
-        
-        if(titu != null && titu.trim().length() > 0){
+
+        if (cvv != null && cvv.trim().length() > 0) {
             temErro = false;
-        }else{
+            codV = Integer.parseInt(cvv);
+        } else {
             temErro = true;
             request.setAttribute("erro", " ");
         }
-        
+
+        if (titu != null && titu.trim().length() > 0) {
+            temErro = false;
+        } else {
+            temErro = true;
+            request.setAttribute("erro", " ");
+        }
+
         //Constroe os objetos 
         Cartao cartaoAtt = new Cartao();
 
@@ -107,37 +104,35 @@ public class TelaAlteraCartao extends HttpServlet {
 
         //Objeto para atualização
         ClienteDAO clienteAtt = new ClienteDAO();
-        
+
         try {
             //Chama o metodo de atualizar
-            int atualiza= clienteAtt.atualizaCartao(cartaoAtt);
-            
-            if(atualiza == 1){
-                temErro=false;
-            }else{
-                temErro=true;
+            int atualiza = clienteAtt.atualizaCartao(cartaoAtt);
+
+            if (atualiza == 1) {
+                temErro = false;
+            } else {
+                temErro = true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(TelaAlteraCartao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         //verifica se há erros
-        if(temErro){
+        if (temErro) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaAlteraCard.jsp");
             dispatcher.forward(request, response);
-        }else{
+        } else {
             //Não há erros- despacha dados alterado.
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaPosAtualiza.jsp");
             dispatcher.forward(request, response);
         }
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
 }

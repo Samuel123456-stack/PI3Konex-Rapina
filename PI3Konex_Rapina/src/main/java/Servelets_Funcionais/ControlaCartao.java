@@ -32,7 +32,7 @@ public class ControlaCartao extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     @Override
@@ -43,34 +43,34 @@ public class ControlaCartao extends HttpServlet {
 
         //pega os dados do Cadastro do Cliente
         HttpSession sessao = request.getSession();
-        
+
         //OBJETOS DA SESSOES
         Cliente cliente = new Cliente();
         Estabelecimento esta = new Estabelecimento();
-        
+
         //VAR DAS SESSOES
         int idCli = 0;
         int tipoUsuario = 0;
         int idEsta = 0;
-        
+
         //VERIFICA QUAL USER ESTÁ NA SESSAO
         if (sessao.getAttribute("cli") != null && sessao.getAttribute("esta") == null) {
             cliente = (Cliente) sessao.getAttribute("cli");
-            
+
             //pega o id do Cliente
             idCli = cliente.getId_usuario();
             tipoUsuario = cliente.getTipo_user();
-            
+
             //Request
             request.setAttribute("cli", cliente);
-            
+
         } else if (sessao.getAttribute("cli") == null && sessao.getAttribute("esta") != null) {
             esta = (Estabelecimento) sessao.getAttribute("esta");
-            
+
             //pega o Id do Estabelecimento e o tipo do usuário
             idEsta = esta.getId_estabelecimento();
             tipoUsuario = esta.getTipo_user();
-            
+
             //Request do objeto
             request.setAttribute("esta", esta);
         } else {
@@ -86,19 +86,19 @@ public class ControlaCartao extends HttpServlet {
 
         //Declarções de Erro
         boolean temErro = false;
-        
+
         //VAR DE CONVERSAO
         int cvv = 0;
-        
+
         //VERIFICA TITULAR
         if (numCard != null && numCard.trim().length() > 0) {
             temErro = false;
         } else {
             temErro = true;
-            numCard=null;
+            numCard = null;
             request.setAttribute("erro", " ");
         }
-        
+
         //VERIFICA VALIDADE
         if (validade != null && validade.trim().length() > 0) {
             try {
@@ -121,7 +121,7 @@ public class ControlaCartao extends HttpServlet {
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = true;
                 //Declaração de Erro
-                cvvStr=null;
+                cvvStr = null;
                 request.setAttribute("erro", " ");
             }
         } else {
@@ -134,10 +134,10 @@ public class ControlaCartao extends HttpServlet {
             temErro = false;
         } else {
             temErro = true;
-            titular=null;
+            titular = null;
             request.setAttribute("erro", " ");
         }
-        
+
         Cartao cartao = new Cartao(numCard, validade, cvv, titular);
         ClienteDAO cliCartao = new ClienteDAO();
         EstabelecimentoDAO estaCartao = new EstabelecimentoDAO();
@@ -187,11 +187,11 @@ public class ControlaCartao extends HttpServlet {
             dispatcher.forward(request, response);
         } else {
             sessao.setAttribute("cartao", cartao);
-            if(tipoUsuario==2){                          
-            response.sendRedirect(request.getContextPath() + "/MenuCliente");
-            }else if(tipoUsuario==3){
-             response.sendRedirect(request.getContextPath() + "/MenuEsta");   
-            } 
+            if (tipoUsuario == 2) {
+                response.sendRedirect(request.getContextPath() + "/MenuCliente");
+            } else if (tipoUsuario == 3) {
+                response.sendRedirect(request.getContextPath() + "/MenuEsta");
+            }
         }
     }
 }

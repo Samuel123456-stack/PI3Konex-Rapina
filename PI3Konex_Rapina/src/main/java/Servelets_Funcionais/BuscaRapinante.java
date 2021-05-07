@@ -8,7 +8,6 @@ package Servelets_Funcionais;
 import ClassesDAO.ClienteDAO;
 import ClassesJavaBean.Cliente;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -48,7 +47,7 @@ public class BuscaRapinante extends HttpServlet {
         if (botaoR.equals("confirmaBusca")) {
             //constroe o objeto DAO
             ClienteDAO actionDAO = new ClienteDAO();
-            
+
             //chama o metodo que retorna uma lista de usuarios 
             List<Cliente> listaD;
             try {
@@ -62,7 +61,7 @@ public class BuscaRapinante extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(BuscaLojas.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuADM.jsp");
             dispatcher.forward(request, response);
         }

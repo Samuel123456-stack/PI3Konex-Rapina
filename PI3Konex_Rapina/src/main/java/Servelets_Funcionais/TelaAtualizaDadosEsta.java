@@ -30,25 +30,24 @@ public class TelaAtualizaDadosEsta extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       //boas praticas
+        //boas praticas
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        
+
         //Buscar o id do cliente da Session anterior
         HttpSession session = request.getSession();
-        
+
         int idUsuario = 0;
         String concorda = "";
-        String senha="";
+        String senha = "";
         if (session.getAttribute("esta") != null) {
             Estabelecimento esta = (Estabelecimento) session.getAttribute("esta");
-            
-            idUsuario =esta.getId_estabelecimento();
+
+            idUsuario = esta.getId_estabelecimento();
             concorda = esta.getConcorda();
             senha = esta.getSenha();
             request.setAttribute("esta", esta);
-            
-            
+
         } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaAlteraDados.jsp");
             dispatcher.forward(request, response);
@@ -67,7 +66,6 @@ public class TelaAtualizaDadosEsta extends HttpServlet {
         String defAud = request.getParameter("defAud");
         String defFis = request.getParameter("defFis");
 
-        
         //Tratamento de Erros
         boolean temErro = false;
         if (nomeEst != null && nomeEst.trim().length() > 0) {
@@ -103,11 +101,11 @@ public class TelaAtualizaDadosEsta extends HttpServlet {
         if (senhaNova != null && senhaNova.trim().length() > 0) {
             try {
                 if (!senhaNova.equals(senhaAntiga)) {
-                    temErro = false;       
+                    temErro = false;
                 } else {
                     temErro = true;
-                     senhaNova = null;
-                     request.setAttribute("ErroSenhaRe", "");
+                    senhaNova = null;
+                    request.setAttribute("ErroSenhaRe", "");
                 }
             } catch (StringIndexOutOfBoundsException ex) {
                 temErro = true;
@@ -181,27 +179,26 @@ public class TelaAtualizaDadosEsta extends HttpServlet {
         }
         int capEst = Integer.parseInt(capacidadeStr);
         float taxaCancela = Float.parseFloat(taxaStr);
-        
-        
+
         //Constroe os objetos 
         Estabelecimento esta = new Estabelecimento();
-        
+
         //Objeto aux para verificar a senha
         Estabelecimento estaAux = new Estabelecimento();
         estaAux.setSenha(senha);
         estaAux.setId_estabelecimento(idUsuario);
-        
+
         //Objeto DAO
         EstabelecimentoDAO estaAtt = new EstabelecimentoDAO();
-        
+
         //verifica se a senha é a que está cadastrada no bd
-        int verificador= estaAtt.verificaSenha(estaAux);
-        
-        if(verificador == 1){
+        int verificador = estaAtt.verificaSenha(estaAux);
+
+        if (verificador == 1) {
             //Não há erro, ou seja a senha verificada está contida no BD
             temErro = false;
-        }else if(verificador == -1){
-            temErro=true;
+        } else if (verificador == -1) {
+            temErro = true;
         }
         //Seta as informacoes para o objeto
         esta.setId_estabelecimento(idUsuario);
@@ -220,38 +217,34 @@ public class TelaAtualizaDadosEsta extends HttpServlet {
         //request do Objeto
         request.setAttribute("estaAtt", esta);
 
-
         try {
             //Chama o metodo de atualizar
-            int atualiza= estaAtt.atualiazaEst(esta);
-            
-            if(atualiza == 1){
-                temErro=false;
-            }else{
-                temErro=true;
+            int atualiza = estaAtt.atualiazaEst(esta);
+
+            if (atualiza == 1) {
+                temErro = false;
+            } else {
+                temErro = true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(TelaAtualizaDadosEsta.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         //verifica se há erros
-        if(temErro){
+        if (temErro) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaAlteraDadosEsta.jsp");
             dispatcher.forward(request, response);
-        }else{
+        } else {
             //Não há erros- despacha dados alterado.
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaPosAtualiza.jsp");
             dispatcher.forward(request, response);
         }
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-    }
 
+    }
 
 }

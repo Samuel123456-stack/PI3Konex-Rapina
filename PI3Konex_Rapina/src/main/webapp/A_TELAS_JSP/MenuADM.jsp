@@ -1,3 +1,6 @@
+<!--
+    TELA REFERENTE AO MARCO II
+-->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -195,7 +198,7 @@
                             </div>
                         </c:forEach>    
                     </div>
-                        <c:forEach var="b" items="${listaRapina}">    
+                    <c:forEach var="b" items="${listaRapina}">    
                         <div id="hrvertical"></div>
                         <div class="infoRap">
                             <div class="infoRaptop">
@@ -217,7 +220,7 @@
                             <h2 style="margin-top: 180px;">Senha cadastrada: <span style="font-weight: normal;"><c:out value="${b.senha}"/></span></h2>
                             <hr>
                         </div>
-                        </c:forEach> 
+                    </c:forEach> 
                 </div>
             </div>
 

@@ -1,4 +1,5 @@
 <%-- 
+    TELA REFERENTE AO MARCO II
     Document   : TelaInicial
     Created on : 2 de mai de 2021, 16:28:40
     Author     : Gabriel
@@ -26,7 +27,7 @@
                     <img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
                 </div>
             </section>
-            
+
             <div class="main-container">
                 <h1>
                     Seja bem vindo(a), você quer voar com Rapina?
@@ -34,7 +35,7 @@
                 <p class="first-paragraph">
                     Com a rapina você pode voar mais alto e com liberdade.
                 </p>
-                
+
                 <footer>
                     <a href="${pageContext.request.contextPath}/Pre_Cadastro"><button type="button">Cadastrar</button></a>
                     <a href="${pageContext.request.contextPath}/LogEmail"><button type="button">Entrar</button></a>

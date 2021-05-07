@@ -100,12 +100,12 @@ public class ClienteDAO {
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
         //Var verificador
-        int atualiza=0;
-       String sql = "update usuario set nome=?, genero=?, cpf=?, email=?, senha=?,nascimento=?, concordar=? where id_usuario= ?";
+        int atualiza = 0;
+        String sql = "update usuario set nome=?, genero=?, cpf=?, email=?, senha=?,nascimento=?, concordar=? where id_usuario= ?";
         //declarações do preparedStatement
         try (
                 Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement(sql);){
+                PreparedStatement stmt = conn.prepareStatement(sql);) {
             //Executa a Query
             stmt.setString(1, dado.getNome());
             stmt.setString(2, dado.getGenero());
@@ -116,8 +116,8 @@ public class ClienteDAO {
             stmt.setString(7, dado.getConcorda());
             stmt.setInt(8, dado.getId_usuario());
             stmt.executeUpdate();
-            
-            atualiza=1;
+
+            atualiza = 1;
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -258,7 +258,7 @@ public class ClienteDAO {
     public int atualizaCartao(Cartao dado) throws SQLException {
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
-        
+
         //var verificador
         int a = 0;
 
@@ -267,17 +267,17 @@ public class ClienteDAO {
                 Connection conn = conexao.obterConexaoBD();
                 PreparedStatement stmt = conn.prepareStatement("update cartao "
                         + "set num_cartao= ?, validade= ?, cvv= ?, titular= ? where id_cartao= ?");) {
-            
+
             //Executa a Query
             stmt.setString(1, dado.getNum_cartao());
             stmt.setString(2, dado.getValidade());
             stmt.setInt(3, dado.getCvv());
             stmt.setString(4, dado.getTitular());
             stmt.setInt(5, dado.getId_card());
-            
+
             //executa
             stmt.executeUpdate();
-            
+
             //novo valor de A
             a = 1;
         } catch (SQLException e) {
@@ -286,36 +286,37 @@ public class ClienteDAO {
         }
         return a;
     }
-    
-    public int verificaSenha(Cliente dado){
+
+    public int verificaSenha(Cliente dado) {
         int verifica = 0;
-       
+
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
-        
+
         //verifica a senha
         try {
             Connection conn = conexao.obterConexaoBD();
             PreparedStatement stmt = conn.prepareStatement("select * from usuario where id_usuario = ?");
-            
+
             stmt.setInt(1, dado.getId_usuario());
             ResultSet rs = stmt.executeQuery();
-            
+
             if (rs.next()) {
                 String senha = rs.getString("senha");
-                
-                if(senha.equals(dado.getSenha())){
+
+                if (senha.equals(dado.getSenha())) {
                     verifica = 1;
-                   
-                }else{
+
+                } else {
                     verifica = -1;
                 }
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
-        return verifica;        
+        return verifica;
     }
+
     public List<Cliente> listarDadosRapina(int id) throws SQLException {
         //Lista os Estabelecimento
         ConexaoJDBC conexao = new ConexaoJDBC();
@@ -326,18 +327,18 @@ public class ClienteDAO {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Cliente cli = new Cliente();
-                
+
                 /////*PRIMEIRA LINHA*////
                 cli.setNome(rs.getString("nome"));
                 cli.setCpf(rs.getString("cpf"));
                 cli.setData_nascimento(rs.getString("nascimento"));
                 cli.setGenero(rs.getString("genero"));
-                
+
                 /////*SEGUNDA LINHA*////
                 cli.setConcorda_newstalleter(rs.getString("newslatter"));
                 cli.setEmail(rs.getString("email"));
                 cli.setSenha(rs.getString("senha"));
-                
+
                 lista.add(cli);
             }
 

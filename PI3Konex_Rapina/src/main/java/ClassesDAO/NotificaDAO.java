@@ -21,49 +21,50 @@ import java.util.List;
 public class NotificaDAO {
 
     ArrayList<Notification> lista = new ArrayList<>();
-    
+
     public int criaDuvida(Notification dado) throws SQLException {
         //Elementos para a conexão e verificação
         int cria = 0;
         ConexaoJDBC conexao = new ConexaoJDBC();
         //Declarações do preparedStatement
-            try (
-                    Connection conn = conexao.obterConexaoBD();
-                     PreparedStatement stmt = conn.prepareStatement("insert into notificacao(nome,email,mensagem) values (?,?,?)");){
-                 //Passa os parametros
-                 stmt.setString(1,dado.getNome_noti());
-                 stmt.setString(2, dado.getEmail_noti());
-                 stmt.setString(3, dado.getMensagem());
-                 
-                 //Executa a Query
-                 stmt.executeUpdate();
-                 cria= 1;
-                 return cria;
-            }catch(SQLException ex){
-                System.out.println(ex); 
-            }
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("insert into notificacao(nome,email,mensagem) values (?,?,?)");) {
+            //Passa os parametros
+            stmt.setString(1, dado.getNome_noti());
+            stmt.setString(2, dado.getEmail_noti());
+            stmt.setString(3, dado.getMensagem());
+
+            //Executa a Query
+            stmt.executeUpdate();
+            cria = 1;
+            return cria;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
         return cria;
-           
+
     }
-    public int criaResposta(Notification dado){
+
+    public int criaResposta(Notification dado) {
         //Elementos para a conexão e verificação
         int cria = 0;
         ConexaoJDBC conexao = new ConexaoJDBC();
         //Declarações do preparedStatement
-            try (
-                    Connection conn = conexao.obterConexaoBD();
-                     PreparedStatement stmt = conn.prepareStatement("insert into notificacao(id_usuario,mensagem) values (?,?)");){
-                 //Passa os parametros
-                 stmt.setInt(1,dado.getId_user());
-                 stmt.setString(2, dado.getMensagem());
-                 
-                 //Executa a Query
-                 stmt.executeUpdate();
-                 cria= 1;
-                 return cria;
-            }catch(SQLException ex){
-                System.out.println(ex); 
-            }
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("insert into notificacao(id_usuario,mensagem) values (?,?)");) {
+            //Passa os parametros
+            stmt.setInt(1, dado.getId_user());
+            stmt.setString(2, dado.getMensagem());
+
+            //Executa a Query
+            stmt.executeUpdate();
+            cria = 1;
+            return cria;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
         return cria;
     }
 

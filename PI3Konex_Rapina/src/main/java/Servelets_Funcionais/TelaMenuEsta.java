@@ -26,28 +26,27 @@ public class TelaMenuEsta extends HttpServlet {
         //boas praticas
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        
+
         //Pegar o parametro
         String botao = request.getParameter("btn");
-        
+
         //condição
-        if(botao != null){
+        if (botao != null) {
             //condição
-            if (botao.equals("att card")){
+            if (botao.equals("att card")) {
                 response.sendRedirect(request.getContextPath() + "/TelaAltCard");
-            }else if (botao.equals("att dados")){
+            } else if (botao.equals("att dados")) {
                 response.sendRedirect(request.getContextPath() + "/AlteraDadosEsta");
-            }else if (botao.equals("sub exclusao")){
+            } else if (botao.equals("sub exclusao")) {
                 response.sendRedirect(request.getContextPath() + "/TelaSolicitaExclusao");
             }
         }
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
 }
