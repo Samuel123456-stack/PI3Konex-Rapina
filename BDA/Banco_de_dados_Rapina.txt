@@ -3,7 +3,7 @@ use rapina;
 
 create table administrador(
 id_adm int unsigned auto_increment not null primary key,
-login varchar(20)  not null,
+email varchar(20)  not null,
 senha varchar(20) not null,
 nome varchar(30) not null,
 tipo_usuario smallint unsigned not null
@@ -16,6 +16,15 @@ valor decimal(5,2) not null,
 beneficio text null
 );
 
+create table cartao(
+id_cartao int unsigned auto_increment not null primary key,
+num_cartao varchar(19) not null,
+validade varchar(7) not null,
+cvv smallint not null ,
+bandeira varchar(20),
+titular varchar(40) not null
+);
+
 create table estabelecimento(
 id_esta int unsigned auto_increment not null primary key, 
 nome_esta varchar(30) not null,
@@ -26,36 +35,22 @@ capacidade tinyint not null,
 endereco varchar(50) null,
 cep varchar(10) null,
 numero smallint null,
+celular varchar(14) null,
 horario_de_fun varchar(20) not null,
 disponibilidade enum('Sim','Não') not null,
+esta_status enum('Sim','Não') not null,
 taxa_cancelamento decimal(5,2) not null,
 concordar enum('Sim','Não') not null,
-newslatter enum('Sim','Não') not null,
+newslatter enum('Sim','Não') null,
 def_aud enum('Sim','Não') not null,
 def_fis enum('Sim','Não') not null,
 tipo_usuario smallint unsigned not null,
-id_planos int unsigned not null,
+id_planos int unsigned null,
+id_cartao int unsigned null,
 constraint `fk_idplanosesta_pk_idplanosesta` foreign key(`id_planos`)
- references `planos`(`id_planos`)
-);
-
-create table cartao(
-id_cartao int unsigned auto_increment not null primary key,
-num_cartao varchar(30) not null,
-validade date not null,
-cvv smallint not null ,
-bandeira varchar(20) not null,
-titular varchar(20) not null
-);
-
-create table favorito(
-id_favorito int unsigned auto_increment not null primary key,
-nome_esta varchar(30)  null,
-horario_fun varchar(20) null,
-endereco varchar(50) null,
-id_esta int unsigned not null,
-constraint `fk_idestafav_pk_idestafav` foreign key(`id_esta`)
- references `estabelecimento`(`id_esta`)
+ references `planos`(`id_planos`),
+ constraint `fk_idcartaoesta_pk_idcartaoesta` foreign key(`id_cartao`)
+ references `cartao`(`id_cartao`)
 );
 
 create table usuario(
@@ -67,15 +62,37 @@ email varchar(30)  not null,
 senha varchar(20)  not null,
 nascimento date  null,
 concordar enum('Sim','Não') not null,
-newslatter enum('Sim','Não') not null,
-id_cartao int unsigned not null,
-id_favorito int unsigned not null,
+newslatter enum('Sim','Não') null,
+id_cartao int unsigned null,
 tipo_usuario smallint unsigned not null,
 constraint `fk_idcartaousu_pk_idcartaousu` foreign key(`id_cartao`)
- references `cartao`(`id_cartao`),
- constraint `fk_idfavusu_pk_idfavusu` foreign key(`id_favorito`)
- references `favorito`(`id_favorito`)
+ references `cartao`(`id_cartao`)
 );
+
+create table favorito(
+id_favorito int unsigned auto_increment not null primary key,
+nome_esta varchar(30)  null,
+horario_fun varchar(20) null,
+endereco varchar(50) null,
+id_esta int unsigned not null,
+id_usuario int unsigned not null,
+constraint `fk_idestafav_pk_idestafav` foreign key(`id_esta`)
+ references `estabelecimento`(`id_esta`),
+ constraint `fk_idusufav_pk_idusufav` foreign key(`id_usuario`)
+ references `usuario`(`id_usuario`)
+);
+
+create table login(
+id_login int unsigned auto_increment not null primary key,
+email varchar(30) not null,
+senha varchar(20) not null,
+id_esta int unsigned  null,
+id_adm int unsigned null ,
+id_usuario int unsigned null,
+tipo_usuario smallint unsigned not null,
+nome varchar(30) not null
+);
+
 
 create table doacao(
 id_doacao int unsigned auto_increment not null primary key,
@@ -93,8 +110,10 @@ constraint `fk_idusudoa_pk_idusudoa` foreign key(`id_usuario`)
 create table notificacao(
 id_noti int unsigned auto_increment not null primary key ,
 mensagem text null,
-num_reserva varchar(5) not null,
-data_noti DATE DEFAULT (CURRENT_DATE),
+num_reserva varchar(5) null,
+data_noti datetime,
+nome varchar(30) null,
+email varchar(30) null,
 id_esta int unsigned null,
 id_usuario int unsigned null,
 constraint `fk_idusunot_pk_idusunot` foreign key(`id_usuario`)
@@ -148,47 +167,83 @@ constraint `fk_idusues_pk_idusues` foreign key(`id_usuario`)
  references `estabelecimento`(`id_esta`)
 );
 
-insert into administrador(login, senha, nome, tipo_usuario) values 
+DROP TRIGGER IF EXISTS `rapina`.`usuario_AFTER_INSERT`;
+
+DELIMITER $$
+USE `rapina`$$
+CREATE DEFINER=`tads`@`localhost` TRIGGER `usuario_AFTER_INSERT` AFTER INSERT ON `usuario` FOR EACH ROW BEGIN
+INSERT INTO login(email,senha,id_usuario,tipo_usuario,nome) 
+VALUES(NEW.email,NEW.senha,NEW.id_usuario,NEW.tipo_usuario,NEW.nome);
+END$$
+DELIMITER ;
+
+
+DROP TRIGGER IF EXISTS `rapina`.`administrador_AFTER_INSERT`;
+
+DELIMITER $$
+USE `rapina`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `rapina`.`administrador_AFTER_INSERT` AFTER INSERT ON `administrador` FOR EACH ROW
+BEGIN
+INSERT INTO login(email,senha,id_adm,tipo_usuario,nome) 
+VALUES(NEW.email,NEW.senha,NEW.id_adm,NEW.tipo_usuario,NEW.nome);
+END$$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS `rapina`.`estabelecimento_AFTER_INSERT`;
+
+DELIMITER $$
+USE `rapina`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `rapina`.`estabelecimento_AFTER_INSERT` AFTER INSERT ON `estabelecimento` FOR EACH ROW
+BEGIN
+INSERT INTO login(email,senha,id_esta,tipo_usuario,nome) 
+VALUES(NEW.email,NEW.senha,NEW.id_esta,NEW.tipo_usuario,NEW.nome_esta);
+END$$
+DELIMITER ;
+
+
+/*Inserção dos dados*/
+insert into administrador(email, senha, nome, tipo_usuario) values 
 ('gabriel@admsilva', 'analistaADM', 'Gabriel Felipe',1),
-('alexyudy@admkitahara', 'analistaADM', 'Alex Yudy Kitahara',2),
-('samuel@admlo', 'analistaADM', 'Samuel Lo',3),
-('gustavo@admgomes', 'analistaADM', 'Gustavo Gomes',2),
+('alexyudy@admkitahara', 'analistaADM', 'Alex Yudy Kitahara',1),
+('samuel@admlo', 'analistaADM', 'Samuel Lo',1),
+('gustavo@admgomes', 'analistaADM', 'Gustavo Gomes',1),
 ('rubens@admricci', 'analistaADM', 'Rubens Ricci', 1);
-                                                                           
-                                                                           
+                                                                                                                                             
  insert into planos(nome, valor,beneficio) values 
 ('Plano Basic', '19.90','1 reserva por mês'),
 ('Plano Dinamic', '29.90','5 reservas por mês'),
 ('Plano Explorador', '49.90','20 reservas por mês');
 
-insert into estabelecimento(nome_esta,cnpj,email,senha,capacidade,endereco,cep,numero,horario_de_fun,disponibilidade, taxa_cancelamento,concordar,newslatter,def_aud,def_fis,tipo_usuario,id_planos) values 
-( 'Burger King', '00.000.000/0000-00', 'bkatende@burgerking.com.br', 'comaburger', '30','RUA SETE DE SETEMBRO','04536-000','121', '13:00/20:00', 'Sim', '42.90', 'Sim', 'Não', 'Não', 'Sim', '10001', 1),
-('McDonald', '11.111.111/1111-11', 'sac@sacmcdonalds.com.br', 'mcDonaldFeliz45', '40','RUA DEZESSEIS','13331-260','11', '10:00/20:00', 'Sim', '19.90', 'Sim', 'Não', 'Sim', 'Sim', '10002', 2),
-('Chifu', '22.222.222/2222-22', '@​RestauranteChiFu', 'chifuFanDian', '50','RUA SANTA LUZIA','11701-750','15', '11:00/20:00', 'Sim', '19.90', 'Sim', 'Sim', 'Sim', 'Sim', '10003', 3),
-('IFood', '33.333.333/3333-33', 'suporte@ifood.com.br', 'ifoodComida', '60','RUA SANTOS DUMONT','14177-138','1876', '08:00/18:00', 'Sim', '42.90', 'Sim', 'Não', 'Sim', 'Sim', '10004', 1),
-('Solare', '44.444.444/4444-44', '@solarerestaurante', 'solareBufe', '70','RUA TREZE DE MAIO','13050-086','207', '11:30/23:00', 'Sim', '29.90', 'Sim', 'Não', 'Não', 'Não', '10005', 3),
-('Tony Roma', '55.555.555/5555-55', 'None', 'comaburger', '80','RUA QUINZE DE MAIO','13050-086','17', '12:00/22:00', 'Sim', '29.90', 'Sim', 'Não', 'Não', 'Não', '10006', 1);                                                                          
-
 insert into cartao(num_cartao, validade, cvv, bandeira, titular) values 
-('1111111111111111', '2024/05/27', '111', 'Visa', 'Cássia Alves Barros'),
-('2222222222222222', '2024/07/12', '222', 'Visa', 'Mayara Rosado Sodré'),
-('3333333333333333', '2026/11/02', '333', 'visa', 'Jonathan Boga Ruela'),
-('4444444444444444', '2028/09/13', '444', 'Elo', 'Rayane de Novais'),
-('5555555555555555', '2028/05/30', '555', 'MasterCard', 'Mario Soares Santos');
+('1111111111111111', '2024/05', '111', 'Visa', 'Cássia Alves Barros'),
+('2222222222222222', '2024/07', '222', 'Visa', 'Mayara Rosado Sodré'),
+('3333333333333333', '2026/11', '333', 'visa', 'Jonathan Boga Ruela'),
+('4444444444444444', '2028/09', '444', 'Elo', 'Rayane de Novais'),
+('5555555555555555', '2028/05', '555', 'MasterCard', 'Mario Soares Santos');
 
-insert into favorito(nome_esta,horario_fun,endereco,id_esta) values 
-('Burger King','09:00/17:00','RUA SETE DE SETEMBRO', '1'),
-('Mcdonald','08:00/19:00','RUA DEZESSEIS', '2'),
-( 'IFood','10:30/20:00','RUA SANTOS DUMONT', '4'),
-('Solare','12:00/19:00','RUA TREZE DE MAIO', '5'),
-('Chifu','12:00/20:00','RUA SANTA LUZIA', '3');
+insert into estabelecimento(nome_esta,cnpj,email,senha,capacidade,endereco,cep,numero,celular,horario_de_fun,disponibilidade,esta_status,taxa_cancelamento,concordar,newslatter,def_aud,def_fis,tipo_usuario,id_planos,id_cartao) values 
+( 'Burger King', '00.000.000/0000-00', 'bkatende@burgerking.com.br', 'comaburger', '30','RUA SETE DE SETEMBRO','04536-000','121','11-23578-0193', '13:00/20:00', 'Sim','Sim', '42.90', 'Sim', 'Não', 'Não', 'Sim', '3', 1,'1'),
+('McDonald', '11.111.111/1111-11', 'sac@sacmcdonalds.com.br', 'mcDonaldFeliz45', '40','RUA DEZESSEIS','13331-260','11', '11-65709-2456', '10:00/20:00', 'Sim','Sim', '19.90', 'Sim', 'Não', 'Sim', 'Sim', '3', 2,'2'),
+('Chifu', '22.222.222/2222-22', '@​RestauranteChiFu', 'chifuFanDian', '50','RUA SANTA LUZIA','11701-750','15', '11-12356-3368', '11:00/20:00', 'Sim','Não', '19.90', 'Sim','Sim', 'Sim', 'Sim', '3', 3,'3'),
+('IFood', '33.333.333/3333-33', 'suporte@ifood.com.br', 'ifoodComida', '60','RUA SANTOS DUMONT','14177-138','1876', '11-21134-9807', '08:00/18:00', 'Sim','sim', '42.90', 'Sim', 'Não', 'Sim', 'Sim', '3', 1,'1'),
+('Solare', '44.444.444/4444-44', '@solarerestaurante', 'solareBufe', '70','RUA TREZE DE MAIO','13050-086','207', '11-23411-2346', '11:30/23:00', 'Sim','Não', '29.90', 'Sim', 'Não', 'Não', 'Não', '3', 3,'1'),
+('Tony Roma', '55.555.555/5555-55', 'None', 'comaburger', '80','RUA QUINZE DE MAIO','13050-086','17', '11-21357-8644', '12:00/22:00', 'Sim','Sim', '29.90', 'Sim', 'Não', 'Não', 'Não', '3', 1,'3');                                                                          
 
-insert into usuario(nome, genero, cpf, email, senha, concordar,nascimento, newslatter, id_cartao, id_favorito, tipo_usuario) values 
-('Rodrigo Pacheco', 'Masculino', '111-111-111-11', 'rodrigo@hotmail.com.br', 'rodrigo_pacheco@6','Sim','1990/06/11', 'Sim', '1', '1', '1'),
-('Gabriela Araújo', 'Feminino', '222-222-222-22', 'bibiaraujo@gmail.com.br', 'gabiraujo_vetkit','Sim','1990/07/22', 'Sim', '1', '4', '2'),
-('Janira Travassos Sequeira', 'Feminino', '333-333-333-33', 'jani1@outlook.com', 'janira@#crush','Sim','1990/02/14', 'Não', '2', '3', '3'),
-('Derek Oleiro Malho', 'Masculino', '444-444-444-44', 'deroleiro@gmail.com.br', 'derekYG@#65','Não','1990/04/13', 'Sim', '3', '2', '4'),
-('Marcus Teles Lima', 'Masculino', '555-555-555-55', 'marquinhos@gmail.com.br', 'marcolaNUB','Não','1990/05/09','Não', '4', '5', '5');
+
+
+insert into usuario(nome, genero, cpf, email, senha,concordar,nascimento, newslatter, id_cartao, tipo_usuario) values 
+('Rodrigo Pacheco', 'Masculino', '111-111-111-11', 'rodrigo@hotmail.com.br', 'rodrigo_pacheco@6', 'Sim','1990/06/11', 'Sim', '1', '2'),
+('Gabriela Araújo', 'Feminino', '222-222-222-22', 'bibiaraujo@gmail.com.br', 'gabiraujo_vetkit', 'Sim','1990/07/22', 'Sim', '4', '2'),
+('Janira Travassos Sequeira', 'Feminino', '333-333-333-33', 'jani1@outlook.com', 'janira@#crush','Sim','1990/02/14', 'Não','3', '2'),
+('Derek Oleiro Malho', 'Masculino', '444-444-444-44', 'deroleiro@gmail.com.br', 'derekYG@#65', 'Não','1990/04/13', 'Sim','2', '2'),
+('Marcus Teles Lima', 'Masculino', '555-555-555-55', 'marquinhos@gmail.com.br', 'marcolaNUB', 'Não','1990/05/09','Não','5', '2');
+
+insert into favorito(nome_esta,horario_fun,endereco,id_esta,id_usuario) values 
+('Burger King','09:00/17:00','RUA SETE DE SETEMBRO', '1','1'),
+('Mcdonald','08:00/19:00','RUA DEZESSEIS', '2','3'),
+( 'IFood','10:30/20:00','RUA SANTOS DUMONT', '4','2'),
+('Solare','12:00/19:00','RUA TREZE DE MAIO', '5','1'),
+('Chifu','12:00/20:00','RUA SANTA LUZIA', '3','2');
 
 insert into doacao(nome, valor, id_usuario, id_esta)values
 ('Doação Melhor', '4.00','3', '2'),
@@ -203,12 +258,11 @@ insert into reserva(quant_pessoas,data_reserva,hora_reserva,id_usuario,id_esta) 
 ('2','2021/03/11','13:00','4','2'),
 ('1','2021/02/21','13:10','5','1');
 
-insert into notificacao(mensagem,num_reserva,id_esta,id_usuario) values 
-('Reserva realizada com sucesso!','5','1', '5'),
-('Reserva desmarcada','4','2', '4'),
-('Falha ao realizar reserva','3','3', '3'),
-('Está tudo certo para hoje?','2','4', '2'),
-('Obrigado por escolher nosso serviço','1','5', '1');
+insert into notificacao(mensagem,num_reserva,id_esta,id_usuario,data_noti) values 
+('Reserva realizada com sucesso!','5','1', null,'2021-02-23 23:40:29'),
+('Reserva desmarcada','4','2', null,'2021-03-04 16:40:40'),
+('Falha ao realizar reserva','3',null, '3','2021-05-05 19:30:19'),
+('Está tudo certo para hoje?','2',null, '2','2021-04-19 10:43:30');
 
 insert into pagamento_mensalidade(id_esta, id_planos) values 
 ('4', '1'),
@@ -223,6 +277,13 @@ insert into pagamento_taxa(desc_taxa, valor_adm, valor_esta, id_adm, id_usuario,
 ('Atraso na reserva','20.00', '25.90', '5', '1', '45.90', '5'),
 ('Mais pessoas compareceram na data do que o reservado','20.00', '40.90', '1', '3', '60.90', '3'),
 ('Atraso na reserva','20.00', '20.90', '3', '4', '40.90', '2');
+
+use rapina;
+select*from login;
+select*from usuario;
+select*from cartao;
+select*from estabelecimento;
+select*from notificacao;
 
 
 
