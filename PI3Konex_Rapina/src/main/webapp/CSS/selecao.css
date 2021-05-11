@@ -19,21 +19,32 @@ body{
 .img{
     width: 536px;
     height: 408px;
-    border: 1px solid #000;
+    border: 1px transparent;
     margin-top: 96px;
     float: left;
     clear: left;
 }
 
-.imgtext h1{
-    width: 258px;
-}
+
 .imgtext{
     width: 520px;
     height: 408px;
     margin-top: 96px;
     margin-left: 74px;
     float: left;
+
+}
+.imgtext h1{
+    width: 258px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 50px;
+    /* or 139% */
+
+    letter-spacing: -0.015em;
+
+    color: #4361EE;
 }
 
 .ocupacao p{
@@ -55,6 +66,8 @@ body{
     margin-left: auto;
     margin-right: auto;
     border: 1px solid #fff;
+
+
 }
 
 .link a:link, 
@@ -65,14 +78,20 @@ body{
 }
 .link svg{
     float: left;
+    margin-right: 10px;
 }
 .link p{
     margin-top: 0;
     float: left;
     font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 32px;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 25px;
+    /* identical to box height, or 200% */
+
+    letter-spacing: -0.015em;
+
+    color: #4361EE;
 }
 
 
@@ -162,13 +181,16 @@ input[type="number"] {
     width: 200px;
     height: 40px;
     margin-left: 41px;
-    border: 1px solid #000;
-    border-radius: 10px;
+    border: 1px transparent;
+    background: #FF7A00;
+    border-radius: 100px;
+    color: #fff;
     outline: none;
 }
 .defi{
     width: 1143px;
     height: 64px;
+    padding-top: 60px;
     margin-bottom: 30px;
     clear: both;
 }
@@ -209,8 +231,22 @@ input[type="number"] {
 }
 .retangulo{
     width: 1143px;
-    height: 130px;
+    height: 90px;
+    padding-top: 40px;
     margin-bottom: 73px;
-    border: 1px solid #000;
+    border: 1px transparent;
     clear: both;
+    background: #FF5500;
+    border-radius: 15px;
+}
+.retangulo h1{
+    margin: 0;
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 50px;
+    /* or 139% */
+    color: #fff;
+    letter-spacing: -0.015em;
 }
