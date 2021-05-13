@@ -112,6 +112,7 @@ public class ListaNotifica extends HttpServlet {
                 Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        /*
         if (action.equalsIgnoreCase("deletar")) {
             int idNoti = Integer.parseInt(request.getParameter("id_notification"));
             try {
@@ -122,8 +123,7 @@ public class ListaNotifica extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-        }
+        }*/
 
         if (temErro) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaNotificacoes.jsp");

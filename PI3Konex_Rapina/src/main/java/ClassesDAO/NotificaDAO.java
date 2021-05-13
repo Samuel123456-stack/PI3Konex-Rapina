@@ -117,8 +117,7 @@ public class NotificaDAO {
         //declarações do preparedStatement
         try (
                 Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("delete from "
-                        + "notificacao where id_noti= ?");) {
+                PreparedStatement stmt = conn.prepareStatement("delete from notificacao where id_noti=?");) {
             //Executa a Query
             stmt.setInt(1, valor);
             stmt.executeUpdate();
