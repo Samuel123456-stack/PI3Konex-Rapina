@@ -41,7 +41,6 @@
                         <h3>Cliente identificado: </h3><br><br>
                         <button type="submit" class="btn3"><a href="${pageContext.request.contextPath}/CriaTelaResposta" style="color:white; text-decoration: none;">Responder Mensagem</a></button>
                     </div>
-
                 </form>
             </div>    
             <br><br><br><br>
@@ -60,8 +59,10 @@
                         <c:forEach var="item" items="${listaNoti}">
                             <tr>
                                 <td class="selec" >
-                                    <a style="text-decoration: none; color: red; font-weight: bold;" href="${pageContext.request.contextPath}/FazListagem?action=deletar&id_notification=<c:out value="${item.id_notification}"/>">(X)</a>
-
+                                    <form action="${pageContext.request.contextPath}/DeletaLineMsg" mehod="get">
+                                        <input type="hidden" name="lineId" value="${item.id_notification}">
+                                        <button type="submit" style="background-color: red; padding: 10px; color: white; border-radius: 8px;" name="btn" value="btnDeleta">Deletar</button>
+                                    </form>
                                 </td>
                                 <!--ID-->
                                 <td class="idU"><p><c:out value="${item.id_notification}"/></p></td>

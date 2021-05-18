@@ -42,6 +42,7 @@
                     <form action="${pageContext.request.contextPath}/Menu" method="get">
                         <button type="submit" name="btn" value="att card">Alterar cartão</button>
                         <button type="submit" name="btn" value="att dados">Alterar dados</button>
+                        <button type="submit" name="btn" value="envia doacao">Fazer uma Doação</button>
                         <button type="submit" name="btn" value="sub exclusao">Solicitar exclusão da conta</button>
                     </form>
                 </footer>
