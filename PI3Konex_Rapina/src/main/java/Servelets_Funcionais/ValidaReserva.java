@@ -8,7 +8,6 @@ package Servelets_Funcionais;
 import ClassesDAO.ReservaDAO;
 import ClassesJavaBean.Reserva;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -31,11 +30,12 @@ public class ValidaReserva extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF=8");
+        response.setCharacterEncoding("UTF-8");
 
         String numSTR = request.getParameter("numReserva");
         String botao = request.getParameter("btn");
         int numReserva = 0;
+        boolean temErroValida = false;
         boolean temErro = false;
         if (numSTR != null && numSTR.trim().length() > 0) {
             try {
@@ -65,17 +65,22 @@ public class ValidaReserva extends HttpServlet {
                 try {
                     verifica = resDAO.ConsultaReserva(numReserva);
                     if (verifica == 1) {
+                        resDAO.atualizaStatus(numReserva);
                         listaDados = resDAO.listarDadosReserva(numReserva);
                         request.setAttribute("lista", listaDados);
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaValidaReserva.jsp");
                         dispatcher.forward(request, response);
                     } else if (verifica == 0) {
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaValidaReserva.jsp");
-                        dispatcher.forward(request, response);
+                        temErroValida = true;
                     }
 
                 } catch (SQLException ex) {
                     Logger.getLogger(ValidaReserva.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (temErroValida) {
+                    request.setAttribute("erroValida", "A reserva não foi identificada");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaValidaReserva.jsp");
+                    dispatcher.forward(request, response);
                 }
             }
         }

@@ -28,7 +28,7 @@ public class ReservaDAO {
         int verifica = 0;
         try {
             Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("Select*from reserva where num_reserva = ?");
+            PreparedStatement stmt = conn.prepareStatement("Select*from reserva where num_reserva = ? and reserva_status='Ativa'" );
             stmt.setInt(1, dado);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -41,14 +41,13 @@ public class ReservaDAO {
         return verifica;
     }
 
-    public void remove(int valor) throws SQLException {
+    public void atualizaStatus(int valor) throws SQLException {
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
 
         //declarações do preparedStatement
         try (
-                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("delete from "
-                + "reserva where num_resrva= ?");) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update reserva set reserva_status='Validada' where num_reserva=?");) {
             //Executa a Query
             stmt.setInt(1, valor);
             stmt.executeUpdate();

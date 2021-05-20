@@ -12,6 +12,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/valRes.css">
     <title>Document</title>
+    <style>
+        .erroInput{
+            color:red;
+        }
+    </style>
 </head>
 <body>
     <div class="todo">
@@ -22,13 +27,7 @@
                 </svg>
             </a>  
                 <p>Voltar para o menu principal</p>
-            <a href="${pageContext.request.contextPath}/MenuADM">
-                <svg width="40" height="31" viewBox="0 0 40 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="40" height="3" fill="#4361EE"/>
-                    <rect y="28" width="40" height="3" fill="#4361EE"/>
-                    <rect y="14" width="40" height="3" fill="#4361EE"/>
-                </svg>                                        
-            </a>
+
         </div>
         <div class="valiRes">
             <form action="${pageContext.request.contextPath}/ValidaReserva" method="get">
@@ -50,10 +49,14 @@
         </div>
         <div class="status">
             <p>Status da Reserva: <c:out value="${a.reserva_status}"></c:out></p>
-            <p id="valSus">Validada com sucesso</p>
+        <br>
+           
         </div>
         </c:forEach>
-        <button id="valOut" name="btn" value="limpaCampo">Validar outra reserva</button>
+         <p id="valSus" class="${not empty erroValida ? 'erroInput' : '' }"></p>
+         <c:if test="${not empty erroValida}">
+             <span class="erroInput"><c:out value="${erroValida}"></c:out></span>
+         </c:if>
     </div>
 </body>
 </html>
