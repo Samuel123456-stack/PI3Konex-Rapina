@@ -39,7 +39,7 @@ public class ControlaClientes extends HttpServlet {
         //session
         HttpSession sessao = request.getSession();
         int tipoCli = 0;
-
+        //Se na Sessão o cliente tiver algum dado pego o tipo de usuario
         if (sessao.getAttribute("cli") != null) {
             Cliente cliente = (Cliente) sessao.getAttribute("cli");
             sessao.setAttribute("cli", cliente);
@@ -51,7 +51,7 @@ public class ControlaClientes extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCadastroCli.jsp");
             dispatcher.forward(request, response);
         }
-
+        //Pega os parametros do formulario
         String idStr = request.getParameter("idCliente");
         String nome = request.getParameter("nome");
         String genero = request.getParameter("genero");
@@ -168,12 +168,13 @@ public class ControlaClientes extends HttpServlet {
         request.setAttribute("cliente", cliente);
 
         try {
+            //int verificadora para o Cadastro
             int verificaCadastro = casCli.cadastra(cliente);
 
-            if (verificaCadastro == 1) {
+            if (verificaCadastro == 1) {//Se for igual a 1 cria o Cadastro
 
                 temErro = false;
-            } else if (verificaCadastro == 0) {
+            } else if (verificaCadastro == 0) {//Se for igual a 0 , possui um erro
                 temErro = true;
             } else {
                 temErro = true;
@@ -189,8 +190,8 @@ public class ControlaClientes extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCadastroCli.jsp");
             dispatcher.forward(request, response);
         } else {
-            HttpSession sessao2 = request.getSession();
-            sessao2.setAttribute("cli", cliente);
+           
+            sessao.setAttribute("cli", cliente);
             response.sendRedirect(request.getContextPath() + "/TelaCartaoCli");
         }
     }
