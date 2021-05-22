@@ -5,12 +5,14 @@ package ClassesJavaBean;
  * @author Gabriel Felipe
  */
 public class Reserva {
-
     //atributos da reserva
+
     public int num_reserva;
     public int id_cliente;
     public int id_estabelecimento;
     public int qtd_acompanhantes;
+    public String nome_reservado;
+    public String reserva_status;
     public String data_criada;
     public String data_reservada;
     public String horario_reservado;
@@ -21,20 +23,6 @@ public class Reserva {
     public Reserva() {
     }
 
-    //metodos especiais(funcionalidades)
-    public void consultarReservasUser() {
-    }
-
-    public void consultarReservasAgendas() {
-    }
-
-    public void cancelarReserva() {
-    }
-
-    public void alterarReserva() {
-    }
-
-    //metodos getters e setters
     public int getNum_reserva() {
         return num_reserva;
     }
@@ -65,6 +53,14 @@ public class Reserva {
 
     public void setQtd_acompanhantes(int qtd_acompanhantes) {
         this.qtd_acompanhantes = qtd_acompanhantes;
+    }
+
+    public String getNome_reservado() {
+        return nome_reservado;
+    }
+
+    public void setNome_reservado(String nome_reservado) {
+        this.nome_reservado = nome_reservado;
     }
 
     public String getData_criada() {
@@ -105,6 +101,14 @@ public class Reserva {
 
     public void setHora_valida_saida(String hora_valida_saida) {
         this.hora_valida_saida = hora_valida_saida;
+    }
+
+    public String getReserva_status() {
+        return reserva_status;
+    }
+
+    public void setReserva_status(String reserva_status) {
+        this.reserva_status = reserva_status;
     }
 
 }

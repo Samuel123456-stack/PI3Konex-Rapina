@@ -5,12 +5,21 @@
  */
 package Servelets_Funcionais;
 
+import ClassesDAO.FavoritoDAO;
+import ClassesJavaBean.Cliente;
+import ClassesJavaBean.Favoritos;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,10 +34,20 @@ public class TelaMenuCliente extends HttpServlet {
         //boas praticas
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        
+        HttpSession session = request.getSession();
+        Cliente cliente = new Cliente();
+        int id = 0;
+        //VERIFICA QUAL USER ESTÁ NA SESSAO
+        if (session.getAttribute("cli") != null) {
+            cliente = (Cliente) session.getAttribute("cli");
 
+            //pega o id do Cliente
+            id = cliente.getId_usuario();
+
+        }
         //Pegar o parametro
         String botao = request.getParameter("btn");
-
         //condição
         if (botao != null) {
             //condição
@@ -38,6 +57,23 @@ public class TelaMenuCliente extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/TelaAlteraDados");
             } else if (botao.equals("sub exclusao")) {
                 response.sendRedirect(request.getContextPath() + "/TelaSolicitaExclusao");
+            } else if (botao.equals("envia doacao")) {
+                id = 2;
+                FavoritoDAO favDao = new FavoritoDAO();
+                Favoritos fav = new Favoritos();
+                fav.setId_cliente(id);
+                
+                List<Favoritos> listaNomes;
+
+                try {
+                    listaNomes = favDao.listarDadosFavoritos(id);
+                    session.setAttribute("listaNomes", listaNomes);
+                    session.setAttribute("idP", fav.getId_cliente());
+                    response.sendRedirect(request.getContextPath() + "/TelaDoacao");
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaMenuCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
         }
     }
