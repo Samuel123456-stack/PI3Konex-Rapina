@@ -4,6 +4,7 @@ body{
     min-height:100vmin;
     min-width:100vmin;
 }
+
 #container-landing{
     min-width:980px;
     position:relative;
