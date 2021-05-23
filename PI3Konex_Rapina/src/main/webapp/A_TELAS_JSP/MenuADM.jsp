@@ -24,6 +24,7 @@
                     <div width="32" height="34" viewBox="0 0 32 34" fill="none"><a style="cursor:pointer;" href="${pageContext.request.contextPath}/CriaTelaResposta"><img src="${pageContext.request.contextPath}/images/edit.svg" color:white></a></div>
                     <div width="32" height="34" viewBox="0 0 32 34" fill="none" style="margin-left: 100px;"><a style="cursor:pointer;" href="${pageContext.request.contextPath}/CriaListaNotifica"><img src="${pageContext.request.contextPath}/images/notificatio.svg" color:white></a></div>
                 </div>
+                    <div id="sairlogout" width="37" height="30" viewBox="0 0 37 30" fill="none"><a style="cursor: pointer" href="${pageContext.request.contextPath}/CriaTelaMenuSaida"><img src="${pageContext.request.contextPath}/images/logout.png"></a></div>
             </section>
         </div>
 

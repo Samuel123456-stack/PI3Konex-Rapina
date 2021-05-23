@@ -33,13 +33,29 @@ public class ControlaResposta extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         //Pegando os Parametros
+        String tipoUserStr = request.getParameter("tipoDestinatario");
         String idStr = request.getParameter("idUser");
         String mensagem = request.getParameter("assunto");
         //var conversao
         int idUser = 0;
+        int tipoUser = 0;
 
         //Tratamento de Erros
         boolean temErro = false;
+         if (tipoUserStr != null && tipoUserStr.trim().length() > 0) {
+            try {
+                temErro = false;
+                tipoUser = Integer.parseInt(tipoUserStr);
+            } catch (StringIndexOutOfBoundsException ex) {
+                temErro = true;
+                //Declaração de Erro
+                tipoUserStr = null;
+                request.setAttribute("ErroTipo", " ");
+            }
+        } else {
+            temErro = true;
+            request.setAttribute("ErroTipo", " ");
+        }
         if (idStr != null && idStr.trim().length() > 0) {
             try {
                 temErro = false;
@@ -76,19 +92,37 @@ public class ControlaResposta extends HttpServlet {
 
         //Instancio os Objetos
         Notification noti = new Notification(idUser, mensagem, data);
+        Notification notiEsta = new Notification(tipoUser,idUser, mensagem, data);
         NotificaDAO notiDao = new NotificaDAO();
         
-        //var que retorna a reposta
-        int verificaResposta = notiDao.criaResposta(noti);
-        
-        //retorno da verificação
-        if (verificaResposta == 1) {
-            temErro = false;
-        } else if (verificaResposta == 0) {
-            temErro = true;
-        } else {
-            temErro = true;
+        //Condicao que retorna a reposta
+            int verificaResposta = notiDao.criaResposta(noti);
+            switch (verificaResposta) {
+                case 1:
+                    temErro = false;
+                    break;
+                case 0:
+                    temErro = true;
+                    break;
+                default:
+                    temErro = true;
+                    break;
+            }
+            if(tipoUser==3){
+            int verificaRespostaEsta = notiDao.criaRespostaEsta(notiEsta);
+             switch (verificaRespostaEsta) {
+                case 1:
+                    temErro = false;
+                    break;
+                case 0:
+                    temErro = true;
+                    break;
+                default:
+                    temErro = true;
+                    break;
+            }
         }
+        
         if (temErro) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaResposta.jsp");
             dispatcher.forward(request, response);

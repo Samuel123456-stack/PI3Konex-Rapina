@@ -64,9 +64,9 @@ public class ValidaReserva extends HttpServlet {
                 int verifica = 0;
                 try {
                     verifica = resDAO.ConsultaReserva(numReserva);
-                    if (verifica == 1) {
+                    if (verifica == 1) {//se verifica for 1, atualizo o status das Reservas "Ativas"
                         resDAO.atualizaStatus(numReserva);
-                        listaDados = resDAO.listarDadosReserva(numReserva);
+                        listaDados = resDAO.listarDadosReserva(numReserva);//listo os dados da Reserva
                         request.setAttribute("lista", listaDados);
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaValidaReserva.jsp");
                         dispatcher.forward(request, response);

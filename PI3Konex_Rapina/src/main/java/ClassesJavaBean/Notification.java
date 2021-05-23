@@ -10,7 +10,8 @@ package ClassesJavaBean;
  * @author Gabriel
  */
 public class Notification {
-
+    
+    public int tipo_user;
     public int id_notification;
     public String nome_noti;
     public String email_noti;
@@ -34,6 +35,13 @@ public class Notification {
     //Construtor para as Respostas
     public Notification(int id_user,String mensagem, String data){
         this.id_user = id_user;
+        this.mensagem=mensagem;
+        this.data= data;
+    }
+    //Construtor de Resposta para o Esta
+    public Notification(int tipo_user,int id_estabelecimento,String mensagem, String data){
+        this.tipo_user=tipo_user;
+        this.id_estabelecimento = id_estabelecimento;
         this.mensagem=mensagem;
         this.data= data;
     }

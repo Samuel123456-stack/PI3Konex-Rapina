@@ -76,7 +76,7 @@ public class TelaLoginSenha extends HttpServlet {
         request.setAttribute("userLogado", loginUser);
 
         try {
-            //verifica
+            //verifica a senha
             int x = acesso.validaSenha();
 
             if (x == 1) {
@@ -98,16 +98,17 @@ public class TelaLoginSenha extends HttpServlet {
 
         } else {
             //prossegue de acordo  tipo de usuario
-            if (userTipo == 1) {
+            if (userTipo == 1) {//Se o tipo de usuario for 1 é um ADM
+                sessaoUser.setAttribute("logUser", userTipo);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuADM.jsp");
                 dispatcher.forward(request, response);
 
-            } else if (userTipo == 2) {
-                //É um Cliente
+            } else if (userTipo == 2) {//Se o tipo de usuario for 1 é um Cliente
+                sessaoUser.setAttribute("logUser", userTipo);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuCliente.jsp");
                 dispatcher.forward(request, response);
-            } else {
-                //É um Cliente
+            } else if (userTipo == 3) {//Se o tipo de usuario for 3 é um Estabelecimento
+                sessaoUser.setAttribute("logUser", userTipo);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuEsta.jsp");
                 dispatcher.forward(request, response);
             }

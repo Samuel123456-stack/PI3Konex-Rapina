@@ -147,12 +147,12 @@ public class ControlaCartao extends HttpServlet {
 
         //verificações
         try {
-            if (tipoUsuario == 2) {
+            if (tipoUsuario == 2) {//Se o tipo de Usuario for 2 é Cadastro do cartao do Cliente
                 int verificaCadastroCli = cliCartao.cadastraCartao(cartao);
                 switch (verificaCadastroCli) {
                     case 1:
                         temErro = false;
-                        cliCartao.vinculaCartao(cartao, idCli);
+                        cliCartao.vinculaCartao(cartao, idCli);//vincula o Cartao
                         idCli = -1;//id ser -1 para nao dar erro
                         break;
                     case 0:
@@ -162,12 +162,12 @@ public class ControlaCartao extends HttpServlet {
                         temErro = true;
                         break;
                 }
-            } else if (tipoUsuario == 3) {
+            } else if (tipoUsuario == 3) {//Se o tipo de Usuario for 3 é Cadastro do cartao do Esta
                 int verificaCadastroEsta = estaCartao.cadastraCartaoEsta(cartao);
                 switch (verificaCadastroEsta) {
                     case 1:
                         temErro = false;
-                        estaCartao.vinculaCartaoEsta(cartao, idEsta);
+                        estaCartao.vinculaCartaoEsta(cartao, idEsta);//vincula o Cartao
                         idEsta = -1;//id ser -1 para nao dar erro
                         break;
                     case 0:
@@ -187,9 +187,9 @@ public class ControlaCartao extends HttpServlet {
             dispatcher.forward(request, response);
         } else {
             sessao.setAttribute("cartao", cartao);
-            if (tipoUsuario == 2) {
+            if (tipoUsuario == 2) {//Redireciona para o MenuCliente
                 response.sendRedirect(request.getContextPath() + "/MenuCliente");
-            } else if (tipoUsuario == 3) {
+            } else if (tipoUsuario == 3) {//Redireciona para o MenuEsta
                 response.sendRedirect(request.getContextPath() + "/MenuEsta");
             }
         }

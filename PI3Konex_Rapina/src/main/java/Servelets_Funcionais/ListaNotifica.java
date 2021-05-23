@@ -74,6 +74,7 @@ public class ListaNotifica extends HttpServlet {
                 request.setAttribute("listaNoti", lista);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaNotificacoes.jsp");
                 dispatcher.forward(request, response);
+                return;
 
             } catch (SQLException ex) {
                 Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
@@ -85,6 +86,7 @@ public class ListaNotifica extends HttpServlet {
                 request.setAttribute("listaNoti", lista);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaNotificacoes.jsp");
                 dispatcher.forward(request, response);
+                return;
 
             } catch (SQLException ex) {
                 Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);

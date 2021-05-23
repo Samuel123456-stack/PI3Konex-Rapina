@@ -52,11 +52,11 @@ public class TelaMenuCliente extends HttpServlet {
         if (botao != null) {
             //condição
             if (botao.equals("att card")) {
-                response.sendRedirect(request.getContextPath() + "/TelaAltCard");
+                response.sendRedirect(request.getContextPath() + "/TelaAltCard");//Redireciona para o Atualiza Cartao
             } else if (botao.equals("att dados")) {
-                response.sendRedirect(request.getContextPath() + "/TelaAlteraDados");
+                response.sendRedirect(request.getContextPath() + "/TelaAlteraDados");//Redireciona para o Atualiza Dados do Cliente
             } else if (botao.equals("sub exclusao")) {
-                response.sendRedirect(request.getContextPath() + "/TelaSolicitaExclusao");
+                response.sendRedirect(request.getContextPath() + "/TelaSolicitaExclusao");//Redireciona para a Solicita Exclusão
             } else if (botao.equals("envia doacao")) {
                 id = 2;
                 FavoritoDAO favDao = new FavoritoDAO();
@@ -66,10 +66,10 @@ public class TelaMenuCliente extends HttpServlet {
                 List<Favoritos> listaNomes;
 
                 try {
-                    listaNomes = favDao.listarDadosFavoritos(id);
+                    listaNomes = favDao.listarDadosFavoritos(id);//lista os Favoritos do Cliente
                     session.setAttribute("listaNomes", listaNomes);
                     session.setAttribute("idP", fav.getId_cliente());
-                    response.sendRedirect(request.getContextPath() + "/TelaDoacao");
+                    response.sendRedirect(request.getContextPath() + "/TelaDoacao");//Redireciona para a Tela de Doação
                 } catch (SQLException ex) {
                     Logger.getLogger(TelaMenuCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
