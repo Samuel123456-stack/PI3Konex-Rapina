@@ -24,12 +24,12 @@
                     <img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
                 </div>
                 <div>
-                    <ul>
-                        <li>Institucional</li>
-                        <li>Voe com a Rapina</li>
-                        <li>Doações</li>
-                        <i class="fas fa-bars"></i>
-                    </ul>
+                    <svg width="40" height="31" viewBox="0 0 40 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="3" fill="#4361EE"/>
+                        <rect y="28" width="40" height="3" fill="#4361EE"/>
+                        <rect y="14" width="40" height="3" fill="#4361EE"/>
+                        
+                    </svg>
                 </div>
             </section>
         </div>
