@@ -96,17 +96,41 @@
     align-items: center;
     width:100%;
 }
-.member-container i{
-    color: rgba(0, 0, 0, 0.6);
-    font-size:37px;
-    cursor:pointer;
-}
-.member-container .member-description .member-photo{
+.member-container .member-description .member-photo1, 
+.member-photo2, 
+.member-photo3, 
+.member-photo4, 
+.member-photo5{
     height:150px;
     width:150px;
     background:#eee;
     border-radius:50%;
     margin:0 auto 17px auto;
+}
+.carousel-inner .member-container .member-photo1{
+    background-image:url('../images/gabriel.jpg');
+    background-size:100%;
+    background-repeat: no-repeat;
+}
+.carousel-inner .member-container .member-photo2{
+    background-image:url('../images/alex.jpg');
+    background-size:100%;
+    background-repeat: no-repeat;
+}
+.carousel-inner .member-container .member-photo3{
+    background-image:url('../images/gustavo.jpg');
+    background-size:100%;
+    background-repeat: no-repeat;
+}
+.carousel-inner .member-container .member-photo4{
+    background-image:url('../images/samuel.jpg');
+    background-size:100%;
+    background-repeat: no-repeat;
+}
+.carousel-inner .member-container .member-photo5{
+    background-image:url('../images/Rubens.jpg');
+    background-size:100%;
+    background-repeat: no-repeat;
 }
 .member-container .member-description h3, p{
    text-align: center;
