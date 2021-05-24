@@ -50,7 +50,8 @@
     justify-content:space-between;
     align-items:center;
     height:90px; 
-    margin:0 40px 0 40px;
+    margin:0 128px 0 128px;
+    padding-top: 18px;
     position:relative;
 }
 #container-landing .menu-bar ul li:nth-child(3){
