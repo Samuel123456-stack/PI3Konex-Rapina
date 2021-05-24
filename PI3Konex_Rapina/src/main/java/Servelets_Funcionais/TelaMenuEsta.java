@@ -34,11 +34,11 @@ public class TelaMenuEsta extends HttpServlet {
         if (botao != null) {
             //condição
             if (botao.equals("att card")) {
-                response.sendRedirect(request.getContextPath() + "/TelaAltCard");
+                response.sendRedirect(request.getContextPath() + "/TelaAltCard");//Redireciona para a Tela de Altera Cartao
             } else if (botao.equals("att dados")) {
-                response.sendRedirect(request.getContextPath() + "/AlteraDadosEsta");
+                response.sendRedirect(request.getContextPath() + "/AlteraDadosEsta");//Redireciona para a Tela de Altera Dados do Estabelecimento
             } else if (botao.equals("sub exclusao")) {
-                response.sendRedirect(request.getContextPath() + "/TelaSolicitaExclusao");
+                response.sendRedirect(request.getContextPath() + "/TelaSolicitaExclusao");//Redireciona para a Solicita Exclusao;
             }
         }
     }

@@ -39,5 +39,13 @@
     color:#fff;
     background:rgba(67, 97, 238, 1);
     margin-top:172px;
+    position:absolute;
+    bottom:0px;
+    right:0;
+    left:0;
+}
+.subRodape p{
+    position:relative;
+    bottom:10px;
 }
 

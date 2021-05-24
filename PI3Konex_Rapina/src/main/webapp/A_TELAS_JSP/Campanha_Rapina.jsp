@@ -1,3 +1,10 @@
+<%-- 
+    Document   : Campanha_Rapina
+    Created on : 23 de mai de 2021, 13:39:43
+    Author     : Gabriel
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,9 +15,9 @@
         <meta name="description" content="Crowd Control">
         <meta name="author" content="konex-group">
 
-        <link rel="stylesheet" href="../CSS/RapCampanha.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/RapCampanha.css">
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
-        <link rel="shortcut icon" href="../images/icons/logo.jpeg">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logo.jpeg">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     </head>
     <body>
@@ -18,7 +25,7 @@
             <div class="background-color">
                 <section class="menu-bar">
                     <div>
-                        <img src="../images/white-logotipo.png" alt="logo-image" class="logo-icon" />
+                        <img src="${pageContext.request.contextPath}/images/white-logotipo.png" alt="logo-image" class="logo-icon" />
                     </div>
                     <div>
                         <ul>
@@ -41,7 +48,7 @@
             <div class="donation-page">
                 <section class="grid-layout">
                     <section>
-                        <img src="../images/children-image.jpg" alt="landscape-image" />
+                        <img src="${pageContext.request.contextPath}/images/children-image.jpg" alt="landscape-image" />
                     </section>
                     <div>
                         <h1>Doações</h1>
@@ -67,20 +74,20 @@
                 <section class="image-layout">
                     <div class="image-offers">
                         <div class="first-block">
-                            <img src="../images/luiz-gonsalez.jpg" alt="image" class="first-image" />
-                            <img src="../images/noah-buscher.jpg" alt="image" class="second-image" />
+                            <img src="${pageContext.request.contextPath}/images/luiz-gonsalez.jpg" alt="image" class="first-image" />
+                            <img src="${pageContext.request.contextPath}/images/noah-buscher.jpg" alt="image" class="second-image" />
                         </div>
                         <div class="second-block">
-                            <img src="../images/jim-strasma.jpg" alt="image" class="third-image" />
-                            <img src="../images/national-cancer.jpg" alt="image" class="forth-image" />
+                            <img src="${pageContext.request.contextPath}/images/jim-strasma.jpg" alt="image" class="third-image" />
+                            <img src="${pageContext.request.contextPath}/images/national-cancer.jpg" alt="image" class="forth-image" />
                         </div>
                     </div>
                     <section class="container-right-aside">
-                        <img src="../images/joel-muniz.jpg" alt="landscape-image" />
+                        <img src="${pageContext.request.contextPath}/images/joel-muniz.jpg" alt="landscape-image" />
                     </section>
                 </section>
                 <footer class="footer-block">
-                    <img src="../images/fly-together.png" alt="image" />
+                    <img src="${pageContext.request.contextPath}/images/fly-together.png" alt="image" />
                 </footer>
             </div>
 
@@ -88,23 +95,23 @@
                 <div class="grupos">
                     <div class="top10">
                         <h3>A Rapina</h3>
-                        <a href="about.html">Site Institucional</a>
+                        <a href="${pageContext.request.contextPath}/about.html">Site Institucional</a>
                         <br><br>
-                        <a href="contato.html">Fale conosco</a>
+                        <a href="${pageContext.request.contextPath}/Contato.html">Fale conosco</a>
                         <br><br>
-                        <a href="termoUso.html">Termos de uso</a>
+                        <a href="${pageContext.request.contextPath}/TelaTermos">Termos de uso</a>
                         <br><br>
-                        <a href="politicaPrivacidade.html">Política de Privacidade</a>
+                        <a href="${pageContext.request.contextPath}/Privacidade">Política de Privacidade</a>
                     </div>
                     <div class="top10">
                         <h3>Voe com a Rapina</h3>
-                        <a href="cadastroEsta.html">Cadastre seu estabelecimento</a>
+                        <a href="${pageContext.request.contextPath}/TelaCadastroEsta">Cadastre seu estabelecimento</a>
                         <br><br>
-                        <a href="rapinaPlanos.html">Rapina Planos</a>
+                        <a href="${pageContext.request.contextPath}/TelaPlanos">Rapina Planos</a>
                         <br><br>
-                        <a href="RapCampanha.html">Campanha Rapinantes</a>
+                        <a href="${pageContext.request.contextPath}/Campanha">Campanha Rapinantes</a>
                         <br><br>
-                        <a href="partnerStore.html">Já sou uma loja parceira</a>
+                        <a href="${pageContext.request.contextPath}/LogEmail">Já sou uma loja parceira</a>
                     </div>
                     <div class="top10">
                         <div class="social">
@@ -133,5 +140,6 @@
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>

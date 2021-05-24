@@ -5,8 +5,10 @@
  */
 package Servelets_Funcionais;
 
+
+import ClassesJavaBean.Login;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -28,9 +30,36 @@ public class TerminaSession extends HttpServlet {
 
         HttpSession sessao = request.getSession();
 
-        if (sessao.getAttribute("cli") != null) {
-            sessao.invalidate();
+        int tipoUser = 0;
+        //Verifica se na sessao possui dados do Tipo do Usuario
+        if (sessao.getAttribute("logUser")!=null) {
+            Login logUser = (Login) sessao.getAttribute("dadosAcesso");
+            tipoUser = logUser.getTipo_usuario();//pega o Tipo do Usuario da Sessao
+        }else{
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/Saida_Menus.jsp");
+            dispatcher.forward(request, response);
+        }       
+        
+        String botao = request.getParameter("btn");
+        if (botao != null) {
+            if (botao.equals("cancela")) {//Se o botao clicado for o Cancelado, pego o ID e verifica
+                if (tipoUser == 1) { //Redireciona para o MenuADM caso o 1
+                    response.sendRedirect(request.getContextPath() + "/MenuADM");
+                } else if (tipoUser == 2) {//Redireciona para o MenuCliente caso o 2
+                    response.sendRedirect(request.getContextPath() + "/MenuCliente");
+                } else if (tipoUser == 3) {//Redireciona para o MenuEsta caso o 3
+                    response.sendRedirect(request.getContextPath() + "/MenuEsta");
+                }
+
+            } else if (botao.equals("sair")) {//Se o botao clicado for Sair, invalido a Sessão  e retorno a Home
+                sessao.invalidate();
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaInicial.jsp");
+                dispatcher.forward(request, response);
+                return;
+            }
         }
+        
+
 
     }
 

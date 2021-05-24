@@ -6,13 +6,16 @@
 package Servelets_Funcionais;
 
 import ClassesDAO.DoacaoDAO;
+import ClassesDAO.FavoritoDAO;
 import ClassesJavaBean.Cliente;
 import ClassesJavaBean.Doacao;
+import ClassesJavaBean.Favoritos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -38,29 +41,29 @@ public class ControlaDoacao extends HttpServlet {
         HttpSession session = request.getSession();
        
         Cliente cliente = new Cliente();
+        FavoritoDAO favDao = new FavoritoDAO();
+        List<Favoritos> listaDados;
         int idCli=0;
+
         
         //VERIFICA QUAL USER ESTÁ NA SESSAO
-        if (session.getAttribute("cli") != null) {
+        if (session.getAttribute("cli") != null || session.getAttribute("listaNomes")!=null) {
             cliente = (Cliente) session.getAttribute("cli");
+            listaDados = (List<Favoritos>) session.getAttribute("listaNomes");
 
             //pega o id do Cliente
             idCli = cliente.getId_usuario();
-
             //Request
-            request.setAttribute("cli", cliente);
-
-        } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaDoacao.jsp");
-            dispatcher.forward(request, response);
+            session.setAttribute("listaNomes", listaDados);
         }
+            
         
         //Pegando os Parametros
         String nomeDoacao = request.getParameter("nomeDoacao");
         String valorStr = request.getParameter("valDoa");
-        String idEstaStr = request.getParameter("idEsta");
+        String idEstaStr = request.getParameter("nomeEsta");
         String idCartaoStr = request.getParameter("idCartao");
-        
+
         float valor = 0f;
         int idEsta = 0;
         int idCartao= 0;
@@ -88,19 +91,7 @@ public class ControlaDoacao extends HttpServlet {
             temErro = true;
             valorStr = null;
         }
-        if (idEstaStr != null && idEstaStr.trim().length() > 0) {
-            try {
-                idEsta = Integer.parseInt(idEstaStr);
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                idEstaStr = null;
-            }
-        } else {
-            temErro = true;
-            idEstaStr = null;
-        }
+        
         if (idCartaoStr != null && idCartaoStr.trim().length() > 0) {
             try {
                 idCartao = Integer.parseInt(idCartaoStr);
@@ -124,9 +115,16 @@ public class ControlaDoacao extends HttpServlet {
         Date dataAtual = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String data = formatter.format(dataAtual);
+        
+        DoacaoDAO doaDao = new DoacaoDAO();
+        try {
+            idEsta = doaDao.consultaNome(idEstaStr);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlaDoacao.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         Doacao doa = new Doacao(nomeDoacao,valor,idCli,data,idEsta,idCartao);
-        DoacaoDAO doaDao = new DoacaoDAO();
+        
         try {
             int verifica = doaDao.cadastra(doa);
             switch (verifica) {

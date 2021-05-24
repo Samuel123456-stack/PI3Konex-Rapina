@@ -2,7 +2,10 @@
     "elements": {
         "button": {
             "attributes": {
-                "type": {}
+                "data-target": {},
+                "data-toggle": {},
+                "type": {},
+                "class": {}
             }
         },
         "div": {
@@ -13,7 +16,12 @@
         },
         "br": {},
         "p": {},
-        "img": {},
+        "img": {
+            "attributes": {
+                "src": {},
+                "alt": {}
+            }
+        },
         "i": {
             "attributes": {
                 "class": {}

@@ -53,10 +53,33 @@ public class NotificaDAO {
         //Declarações do preparedStatement
         try (
                 Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("insert into notificacao(id_usuario,mensagem) values (?,?)");) {
+                PreparedStatement stmt = conn.prepareStatement("insert into notificacao(id_usuario,mensagem,data_noti) values (?,?,?)");) {
             //Passa os parametros
             stmt.setInt(1, dado.getId_user());
             stmt.setString(2, dado.getMensagem());
+            stmt.setString(3, dado.getData());
+
+            //Executa a Query
+            stmt.executeUpdate();
+            cria = 1;
+            return cria;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return cria;
+    }
+        public int criaRespostaEsta(Notification dado) {
+        //Elementos para a conexão e verificação
+        int cria = 0;
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        //Declarações do preparedStatement
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("insert into notificacao(id_esta,mensagem,data_noti) values (?,?,?)");) {
+            //Passa os parametros
+            stmt.setInt(1, dado.getId_estabelecimento());
+            stmt.setString(2, dado.getMensagem());
+            stmt.setString(3, dado.getData());
 
             //Executa a Query
             stmt.executeUpdate();

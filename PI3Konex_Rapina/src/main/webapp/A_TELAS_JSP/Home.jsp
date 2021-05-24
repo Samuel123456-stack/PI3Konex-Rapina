@@ -1,5 +1,11 @@
-<!DOCTYPE html>
+<%-- 
+    Document   : Home
+    Created on : 21 de mai de 2021, 19:19:43
+    Author     : Gabriel
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Home</title>
@@ -10,13 +16,10 @@
         <meta name="author" content="konex-group">
 
 
-        <link rel="stylesheet" href="../CSS/home.css">
+        <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/home.css">
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
         <link rel="shortcut icon" href="../images/icons/logo.jpeg">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="container-landing">
@@ -24,7 +27,7 @@
                 <div class="background-image">
                     <section class="menu-bar">
                         <div>
-                            <img src="../images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
+                            <img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
                         </div>
                         <div>
                             <ul>
@@ -41,19 +44,16 @@
                         <div class="form-container">
                             <form action="" name="searching">
                                 <div class="input-block">
-                                    <a href="modalBusca.html">
-                                        <input 
+                                    <input 
                                         type="text" 
                                         id="block-search" 
                                         maxlength="40" 
                                         name="text-name" 
                                         data-toggle="modal"
                                         data-target="#windowModal"
-                                        />        
-                                    </a>
-                                                                
+                                        />
                                     <button type="button">
-                                        <img src="../images/icons/search-icon.png" alt="search-image" />
+                                        <img src="${pageContext.request.contextPath}/images/icons/search-icon.png" alt="search-image" />
                                     </button>
                                 </div>
                                 <div class="input-submit">
@@ -68,13 +68,13 @@
             <main class="outline-container-situation">
                 <div class="landing-section">
                     <div class="first-content">
-                        <img src="../images/freeReser.png" alt="image" />
+                        <img src="${pageContext.request.contextPath}/images/freeReser.png" alt="image" />
                     </div>
                     <div class="second-content">
-                        <img src="../images/dream-liberty.png" alt="image" />
+                        <img src="${pageContext.request.contextPath}/images/dream-liberty.png" alt="image" />
                     </div>
                     <div class="third-content">
-                        <img src="../images/search-secure.png" alt="image" />
+                        <img src="${pageContext.request.contextPath}/images/search-secure.png" alt="image" />
                     </div>
                 </div>
 
@@ -84,16 +84,16 @@
                     </header>
                     <div class="options-select">
                         <div class="first-option">
-                            <img src="../images/mcDonald.png" alt="donald-image" />
+                            <img src="${pageContext.request.contextPath}/images/mcDonald.png" alt="donald-image" />
                         </div>
                         <div class="second-option">
-                            <img src="../images/grill.png" alt="grill-image" />
+                            <img src="${pageContext.request.contextPath}/images/grill.png" alt="grill-image" />
                         </div>
                         <div class="third-option">
-                            <img src="../images/yakisoba.png" alt="yakisoba-image" />
+                            <img src="${pageContext.request.contextPath}/images/yakisoba.png" alt="yakisoba-image" />
                         </div>
                         <div class="forth-option">
-                            <img src="../images/burger.png" alt="burger-image" />
+                            <img src="${pageContext.request.contextPath}/images/burger.png" alt="burger-image" />
                         </div>
                     </div>
                 </section>
@@ -101,7 +101,7 @@
                 <div class="grid-container">
                     <div class="grid-subject">
                         <main>
-                            <img src="../images/business.png" alt="image-business" />
+                            <img src="${pageContext.request.contextPath}/images/business.png" alt="image-business" />
                         </main>
                         <article>
                             <h2>Voe com a gente</h2>
@@ -118,7 +118,7 @@
                 </div>
 
                 <footer class="footer-image">
-                    <img src="../images/footer-image.png" alt="image-footer" />
+                    <img src="${pageContext.request.contextPath}/images/footer-image.png" alt="image-footer" />
                 </footer>
             </main>
 
@@ -127,23 +127,23 @@
                     <div class="grupos">
                         <div class="top10">
                             <h3>A Rapina</h3>
-                            <a href="about.html">Site Institucional</a>
+                            <a href="${pageContext.request.contextPath}/about.html">Site Institucional</a>
                             <br><br>
-                            <a href="contato.html">Fale conosco</a>
+                            <a href="${pageContext.request.contextPath}/Contato">Fale conosco</a>
                             <br><br>
-                            <a href="termoUso.html">Termos de uso</a>
+                            <a href="${pageContext.request.contextPath}/TelaTermos">Termos de uso</a>
                             <br><br>
-                            <a href="politicaPrivacidade.html">Política de Privacidade</a>
+                            <a href="${pageContext.request.contextPath}/Privacidade">Política de Privacidade</a>
                         </div>
                         <div class="top10">
                             <h3>Voe com a Rapina</h3>
-                            <a href="cadastroEsta.html">Cadastre seu estabelecimento</a>
+                            <a href="${pageContext.request.contextPath}/TelaCadastroEsta">Cadastre seu estabelecimento</a>
                             <br><br>
-                            <a href="rapinaPlanos.html">Rapina Planos</a>
+                            <a href="${pageContext.request.contextPath}/TelaPlanos">Rapina Planos</a>
                             <br><br>
-                            <a href="RapCampanha.html">Campanha Rapinantes</a>
+                            <a href="${pageContext.request.contextPath}/Campanha">Campanha Rapinantes</a>
                             <br><br>
-                            <a href="partnerStore.html">Já sou uma loja parceira</a>
+                            <a href="${pageContext.request.contextPath}/LogEmail">Já sou uma loja parceira</a>
                         </div>
                         <div class="top10">
                             <div class="social">
@@ -175,3 +175,4 @@
         </div>
     </body>
 </html>
+
