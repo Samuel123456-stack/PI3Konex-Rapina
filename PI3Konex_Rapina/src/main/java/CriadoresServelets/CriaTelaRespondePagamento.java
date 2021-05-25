@@ -18,18 +18,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gusta
  */
-@WebServlet(name = "CriaValidaReserva", urlPatterns = {"/CriaValidaReserva"})
-public class CriaValidaReserva extends HttpServlet {
-
-
-
-
+@WebServlet(name = "CriaTelaRespondePagamento", urlPatterns = {"/RespondePagamento"})
+public class CriaTelaRespondePagamento extends HttpServlet {
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("A_TELAS_JSP/TelaValidaReserva.jsp");
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaRespostaPag.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -39,5 +37,7 @@ public class CriaValidaReserva extends HttpServlet {
         
     }
 
+    
 
 }
+        

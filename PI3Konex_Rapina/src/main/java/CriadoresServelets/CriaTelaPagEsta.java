@@ -18,9 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gusta
  */
-@WebServlet(name = "CriaValidaReserva", urlPatterns = {"/CriaValidaReserva"})
-public class CriaValidaReserva extends HttpServlet {
-
+@WebServlet(name = "CriaTelaPagEsta", urlPatterns = {"/CriaTelaPagEsta"})
+public class CriaTelaPagEsta extends HttpServlet {
 
 
 
@@ -29,10 +28,13 @@ public class CriaValidaReserva extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("A_TELAS_JSP/TelaValidaReserva.jsp");
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaPagamentoEsta.jsp");
         dispatcher.forward(request, response);
+        
     }
 
+   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

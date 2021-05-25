@@ -10,6 +10,8 @@ public class Pagamento_mensalidade {
     //Atributos pagamento mensalidade
     public int id_pag_mensalidade;
     public int id_estabelecimento;
+    public int id_planos;
+    public String nome;
     private String data_cobranca;
     private float valor;
 
@@ -17,16 +19,37 @@ public class Pagamento_mensalidade {
 
     public Pagamento_mensalidade() {
     }
+
+    public Pagamento_mensalidade(int id_pag_mensalidade, int id_estabelecimento, String data_cobranca, float valor) {
+        this.id_pag_mensalidade = id_pag_mensalidade;
+        this.id_estabelecimento = id_estabelecimento;
+        this.data_cobranca = data_cobranca;
+        this.valor = valor;
+    }
+        public Pagamento_mensalidade(int id_estabelecimento, String data_cobranca,String nome, float valor) {
+        this.id_estabelecimento = id_estabelecimento;
+        this.data_cobranca = data_cobranca;
+        this.nome = nome;
+        this.valor = valor;
+    }
     
-    
-    //Metodos especiais
-    public void consultarMensalidade() {
+    public int getId_planos() {
+        return id_planos;
     }
 
-    public void pagarMensalidade() {
-    }  
-    
     //metodos getters e setters
+    public void setId_planos(int id_planos) {    
+        this.id_planos = id_planos;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
 
     public int getId_pag_mensalidade() {
         return id_pag_mensalidade;

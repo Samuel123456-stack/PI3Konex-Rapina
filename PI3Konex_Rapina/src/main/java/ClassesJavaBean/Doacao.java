@@ -27,6 +27,9 @@ public class Doacao {
         this.id_esta = id_esta;
         this.id_cartao = id_cartao;
     }
+    public Doacao(){
+        
+    }
 
     public int getId_doacao() {
         return id_doacao;
