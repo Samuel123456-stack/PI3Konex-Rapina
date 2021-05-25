@@ -11,9 +11,11 @@ public class Pagamento_taxa {
     private int id_pagamento_taxa;
     public String describe_taxa;
     public String data_cobranca;
+    public String nomeUser;
     private float valor_rapina_adm;
     private float valor_estabelecimento;
-    public int id_usuário;
+    private float valor_total;
+    public int id_usuario;
     private int id_adm;
     public int id_estabelecimento;
 
@@ -29,6 +31,19 @@ public class Pagamento_taxa {
     public void pagarTaxa() {
     }
     
+    public Pagamento_taxa(int id_usuario,String nomeUser, String data_cobranca, float valor_total){
+        this.id_usuario=id_usuario;
+        this.nomeUser=nomeUser;
+        this.data_cobranca=data_cobranca;
+        this.valor_total=valor_total;
+    }
+        public Pagamento_taxa(String nomeUser, String data_cobranca, float valor_total,int id_estabelecimento){
+        this.nomeUser=nomeUser;
+        this.data_cobranca=data_cobranca;
+        this.valor_total=valor_total;
+        this.id_estabelecimento=id_estabelecimento;
+    }
+    
     //metodos especiais
 
     public int getId_pagamento_taxa() {
@@ -39,12 +54,12 @@ public class Pagamento_taxa {
         this.id_pagamento_taxa = id_pagamento_taxa;
     }
 
-    public int getId_usuário() {
-        return id_usuário;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
-    public void setId_usuário(int id_usuário) {
-        this.id_usuário = id_usuário;
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getDescribe_taxa() {
@@ -63,6 +78,15 @@ public class Pagamento_taxa {
         this.data_cobranca = data_cobranca;
     }
 
+    public String getNomeUser() {
+        return nomeUser;
+    }
+
+    public void setNomeUser(String nomeUser) {
+        this.nomeUser = nomeUser;
+    }
+    
+
     public float getValor_rapina_adm() {
         return valor_rapina_adm;
     }
@@ -77,6 +101,14 @@ public class Pagamento_taxa {
 
     public void setValor_estabelecimento(float valor_estabelecimento) {
         this.valor_estabelecimento = valor_estabelecimento;
+    }
+
+    public float getValor_total() {
+        return valor_total;
+    }
+
+    public void setValor_total(float valor_total) {
+        this.valor_total = valor_total;
     }
 
     public int getId_adm() {
