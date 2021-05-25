@@ -152,5 +152,81 @@ public class ContagemDAO {
         return a;
     }
     
+    public int contaFavoritos(int id) throws SQLException{
+        int a=0;
+        
+        //conexao jdbc
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select count(id_favorito) as qtd from favorito where id_esta=?");) {
+            stmt.setInt(1,id);
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    a=rs.getInt("qtd");
+                }
+            }
+        }
+        return a;
+    }
+    public int contaDoaRecebidas(int id) throws SQLException{
+        int a=0;
+        
+        //conexao jdbc
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select count(id_doacao) as qtd from doacao where id_esta=?");) {
+            stmt.setInt(1, id);
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    a=rs.getInt("qtd");
+                }
+            }
+        }
+        return a;
+    }
+    public int contaResValidada(int id) throws SQLException{
+        int a=0;
+        
+        //conexao jdbc
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select count(num_reserva) as qtd from reserva where reserva_status='validada' and id_esta=?");) {
+            stmt.setInt(1, id);
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    a=rs.getInt("qtd");
+                }
+            }
+        }
+        return a;
+    }
     
+    public int contaRecebidos(int id) throws SQLException{
+        int a=0;
+        
+        //conexao jdbc
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select sum(qtd) as qtdPagamentos from ( select count(id_pag) as qtd from pagamento_mensalidade where id_esta= ? union all select count(id_pag_taxa) as qtd from pagamento_taxa) as a");) {
+            stmt.setInt(1, id);
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    a=rs.getInt("qtdPagamentos");
+                }
+            }
+        }
+        return a;
+    }
 }

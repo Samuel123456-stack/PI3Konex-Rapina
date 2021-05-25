@@ -6,7 +6,10 @@
 package ClassesDAO;
 
 import ClassesJavaBean.Cartao;
+import ClassesJavaBean.Doacao;
 import ClassesJavaBean.Estabelecimento;
+import ClassesJavaBean.Pagamento_mensalidade;
+import ClassesJavaBean.Reserva;
 import ConexaoBD.ConexaoJDBC;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +26,11 @@ import java.util.List;
 public class EstabelecimentoDAO {
 
     ArrayList<Estabelecimento> lista = new ArrayList<>();
-
+    ArrayList<Reserva> listaRes = new ArrayList<>();
+    ArrayList<Reserva> consRes = new ArrayList<>();
+    ArrayList<Pagamento_mensalidade> listaMensal = new ArrayList<>();
+    ArrayList<Doacao> listaDoa = new ArrayList<>();
+    
     public EstabelecimentoDAO() {
 
     }
@@ -412,5 +419,114 @@ public class EstabelecimentoDAO {
             System.out.println(erro);
         }
         return lista;
+    }
+    /*Menu Esta*/
+    public List<Reserva> listarDadosRes(int id) throws SQLException {
+        //Lista os Estabelecimento
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select r.num_reserva, r.data_reserva,r.hora_reserva,r.reserva_status,l.nome from reserva as r join login as l on r.id_usuario=l.id_usuario where r.id_esta=?");
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Reserva res = new Reserva();
+
+                /////*PRIMEIRA LINHA*////
+                //Status
+                res.setNum_reserva(rs.getInt("num_reserva"));
+
+                /////*SEGUNDA LINHA*////
+                res.setData_reservada(rs.getString("data_reserva"));
+
+                //quantidade de reservas
+                /////*TERCEIRA LINHA*////
+                //nome
+                res.setHorario_reservado(rs.getString("hora_reserva"));
+                //cnpj
+                res.setReserva_status(rs.getString("reserva_status"));
+                //endereco
+                res.setNome_reservado(rs.getString("nome"));
+               
+                listaRes.add(res);
+            }
+
+        } catch (SQLException erro) {
+            System.out.println(erro);
+        }
+        return listaRes;
+    }
+        public List<Reserva> consultaRes(int id) throws SQLException {
+        //Lista os Estabelecimento
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select data_reserva,hora_reserva,reserva_status from reserva where num_reserva=?");
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Reserva conRes = new Reserva();
+
+
+                conRes.setData_reservada(rs.getString("data_reserva"));
+                conRes.setHorario_reservado(rs.getString("hora_reserva"));
+                conRes.setReserva_status(rs.getString("reserva_status"));
+                
+                consRes.add(conRes);
+            }
+
+        } catch (SQLException erro) {
+            System.out.println(erro);
+        }
+        return consRes;
+    }
+    public List<Doacao> listaDadosDoa(int id) throws SQLException {
+        //Lista os Estabelecimento
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select d.valor, l.nome from doacao as d join login as l on d.id_usuario = l.id_usuario where d.id_esta=?");
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Doacao doa = new Doacao();
+
+                //Valor
+                doa.setValor(rs.getFloat("valor"));
+                //Nome
+                doa.setNome(rs.getString("nome"));
+               
+                listaDoa.add(doa);
+            }
+
+        } catch (SQLException erro) {
+            System.out.println(erro);
+        }
+        return listaDoa;
+    }
+    public List<Pagamento_mensalidade> listaPagMensal(int id) throws SQLException {
+        //Lista os Estabelecimento
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select pm.data_cobranca,p.valor from pagamento_mensalidade as pm join planos as p on pm.id_planos=p.id_planos where pm.id_esta = ?");
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Pagamento_mensalidade pm = new Pagamento_mensalidade();
+
+                //Data de Reserva
+                pm.setData_cobranca(rs.getString("data_cobranca"));
+                //Horario de Reserva
+                pm.setValor(rs.getFloat("valor"));
+               
+               
+                listaMensal.add(pm);
+            }
+
+        } catch (SQLException erro) {
+            System.out.println(erro);
+        }
+        return listaMensal;
     }
 }

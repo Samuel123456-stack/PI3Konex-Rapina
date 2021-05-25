@@ -6,10 +6,15 @@
 package Servelets_Funcionais;
 
 import ClassesDAO.ContagemDAO;
+import ClassesDAO.EstabelecimentoDAO;
 import ClassesDAO.LoginDAO;
+import ClassesJavaBean.Doacao;
 import ClassesJavaBean.Login;
+import ClassesJavaBean.Pagamento_mensalidade;
+import ClassesJavaBean.Reserva;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -39,6 +44,8 @@ public class TelaLoginSenha extends HttpServlet {
         boolean temErro = false;
         String email = null;
         int userTipo = 0;
+        int id=0;
+        int idEsta = 0;
 
         //Pegando a Sessao da tela anterior
         HttpSession sessaoUser = request.getSession();
@@ -51,7 +58,9 @@ public class TelaLoginSenha extends HttpServlet {
             //setando os valaores para as variaveis que utilizaremos
             email = logUser.getEmail();
             userTipo = logUser.getTipo_usuario();
-
+            id = logUser.getId_usuario();
+            idEsta = logUser.getId_esta();
+            
             //Setando o objeto para parametro
             request.setAttribute("logUser", logUser);
         } else {
@@ -132,7 +141,7 @@ public class TelaLoginSenha extends HttpServlet {
                     sessaoUser.setAttribute("dadosUsers", qtdUsers);
                     
                     response.sendRedirect(request.getContextPath() + "/MenuADM");
-                    
+
                 } catch (SQLException ex) {
                     Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -143,8 +152,42 @@ public class TelaLoginSenha extends HttpServlet {
                 dispatcher.forward(request, response);
             } else if (userTipo == 3) {//Se o tipo de usuario for 3 é um Estabelecimento
                 sessaoUser.setAttribute("logUser", userTipo);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuEsta.jsp");
-                dispatcher.forward(request, response);
+                //Faz os carregamentos dos dados
+                ContagemDAO contaDAO = new ContagemDAO();
+                EstabelecimentoDAO estaDAO = new EstabelecimentoDAO();
+                List<Reserva> listaReserva;
+                List<Pagamento_mensalidade> listaMensalidade;
+                List<Doacao> listaDoacao;
+                
+                try {
+                    //Carrega a Lista;
+                    idEsta=1;
+                    listaReserva = estaDAO.listarDadosRes(idEsta);
+                    listaMensalidade = estaDAO.listaPagMensal(idEsta);
+                    listaDoacao = estaDAO.listaDadosDoa(idEsta);
+                    System.out.println(idEsta);
+                    System.out.println(id);
+                    sessaoUser.setAttribute("dadosListaRes", listaReserva);
+                    sessaoUser.setAttribute("dadosListaMensal", listaMensalidade);
+                    sessaoUser.setAttribute("dadosListaDoacao", listaDoacao);
+                    //CARREGA DADOS INFORMATIVOS
+                    int qtdResVal = contaDAO.contaResValidada(idEsta);
+                    sessaoUser.setAttribute("dadosResVal", qtdResVal);
+
+                    int qtdContaDoa = contaDAO.contaDoaRecebidas(idEsta);
+                    sessaoUser.setAttribute("dadosDoacao", qtdContaDoa);
+                    
+                    int qtdContaFav = contaDAO.contaFavoritos(idEsta);
+                    sessaoUser.setAttribute("dadosFav", qtdContaFav);
+                    
+                    int qtdContaRec = contaDAO.contaRecebidos(idEsta);
+                    sessaoUser.setAttribute("dadosRec", qtdContaRec);
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                response.sendRedirect(request.getContextPath() + "/MenuEsta");
             }
         }
     }

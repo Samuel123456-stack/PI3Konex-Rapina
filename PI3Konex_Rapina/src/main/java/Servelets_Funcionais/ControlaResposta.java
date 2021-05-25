@@ -96,6 +96,7 @@ public class ControlaResposta extends HttpServlet {
         NotificaDAO notiDao = new NotificaDAO();
         
         //Condicao que retorna a reposta
+        if(tipoUser==2){
             int verificaResposta = notiDao.criaResposta(noti);
             switch (verificaResposta) {
                 case 1:
@@ -108,7 +109,7 @@ public class ControlaResposta extends HttpServlet {
                     temErro = true;
                     break;
             }
-            if(tipoUser==3){
+        }else if(tipoUser==3){
             int verificaRespostaEsta = notiDao.criaRespostaEsta(notiEsta);
              switch (verificaRespostaEsta) {
                 case 1:

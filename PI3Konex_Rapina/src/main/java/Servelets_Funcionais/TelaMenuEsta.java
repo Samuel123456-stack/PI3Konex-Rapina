@@ -5,8 +5,15 @@
  */
 package Servelets_Funcionais;
 
+import ClassesDAO.EstabelecimentoDAO;
+import ClassesJavaBean.Reserva;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,20 +35,52 @@ public class TelaMenuEsta extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         //Pegar o parametro
+        String idStr = request.getParameter("idRes");
         String botao = request.getParameter("btn");
-
-        //condição
+        int codReserva = 0;
+        boolean temErro = false;
+        if (idStr != null && idStr.trim().length() > 0) {
+            try {
+                codReserva = Integer.parseInt(idStr);
+                temErro = false;
+            } catch (StringIndexOutOfBoundsException ex) {
+                temErro = true;
+                //Declaração de Erro
+                idStr = null;
+            }
+        } else {
+            temErro = true;
+            idStr = null;
+        }
+        if (temErro) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuEsta.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            //condição
         if (botao != null) {
             //condição
-            if (botao.equals("att card")) {
-                response.sendRedirect(request.getContextPath() + "/TelaAltCard");//Redireciona para a Tela de Altera Cartao
-            } else if (botao.equals("att dados")) {
-                response.sendRedirect(request.getContextPath() + "/AlteraDadosEsta");//Redireciona para a Tela de Altera Dados do Estabelecimento
-            } else if (botao.equals("sub exclusao")) {
-                response.sendRedirect(request.getContextPath() + "/TelaSolicitaExclusao");//Redireciona para a Solicita Exclusao;
+            if (botao.equals("consultaRes")) {
+                
+                EstabelecimentoDAO estaDAO = new EstabelecimentoDAO();
+                List<Reserva> dadosRes;
+                
+                try {
+                    dadosRes = estaDAO.consultaRes(codReserva);
+                    request.setAttribute("consRes", dadosRes);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuEsta.jsp");
+                    dispatcher.forward(request, response);
+                    return;
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaMenuEsta.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+               
+        }
         }
     }
+
+        
+    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
