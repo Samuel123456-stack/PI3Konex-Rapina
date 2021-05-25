@@ -18,7 +18,8 @@ public class Pagamento_taxa {
     public int id_usuario;
     private int id_adm;
     public int id_estabelecimento;
-
+    public int tipo_user;
+    
     //metodo construtor
 
     public Pagamento_taxa() {
@@ -31,18 +32,22 @@ public class Pagamento_taxa {
     public void pagarTaxa() {
     }
     
-    public Pagamento_taxa(int id_usuario,String nomeUser, String data_cobranca, float valor_total){
+    public Pagamento_taxa(int id_usuario,String nomeUser, String data_cobranca, float valor_total, int tipo_user){
         this.id_usuario=id_usuario;
         this.nomeUser=nomeUser;
         this.data_cobranca=data_cobranca;
         this.valor_total=valor_total;
+        this.tipo_user=tipo_user;
     }
-        public Pagamento_taxa(String nomeUser, String data_cobranca, float valor_total,int id_estabelecimento){
+    
+    public Pagamento_taxa(String nomeUser, String data_cobranca, float valor_total, int tipo_user, int id_estabelecimento){
         this.nomeUser=nomeUser;
         this.data_cobranca=data_cobranca;
         this.valor_total=valor_total;
+        this.tipo_user=tipo_user;
         this.id_estabelecimento=id_estabelecimento;
     }
+    
     
     //metodos especiais
 
@@ -126,5 +131,14 @@ public class Pagamento_taxa {
     public void setId_estabelecimento(int id_estabelecimento) {
         this.id_estabelecimento = id_estabelecimento;
     }
+
+    public int getTipo_user() {
+        return tipo_user;
+    }
+
+    public void setTipo_user(int tipo_user) {
+        this.tipo_user = tipo_user;
+    }
+    
     
 }

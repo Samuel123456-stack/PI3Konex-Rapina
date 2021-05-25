@@ -17,17 +17,17 @@ public class Pagamento_mensalidade {
 
     public Pagamento_mensalidade() {
     }
-    
-    
-    //Metodos especiais
-    public void consultarMensalidade() {
-    }
 
-    public void pagarMensalidade() {
-    }  
+    public Pagamento_mensalidade(int id_pag_mensalidade, int id_estabelecimento, String data_cobranca, float valor) {
+        this.id_pag_mensalidade = id_pag_mensalidade;
+        this.id_estabelecimento = id_estabelecimento;
+        this.data_cobranca = data_cobranca;
+        this.valor = valor;
+    }
+    
+    
     
     //metodos getters e setters
-
     public int getId_pag_mensalidade() {
         return id_pag_mensalidade;
     }

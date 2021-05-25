@@ -1,6 +1,6 @@
 <%-- 
-    Document   : TelaCriaMensagem
-    Created on : 5 de mai de 2021, 21:09:24
+    Document   : SucessMsg
+    Created on : 25 de mai de 2021, 10:18:13
     Author     : Gabriel
 --%>
 
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Enviada com Sucesso</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Enviada com Sucesso</h1>
     </body>
 </html>

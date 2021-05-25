@@ -13,23 +13,26 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="${pageContext.request.contextPath}/BuscaPagamentos" method="get">
-            <p>Você deseja enviar a seguinte mensagem para o usuario:<c:out value="${pag.nomeUser}"/></p>
-            <c:if test="${pag.id_usuario!=null}">
-                <p><c:out value="${pag.id_usuario}"/></p>
-            </c:if>
-            <c:if test="${pag.id_estabelecimento!=null}">
-                <p><c:out value="${pag.id_estabelecimento}"/></p>
-            </c:if>
+        <form action="${pageContext.request.contextPath}/NotificaPagamento" method="get">
+            <p>Você deseja enviar a seguinte mensagem? <c:out value="${sessionScope.dadosPag.nomeUser}"/></p>
             
-            <textarea>Caro, <c:out value="${pag.nomeUser}"/>, consta em nosso sistema
-            um atraso referente a sua fatura no valor de: <c:out value="${pag.valor_total}"/>
-            ,que se encontra vencida desde: <c:out value="${pag.data_cobranca}"/>.
+            <c:if test="${sessionScope.dadosPag.id_usuario!=null}">
+                <p><c:out value="${sessionScope.dadosPag.id_usuario}"/></p>
+            </c:if>
+            <c:if test="${sessionScope.dadosPag.id_estabelecimento!=null}">
+                <p><c:out value="${sessionScope.dadosPag.id_estabelecimento}"/></p>
+            </c:if>
+                
+            <p>Tipo de Usuário:<c:out value="${sessionScope.dadosPag.tipo_user}"/></p>
+            
+            <textarea name="msg">Caro, <c:out value="${sessionScope.dadosPag.nomeUser}"/>, consta em nosso sistema
+            um atraso referente a sua fatura no valor de: <c:out value="${sessionScope.dadosPag.valor_total}"/>
+            ,que se encontra vencida desde: <c:out value="${sessionScope.dadosPag.data_cobranca}"/>.
             Ficamos no Aguardo da Regularização desta pendencia.
             Atenciosamente Grato,
             Rapina.
             </textarea>
-            
+
             <input type="submit">
         </form>
     </body>

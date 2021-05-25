@@ -98,7 +98,22 @@ public class EstabelecimentoDAO {
         }
         return cadastrado;
     }
+    public void atualiazaStatus(String st, int id) throws SQLException {
+        
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("update estabelecimento set esta_status=? where id_esta=?");) {
+            //passa os parametros
+            stmt.setString(1, st);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
 
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
     public int atualiazaEst(Estabelecimento dado) throws SQLException {
         //Atualiza o Estabelecimento 
         //Elementos para a conexão e verificação
