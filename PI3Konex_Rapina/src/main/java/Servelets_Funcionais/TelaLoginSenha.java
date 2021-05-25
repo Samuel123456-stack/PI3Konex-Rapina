@@ -5,6 +5,7 @@
  */
 package Servelets_Funcionais;
 
+import ClassesDAO.ContagemDAO;
 import ClassesDAO.LoginDAO;
 import ClassesJavaBean.Login;
 import java.io.IOException;
@@ -90,6 +91,7 @@ public class TelaLoginSenha extends HttpServlet {
             Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        
         //verifica se há erros
         if (temErro) {
             //não deixa prosseguir
@@ -100,8 +102,40 @@ public class TelaLoginSenha extends HttpServlet {
             //prossegue de acordo  tipo de usuario
             if (userTipo == 1) {//Se o tipo de usuario for 1 é um ADM
                 sessaoUser.setAttribute("logUser", userTipo);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuADM.jsp");
-                dispatcher.forward(request, response);
+                
+                //Faz os carregamentos dos dados
+                ContagemDAO conta = new ContagemDAO();
+                try {
+                    int qtdSerra=conta.contaPlanoA();
+                    int qtdRarpy=conta.contaPlanoB();
+                    int qtdAcor=conta.contaPlanoC();
+                    sessaoUser.setAttribute("dadosPlano", qtdSerra);
+                    sessaoUser.setAttribute("dadosPlanoB", qtdRarpy);
+                    sessaoUser.setAttribute("dadosPlanoC", qtdAcor);
+                    
+                    //verifica qual é mais contratado
+                    int maiorPlano = verificaMaiorPlano(qtdSerra, qtdRarpy, qtdAcor);
+                    if (maiorPlano > 0) {
+                        sessaoUser.setAttribute("maior", maiorPlano);
+                    }
+
+                    //CARREGA DADOS INFORMATIVOS
+                    int qtdReservaAtivas=0;
+                    
+                    int qtdDoacoes= conta.contaDoacoes();
+                    sessaoUser.setAttribute("dadosDoacoes", qtdDoacoes);
+                    
+                    int qtdPagam= conta.contaPagamentos();
+                    sessaoUser.setAttribute("dadosPagamentos", qtdPagam);
+                    
+                    int qtdUsers= conta.contaUsers();
+                    sessaoUser.setAttribute("dadosUsers", qtdUsers);
+                    
+                    response.sendRedirect(request.getContextPath() + "/MenuADM");
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             } else if (userTipo == 2) {//Se o tipo de usuario for 1 é um Cliente
                 sessaoUser.setAttribute("logUser", userTipo);
@@ -120,4 +154,27 @@ public class TelaLoginSenha extends HttpServlet {
             throws ServletException, IOException {
     }
 
+    public static int verificaMaiorPlano(int qtdSerra, int qtdRarpy, int qtdAcor){
+        int maior = 0;
+        
+        //condições
+        if (qtdSerra > qtdRarpy) {
+            maior = 2;
+        } else {
+            maior = 1;
+        }
+        if (qtdRarpy > qtdAcor) {
+            maior = 1;
+        }else{
+            maior = 3;
+        }
+        if (qtdAcor > qtdSerra) {
+            maior = 3;
+        }else{
+            maior = 2;
+        }
+
+        return maior;
+    }
+    
 }
