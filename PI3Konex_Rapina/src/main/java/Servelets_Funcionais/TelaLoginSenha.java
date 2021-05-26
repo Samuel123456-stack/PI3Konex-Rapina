@@ -150,9 +150,12 @@ public class TelaLoginSenha extends HttpServlet {
 
             } else if (userTipo == 2) {//Se o tipo de usuario for 1 é um Cliente
                 sessaoUser.setAttribute("logUser", userTipo);
-                
                 //buscar id e nome do usuario e setar esses valores
-                int idUser=0;
+                email = logUser.getEmail();
+                
+                String name= acesso.retornaNomeCli(email);
+                int idUser= acesso.retornaIDCli(email);
+                
                 
                 
                 //carregar dados gerais: Reservas, doações e qtd de pagamentos
