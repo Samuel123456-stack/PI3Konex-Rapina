@@ -40,12 +40,14 @@ public class TelaLoginSenha extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        //VAR que serão utilizadas
+        //VAR que serão utilizada
+        Login logUser = new Login();
         boolean temErro = false;
         String email = null;
         int userTipo = 0;
         int id=0;
         int idEsta = 0;
+        String nome = null;
 
         //Pegando a Sessao da tela anterior
         HttpSession sessaoUser = request.getSession();
@@ -53,14 +55,13 @@ public class TelaLoginSenha extends HttpServlet {
         //verificamos se a session tem algum dado para ser obtido
         if (sessaoUser.getAttribute("dadosAcesso") != null) {
             //trasfiro os dados da session anterio pra o novo objeto
-            Login logUser = (Login) sessaoUser.getAttribute("dadosAcesso");
+            logUser = (Login) sessaoUser.getAttribute("dadosAcesso");
 
             //setando os valaores para as variaveis que utilizaremos
             email = logUser.getEmail();
             userTipo = logUser.getTipo_usuario();
             id = logUser.getId_usuario();
-            idEsta = logUser.getId_esta();
-            
+              
             //Setando o objeto para parametro
             request.setAttribute("logUser", logUser);
         } else {
@@ -152,6 +153,14 @@ public class TelaLoginSenha extends HttpServlet {
                 dispatcher.forward(request, response);
             } else if (userTipo == 3) {//Se o tipo de usuario for 3 é um Estabelecimento
                 sessaoUser.setAttribute("logUser", userTipo);
+                 email = logUser.getEmail();
+                try {
+                    idEsta = acesso.retornaIDEsta(email);
+                    nome = acesso.retornaNome(email);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
                 //Faz os carregamentos dos dados
                 ContagemDAO contaDAO = new ContagemDAO();
                 EstabelecimentoDAO estaDAO = new EstabelecimentoDAO();
@@ -161,12 +170,9 @@ public class TelaLoginSenha extends HttpServlet {
                 
                 try {
                     //Carrega a Lista;
-                    idEsta=1;
                     listaReserva = estaDAO.listarDadosRes(idEsta);
                     listaMensalidade = estaDAO.listaPagMensal(idEsta);
                     listaDoacao = estaDAO.listaDadosDoa(idEsta);
-                    System.out.println(idEsta);
-                    System.out.println(id);
                     sessaoUser.setAttribute("dadosListaRes", listaReserva);
                     sessaoUser.setAttribute("dadosListaMensal", listaMensalidade);
                     sessaoUser.setAttribute("dadosListaDoacao", listaDoacao);
@@ -182,6 +188,7 @@ public class TelaLoginSenha extends HttpServlet {
                     
                     int qtdContaRec = contaDAO.contaRecebidos(idEsta);
                     sessaoUser.setAttribute("dadosRec", qtdContaRec);
+                    sessaoUser.setAttribute("nomeEsta", nome);
 
                 } catch (SQLException ex) {
                     Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);

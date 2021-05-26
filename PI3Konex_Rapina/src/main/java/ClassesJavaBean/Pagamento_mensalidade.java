@@ -26,10 +26,9 @@ public class Pagamento_mensalidade {
         this.data_cobranca = data_cobranca;
         this.valor = valor;
     }
-        public Pagamento_mensalidade(int id_estabelecimento, String data_cobranca,String nome, float valor) {
+        public Pagamento_mensalidade(int id_estabelecimento, String data_cobranca, float valor) {
         this.id_estabelecimento = id_estabelecimento;
         this.data_cobranca = data_cobranca;
-        this.nome = nome;
         this.valor = valor;
     }
     
