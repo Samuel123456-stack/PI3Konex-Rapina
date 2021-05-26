@@ -129,7 +129,8 @@ public class TelaLoginSenha extends HttpServlet {
                     }
 
                     //CARREGA DADOS INFORMATIVOS
-                    int qtdReservaAtivas=0;
+                    int qtdReservaAtivas= conta.contaReservas();
+                    sessaoUser.setAttribute("DadosReserva", qtdReservaAtivas);
                     
                     int qtdDoacoes= conta.contaDoacoes();
                     sessaoUser.setAttribute("dadosDoacoes", qtdDoacoes);
@@ -148,8 +149,24 @@ public class TelaLoginSenha extends HttpServlet {
 
             } else if (userTipo == 2) {//Se o tipo de usuario for 1 é um Cliente
                 sessaoUser.setAttribute("logUser", userTipo);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuCliente.jsp");
-                dispatcher.forward(request, response);
+                
+                //buscar id e nome do usuario e setar esses valores
+                int idUser=0;
+                
+                
+                //carregar dados gerais: Reservas, doações e qtd de pagamentos
+                int qtdReservasFeitas = 0;
+                sessaoUser.setAttribute("dadosPagamentos", qtdReservasFeitas);
+                
+                int qtdDoaçõesFeitas = 0;
+                sessaoUser.setAttribute("dadosPagamentos", qtdDoaçõesFeitas);
+                
+                int qtdPagamentosFeitos = 0;
+                sessaoUser.setAttribute("dadosPagamentos", qtdPagamentosFeitos);
+                
+                response.sendRedirect(request.getContextPath() + "/MenuCliente");
+                
+                
             } else if (userTipo == 3) {//Se o tipo de usuario for 3 é um Estabelecimento
                 sessaoUser.setAttribute("logUser", userTipo);
                 //Faz os carregamentos dos dados
