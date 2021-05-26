@@ -37,7 +37,7 @@
             <div class="form-container">
                 <div class="form-block">
                     <section class="form-data">
-
+                        <a href="${pageContext.request.contextPath}/MenuCliente" style="text-decoration: none;" >Voltar ao Menu</a>
                         <form action="${pageContext.request.contextPath}/AlteraCartao" method="get">
                             <div class="input-field ${not empty erro ? 'erroInput' : ''}">
                                 <div class="card">
@@ -92,7 +92,7 @@
                             <p>0000  0000  0000  0000</p>
                         </div>
                         <div class="username">
-                            <p>Gabriel Felipe S</p>
+                            <p>Nome escrito</p>
                             <section>
                                 <h5>VALID DATES</h5>
                                 <p>XX/XX</p>
