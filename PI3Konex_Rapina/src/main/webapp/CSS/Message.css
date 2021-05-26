@@ -2,6 +2,7 @@
 
 body{
     background-image: url('../images/background-color-contact.png');
+    background-repeat: no-repeat;
 }
 img{
     cursor:pointer;
