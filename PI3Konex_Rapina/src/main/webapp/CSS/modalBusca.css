@@ -1,13 +1,16 @@
 @import url('global.css');
 
 body{
-    background:rgba(119,119,119, 0.7);
+    background-image:url('../images/track.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 #modal-container{
     height:100vh;
     display:flex;
     justify-content:center;
     align-items: center;
+    background:rgba(0,0,0, 0.7);
 }
 #modal-container .form-container{
     border-radius:.8rem;
