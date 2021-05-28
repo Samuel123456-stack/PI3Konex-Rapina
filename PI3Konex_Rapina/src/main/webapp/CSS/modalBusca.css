@@ -80,8 +80,9 @@ body{
     outline:0;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
-    text-align: left;
+    text-align: center;
     width:90%;
+    font-size:16px;
 }
 .form-container .input-field input::placeholder{
     color:rgba(0,0,0,0.4);
