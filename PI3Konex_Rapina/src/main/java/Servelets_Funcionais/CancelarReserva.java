@@ -51,7 +51,6 @@ public class CancelarReserva extends HttpServlet {
             //setando os valaores para as variaveis que utilizaremos
             id = logUser.getId_usuario();
 
-            
             //Setando o objeto para parametro
             request.setAttribute("logUser", logUser);
         } else {
@@ -94,10 +93,7 @@ public class CancelarReserva extends HttpServlet {
                 }
 
             } else if (btn.equals("voltar")) {
-                //recupera a sessao
-                //Setando o objeto para parametro
-                //request.setAttribute("logUser", logUser);
-                
+               
                 //volta para o menu
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuCliente.jsp");
                 dispatcher.forward(request, response);

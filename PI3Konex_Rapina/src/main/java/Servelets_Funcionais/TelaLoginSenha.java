@@ -222,6 +222,9 @@ public class TelaLoginSenha extends HttpServlet {
                     listaRes= actionRes.listarReservaCli(idUser);
                     sessaoUser.setAttribute("listaReservasCli", listaRes);
 
+                    
+                    
+                    
                 } catch (SQLException ex) {
                     Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
                 }

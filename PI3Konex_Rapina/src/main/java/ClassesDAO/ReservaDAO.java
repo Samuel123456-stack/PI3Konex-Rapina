@@ -94,7 +94,7 @@ public class ReservaDAO {
         ConexaoJDBC conexao = new ConexaoJDBC();
         try {
             Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("select r.num_reserva, r.quant_pessoas, r.id_esta, r.data_reserva, r.hora_reserva, l.nome_esta, l.endereco, l.cep, l.numero, l.celular, l.taxa_cancelamento from reserva as r join estabelecimento as l on r.id_esta=l.id_esta where r.id_usuario=? && r.reserva_status='ativa';");
+            PreparedStatement stmt = conn.prepareStatement("select r.num_reserva, r.quant_pessoas, r.id_esta, r.data_reserva, r.hora_reserva, l.nome_esta, l.endereco, l.cep, l.numero, l.celular, l.taxa_cancelamento from reserva as r join estabelecimento as l on r.id_esta=l.id_esta where r.id_usuario=? && r.reserva_status='ativa' order by r.data_reserva desc;");
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
