@@ -17,10 +17,6 @@ body{
         margin-right: auto;
 }
 
-
-
-
-
 .tabelas{
     width: 540px;
     height: 254px;
@@ -30,6 +26,7 @@ body{
     border-radius: 25px;
     padding: 30px;
     float: left;
+    overflow: auto;
 }
 .tabelas p{
     margin-left: 2vmin;
@@ -46,7 +43,9 @@ body{
     border-radius: 25px;
     padding: 30px;
     float: left;
+    overflow: auto;
 }
+
 
 .tabelas2 p{
     
@@ -64,6 +63,11 @@ body{
     padding: 30px;
     float: left;
     font-family: 'Hind Siliguri', sans-serif;
+    overflow: auto;
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 .tabelas3 th{

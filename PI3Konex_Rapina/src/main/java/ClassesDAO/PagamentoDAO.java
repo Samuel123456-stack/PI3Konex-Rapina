@@ -96,4 +96,55 @@ public class PagamentoDAO {
         }
         return lista;
     }
+     
+     public List<Pagamento_taxa> listarPagamentoCli(int id)throws SQLException {
+         //Lista os Pagamentos Atrasados do Cliente
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select id_pag_taxa, desc_taxa, data_cobranca, valor_total from pagamento_taxa where id_usuario=?");
+            
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                Pagamento_taxa pagTaxa = new Pagamento_taxa();
+               
+                //ID Pagamento Taxa
+                pagTaxa.setId_pagamento_taxa(rs.getInt("id_pag_taxa"));
+                
+                //Data Cobrança
+                pagTaxa.setDescribe_taxa(rs.getString("desc_taxa"));
+                
+                //Data Cobrança
+                pagTaxa.setData_cobranca(rs.getString("data_cobranca"));
+                
+                //valor total
+                pagTaxa.setValor_total(rs.getFloat("valor_total"));
+                
+                lista.add(pagTaxa);
+            }
+
+        } catch (SQLException erro) {
+            System.out.println(erro);
+        }
+        return lista;
+     }
+     public void removePagCli(int valor) throws SQLException {
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        //declarações do preparedStatement
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("delete from pagamento_taxa where id_pag_taxa=?");) {
+            //Executa a Query
+            stmt.setInt(1, valor);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+    }    
 }

@@ -5,12 +5,21 @@
  */
 package Servelets_Funcionais;
 
+import ClassesDAO.ClienteDAO;
 import ClassesDAO.ContagemDAO;
+import ClassesDAO.DoacaoDAO;
 import ClassesDAO.EstabelecimentoDAO;
+import ClassesDAO.FavoritoDAO;
 import ClassesDAO.LoginDAO;
+import ClassesDAO.PagamentoDAO;
+import ClassesDAO.ReservaDAO;
+import ClassesJavaBean.Cliente;
 import ClassesJavaBean.Doacao;
+import ClassesJavaBean.Estabelecimento;
+import ClassesJavaBean.Favoritos;
 import ClassesJavaBean.Login;
 import ClassesJavaBean.Pagamento_mensalidade;
+import ClassesJavaBean.Pagamento_taxa;
 import ClassesJavaBean.Reserva;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -150,27 +159,75 @@ public class TelaLoginSenha extends HttpServlet {
 
             } else if (userTipo == 2) {//Se o tipo de usuario for 1 é um Cliente
                 sessaoUser.setAttribute("logUser", userTipo);
+
                 //buscar id e nome do usuario e setar esses valores
                 email = logUser.getEmail();
-                
-                String name= acesso.retornaNomeCli(email);
-                int idUser= acesso.retornaIDCli(email);
-                
-                
-                
-                //carregar dados gerais: Reservas, doações e qtd de pagamentos
-                int qtdReservasFeitas = 0;
-                sessaoUser.setAttribute("dadosPagamentos", qtdReservasFeitas);
-                
-                int qtdDoaçõesFeitas = 0;
-                sessaoUser.setAttribute("dadosPagamentos", qtdDoaçõesFeitas);
-                
-                int qtdPagamentosFeitos = 0;
-                sessaoUser.setAttribute("dadosPagamentos", qtdPagamentosFeitos);
-                
+                String name = "";
+                int idUser = 0;
+
+                try {
+                    name = acesso.retornaNomeCli(email);
+                    idUser = acesso.retornaIDCli(email);
+                    logUser.setNome(name);
+                    logUser.setId_usuario(idUser);
+
+                    sessaoUser.setAttribute("dadoName", logUser.getNome());
+                    sessaoUser.setAttribute("dadoId", logUser.getId_usuario());
+
+                    //Faz os carregamentos dos dados
+                    ContagemDAO conta = new ContagemDAO();
+
+                    //carregar dados gerais: Reservas, doações e qtd de pagamentos
+                    int qtdReservasFeitas = conta.contaReservaCli(idUser);
+                    sessaoUser.setAttribute("dadosReserCli", qtdReservasFeitas);
+
+                    int qtdDoaçõesFeitas = conta.contaDoeCli(idUser);
+                    sessaoUser.setAttribute("dadosDoeCli", qtdDoaçõesFeitas);
+
+                    int qtdPagamentosFeitos = conta.contaPagCli(idUser);
+                    sessaoUser.setAttribute("dadosPagCli", qtdPagamentosFeitos);
+
+                    //Carrega a lista de favoritos
+                    //constroe o objeto DAO
+                    FavoritoDAO actionDAO = new FavoritoDAO();
+
+                    //chama o metodo que retorna uma lista de favoritos
+                    List<Favoritos> listaD;
+                    listaD = actionDAO.listarDadosFavoritos(idUser);
+                    sessaoUser.setAttribute("listaFavCli", listaD);
+                    
+                    //Chama o metodo que retorna uma lista de pagamentos
+                    //constroe o objeto DAO
+                    PagamentoDAO actionPag = new PagamentoDAO();
+                    
+                    //Chama o metodo que retorna uma lista de pagamentos
+                    List<Pagamento_taxa> listaE;
+                    listaE = actionPag.listarPagamentoCli(idUser);
+                    sessaoUser.setAttribute("listaPagamCli", listaE);
+                    
+                    
+                    //Chama o metodo que retorna uma lista de Doações feitas pelo usuario
+                    //constroe o objeto DAO
+                    DoacaoDAO actionDoa = new DoacaoDAO();
+                    
+                    //Chama o metodo que retorna uma lista de pagamentos
+                    List<Doacao> listaF;
+                    listaF = actionDoa.listaDoacoesClie(idUser);
+                    sessaoUser.setAttribute("listaDoacoesCli", listaF);
+                    
+                    //Chama o metodo que retorna lista de Reservas e Dados do Estabelecimento
+                    ReservaDAO actionRes = new ReservaDAO();
+                    
+                    List<Reserva> listaRes;
+                    listaRes= actionRes.listarReservaCli(idUser);
+                    sessaoUser.setAttribute("listaReservasCli", listaRes);
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 response.sendRedirect(request.getContextPath() + "/MenuCliente");
-                
-                
+
             } else if (userTipo == 3) {//Se o tipo de usuario for 3 é um Estabelecimento
                 sessaoUser.setAttribute("logUser", userTipo);
                  email = logUser.getEmail();

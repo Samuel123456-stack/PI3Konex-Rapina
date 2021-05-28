@@ -93,8 +93,8 @@
                     <td><div class="ativa">1</div></td>
                     </c:if>
                 </tr>
+                </c:forEach>
                 </tbody>
-            </c:forEach>
         </table>
     </div>
 
