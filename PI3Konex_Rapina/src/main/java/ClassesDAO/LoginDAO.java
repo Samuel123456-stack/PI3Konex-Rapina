@@ -77,7 +77,116 @@ public class LoginDAO {
         }
         return liberaAcesso;
     }
+    
+    public int retornaIDEsta(String email) throws SQLException{
+        //Var auxliadora
+        int retorna = 0;
 
+        //Crio a conexao com o bd
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("Select * from login where email =?");) {
+
+            //passa o parametro recebido para o STMT usando o dado.get(atributo)
+            stmt.setString(1, getEmail());
+
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    //verifico se a senha digitada é igual da coluna do BD
+                    int idEsta = rs.getInt("id_esta");
+                    
+                    retorna = idEsta; 
+                }
+            }
+        }
+        return retorna;
+    }
+    public String retornaNome(String id) throws SQLException{
+        //Var auxliadora
+        String retorna = null;
+
+        //Crio a conexao com o bd
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("Select * from login where email =?");) {
+
+            //passa o parametro recebido para o STMT usando o dado.get(atributo)
+            stmt.setString(1, getEmail());
+
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    //verifico se a senha digitada é igual da coluna do BD
+                    String nome = rs.getString("nome");
+                    
+                    retorna = nome; 
+                }
+            }
+        }
+        return retorna;
+    }
+    
+    public int retornaIDCli(String email) throws SQLException{
+        //Var auxliadora
+        int retorna = 0;
+
+        //Crio a conexao com o bd
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("Select * from login where email =?");) {
+
+            //passa o parametro recebido para o STMT usando o dado.get(atributo)
+            stmt.setString(1, getEmail());
+
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    //verifico se a senha digitada é igual da coluna do BD
+                    int idEsta = rs.getInt("id_usuario");
+                    
+                    retorna = idEsta; 
+                }
+            }
+        }
+        return retorna;
+    }
+    public String retornaNomeCli(String id) throws SQLException{
+        //Var auxliadora
+        String retorna = null;
+
+        //Crio a conexao com o bd
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("Select * from login where email =?");) {
+
+            //passa o parametro recebido para o STMT usando o dado.get(atributo)
+            stmt.setString(1, getEmail());
+
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    //verifico se a senha digitada é igual da coluna do BD
+                    String nome = rs.getString("nome");
+                    
+                    retorna = nome; 
+                }
+            }
+        }
+        return retorna;
+    }
+    
+    
+    
+    
     public String getEmail() {
         return email;
     }

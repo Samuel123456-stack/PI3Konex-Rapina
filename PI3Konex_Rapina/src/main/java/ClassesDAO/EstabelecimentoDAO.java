@@ -426,7 +426,7 @@ public class EstabelecimentoDAO {
         ConexaoJDBC conexao = new ConexaoJDBC();
         try {
             Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("select r.num_reserva, r.data_reserva,r.hora_reserva,r.reserva_status,l.nome from reserva as r join login as l on r.id_usuario=l.id_usuario where r.id_esta=?");
+            PreparedStatement stmt = conn.prepareStatement("select r.num_reserva, r.data_reserva,r.hora_reserva,r.reserva_status,l.nome from reserva as r join login as l on r.id_usuario=l.id_usuario where r.id_esta=? order by r.reserva_status='Cancelada'");
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {

@@ -15,12 +15,7 @@
     <body>
         <form action="${pageContext.request.contextPath}/RespondePagEsta" method="get">
             <p>Você deseja enviar a seguinte mensagem? <c:out value="${sessionScope.dadosPagMes.nome}"/></p>
-<textarea name="msg">Caro, <c:out value="${sessionScope.dadosPagMes.nome}"/>, consta em nosso sistema
-            um atraso referente a sua fatura no valor de: <c:out value="${sessionScope.dadosPagMes.valor}"/>
-            ,que se encontra vencida desde: <c:out value="${sessionScope.dadosPagMes.data_cobranca}"/>.
-            Ficamos no Aguardo da Regularização desta pendencia.
-            Atenciosamente Grato,
-            Rapina.
+<textarea name="msg">Este Pagamento ja foi Debitado, porque estou sendo cobrado?
             </textarea>
 
             <input type="submit">

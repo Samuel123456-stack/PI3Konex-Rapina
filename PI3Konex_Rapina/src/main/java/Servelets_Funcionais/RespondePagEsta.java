@@ -34,7 +34,6 @@ public class RespondePagEsta extends HttpServlet {
         //parametros
         String botao = request.getParameter("btn");
         String idEstaStr = request.getParameter("lineIDEsta");
-        String nome = request.getParameter("lineUser");
         String data = request.getParameter("lineData");
         String valorStr = request.getParameter("lineValor");
         //Sessao
@@ -50,7 +49,7 @@ public class RespondePagEsta extends HttpServlet {
                  if (botao.equals("notificaEsta")) {  
 
                             //constroe o objeto
-                            Pagamento_mensalidade pagMes = new Pagamento_mensalidade(id,data,nome,valor);
+                            Pagamento_mensalidade pagMes = new Pagamento_mensalidade(id,data,valor);
                             request.setAttribute("pagMes", pagMes);
                             
                             //constroe a sessao

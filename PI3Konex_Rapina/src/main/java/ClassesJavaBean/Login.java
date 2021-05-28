@@ -13,6 +13,7 @@ public class Login {
     private int id_login;
     private String email;
     private String senha;
+    public String nome;
     private int id_esta;
     private int id_adm;
     private int id_usuario;
@@ -51,6 +52,13 @@ public class Login {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+        public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public int getId_esta() {
