@@ -31,6 +31,9 @@
     "attributes": {
         "integrity": {
             "context": "script"
+        },
+        "arial-hidden": {
+            "context": "span"
         }
     }
 }
