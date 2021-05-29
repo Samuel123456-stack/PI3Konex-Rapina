@@ -61,6 +61,9 @@ public class DeletaPagamento extends HttpServlet {
         }
         
         String idLine = request.getParameter("lineIdPag");
+        String dataPag = request.getParameter("lineDataPag");
+        String valor = request.getParameter("lineValorPag");
+        String desc = request.getParameter("lineDescPag");
         String btn = request.getParameter("btn");
         
         //verifica se o idLinha é diferente de null
@@ -88,6 +91,23 @@ public class DeletaPagamento extends HttpServlet {
                 } catch (SQLException ex) {
                     Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+            else if (btn.equals("notificar")){
+                //requests att da sessao
+                sessaoUser.setAttribute("dataCobrancaPag", dataPag);
+                
+                float value= Float.parseFloat(valor);
+                sessaoUser.setAttribute("valorCobrancaPag", value);
+                
+                int idPag = Integer.parseInt(idLine);
+                sessaoUser.setAttribute("idCobranca", idPag);
+                
+                sessaoUser.setAttribute("descTaxaPag", desc);
+                
+                sessaoUser.setAttribute("idUser", id);
+                //chama a tela de mensagem
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/HelpMasterCli.jsp");
+                dispatcher.forward(request, response);
             }
         }
     }

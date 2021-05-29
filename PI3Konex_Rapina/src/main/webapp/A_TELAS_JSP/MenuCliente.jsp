@@ -182,6 +182,10 @@
                                         <td>
                                             <form action="${pageContext.request.contextPath}/DeletaPagamento" method="get">
                                                 <input type="hidden" name="lineIdPag" value="${o.id_pagamento_taxa}">
+                                                <input type="hidden" name="lineDataPag" value="${o.data_cobranca}">
+                                                <input type="hidden" name="lineValorPag" value="${o.valor_total}">
+                                                <input type="hidden" name="lineDescPag" value="${o.describe_taxa}">
+                                                
                                                 <button style="cursor: pointer;" type="submit" name="btn" value="notificar">
                                                     <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M12.7131 22.2827L11.3077 21.4617L14.5385 15.7147H19.3846C19.813 15.7147 20.2239 15.5417 20.5269 15.2338C20.8298 14.9258 21 14.5082 21 14.0727V4.22065C21 3.78517 20.8298 3.36752 20.5269 3.05958C20.2239 2.75165 19.813 2.57865 19.3846 2.57865H3.23077C2.80234 2.57865 2.39146 2.75165 2.08852 3.05958C1.78558 3.36752 1.61538 3.78517 1.61538 4.22065V14.0727C1.61538 14.5082 1.78558 14.9258 2.08852 15.2338C2.39146 15.5417 2.80234 15.7147 3.23077 15.7147H10.5V17.3567H3.23077C2.37392 17.3567 1.55216 17.0107 0.94627 16.3948C0.340384 15.779 0 14.9437 0 14.0727V4.22065C0 3.34968 0.340384 2.51438 0.94627 1.89851C1.55216 1.28264 2.37392 0.936646 3.23077 0.936646H19.3846C20.2415 0.936646 21.0632 1.28264 21.6691 1.89851C22.275 2.51438 22.6154 3.34968 22.6154 4.22065V14.0727C22.6154 14.9437 22.275 15.779 21.6691 16.3948C21.0632 17.0107 20.2415 17.3567 19.3846 17.3567H15.4754L12.7131 22.2827Z" fill="#4EBAB5"/>
