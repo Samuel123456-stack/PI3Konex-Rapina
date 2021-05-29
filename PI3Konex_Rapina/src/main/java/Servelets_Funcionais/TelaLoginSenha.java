@@ -13,6 +13,7 @@ import ClassesDAO.FavoritoDAO;
 import ClassesDAO.LoginDAO;
 import ClassesDAO.PagamentoDAO;
 import ClassesDAO.ReservaDAO;
+import ClassesJavaBean.Cartao;
 import ClassesJavaBean.Cliente;
 import ClassesJavaBean.Doacao;
 import ClassesJavaBean.Estabelecimento;
@@ -56,6 +57,7 @@ public class TelaLoginSenha extends HttpServlet {
         int userTipo = 0;
         int id=0;
         int idEsta = 0;
+        int idCartao=0;
         String nome = null;
 
         //Pegando a Sessao da tela anterior
@@ -230,10 +232,18 @@ public class TelaLoginSenha extends HttpServlet {
 
             } else if (userTipo == 3) {//Se o tipo de usuario for 3 é um Estabelecimento
                 sessaoUser.setAttribute("logUser", userTipo);
+                Estabelecimento esta = new Estabelecimento();
+                Cartao cartao = new Cartao();
                  email = logUser.getEmail();
+                 
                 try {
                     idEsta = acesso.retornaIDEsta(email);
                     nome = acesso.retornaNome(email);
+                    esta = acesso.pegaDadosEsta(idEsta);
+                    cartao = acesso.pegaDadosCartao(idEsta);
+                    idCartao = acesso.retornaIDCartaoEsta(email);
+                    cartao.setId_card(idCartao);
+                    esta.setId_estabelecimento(idEsta);
                 } catch (SQLException ex) {
                     Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -266,6 +276,9 @@ public class TelaLoginSenha extends HttpServlet {
                     int qtdContaRec = contaDAO.contaRecebidos(idEsta);
                     sessaoUser.setAttribute("dadosRec", qtdContaRec);
                     sessaoUser.setAttribute("nomeEsta", nome);
+                    sessaoUser.setAttribute("idEsta", idEsta);
+                    sessaoUser.setAttribute("cartao", cartao);
+                    sessaoUser.setAttribute("esta", esta);
 
                 } catch (SQLException ex) {
                     Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
