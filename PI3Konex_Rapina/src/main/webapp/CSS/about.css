@@ -139,6 +139,9 @@
 .member-container .member-description > section{
     width:407px;
 }
+.carousel-control-prev, .carousel-control-next{
+    background:#ccc;
+}
 #container-landing footer{
     margin:59px auto;
 }
