@@ -25,7 +25,7 @@ public class FavoritoDAO {
         ConexaoJDBC conexao = new ConexaoJDBC();
         try {
             Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("select nome_esta from favorito where id_usuario=?");
+            PreparedStatement stmt = conn.prepareStatement("select nome_esta,id_favorito from favorito where id_usuario=?");
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -33,7 +33,9 @@ public class FavoritoDAO {
 
                 //Nome Estabelecimento
                 fav.setNome_estabelecimento(rs.getString("nome_esta"));
-
+                //id Restaurante
+                fav.setId_favorito(rs.getInt("id_favorito"));
+                
                 lista.add(fav);
             }
 
@@ -42,4 +44,21 @@ public class FavoritoDAO {
         }
         return lista;
     }
+    public void removeFav(int valor) throws SQLException {
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        //declarações do preparedStatement
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("delete from favorito where id_favorito=?");) {
+            //Executa a Query
+            stmt.setInt(1, valor);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+    }        
 }

@@ -18,7 +18,7 @@
 
         <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/home.css">
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
-        <link rel="shortcut icon" href="../images/icons/logo.jpeg">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logo.jpeg">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     </head>
     <body>

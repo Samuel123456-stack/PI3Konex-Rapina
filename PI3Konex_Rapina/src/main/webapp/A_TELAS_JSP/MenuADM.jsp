@@ -65,13 +65,13 @@
                                 <td class="val"><c:out value="${lista.valor_total}"/></td>
                                 <td class="opcoes">
                                     <form action="${pageContext.request.contextPath}/BuscaPagamentos" method="get">
-                                        <button name="btn" value="notifica">
-                                            <input type="hidden" name="lineTipo" value="${lista.tipo_user}">
+                                        <input type="hidden" name="lineTipo" value="${lista.tipo_user}">
                                             <input type="hidden" name="lineID" value="${lista.id_usuario}">
                                             <input type="hidden" name="lineIDEsta" value="${lista.id_estabelecimento}">       
                                             <input type="hidden" name="lineUser" value="${lista.nomeUser}">
                                             <input type="hidden" name="lineData" value="${lista.data_cobranca}">
                                             <input type="hidden" name="lineValor" value="${lista.valor_total}">
+                                        <button name="btn" value="notifica">
                                             <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.414 0.585573C16.0389 0.210631 15.5303 0 15 0C14.4697 0 13.9611 0.210631 13.586 0.585573L5.586 8.58557C5.2109 8.96056 5.00011 9.46918 5 9.99957V11.5856C5 12.116 5.21071 12.6247 5.58579 12.9998C5.96086 13.3749 6.46957 13.5856 7 13.5856H8.586C9.11639 13.5855 9.62501 13.3747 10 12.9996L18 4.99957C18.3749 4.62452 18.5856 4.1159 18.5856 3.58557C18.5856 3.05524 18.3749 2.54663 18 2.17157L16.414 0.585573ZM3 1.58557C2.20435 1.58557 1.44129 1.90164 0.87868 2.46425C0.316071 3.02686 0 3.78992 0 4.58557V15.5856C0 16.3812 0.316071 17.1443 0.87868 17.7069C1.44129 18.2695 2.20435 18.5856 3 18.5856H14C14.7956 18.5856 15.5587 18.2695 16.1213 17.7069C16.6839 17.1443 17 16.3812 17 15.5856V12.5856C17 12.3204 16.8946 12.066 16.7071 11.8785C16.5196 11.6909 16.2652 11.5856 16 11.5856C15.7348 11.5856 15.4804 11.6909 15.2929 11.8785C15.1054 12.066 15 12.3204 15 12.5856V15.5856C15 15.8508 14.8946 16.1051 14.7071 16.2927C14.5196 16.4802 14.2652 16.5856 14 16.5856H3C2.73478 16.5856 2.48043 16.4802 2.29289 16.2927C2.10536 16.1051 2 15.8508 2 15.5856V4.58557C2 4.32036 2.10536 4.066 2.29289 3.87847C2.48043 3.69093 2.73478 3.58557 3 3.58557H6C6.26522 3.58557 6.51957 3.48022 6.70711 3.29268C6.89464 3.10514 7 2.85079 7 2.58557C7 2.32036 6.89464 2.066 6.70711 1.87847C6.51957 1.69093 6.26522 1.58557 6 1.58557H3Z" fill="#4EBAB5" fill-opacity="1"/>
                                             </svg>

@@ -18,7 +18,13 @@ public class Reserva {
     public String horario_reservado;
     private String hora_valida_reserva;
     private String hora_valida_saida;
-
+    private String nome_Restaurante;
+    private String endereco;
+    private String cep;
+    private int numero;
+    private String contato_Rest;
+    private float valor_taxa;
+    
     //metodo construtor
     public Reserva() {
     }
@@ -110,5 +116,56 @@ public class Reserva {
     public void setReserva_status(String reserva_status) {
         this.reserva_status = reserva_status;
     }
+
+    public String getNome_Restaurante() {
+        return nome_Restaurante;
+    }
+
+    public void setNome_Restaurante(String nome_Restaurante) {
+        this.nome_Restaurante = nome_Restaurante;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String getContato_Rest() {
+        return contato_Rest;
+    }
+
+    public void setContato_Rest(String contato_Rest) {
+        this.contato_Rest = contato_Rest;
+    }
+
+    public float getValor_taxa() {
+        return valor_taxa;
+    }
+
+    public void setValor_taxa(float valor_taxa) {
+        //valor de cancelamento do estabelecimento + 3 reais da rapina.
+        this.valor_taxa = valor_taxa + 3;
+    }
+    
+    
 
 }

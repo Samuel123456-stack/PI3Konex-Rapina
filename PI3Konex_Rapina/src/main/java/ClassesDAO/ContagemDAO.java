@@ -229,4 +229,90 @@ public class ContagemDAO {
         }
         return a;
     }
+    
+    public int contaReservas(int x) throws SQLException{
+        int a=0;
+        
+        //conexao jdbc
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select count(num_reserva) as qtd from reserva where id_usuario=? && reserva_status='ativa'");) {
+
+            stmt.setInt(1, x);
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    a=rs.getInt("qtd");
+                }
+            }
+        }
+        return a;
+    }
+    
+    
+    public int contaReservaCli(int x) throws SQLException{
+        int a=0;
+        
+        //conexao jdbc
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select count(num_reserva) as qtd from reserva where id_usuario=? && reserva_status='ativa'");) {
+
+            stmt.setInt(1, x);
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    a=rs.getInt("qtd");
+                }
+            }
+        }
+        return a;
+    }
+    
+    public int contaDoeCli(int x) throws SQLException{
+        int a=0;
+        
+        //conexao jdbc
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select count(nome) as qtd from doacao where id_usuario=?");) {
+
+            stmt.setInt(1, x);
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    a=rs.getInt("qtd");
+                }
+            }
+        }
+        return a;
+    }
+    
+    public int contaPagCli(int x) throws SQLException{
+        int a=0;
+        
+        //conexao jdbc
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select count(id_pag_taxa) as qtd from pagamento_taxa where id_usuario=?");) {
+
+            stmt.setInt(1, x);
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    a=rs.getInt("qtd");
+                }
+            }
+        }
+        return a;
+    }
+    
 }

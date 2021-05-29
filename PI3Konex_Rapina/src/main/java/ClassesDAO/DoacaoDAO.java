@@ -11,13 +11,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author gusta
  */
 public class DoacaoDAO {
-
+    ArrayList<Doacao> lista = new ArrayList<>();
+    
     //Consulta o Nome para Converter 
     public int consultaNome(String nome) throws SQLException {
         //Elementos para a conexão e verificação
@@ -45,7 +48,8 @@ public class DoacaoDAO {
 
         //Declarações do preparedStatement
         try (
-                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("insert into doacao(nome, valor, id_usuario,data_doacao, id_esta, id_cartao)"
+                 Connection conn = conexao.obterConexaoBD();  
+                 PreparedStatement stmt = conn.prepareStatement("insert into doacao(nome, valor, id_usuario,data_doacao, id_esta, id_cartao)"
                 + " values(?,?,?,?,?,?)");) {
             //passa os parametros
             stmt.setString(1, dado.getNome());
@@ -85,4 +89,63 @@ public class DoacaoDAO {
 
     }
     //Mais Funções serao adicionadas
+    public List<Doacao> listaDoacoesClie(int id) throws SQLException {
+        //Lista os Favoritos
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select*from doacao where id_usuario=?");
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Doacao doa = new Doacao();
+
+                //id doações
+                doa.setId_doacao(rs.getInt("id_doacao"));
+                
+                //nome da doação
+                doa.setNome(rs.getString("nome"));
+                
+                //Data da doação
+                doa.setData_doa(rs.getString("data_doacao"));
+                
+                //valor da doacao
+                doa.setValor(rs.getFloat("valor"));
+                
+                //estabelecimento
+                doa.setId_esta(rs.getInt("id_esta"));
+                lista.add(doa);
+            }
+
+        } catch (SQLException erro) {
+            System.out.println(erro);
+        }
+        return lista;
+    }
+    public void refazDoacoes(int idUser, int idEsta, String name, String data, float value) throws SQLException {
+        //Elementos para a conexão e verificação
+        int a = 0;
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        //Declarações do preparedStatement
+        try (
+                 Connection conn = conexao.obterConexaoBD();  
+                 PreparedStatement stmt = conn.prepareStatement("insert into doacao(nome, valor, id_usuario,data_doacao, id_esta)"
+                                                                + " values(?,?,?,?,?)");) {
+            //passa os parametros
+            stmt.setString(1, name);
+            stmt.setFloat(2, value);
+            stmt.setInt(3, idUser);
+            stmt.setString(4, data);
+            stmt.setInt(5, idEsta);
+
+            //Executa a Query
+            stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+    
+    
 }
