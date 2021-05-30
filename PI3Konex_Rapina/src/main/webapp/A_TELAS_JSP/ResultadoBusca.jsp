@@ -64,16 +64,14 @@
                                     <img src="${pageContext.request.contextPath}/images/Vector (3).png" alt="">
                                 </div>
 
-                                <img src="/images/Group 45.png" alt="">    
-                                <!--
                                 <div id="passar_mouse"> 
+                                    <img src="${pageContext.request.contextPath}/images/Group 45.png" alt="">   
                                     <div id="mostrar">
-                                        <span>
                                             Este estabelecimento está localizado na Rua:<c:out value="${busca.logadouro_estabelecimento}"/>-Nº <c:out value="${busca.numero}"/>
-                                        </span>
+                                        
                                     </div>
                                 </div>
-                                -->
+                                
                                 <circle cx="2.21418" cy="13.2143" r="1.78572" transform="rotate(-90 2.21418 13.2143)" fill="#C4C4C4"/>
                                 <circle cx="2.21418" cy="7.49993" r="1.78572" transform="rotate(-90 2.21418 7.49993)" fill="#C4C4C4"/>
                                 <circle cx="2.21418" cy="1.78582" r="1.78572" transform="rotate(-90 2.21418 1.78582)" fill="#C4C4C4"/>
