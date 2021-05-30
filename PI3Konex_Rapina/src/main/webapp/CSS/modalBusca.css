@@ -10,7 +10,7 @@ body{
     display:flex;
     justify-content:center;
     align-items: center;
-    background:rgba(0,0,0, 0.7);
+    background: rgba(10, 20, 69, 0.75);
 }
 #modal-container .form-container{
     border-radius:.8rem;

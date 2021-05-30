@@ -530,5 +530,36 @@ public class EstabelecimentoDAO {
         return listaMensal;
     }
     
-    
+    public List<Estabelecimento> retornaRestCep( String cep ) throws SQLException {
+        //Lista os Estabelecimento
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select*from estabelecimento where cep= ? order by id_planos");
+            stmt.setString(1, cep);
+            
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Estabelecimento esta = new Estabelecimento();
+                
+                esta.setId_estabelecimento(rs.getInt("id_esta"));
+                esta.setNome_estabelecimento(rs.getString("nome_esta"));
+                esta.setCnpj(rs.getString("cnpj"));
+                esta.setCep_estabelecimento(rs.getString("cep"));
+                esta.setLogadouro_estabelecimento(rs.getString("endereco"));
+                esta.setNumero(rs.getString("numero"));
+                esta.setAcessi_auditiva(rs.getString("def_aud"));
+                esta.setAcessi_fisico(rs.getString("def_fis"));
+                esta.setHorario_funcionamento(rs.getString("horario_de_fun"));
+                esta.setCapacidade(rs.getInt("capacidade"));
+                esta.setTaxa_cancelamento(rs.getFloat("taxa_cancelamento"));
+                esta.setId_planos(rs.getInt("id_planos"));
+                lista.add(esta);
+            }
+
+        } catch (SQLException erro) {
+            System.out.println(erro);
+        }
+        return lista;
+    }        
 }

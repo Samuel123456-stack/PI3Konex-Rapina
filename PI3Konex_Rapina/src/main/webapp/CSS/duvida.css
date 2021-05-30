@@ -1,4 +1,8 @@
 @import url('global.css');
+html{
+    height: 100%;
+}
+
 body{
     background: linear-gradient(46.34deg, #FDD9D9 21.61%, #FEE7E8 42.71%, #DBF5FE 80.6%, #DBF7F5 97.23%),
     linear-gradient(0deg, #FFFFFF, #FFFFFF);

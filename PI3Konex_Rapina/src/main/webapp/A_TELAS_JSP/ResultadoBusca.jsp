@@ -1,3 +1,6 @@
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <html>
@@ -9,9 +12,9 @@
         <meta name="description" content="Crowd Control">
         <meta name="author" content="konex-group">
 
-        <link rel="stylesheet" href="../CSS/estList.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estList.css">
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
-        <link rel="shortcut icon" href="../images/icons/logo.jpeg">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logo.jpeg">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     </head>
     <body>
@@ -20,7 +23,7 @@
                 <div class="margin">
                     <section class="menu-bar">
                         <div>
-                            <img src="../images/white-logotipo.png" alt="logo-image" class="logo-icon" />
+                            <img src="${pageContext.request.contextPath}/images/white-logotipo.png" alt="logo-image" class="logo-icon" />
                         </div>
                         <div>
                             <ul>
@@ -45,60 +48,82 @@
                 <section class="sort-button">
                     <p>Ordenar por</p>
                     <button type="button">
-                        <img src="../images/icons/arrow-down.png" alt="arrow-icon" />
+                        <img src="${pageContext.request.contextPath}/images/icons/arrow-down.png" alt="arrow-icon" />
                     </button>
                 </section>
-                
-                <form action="">
-                    <button value="submit" style="background: transparent;float: left;">
-                        <div class="cartao">
-                            <div style="float: left;">
-                                <img src="/images/Ellipse 10.png" alt="">
-                            </div>
-                            <div style="float: left;margin-right: 79px;margin-left: 70px;">
-                            <img src="/images/Vector (3).png" alt="">
-                            </div>
 
-                            
-                            <svg width="4" height="15" viewBox="0 0 4 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <c:forEach var="busca" items="${sessionScope.buscaEstabelecimento}">   
+                    <form action="${pageContext.request.contextPath}/ListaRestaurantesBuscados" method="get">
+                        <input type="hidden" name="lineIdReserva" value="${busca.id_estabelecimento}">
+                        <button value="submit" style="background: transparent;float: left;" name="btn" value="selectionRestaurante">
+                            <div class="cartao">
+                                <div style="float: left;">
+                                    <img src="${pageContext.request.contextPath}/images/Ellipse 10.png" alt="">
+                                </div>
+                                <div style="float: left;margin-right: 79px;margin-left: 70px;">
+                                    <img src="${pageContext.request.contextPath}/images/Vector (3).png" alt="">
+                                </div>
+
+                                <svg width="4" height="15" viewBox="0 0 4 15" fill="none" xmlns="http://www.w3.org/2000/svg">    
+                                <!--
+                                <div id="passar_mouse"> 
+                                    <div id="mostrar">
+                                        <span>
+                                            Este estabelecimento está localizado na Rua:<c:out value="${busca.logadouro_estabelecimento}"/>-Nº <c:out value="${busca.numero}"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                -->
                                 <circle cx="2.21418" cy="13.2143" r="1.78572" transform="rotate(-90 2.21418 13.2143)" fill="#C4C4C4"/>
                                 <circle cx="2.21418" cy="7.49993" r="1.78572" transform="rotate(-90 2.21418 7.49993)" fill="#C4C4C4"/>
                                 <circle cx="2.21418" cy="1.78582" r="1.78572" transform="rotate(-90 2.21418 1.78582)" fill="#C4C4C4"/>
-                            </svg>                            
-                            
-                            <h1>Nome do Estabelecimento</h1>
-                            <div id="estrela">
-                                <svg width="16" height="15" viewBox="0 0 16 15" fill="#FFD600" xmlns="http://www.w3.org/2000/svg">
+                                </svg>                            
+
+                                <h1><c:out value="${busca.nome_estabelecimento}"/></h1>
+                                <div id="estrela">
+                                    <svg width="16" height="15" viewBox="0 0 16 15" fill="#FFD600" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M8 0L9.79611 5.52786H15.6085L10.9062 8.94427L12.7023 14.4721L8 11.0557L3.29772 14.4721L5.09383 8.94427L0.391548 5.52786H6.20389L8 0Z" fill="#FFD600"/>
-                                </svg>
-                            </div>
-                            <p>4.5</p>
-                            
-                            <div id="cap">
-                                <svg width="15" height="12" viewBox="0 0 15 12" fill="#000" xmlns="http://www.w3.org/2000/svg">
+                                    </svg>
+                                </div>
+                                <p>4.5</p>
+
+                                <div id="cap">
+                                    <svg width="15" height="12" viewBox="0 0 15 12" fill="#000" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M9.60005 2.4C9.60005 3.03652 9.34719 3.64697 8.89711 4.09706C8.44702 4.54714 7.83657 4.8 7.20005 4.8C6.56353 4.8 5.95308 4.54714 5.50299 4.09706C5.05291 3.64697 4.80005 3.03652 4.80005 2.4C4.80005 1.76348 5.05291 1.15303 5.50299 0.702944C5.95308 0.252856 6.56353 0 7.20005 0C7.83657 0 8.44702 0.252856 8.89711 0.702944C9.34719 1.15303 9.60005 1.76348 9.60005 2.4Z" fill="black" fill-opacity="0.8"/>
                                     <path d="M13.6 3.9999C13.6 4.42425 13.4315 4.83121 13.1314 5.13127C12.8313 5.43133 12.4244 5.5999 12 5.5999C11.5757 5.5999 11.1687 5.43133 10.8687 5.13127C10.5686 4.83121 10.4 4.42425 10.4 3.9999C10.4 3.57556 10.5686 3.16859 10.8687 2.86853C11.1687 2.56847 11.5757 2.3999 12 2.3999C12.4244 2.3999 12.8313 2.56847 13.1314 2.86853C13.4315 3.16859 13.6 3.57556 13.6 3.9999Z" fill="black" fill-opacity="0.8"/>
                                     <path d="M10.4 9.5999C10.4 8.75121 10.0629 7.93728 9.46274 7.33716C8.86263 6.73704 8.04869 6.3999 7.2 6.3999C6.35131 6.3999 5.53737 6.73704 4.93726 7.33716C4.33714 7.93728 4 8.75121 4 9.5999V11.9999H10.4V9.5999Z" fill="black" fill-opacity="0.8"/>
                                     <path d="M4.00005 3.9999C4.00005 4.42425 3.83148 4.83121 3.53142 5.13127C3.23136 5.43133 2.8244 5.5999 2.40005 5.5999C1.9757 5.5999 1.56874 5.43133 1.26868 5.13127C0.96862 4.83121 0.800049 4.42425 0.800049 3.9999C0.800049 3.57556 0.96862 3.16859 1.26868 2.86853C1.56874 2.56847 1.9757 2.3999 2.40005 2.3999C2.8244 2.3999 3.23136 2.56847 3.53142 2.86853C3.83148 3.16859 4.00005 3.57556 4.00005 3.9999Z" fill="black" fill-opacity="0.8"/>
                                     <path d="M12 12V9.60005C12.0012 8.78667 11.7947 7.98647 11.4 7.27525C11.7547 7.18448 12.1254 7.17592 12.4839 7.25022C12.8424 7.32452 13.1792 7.47972 13.4686 7.70398C13.758 7.92823 13.9923 8.21562 14.1537 8.54422C14.3152 8.87281 14.3994 9.23394 14.4 9.60005V12H12Z" fill="black" fill-opacity="0.8"/>
                                     <path d="M3 7.27518C2.6054 7.98642 2.39888 8.78662 2.4 9.59998V12H2.12576e-07V9.59998C-0.000153974 9.23362 0.0835707 8.87208 0.244758 8.54307C0.405945 8.21407 0.640315 7.92633 0.929907 7.70192C1.2195 7.4775 1.55662 7.32237 1.91545 7.2484C2.27427 7.17443 2.64527 7.18359 3 7.27518Z" fill="black" fill-opacity="0.8"/>
-                                </svg>
+                                    </svg>
+                                </div>
+                                <p>20 de <c:out value="${busca.capacidade}"/></p>
+
+
+                                <div class="acessi">
+                                    <c:if test="${busca.acessi_auditiva == 'Sim'}">
+                                        <img src="${pageContext.request.contextPath}/images/cadeiraOn.png" alt="">
+                                    </c:if>
+                                    <c:if test="${busca.acessi_auditiva == 'Não'}">
+                                        <img src="${pageContext.request.contextPath}/images/cadeiraOff.png" alt="">
+                                    </c:if>     
+                                    <div style="width: 5px; float: left;"></div>
+                                    <c:if test="${busca.acessi_fisico == 'Sim'}">
+                                        <img src="${pageContext.request.contextPath}/images/audOn.png" alt="">
+                                    </c:if>
+                                    <c:if test="${busca.acessi_fisico == 'Não'}">
+                                        <img src="${pageContext.request.contextPath}/images/audOff.png" alt="">
+                                    </c:if>    
+                                </div>
+
                             </div>
-                            <p>20 de 60</p>
-                            <div class="acessi">
-                                <img src="/images/cadeiraOn.png" alt="">
-                                <div style="width: 5px; float: left;"></div>
-                                <img src="/images/audOn.png" alt="">
-                            </div>
-                                
-                        </div>
-                    </button>
-                </form>
-                
-                
+                        </button>
+
+                    </form>
+                </c:forEach> 
+
                 <!-- Substitui botao -->
                 <div style="clear: both;"></div>
-            
             </div>
 
             <div class="rodapeprin">
@@ -131,7 +156,6 @@
                             <a href="" title="Twitter"><svg width="24" height="19" xmlns="http://www.w3.org/2000/svg"><path d="M20.957 4.543v.606c0 6.209-4.777 13.327-13.56 13.327-2.774 0-5.24-.758-7.397-2.12.462 0 .77.15 1.233.15 2.157 0 4.314-.756 6.01-1.968-2.004 0-3.853-1.363-4.47-3.332.309 0 .617.152.925.152.463 0 .463 0 1.079-.152C2.466 10.752.462 8.783.462 6.512c0 .454 1.695.454 2.466.606C1.695 6.209.925 4.846.925 3.18c0-.908.308-1.666.77-2.423 2.311 2.878 6.01 4.695 9.862 4.998-.154-.455-.154-.758-.154-1.06C11.403 2.12 13.56 0 16.18 0c1.387 0 2.62.454 3.544 1.514 1.079-.302 2.004-.605 2.928-1.211-.462 1.211-1.233 1.969-2.003 2.574a14.785 14.785 0 0 0 2.774-.757c-.77.909-1.541 1.817-2.466 2.423z" fill-rule="evenodd"></path></svg></a>
                             <a href="" title="Youtube"><svg width="24" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M23.8 3.6s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C17 0 12 0 12 0S7 0 3.6.2c-.5.1-1.5.1-2.4 1-.7.7-1 2.4-1 2.4S0 5.5 0 7.5v1.8c0 1.9.2 3.9.2 3.9s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8.2.2 8.2.2s5 0 8.4-.3c.5-.1 1.5-.1 2.4-1 .7-.7 1-2.4 1-2.4s.2-1.9.2-3.9V7.4c0-1.9-.2-3.8-.2-3.8zM9.5 11.5V4.8L16 8.2l-6.5 3.3z" fill-rule="evenodd"></path></svg></a>
                             <a href="" title="LinkedIn"><svg width="19" height="19" xmlns="http://www.w3.org/2000/svg"><path d="M3.859375 19h-3.5625V5.9375h3.5625V19zM2.078125 4.43175C.931 4.43175 0 3.493625 0 2.337S.931.24225 2.078125.24225 4.15625 1.180375 4.15625 2.337s-.929812 2.09475-2.078125 2.09475zM18.109375 19h-3.5625v-6.65475c0-3.9995-4.75-3.6966875-4.75 0V19h-3.5625V5.9375h3.5625v2.0959375c1.65775-3.070875 8.3125-3.2976875 8.3125 2.94025V19z" fill-rule="nonzero"></path></svg></a>
-
                         </div>
                     </div>
                     <div style="clear: both;">

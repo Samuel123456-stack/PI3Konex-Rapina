@@ -76,6 +76,7 @@
 #container-landing .menu-bar .logo-icon{
     width:200px;
 }
+
 .rodape{
     width: 100%;
     background-color: #fff;
@@ -152,10 +153,12 @@
     margin-left: 12%;
     height: 100%;
 }
+
 #container-landing .menu-bar .logo-icon{
     width:120px;
     border-radius:6px;
 }
+
 input{
     outline: none;
 }
