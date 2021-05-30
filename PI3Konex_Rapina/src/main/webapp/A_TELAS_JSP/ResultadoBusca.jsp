@@ -64,7 +64,7 @@
                                     <img src="${pageContext.request.contextPath}/images/Vector (3).png" alt="">
                                 </div>
 
-                                <svg width="4" height="15" viewBox="0 0 4 15" fill="none" xmlns="http://www.w3.org/2000/svg">    
+                                <img src="/images/Group 45.png" alt="">    
                                 <!--
                                 <div id="passar_mouse"> 
                                     <div id="mostrar">
