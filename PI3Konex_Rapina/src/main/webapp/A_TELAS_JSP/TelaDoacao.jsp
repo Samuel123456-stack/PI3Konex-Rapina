@@ -50,7 +50,9 @@
                     <div class="select">
                         <select name="idCartao">
                             <option>Selecione o Cartão</option>
-                            <option>6</option>
+                            <c:forEach var="card" items="${sessionScope.listaCartao}">
+                                <option><c:out value="${card.id_card}" /></option>
+                            </c:forEach>
                         </select>
                         <div class="select__arrow"></div>
                     </div>

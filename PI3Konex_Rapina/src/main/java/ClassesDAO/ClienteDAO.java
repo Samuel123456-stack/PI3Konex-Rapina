@@ -24,6 +24,7 @@ public class ClienteDAO {
 
     ArrayList<Cliente> lista = new ArrayList<>();
     ArrayList<Cartao> listaCartao = new ArrayList<>();
+    ArrayList<Cartao> listaDoaCartao = new ArrayList<>();
 
     public ClienteDAO() {
 
@@ -346,5 +347,28 @@ public class ClienteDAO {
             System.out.println(erro);
         }
         return lista;
+    }
+
+    public List<Cartao> listaIDCartao(int id) throws SQLException {
+        //Lista os Cartaos do usuario
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select id_cartao from usuario where id_usuario=?;");
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Cartao cartao = new Cartao();
+
+                //id Cartao
+                cartao.setId_card(rs.getInt("id_cartao"));
+
+                listaDoaCartao.add(cartao);
+            }
+
+        } catch (SQLException erro) {
+            System.out.println(erro);
+        }
+        return listaDoaCartao;
     }
 }

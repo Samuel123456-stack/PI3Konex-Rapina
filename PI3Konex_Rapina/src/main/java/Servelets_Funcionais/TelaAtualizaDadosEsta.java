@@ -6,7 +6,9 @@
 package Servelets_Funcionais;
 
 import ClassesDAO.EstabelecimentoDAO;
+import ClassesDAO.LoginDAO;
 import ClassesJavaBean.Estabelecimento;
+import ClassesJavaBean.Login;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -182,6 +184,7 @@ public class TelaAtualizaDadosEsta extends HttpServlet {
 
         //Constroe os objetos 
         Estabelecimento esta = new Estabelecimento();
+        Login log = new Login();
 
         //Objeto aux para verificar a senha
         Estabelecimento estaAux = new Estabelecimento();
@@ -214,6 +217,11 @@ public class TelaAtualizaDadosEsta extends HttpServlet {
         esta.setEmail(email);
         esta.setSenha(senhaNova);
         esta.setConcorda(concorda);
+        //Setar dados Login
+        log.setId_esta(idUsuario);
+        log.setNome(nomeEst);
+        log.setEmail(email);
+        log.setSenha(senhaNova);
         //request do Objeto
         request.setAttribute("estaAtt", esta);
 
@@ -223,6 +231,9 @@ public class TelaAtualizaDadosEsta extends HttpServlet {
 
             if (atualiza == 1) {
                 temErro = false;
+                
+                LoginDAO logDAO =  new LoginDAO();
+                logDAO.atualizaLoginEsta(log);
             } else {
                 temErro = true;
             }

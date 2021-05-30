@@ -162,19 +162,23 @@ public class TelaLoginSenha extends HttpServlet {
             } else if (userTipo == 2) {//Se o tipo de usuario for 1 é um Cliente
                 sessaoUser.setAttribute("logUser", userTipo);
 
+                Cliente cli = new Cliente();
+                Cartao cartao = new Cartao();
                 //buscar id e nome do usuario e setar esses valores
                 email = logUser.getEmail();
                 String name = "";
                 int idUser = 0;
 
                 try {
-                    name = acesso.retornaNomeCli(email);
                     idUser = acesso.retornaIDCli(email);
-                    logUser.setNome(name);
-                    logUser.setId_usuario(idUser);
+                    nome = acesso.retornaNome(email);
+                    cli = acesso.pegaDadosRapina(idUser);
+                    cartao = acesso.pegaDadosCartao(idUser);
+                    idCartao = acesso.retornaIDCartaoCli(email);
+                    cartao.setId_card(idCartao);
+                    cli.setId_usuario(idUser);
 
-                    sessaoUser.setAttribute("dadoName", logUser.getNome());
-                    sessaoUser.setAttribute("dadoId", logUser.getId_usuario());
+                    sessaoUser.setAttribute("dadoName", nome);
 
                     //Faz os carregamentos dos dados
                     ContagemDAO conta = new ContagemDAO();
@@ -223,10 +227,9 @@ public class TelaLoginSenha extends HttpServlet {
                     List<Reserva> listaRes;
                     listaRes= actionRes.listarReservaCli(idUser);
                     sessaoUser.setAttribute("listaReservasCli", listaRes);
-
                     
-                    
-                    
+                    sessaoUser.setAttribute("cartao", cartao);
+                    sessaoUser.setAttribute("cli", cli);
                 } catch (SQLException ex) {
                     Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
                 }
