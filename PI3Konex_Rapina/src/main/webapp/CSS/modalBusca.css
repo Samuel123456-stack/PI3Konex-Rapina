@@ -123,5 +123,6 @@ body{
 .form-container .alternative-class h4{
     margin-bottom:15px;
     color:#006ce5;
+    float: left;
 }
 

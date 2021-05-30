@@ -8,6 +8,16 @@ html{
     padding: 0;
 }
 
+#container-landing .menu-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    margin: 0;
+    position: relative;
+}
+
 #container-landing .establishments{
     padding:74px 0;
 }
@@ -30,7 +40,7 @@ html{
 }
 #container-landing .establishments .security-search{
     width:537px;
-    margin-left:129px;
+    margin-left:0;
 }
 .establishments .security-search p{
     font-size:14px;
