@@ -120,10 +120,10 @@
                         </button>
 
                     </form>
-                    <div style="clear: both;">
-                        <br>
-                    </div>
                 </c:forEach> 
+
+                <!-- Substitui botao -->
+                <div style="clear: both;"></div>
             </div>
 
             <div class="rodapeprin">
