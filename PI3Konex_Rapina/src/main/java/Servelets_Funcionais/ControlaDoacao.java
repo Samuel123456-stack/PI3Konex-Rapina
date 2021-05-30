@@ -7,6 +7,7 @@ package Servelets_Funcionais;
 
 import ClassesDAO.DoacaoDAO;
 import ClassesDAO.FavoritoDAO;
+import ClassesJavaBean.Cartao;
 import ClassesJavaBean.Cliente;
 import ClassesJavaBean.Doacao;
 import ClassesJavaBean.Favoritos;
@@ -41,8 +42,8 @@ public class ControlaDoacao extends HttpServlet {
         HttpSession session = request.getSession();
        
         Cliente cliente = new Cliente();
-        FavoritoDAO favDao = new FavoritoDAO();
         List<Favoritos> listaDados;
+        List<Cartao> listaCartao;
         int idCli=0;
 
         
@@ -50,11 +51,13 @@ public class ControlaDoacao extends HttpServlet {
         if (session.getAttribute("cli") != null || session.getAttribute("listaNomes")!=null) {
             cliente = (Cliente) session.getAttribute("cli");
             listaDados = (List<Favoritos>) session.getAttribute("listaNomes");
+            listaCartao = (List<Cartao>) session.getAttribute("listaCartao");
 
             //pega o id do Cliente
             idCli = cliente.getId_usuario();
             //Request
             session.setAttribute("listaNomes", listaDados);
+            session.setAttribute("listaCartao", listaCartao);
         }
             
         

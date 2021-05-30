@@ -80,6 +80,48 @@ public class LoginDAO {
         }
         return liberaAcesso;
     }
+         public void atualizaLoginCli(Login dado) throws SQLException {
+        //Atualiza o Login do Cliente 
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        //declarações do prepareStatement
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("update login set nome=?,email=?, senha=? where id_usuario=?");) {
+            //passa os parametros
+            stmt.setString(1, dado.getNome());
+            stmt.setString(2, dado.getEmail());
+            stmt.setString(3, dado.getSenha());
+            stmt.setInt(4, dado.getId_usuario());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+    }
+      public void atualizaLoginEsta(Login dado) throws SQLException {
+        //Atualiza o Login do Estabelecimento 
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        //declarações do prepareStatement
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("update login "
+                        + "set nome=? ,email=?, senha=? where id_esta=?");) {
+            //passa os parametros
+            stmt.setString(1, dado.getNome());
+            stmt.setString(2, dado.getEmail());
+            stmt.setString(3, dado.getSenha());
+            stmt.setInt(4, dado.getId_esta());
+            stmt.executeUpdate();
+  
+        } catch (SQLException e) {
+            System.out.println(e);
+        }        
+        
+
+    }
     
     public int retornaIDEsta(String email) throws SQLException{
         //Var auxliadora
@@ -221,7 +263,7 @@ public class LoginDAO {
 
         try (
                 Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("Select * from cliente where email =?");) {
+                PreparedStatement stmt = conn.prepareStatement("Select * from usuario where email =?");) {
 
             //passa o parametro recebido para o STMT usando o dado.get(atributo)
             stmt.setString(1, getEmail());
@@ -318,7 +360,7 @@ public class LoginDAO {
         Cliente cli = new Cliente();
         try {
             Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("select nome,cpf, nascimento, genero, newslatter, email, senha from usuario where id_usuario=?");
+            PreparedStatement stmt = conn.prepareStatement("select nome,cpf, nascimento, genero, newslatter, email, concordar, tipo_usuario, senha from usuario where id_usuario=?");
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -331,7 +373,7 @@ public class LoginDAO {
                 String genero =rs.getString("genero");
 
                 /////*SEGUNDA LINHA*////
-                String concordar = rs.getString("concorda");
+                String concordar = rs.getString("concordar");
                 String conNews = rs.getString("newslatter");
                 String email = rs.getString("email");
                 String senha =rs.getString("senha");

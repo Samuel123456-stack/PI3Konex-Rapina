@@ -6,7 +6,9 @@
 package Servelets_Funcionais;
 
 import ClassesDAO.ClienteDAO;
+import ClassesDAO.LoginDAO;
 import ClassesJavaBean.Cliente;
+import ClassesJavaBean.Login;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -153,6 +155,7 @@ public class TelaAtualizaDados extends HttpServlet {
 
         //Constroe os objetos 
         Cliente cliente = new Cliente();
+        Login log = new Login();
 
         //objeto teste onde verifica se a senha antiga é igual a do BD
         Cliente clienteAux = new Cliente();
@@ -182,6 +185,11 @@ public class TelaAtualizaDados extends HttpServlet {
         cliente.setEmail(email);
         cliente.setSenha(senhaNova);
         cliente.setConcorda(concordar);
+        
+        log.setId_usuario(idUsuario);
+        log.setNome(nome);
+        log.setEmail(email);
+        log.setSenha(senhaNova);
 
         //request do Objeto
         request.setAttribute("clienteAt", cliente);
@@ -192,6 +200,8 @@ public class TelaAtualizaDados extends HttpServlet {
 
             if (atualiza == 1) {
                 temErro = false;
+                LoginDAO logDAO =  new LoginDAO();
+                logDAO.atualizaLoginCli(log);
             } else {
                 temErro = true;
             }
