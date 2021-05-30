@@ -287,7 +287,7 @@
 
                         <div class="AltRes">
                             <p>Altere sua reserva</p>
-                            <form action="" method="get">
+                            <form action="${pageContext.request.contextPath}/AlteraReserva" method="get">
                                 <table class="altres">
                                     <thead>
                                         <tr>
@@ -310,14 +310,14 @@
                                                 </div>
                                             </td>
                                             <!--///////////data\\\\\\\\\\-->
-                                            <td><input type="date" style="width: 150px; margin-right: 10px; padding-left: 5px;"></td>
+                                            <td><input type="date" name="dataRes" style="width: 150px; margin-right: 10px; padding-left: 5px;"></td>
                                             
                                             <!--///////////horario\\\\\\\\\\-->
-                                            <td><input type="time" style="width: 90px; padding-left: 5px;"></td>
+                                            <td><input type="time" name="horaRes" style="width: 90px; padding-left: 5px;"></td>
                                             <td><div class="number-input">
                                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
                                                     <!--///////////horario\\\\\\\\\\-->
-                                                    <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                                    <input class="quantity" min="0" name="acomRes" value="1" type="number">
                                                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                                                 </div>
                                             </td>
