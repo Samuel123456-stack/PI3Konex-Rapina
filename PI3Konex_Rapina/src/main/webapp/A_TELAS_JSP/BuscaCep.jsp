@@ -1,3 +1,10 @@
+<%-- 
+    Document   : BuscaCep
+    Created on : 29 de mai de 2021, 19:43:24
+    Author     : Gabriel
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,26 +15,30 @@
         <meta name="description" content="Crowd Control">
         <meta name="author" content="konex-group">
 
-        <link rel="stylesheet" href="../CSS/modalBusca.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/modalBusca.css">
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
-        <link rel="shortcut icon" href="../images/icons/logo.jpeg">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logo.jpeg">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
         
-        
+        <style>
+            .erroInput{
+                border: 1px solid red;
+            }
+        </style>
     </head>
     <body>
         <div id="modal-container">
             <div class="form-container">
                 <div>
-                    <img src="../images/icons/arrow-upper.png" alt="icon" />
+                    <img src="${pageContext.request.contextPath}/images/icons/arrow-upper.png" alt="icon" />
                 </div>
                 <h2>Onde você quer comer?</h2>
-                <form action="" method="get">
+                <form action="${pageContext.request.contextPath}/BuscaCEP" method="get">
                     <div class="input-field">
                         <button type="button">
-                            <img src="../images/icons/search-zipcode.png" alt="search-icon" />
+                            <img src="${pageContext.request.contextPath}/images/icons/search-zipcode.png" alt="search-icon" />
                         </button>
-                        <input type="search" name="text-search" placeholder="Buscar por CEP" />
+                        <input type="search" name="cepDigitado" placeholder="Buscar por CEP" maxlenght="11" minlength="8">
                         <div class="underline"></div>
                     </div>
                     <div class="submit-block">              

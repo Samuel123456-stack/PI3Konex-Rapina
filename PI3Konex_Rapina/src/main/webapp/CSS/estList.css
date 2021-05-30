@@ -102,3 +102,10 @@
     float: left;
     margin-left: 49px;
 }
+
+#mostrar{
+    display: none;
+}
+#passar_mouse:hover #mostrar{
+    display: block;
+}
