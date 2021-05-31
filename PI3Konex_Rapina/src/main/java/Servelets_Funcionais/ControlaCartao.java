@@ -53,6 +53,25 @@ public class ControlaCartao extends HttpServlet {
         int tipoUsuario = 0;
         int idEsta = 0;
 
+        
+        //inputs da sessao hidden
+        String qtdA = request.getParameter("Acomp");
+        String data = request.getParameter("dataReserva");
+        String horario = request.getParameter("horaReserva");
+        String idEstb = request.getParameter("idEstab");
+        String nome_estab = request.getParameter("nomeEstb");
+        
+        //var a ser convertidas
+        int Acom = 0;
+        int idEs = 0;
+
+        if (qtdA != null && qtdA.trim().length() > 0) {
+            Acom = Integer.parseInt(qtdA);
+        }
+        if (idEstb != null && idEstb.trim().length() > 0) {
+            idEs = Integer.parseInt(idEstb);
+        }
+        
         //VERIFICA QUAL USER ESTÁ NA SESSAO
         if (sessao.getAttribute("cli") != null && sessao.getAttribute("esta") == null) {
             cliente = (Cliente) sessao.getAttribute("cli");
@@ -188,7 +207,15 @@ public class ControlaCartao extends HttpServlet {
         } else {
             sessao.setAttribute("cartao", cartao);
             if (tipoUsuario == 2) {//Redireciona para o MenuCliente
-                response.sendRedirect(request.getContextPath() + "/MenuCliente");
+                
+                //SETO os dados da reserva que ele havia preenchido
+                sessao.setAttribute("idEst", idEs);
+                sessao.setAttribute("dataRes", data);
+                sessao.setAttribute("horaRes", horario);
+                sessao.setAttribute("qtdAcom", Acom);
+                sessao.setAttribute("cli", cliente);
+                
+                response.sendRedirect(request.getContextPath() + "/LogEmail");
             } else if (tipoUsuario == 3) {//Redireciona para o MenuEsta
                 response.sendRedirect(request.getContextPath() + "/MenuEsta");
             }

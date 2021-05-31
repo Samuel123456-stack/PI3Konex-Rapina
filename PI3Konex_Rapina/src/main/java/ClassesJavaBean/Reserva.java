@@ -29,6 +29,17 @@ public class Reserva {
     public Reserva() {
     }
 
+    public Reserva(int id_cliente, int id_estabelecimento, int qtd_acompanhantes, String data_criada, String data_reservada, String horario_reservado) {
+        this.id_cliente = id_cliente;
+        this.id_estabelecimento = id_estabelecimento;
+        this.qtd_acompanhantes = qtd_acompanhantes;
+        this.reserva_status = "Ativa";
+        this.data_criada = data_criada;
+        this.data_reservada = data_reservada;
+        this.horario_reservado = horario_reservado;
+    }
+   
+    
     public int getNum_reserva() {
         return num_reserva;
     }

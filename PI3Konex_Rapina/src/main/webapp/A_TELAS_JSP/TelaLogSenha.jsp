@@ -44,7 +44,12 @@
                     <h3>Confirmar login com a senha</h3>
 
                     <form action="${pageContext.request.contextPath}/LogSenha" method="get">
-
+                        <!--Puxando os hiddens do input-->
+                        <input type="hidden" name="idEstab" value="${sessionScope.idEst}">
+                        <input type="hidden" name="dataReserva" value="${sessionScope.dataRes}">
+                        <input type="hidden" name="horaReserva" value="${sessionScope.horaRes}">
+                        <input type="hidden" name="Acomp" value="${sessionScope.qtdAcom}">
+                        
                         <div class="input-field ${not empty erroSenha ? 'erroInput' : ''}">
                             <input type="password" name="senha" placeholder="Digite a senha" maxlength="28" minlength="1" />
                             <span>

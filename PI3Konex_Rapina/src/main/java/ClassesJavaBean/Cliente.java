@@ -20,7 +20,9 @@ public class Cliente {
     public int num_cartao;
     public int id_favoritado;
     public int tipo_user;
-
+    public String data_cadastros;
+            
+            
     //metodo construtor
     public Cliente() {
     }
@@ -136,5 +138,14 @@ public class Cliente {
     public void setTipo_user(int tipo_user) {
         this.tipo_user = tipo_user;
     }
+
+    public String getData_cadastros() {
+        return data_cadastros;
+    }
+
+    public void setData_cadastros(String data_cadastros) {
+        this.data_cadastros = data_cadastros;
+    }
+    
     
 }

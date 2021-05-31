@@ -48,7 +48,13 @@
                         </div>
                         <div class="becomer-option">
                             <form action="${pageContext.request.contextPath}/IniciaCadastro">
-
+                                <!--PEGAR OS INPUTS DA SESSÃO-->
+                                <input type="hidden" name="nomeEstb" value="${sessionScope.nomeEst}">
+                                <input type="hidden" name="idEstab" value="${sessionScope.idEst}">
+                                <input type="hidden" name="dataReserva" value="${sessionScope.dataRes}">
+                                <input type="hidden" name="horaReserva" value="${sessionScope.horaRes}">
+                                <input type="hidden" name="Acomp" value="${sessionScope.qtdAcom}">
+                                
                                 <div class="button-becomer-partner">
                                     <span>
                                         <img src="${pageContext.request.contextPath}/images/icons/house.png" alt="icon-house" />

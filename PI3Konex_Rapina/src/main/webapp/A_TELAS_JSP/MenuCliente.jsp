@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/menuUser.css">
     </head>
     <body>
+        <h1><c:out value="${sessionScope.verificador}"/></h1>
         <div id="container-landingesta">
             <section class="menu-baresta">
                 <div class="menulogoesta">

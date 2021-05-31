@@ -66,8 +66,8 @@ public class ClienteDAO {
                     Connection conn = conexao.obterConexaoBD();
                     PreparedStatement stmt = conn.prepareStatement("insert into usuario(nome,genero,cpf,"
                             + "email,senha,nascimento,concordar,newslatter"
-                            + ",tipo_usuario)"
-                            + " values(?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
+                            + ",tipo_usuario,data_cadastro)"
+                            + " values(?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
                 //passa os parametros
                 stmt.setString(1, dado.getNome());
                 stmt.setString(2, dado.getGenero());
@@ -78,7 +78,8 @@ public class ClienteDAO {
                 stmt.setString(7, dado.getConcorda());
                 stmt.setString(8, dado.getConcorda_newstalleter());
                 stmt.setInt(9, dado.getTipo_user());
-
+                stmt.setString(10, dado.getData_cadastros());
+                
                 //Executa a Query
                 stmt.executeUpdate();
                 //Pega o ultimo id inserido no bd
@@ -374,10 +375,10 @@ public class ClienteDAO {
         return listaDoaCartao;
     }
     
-    public int verificaUser(int id) {
+    public String verificaUser(int id) {
         //Consulta se o CPF é igual
         ConexaoJDBC conexao = new ConexaoJDBC();
-        int verifica = 0;
+        String verifica = "";
         try {
             Connection conn = conexao.obterConexaoBD();
             PreparedStatement stmt = conn.prepareStatement("Select data_cadastro from usuario where id_usuario = ?");
@@ -386,19 +387,12 @@ public class ClienteDAO {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 String dataCad = rs.getString("data_cadastro");
-                
-                Date dataAtual = new Date();
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String dataAt = formatter.format(dataAtual);
-                
-                if(dataCad.equals(dataAt)){
-                    verifica = 1;
-                }
+                verifica= dataCad;
+                return verifica;
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
         return verifica;
     }
-    
 }

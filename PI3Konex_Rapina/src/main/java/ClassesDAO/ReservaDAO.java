@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -183,4 +184,38 @@ public class ReservaDAO {
         }
         return altera;
     }
+    
+    public int criaReserva(Reserva dados){
+        int numReserva = 0;
+        ConexaoJDBC conexao = new ConexaoJDBC();    
+            
+        //declarações do preparedStatement
+        try (
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("insert into reserva (quant_pessoas, data_criacao, reserva_status, data_reserva, hora_reserva, id_usuario, id_esta) value (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
+            
+            //Executa a Query
+            stmt.setInt(1, dados.getQtd_acompanhantes());
+            stmt.setString(2, dados.getData_criada());
+            stmt.setString(3, dados.getReserva_status());
+            stmt.setString(4, dados.getData_reservada());
+            stmt.setString(5, dados.getHorario_reservado());
+            stmt.setInt(6, dados.getId_cliente());
+            stmt.setInt(7, dados.getId_estabelecimento());
+            
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            
+            if(rs.next()){
+                numReserva= rs.getInt("num_reserva");
+                dados.setNum_reserva(numReserva);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+        return numReserva;
+    }
+    
 }

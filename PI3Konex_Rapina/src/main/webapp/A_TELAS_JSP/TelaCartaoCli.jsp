@@ -93,6 +93,12 @@
                                 <input type="text" placeholder="Nome do titular do cartão" name="titular" value="${cartao.titular}">
                             </div>
 
+                            <!--Puxando os hiddens do input-->
+                            <input type="hidden" name="idEstab" value="${sessionScope.idEst}">
+                            <input type="hidden" name="dataReserva" value="${sessionScope.dataRes}">
+                            <input type="hidden" name="horaReserva" value="${sessionScope.horaRes}">
+                            <input type="hidden" name="Acomp" value="${sessionScope.qtdAcom}">
+                            
                             <button id="btn" type="Submit">Salvar cartão</button>
                         </form>
                     </div>

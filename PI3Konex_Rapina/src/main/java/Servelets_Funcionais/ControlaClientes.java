@@ -9,6 +9,8 @@ import ClassesJavaBean.Cliente;
 import ClassesDAO.ClienteDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -64,6 +66,12 @@ public class ControlaClientes extends HttpServlet {
         String concordar = request.getParameter("concordar");
         String concordarNews = "Não";
 
+        //inputs da sessao hidden
+        String qtdA = request.getParameter("Acomp");
+        String data = request.getParameter("dataReserva");
+        String horario = request.getParameter("horaReserva");
+        String idEstb = request.getParameter("idEstab");
+        
         //Tratamento de Exceções
         boolean temErro = false;
 
@@ -159,9 +167,28 @@ public class ControlaClientes extends HttpServlet {
             }
 
         }
+        
+        //var a ser convertidas
+        int Acom = 0;
+        int idEs = 0;
+
+        if (qtdA != null && qtdA.trim().length() > 0) {
+            Acom = Integer.parseInt(qtdA);
+        }
+        if (idEstb != null && idEstb.trim().length() > 0) {
+            idEs = Integer.parseInt(idEstb);
+        }
+        
+        
         //Instancia as Classes
         Cliente cliente = new Cliente(nome, cpf, email, genero,
                 dataNascStr, senha, concordar, concordarNews, tipoCli);
+        
+        Date dataAtual = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String dataAt = formatter.format(dataAtual);
+        
+        cliente.setData_cadastros(dataAt);
         
         //Metodo DAO que realiza o cadastro
         ClienteDAO casCli = new ClienteDAO();
@@ -190,7 +217,11 @@ public class ControlaClientes extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaCadastroCli.jsp");
             dispatcher.forward(request, response);
         } else {
-           
+            //SETO os dados da reserva que ele havia preenchido
+            sessao.setAttribute("idEst", idEs);
+            sessao.setAttribute("dataRes", data);
+            sessao.setAttribute("horaRes", horario);
+            sessao.setAttribute("qtdAcom", Acom);
             sessao.setAttribute("cli", cliente);
             response.sendRedirect(request.getContextPath() + "/TelaCartaoCli");
         }

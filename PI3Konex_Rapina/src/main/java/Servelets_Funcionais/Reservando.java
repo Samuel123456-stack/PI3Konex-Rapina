@@ -29,70 +29,73 @@ public class Reservando extends HttpServlet {
         //boas praticas
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        
+
         //pegos os inputs do tipo hidden
         String botao = request.getParameter("btn");
-        
+        String nome_estab = request.getParameter("nomeEstb");
         String qtdA = request.getParameter("acompanhantes");
         String data = request.getParameter("dataReserva");
         String horario = request.getParameter("horaReserva");
         String idEstb = request.getParameter("idEstab");
-        
+
         //var a ser convertidas
         int Acom = 0;
         int idEs = 0;
-        
-        if(qtdA != null && qtdA.trim().length() > 0 ){
+
+        if (qtdA != null && qtdA.trim().length() > 0) {
             Acom = Integer.parseInt(qtdA);
         }
-        if(idEstb != null && idEstb.trim().length() > 0 ){
+        if (idEstb != null && idEstb.trim().length() > 0) {
             idEs = Integer.parseInt(idEstb);
         }
-        
+
         //verifico se a sessao log é nulla, se for, despacha a tela Inicial
         HttpSession sessao = request.getSession();
         Login logUser = new Login();
-        int idUser=0;
-        
-        //verificamos se a session tem algum dado para ser obtido
-        if (sessao.getAttribute("dadosAcesso") != null) {
-            //trasfiro os dados da session anterio pra o novo objeto
-            logUser = (Login) sessao.getAttribute("dadosAcesso");
+        int idUser = 0;
 
-            //setando os valaores para as variaveis que utilizaremos
-            idUser = logUser.getId_usuario();
-              
-            //Setando o objeto para parametro
-            request.setAttribute("logUser", logUser);
-            
-            //seto os valores dos inputs
-            sessao.setAttribute("idUser", idUser);
-            sessao.setAttribute("idEst", idEs);
-            sessao.setAttribute("dataRes", data);
-            sessao.setAttribute("horaRes", horario);
-            sessao.setAttribute("qtdAcom", Acom);
-            
-            //despacha a tela para o pre ticket
-            response.sendRedirect(request.getContextPath() + "/Home");
-        } else {
-            
-            
-            //seto os valores
-            sessao.setAttribute("idUser", idUser);
-            sessao.setAttribute("idEst", idEs);
-            sessao.setAttribute("dataRes", data);
-            sessao.setAttribute("horaRes", horario);
-            sessao.setAttribute("qtdAcom", Acom);
-            
-            //despacha a tela de seleção 
-            response.sendRedirect(request.getContextPath() + "/TelaInicial");
+        if (botao.equals("reservarConfirmar")) {
+            //verificamos se a session tem algum dado para ser obtido
+            if (sessao.getAttribute("dadosAcesso") != null) {
+                //trasfiro os dados da session anterio pra o novo objeto
+                logUser = (Login) sessao.getAttribute("dadosAcesso");
+
+                //setando os valaores para as variaveis que utilizaremos
+                idUser = logUser.getId_usuario();
+
+                //Setando o objeto para parametro
+                request.setAttribute("logUser", logUser);
+
+                //seto os valores dos inputs
+                sessao.setAttribute("nomeEst", nome_estab);
+                sessao.setAttribute("idUser", idUser);
+                sessao.setAttribute("idEst", idEs);
+                sessao.setAttribute("dataRes", data);
+                sessao.setAttribute("horaRes", horario);
+                sessao.setAttribute("qtdAcom", Acom);
+
+                //despacha a tela para o pre ticket
+                response.sendRedirect(request.getContextPath() + "/PreTicket");
+            } else {
+                //seto os valores
+                sessao.setAttribute("nomeEst", nome_estab);
+                sessao.setAttribute("idUser", idUser);
+                sessao.setAttribute("idEst", idEs);
+                sessao.setAttribute("dataRes", data);
+                sessao.setAttribute("horaRes", horario);
+                sessao.setAttribute("qtdAcom", Acom);
+
+                //despacha a tela de seleção 
+                response.sendRedirect(request.getContextPath() + "/TelaInicial");
+            }
         }
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
 }

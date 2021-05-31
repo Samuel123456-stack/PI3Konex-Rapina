@@ -72,8 +72,7 @@
                                 </div>
                                 
                                 <div style="float: left;margin-right: 79px;margin-left: 70px;">
-                                    <c:url value="https://picsum.photos/90" var="image"/>
-                                    <img src="${image}" style="border-radius: 100px;">
+                                    <img src="https://picsum.photos/90" style="border-radius: 100px;">
                                 </div>
 
                                 <div id="passar_mouse"> 

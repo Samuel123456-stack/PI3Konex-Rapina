@@ -139,6 +139,12 @@
                             <label for="novidades"><p>Eu aceito receber novidades e ofertas Rapina</p></label>
                         </div>
 
+                        <!--Pega os inputs-->
+                        <input type="hidden" name="idEstab" value="${sessionScope.idEst}">
+                        <input type="hidden" name="dataReserva" value="${sessionScope.dataRes}">
+                        <input type="hidden" name="horaReserva" value="${sessionScope.horaRes}">
+                        <input type="hidden" name="Acomp" value="${sessionScope.qtdAcom}">
+                        
                         <div class="cadastrar">
                             <button type="Submit">Cadastrar</button>  
                         </div>

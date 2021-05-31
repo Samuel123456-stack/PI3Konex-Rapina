@@ -82,7 +82,8 @@
                     <div class="btns" style="margin-left: -40px;">
                         <!--ID-->
                         <input type="hidden" name="idEstab" value="${sessionScope.idEst}">
-                        <button  type="submit" id="reserva" name="btn" value="reservarConfirmar" style="cursor: pointer">Reservar</button>
+                        <input type="hidden" name="nomeEstab" value="${sessionScope.nomeEst}">
+                        <button type="submit" id="reserva" name="btn" value="reservarConfirmar" style="cursor: pointer">Reservar</button>
                     </div>
                 </form>
             </div>

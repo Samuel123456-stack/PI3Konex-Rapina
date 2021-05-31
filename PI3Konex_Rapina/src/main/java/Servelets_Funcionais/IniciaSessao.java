@@ -33,6 +33,24 @@ public class IniciaSessao extends HttpServlet {
         Estabelecimento esta = new Estabelecimento();
         int tipoUsuario = 0;
 
+        //Parametros
+        String qtdA = request.getParameter("Acomp");
+        String data = request.getParameter("dataReserva");
+        String horario = request.getParameter("horaReserva");
+        String idEstb = request.getParameter("idEstab");
+        String nome_estab = request.getParameter("nomeEstb");
+        
+        //var a ser convertidas
+        int Acom = 0;
+        int idEs = 0;
+
+        if (qtdA != null && qtdA.trim().length() > 0) {
+            Acom = Integer.parseInt(qtdA);
+        }
+        if (idEstb != null && idEstb.trim().length() > 0) {
+            idEs = Integer.parseInt(idEstb);
+        }
+        
         HttpSession sessao = request.getSession();
 
         if (botao != null) {
@@ -41,6 +59,14 @@ public class IniciaSessao extends HttpServlet {
 
                 cli.setTipo_user(tipoUsuario);
                 sessao.setAttribute("cli", cli);
+                
+                //SETO os dados da reserva que ele havia preenchido
+                sessao.setAttribute("nomeEst", nome_estab);
+                sessao.setAttribute("idEst", idEs);
+                sessao.setAttribute("dataRes", data);
+                sessao.setAttribute("horaRes", horario);
+                sessao.setAttribute("qtdAcom", Acom);
+                
                 response.sendRedirect(request.getContextPath() + "/TelaCadastroCli");
 
             } else if (botao.equals("Cadastro Estabelecimento")) {

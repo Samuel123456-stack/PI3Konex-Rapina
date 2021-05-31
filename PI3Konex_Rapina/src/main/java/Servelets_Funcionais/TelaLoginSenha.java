@@ -24,6 +24,8 @@ import ClassesJavaBean.Pagamento_taxa;
 import ClassesJavaBean.Reserva;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,9 +57,9 @@ public class TelaLoginSenha extends HttpServlet {
         boolean temErro = false;
         String email = null;
         int userTipo = 0;
-        int id=0;
+        int id = 0;
         int idEsta = 0;
-        int idCartao=0;
+        int idCartao = 0;
         String nome = null;
 
         //Pegando a Sessao da tela anterior
@@ -72,7 +74,7 @@ public class TelaLoginSenha extends HttpServlet {
             email = logUser.getEmail();
             userTipo = logUser.getTipo_usuario();
             id = logUser.getId_usuario();
-              
+
             //Setando o objeto para parametro
             request.setAttribute("logUser", logUser);
         } else {
@@ -80,12 +82,36 @@ public class TelaLoginSenha extends HttpServlet {
             dispatcher.forward(request, response);
         }
 
-        //pego o atributo da JSP
+        //pego o parametros da JSP
         String senhaInf = request.getParameter("senha");
+        //inputs da sessao hidden
+        String qtdA = request.getParameter("Acomp");
+        String data = request.getParameter("dataReserva");
+        String horario = request.getParameter("horaReserva");
+        String idEstb = request.getParameter("idEstab");
+        
+        //var a ser convertidas
+        int Acom = 0;
+        int idEs = 0;
 
-        //verifico a senha
+        if (qtdA != null && qtdA.trim().length() > 0) {
+            Acom = Integer.parseInt(qtdA);
+        }
+        if (idEstb != null && idEstb.trim().length() > 0) {
+            idEs = Integer.parseInt(idEstb);
+        }
+
+        //verificações
         if (senhaInf != null && senhaInf.trim().length() > 0) {
             temErro = false;
+        }
+
+        //conversões e verificações
+        if (qtdA != null && qtdA.trim().length() > 0) {
+            Acom = Integer.parseInt(qtdA);
+        }
+        if (idEstb != null && idEstb.trim().length() > 0) {
+            idEs = Integer.parseInt(idEstb);
         }
 
         //Objetos que serão utilizados
@@ -112,7 +138,6 @@ public class TelaLoginSenha extends HttpServlet {
             Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
         //verifica se há erros
         if (temErro) {
             //não deixa prosseguir
@@ -123,17 +148,17 @@ public class TelaLoginSenha extends HttpServlet {
             //prossegue de acordo  tipo de usuario
             if (userTipo == 1) {//Se o tipo de usuario for 1 é um ADM
                 sessaoUser.setAttribute("logUser", userTipo);
-                
+
                 //Faz os carregamentos dos dados
                 ContagemDAO conta = new ContagemDAO();
                 try {
-                    int qtdSerra=conta.contaPlanoA();
-                    int qtdRarpy=conta.contaPlanoB();
-                    int qtdAcor=conta.contaPlanoC();
+                    int qtdSerra = conta.contaPlanoA();
+                    int qtdRarpy = conta.contaPlanoB();
+                    int qtdAcor = conta.contaPlanoC();
                     sessaoUser.setAttribute("dadosPlano", qtdSerra);
                     sessaoUser.setAttribute("dadosPlanoB", qtdRarpy);
                     sessaoUser.setAttribute("dadosPlanoC", qtdAcor);
-                    
+
                     //verifica qual é mais contratado
                     int maiorPlano = verificaMaiorPlano(qtdSerra, qtdRarpy, qtdAcor);
                     if (maiorPlano > 0) {
@@ -141,18 +166,18 @@ public class TelaLoginSenha extends HttpServlet {
                     }
 
                     //CARREGA DADOS INFORMATIVOS
-                    int qtdReservaAtivas= conta.contaReservas();
+                    int qtdReservaAtivas = conta.contaReservas();
                     sessaoUser.setAttribute("DadosReserva", qtdReservaAtivas);
-                    
-                    int qtdDoacoes= conta.contaDoacoes();
+
+                    int qtdDoacoes = conta.contaDoacoes();
                     sessaoUser.setAttribute("dadosDoacoes", qtdDoacoes);
-                    
-                    int qtdPagam= conta.contaPagamentos();
+
+                    int qtdPagam = conta.contaPagamentos();
                     sessaoUser.setAttribute("dadosPagamentos", qtdPagam);
-                    
-                    int qtdUsers= conta.contaUsers();
+
+                    int qtdUsers = conta.contaUsers();
                     sessaoUser.setAttribute("dadosUsers", qtdUsers);
-                    
+
                     response.sendRedirect(request.getContextPath() + "/MenuADM");
 
                 } catch (SQLException ex) {
@@ -160,88 +185,115 @@ public class TelaLoginSenha extends HttpServlet {
                 }
 
             } else if (userTipo == 2) {//Se o tipo de usuario for 1 é um Cliente
-                sessaoUser.setAttribute("logUser", userTipo);
+                //VERIFICAR SE É A PRIMEIRA VEZ QUE ELE ESTÁ LOGANDO
+                //verificar se a data do cadastro é igual a data atual
+                //ou seja saber se é a primeira vez que vai logar
+                //se for a true a passamos essa parametro como sessao 
+                //para utilizar na tela LOG senha onde fazemos a chamada da CONFIRMAÇÃO DA RESERVA
+                ClienteDAO actionCli = new ClienteDAO();
+                String retornaDataCadastro = "2021-05-30"; 
+                /*actionCli.verificaUser(id);*/
+/*
+                Date dataAtual = new Date();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String dataAt = formatter.format(dataAtual);
+*/
+                String dataAt = "2021-05-31"; 
+                
+                if (retornaDataCadastro.equals(dataAt)) {
+                    //Seto as informações da reserva
+                    sessaoUser.setAttribute("idUser", id);
 
-                Cliente cli = new Cliente();
-                Cartao cartao = new Cartao();
-                //buscar id e nome do usuario e setar esses valores
-                email = logUser.getEmail();
-                String name = "";
-                int idUser = 0;
-
-                try {
-                    idUser = acesso.retornaIDCli(email);
-                    nome = acesso.retornaNome(email);
-                    cli = acesso.pegaDadosRapina(idUser);
-                    cartao = acesso.pegaDadosCartao(idUser);
-                    idCartao = acesso.retornaIDCartaoCli(email);
-                    cartao.setId_card(idCartao);
-                    cli.setId_usuario(idUser);
-
-                    sessaoUser.setAttribute("dadoName", nome);
-
-                    //Faz os carregamentos dos dados
-                    ContagemDAO conta = new ContagemDAO();
-
-                    //carregar dados gerais: Reservas, doações e qtd de pagamentos
-                    int qtdReservasFeitas = conta.contaReservaCli(idUser);
-                    sessaoUser.setAttribute("dadosReserCli", qtdReservasFeitas);
-
-                    int qtdDoaçõesFeitas = conta.contaDoeCli(idUser);
-                    sessaoUser.setAttribute("dadosDoeCli", qtdDoaçõesFeitas);
-
-                    int qtdPagamentosFeitos = conta.contaPagCli(idUser);
-                    sessaoUser.setAttribute("dadosPagCli", qtdPagamentosFeitos);
-
-                    //Carrega a lista de favoritos
-                    //constroe o objeto DAO
-                    FavoritoDAO actionDAO = new FavoritoDAO();
-
-                    //chama o metodo que retorna uma lista de favoritos
-                    List<Favoritos> listaD;
-                    listaD = actionDAO.listarDadosFavoritos(idUser);
-                    sessaoUser.setAttribute("listaFavCli", listaD);
+                    //SETO os dados da reserva que ele havia preenchido
+                    sessaoUser.setAttribute("idEst", idEs);
+                    sessaoUser.setAttribute("dataRes", data);
+                    sessaoUser.setAttribute("horaRes", horario);
+                    sessaoUser.setAttribute("qtdAcom", Acom);
                     
-                    //Chama o metodo que retorna uma lista de pagamentos
-                    //constroe o objeto DAO
-                    PagamentoDAO actionPag = new PagamentoDAO();
-                    
-                    //Chama o metodo que retorna uma lista de pagamentos
-                    List<Pagamento_taxa> listaE;
-                    listaE = actionPag.listarPagamentoCli(idUser);
-                    sessaoUser.setAttribute("listaPagamCli", listaE);
-                    
-                    
-                    //Chama o metodo que retorna uma lista de Doações feitas pelo usuario
-                    //constroe o objeto DAO
-                    DoacaoDAO actionDoa = new DoacaoDAO();
-                    
-                    //Chama o metodo que retorna uma lista de pagamentos
-                    List<Doacao> listaF;
-                    listaF = actionDoa.listaDoacoesClie(idUser);
-                    sessaoUser.setAttribute("listaDoacoesCli", listaF);
-                    
-                    //Chama o metodo que retorna lista de Reservas e Dados do Estabelecimento
-                    ReservaDAO actionRes = new ReservaDAO();
-                    
-                    List<Reserva> listaRes;
-                    listaRes= actionRes.listarReservaCli(idUser);
-                    sessaoUser.setAttribute("listaReservasCli", listaRes);
-                    
-                    sessaoUser.setAttribute("cartao", cartao);
-                    sessaoUser.setAttribute("cli", cli);
-                } catch (SQLException ex) {
-                    Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
+                    //despacha p/ a tela do pre tiket
+                    response.sendRedirect(request.getContextPath() + "/PreTicket");
+                } else {
+                    sessaoUser.setAttribute("logUser", userTipo);
+
+                    Cliente cli = new Cliente();
+                    Cartao cartao = new Cartao();
+                    //buscar id e nome do usuario e setar esses valores
+                    email = logUser.getEmail();
+                    int idUser = 0;
+
+                    try {
+                        idUser = acesso.retornaIDCli(email);
+                        nome = acesso.retornaNome(email);
+                        cli = acesso.pegaDadosRapina(idUser);
+                        cartao = acesso.pegaDadosCartao(idUser);
+                        idCartao = acesso.retornaIDCartaoCli(email);
+                        cartao.setId_card(idCartao);
+                        cli.setId_usuario(idUser);
+
+                        sessaoUser.setAttribute("dadoName", nome);
+
+                        //Faz os carregamentos dos dados
+                        ContagemDAO conta = new ContagemDAO();
+
+                        //carregar dados gerais: Reservas, doações e qtd de pagamentos
+                        int qtdReservasFeitas = conta.contaReservaCli(idUser);
+                        sessaoUser.setAttribute("dadosReserCli", qtdReservasFeitas);
+
+                        int qtdDoaçõesFeitas = conta.contaDoeCli(idUser);
+                        sessaoUser.setAttribute("dadosDoeCli", qtdDoaçõesFeitas);
+
+                        int qtdPagamentosFeitos = conta.contaPagCli(idUser);
+                        sessaoUser.setAttribute("dadosPagCli", qtdPagamentosFeitos);
+
+                        //Carrega a lista de favoritos
+                        //constroe o objeto DAO
+                        FavoritoDAO actionDAO = new FavoritoDAO();
+
+                        //chama o metodo que retorna uma lista de favoritos
+                        List<Favoritos> listaD;
+                        listaD = actionDAO.listarDadosFavoritos(idUser);
+                        sessaoUser.setAttribute("listaFavCli", listaD);
+
+                        //Chama o metodo que retorna uma lista de pagamentos
+                        //constroe o objeto DAO
+                        PagamentoDAO actionPag = new PagamentoDAO();
+
+                        //Chama o metodo que retorna uma lista de pagamentos
+                        List<Pagamento_taxa> listaE;
+                        listaE = actionPag.listarPagamentoCli(idUser);
+                        sessaoUser.setAttribute("listaPagamCli", listaE);
+
+                        //Chama o metodo que retorna uma lista de Doações feitas pelo usuario
+                        //constroe o objeto DAO
+                        DoacaoDAO actionDoa = new DoacaoDAO();
+
+                        //Chama o metodo que retorna uma lista de pagamentos
+                        List<Doacao> listaF;
+                        listaF = actionDoa.listaDoacoesClie(idUser);
+                        sessaoUser.setAttribute("listaDoacoesCli", listaF);
+
+                        //Chama o metodo que retorna lista de Reservas e Dados do Estabelecimento
+                        ReservaDAO actionRes = new ReservaDAO();
+
+                        List<Reserva> listaRes;
+                        listaRes = actionRes.listarReservaCli(idUser);
+                        sessaoUser.setAttribute("listaReservasCli", listaRes);
+
+                        sessaoUser.setAttribute("cartao", cartao);
+                        sessaoUser.setAttribute("cli", cli);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    response.sendRedirect(request.getContextPath() + "/MenuCliente");
                 }
-
-                response.sendRedirect(request.getContextPath() + "/MenuCliente");
 
             } else if (userTipo == 3) {//Se o tipo de usuario for 3 é um Estabelecimento
                 sessaoUser.setAttribute("logUser", userTipo);
                 Estabelecimento esta = new Estabelecimento();
                 Cartao cartao = new Cartao();
-                 email = logUser.getEmail();
-                 
+                email = logUser.getEmail();
+
                 try {
                     idEsta = acesso.retornaIDEsta(email);
                     nome = acesso.retornaNome(email);
@@ -253,14 +305,14 @@ public class TelaLoginSenha extends HttpServlet {
                 } catch (SQLException ex) {
                     Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
                 //Faz os carregamentos dos dados
                 ContagemDAO contaDAO = new ContagemDAO();
                 EstabelecimentoDAO estaDAO = new EstabelecimentoDAO();
                 List<Reserva> listaReserva;
                 List<Pagamento_mensalidade> listaMensalidade;
                 List<Doacao> listaDoacao;
-                
+
                 try {
                     //Carrega a Lista;
                     listaReserva = estaDAO.listarDadosRes(idEsta);
@@ -275,10 +327,10 @@ public class TelaLoginSenha extends HttpServlet {
 
                     int qtdContaDoa = contaDAO.contaDoaRecebidas(idEsta);
                     sessaoUser.setAttribute("dadosDoacao", qtdContaDoa);
-                    
+
                     int qtdContaFav = contaDAO.contaFavoritos(idEsta);
                     sessaoUser.setAttribute("dadosFav", qtdContaFav);
-                    
+
                     int qtdContaRec = contaDAO.contaRecebidos(idEsta);
                     sessaoUser.setAttribute("dadosRec", qtdContaRec);
                     sessaoUser.setAttribute("nomeEsta", nome);
@@ -300,9 +352,9 @@ public class TelaLoginSenha extends HttpServlet {
             throws ServletException, IOException {
     }
 
-    public static int verificaMaiorPlano(int qtdSerra, int qtdRarpy, int qtdAcor){
+    public static int verificaMaiorPlano(int qtdSerra, int qtdRarpy, int qtdAcor) {
         int maior = 0;
-        
+
         //condições
         if (qtdSerra > qtdRarpy) {
             maior = 2;
@@ -311,16 +363,16 @@ public class TelaLoginSenha extends HttpServlet {
         }
         if (qtdRarpy > qtdAcor) {
             maior = 1;
-        }else{
+        } else {
             maior = 3;
         }
         if (qtdAcor > qtdSerra) {
             maior = 3;
-        }else{
+        } else {
             maior = 2;
         }
 
         return maior;
     }
-    
+
 }

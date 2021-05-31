@@ -33,20 +33,18 @@
                     Para você fazer a sua reserva é necessário ser cadastrado
                 </h1>
                 <p class="first-paragraph">
-                    Se tiver uma conta em nosso sistema, basta clicar em "Entrar".
+                    Cliquem em cadastrar e em instantes você poderá reservar.
                 </p>
-<br>
+                <br>
                 <footer>
-                    <form action="${pageContext.request.contextPath}PosClickReserva" method="get">
+                    <form action="${pageContext.request.contextPath}/PosClickReserva" method="get">
                         <!--PEGAR OS INPUTS DA SESSÃO-->
-                        <input type="hidden" name="usuario" value="${sessionScope.idUser}">
+                        <input type="hidden" name="nomeEstb" value="${sessionScope.nomeEst}">
                         <input type="hidden" name="idEstab" value="${sessionScope.idEst}">
                         <input type="hidden" name="dataReserva" value="${sessionScope.dataRes}">
                         <input type="hidden" name="horaReserva" value="${sessionScope.horaRes}">
                         <input type="hidden" name="Acomp" value="${sessionScope.qtdAcom}">
-                        
                         <button type="submit" name="btn" value="cadastrar" style="margin-left: -15px ">Cadastrar</button>
-                        <button type="submit" name="btn" value="logar">Entrar</button>
                     </form>
                 </footer>
             </div>
