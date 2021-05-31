@@ -13,7 +13,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /*
@@ -371,4 +373,32 @@ public class ClienteDAO {
         }
         return listaDoaCartao;
     }
+    
+    public int verificaUser(int id) {
+        //Consulta se o CPF é igual
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        int verifica = 0;
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("Select data_cadastro from usuario where id_usuario = ?");
+            stmt.setInt(1, id); 
+            
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                String dataCad = rs.getString("data_cadastro");
+                
+                Date dataAtual = new Date();
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String dataAt = formatter.format(dataAtual);
+                
+                if(dataCad.equals(dataAt)){
+                    verifica = 1;
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return verifica;
+    }
+    
 }

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Gabriel
  */
-@WebServlet(name = "CriaTelaSelectionRest", urlPatterns = {"/Selection"})
+@WebServlet(name = "CriaTelaSelectionRest", urlPatterns = {"/SelectionBusca"})
 public class CriaTelaSelectionRest extends HttpServlet {
 
     @Override

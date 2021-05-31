@@ -30,15 +30,24 @@
 
             <div class="main-container">
                 <h1>
-                    Seja bem vindo(a), você quer voar com Rapina?
+                    Para você fazer a sua reserva é necessário ser cadastrado
                 </h1>
                 <p class="first-paragraph">
-                    Com a rapina você pode voar mais alto e com liberdade.
+                    Se tiver uma conta em nosso sistema, basta clicar em "Entrar".
                 </p>
-
+<br>
                 <footer>
-                    <a href="${pageContext.request.contextPath}/Pre_Cadastro"><button type="button">Cadastrar</button></a>
-                    <a href="${pageContext.request.contextPath}/LogEmail"><button type="button">Entrar</button></a>
+                    <form action="${pageContext.request.contextPath}PosClickReserva" method="get">
+                        <!--PEGAR OS INPUTS DA SESSÃO-->
+                        <input type="hidden" name="usuario" value="${sessionScope.idUser}">
+                        <input type="hidden" name="idEstab" value="${sessionScope.idEst}">
+                        <input type="hidden" name="dataReserva" value="${sessionScope.dataRes}">
+                        <input type="hidden" name="horaReserva" value="${sessionScope.horaRes}">
+                        <input type="hidden" name="Acomp" value="${sessionScope.qtdAcom}">
+                        
+                        <button type="submit" name="btn" value="cadastrar" style="margin-left: -15px ">Cadastrar</button>
+                        <button type="submit" name="btn" value="logar">Entrar</button>
+                    </form>
                 </footer>
             </div>
         </div>

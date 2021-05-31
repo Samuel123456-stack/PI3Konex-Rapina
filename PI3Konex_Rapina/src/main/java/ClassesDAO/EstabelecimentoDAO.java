@@ -542,18 +542,23 @@ public class EstabelecimentoDAO {
             while (rs.next()) {
                 Estabelecimento esta = new Estabelecimento();
                 
+                esta.setCep_estabelecimento(rs.getString("cep"));
                 esta.setId_estabelecimento(rs.getInt("id_esta"));
                 esta.setNome_estabelecimento(rs.getString("nome_esta"));
-                esta.setCnpj(rs.getString("cnpj"));
-                esta.setCep_estabelecimento(rs.getString("cep"));
                 esta.setLogadouro_estabelecimento(rs.getString("endereco"));
                 esta.setNumero(rs.getString("numero"));
                 esta.setAcessi_auditiva(rs.getString("def_aud"));
                 esta.setAcessi_fisico(rs.getString("def_fis"));
-                esta.setHorario_funcionamento(rs.getString("horario_de_fun"));
+                esta.setEmail(rs.getString("email"));
+                esta.setCelular(rs.getString("celular"));
                 esta.setCapacidade(rs.getInt("capacidade"));
+                
+                esta.setCnpj(rs.getString("cnpj"));
+                esta.setHorario_funcionamento(rs.getString("horario_de_fun"));
                 esta.setTaxa_cancelamento(rs.getFloat("taxa_cancelamento"));
                 esta.setId_planos(rs.getInt("id_planos"));
+                
+                
                 lista.add(esta);
             }
 

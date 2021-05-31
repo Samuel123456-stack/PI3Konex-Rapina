@@ -54,21 +54,32 @@
 
                 <c:forEach var="busca" items="${sessionScope.buscaEstabelecimento}">   
                     <form action="${pageContext.request.contextPath}/ListaRestaurantesBuscados" method="get">
-                        <input type="hidden" name="lineIdReserva" value="${busca.id_estabelecimento}">
-                        <button value="submit" style="background: transparent;float: left;" name="btn" value="selectionRestaurante">
+                        <input type="hidden" name="lineCEP" value="${busca.cep_estabelecimento}">
+                        <input type="hidden" name="lineIdEstb" value="${busca.id_estabelecimento}">
+                        <input type="hidden" name="lineNome" value="${busca.nome_estabelecimento}">
+                        <input type="hidden" name="lineEndereco" value="${busca.logadouro_estabelecimento}">
+                        <input type="hidden" name="lineNumero" value="${busca.numero}">
+                        <input type="hidden" name="lineDefAud" value="${busca.acessi_auditiva}">
+                        <input type="hidden" name="lineDefCad" value="${busca.acessi_fisico}">
+                        <input type="hidden" name="lineEmail" value="${busca.email}">
+                        <input type="hidden" name="lineCel" value="${busca.celular}">
+                        <input type="hidden" name="lineCap" value="${busca.capacidade}">
+                        
+                        <button type="submit" style="background: transparent;float: left;" name="btn" value="selectRest">
                             <div class="cartao">
                                 <div style="float: left;">
                                     <img src="${pageContext.request.contextPath}/images/Ellipse 10.png" alt="">
                                 </div>
+                                
                                 <div style="float: left;margin-right: 79px;margin-left: 70px;">
-                                    <img src="${pageContext.request.contextPath}/images/Vector (3).png" alt="">
+                                    <c:url value="https://picsum.photos/90" var="image"/>
+                                    <img src="${image}" style="border-radius: 100px;">
                                 </div>
 
                                 <div id="passar_mouse"> 
                                     <img src="${pageContext.request.contextPath}/images/Group 45.png" alt="">   
                                     <div id="mostrar">
-                                            Este estabelecimento está localizado na Rua:<c:out value="${busca.logadouro_estabelecimento}"/>-Nº <c:out value="${busca.numero}"/>
-                                        
+                                        Este estabelecimento está localizado na Rua:<c:out value="${busca.logadouro_estabelecimento}"/>-Nº <c:out value="${busca.numero}"/>
                                     </div>
                                 </div>
                                 
@@ -116,7 +127,6 @@
 
                             </div>
                         </button>
-
                     </form>
                 </c:forEach> 
 
