@@ -158,5 +158,29 @@ public class ReservaDAO {
             System.out.println(e);
         }
 
-    }      
+    }
+
+    public int alteraReserva(Reserva dado) throws SQLException {
+        //Altera a Reserva 
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        //var verificadora
+        int altera = 0;
+        //declarações do prepareStatement
+        try (
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update reserva "
+                + "set data_reserva=? ,hora_reserva=?, quant_pessoas=? where num_reserva=?");) {
+            //passa os parametros
+            stmt.setString(1, dado.getData_reservada());
+            stmt.setString(2, dado.getHorario_reservado());
+            stmt.setInt(3, dado.getQtd_acompanhantes());
+            stmt.setInt(4, dado.getNum_reserva());
+            stmt.executeUpdate();
+            altera = 1;
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return altera;
+    }
 }
