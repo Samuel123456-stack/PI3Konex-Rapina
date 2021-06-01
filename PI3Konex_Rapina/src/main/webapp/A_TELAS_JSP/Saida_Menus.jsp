@@ -27,7 +27,6 @@
                     <h3>Deseja realmente sair?</h3>
                     <p>Caso não, clique em cancelar</p>
                 </div>
-                <c:out value="${sessionScope.dadosAcesso.tipo_usuario}"></c:out>
                 <form action="${pageContext.request.contextPath}/ExitSession" method="get">
 
                     <footer class="option">

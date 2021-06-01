@@ -5,11 +5,12 @@
  */
 package Servelets_Funcionais;
 
-import ClassesDAO.EstabelecimentoDAO;
-import ClassesJavaBean.Reserva;
+import ClassesDAO.PlanosDAO;
+import ClassesJavaBean.Planos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,54 +34,49 @@ public class TelaMenuEsta extends HttpServlet {
         //boas praticas
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        
+        Calendar c = Calendar.getInstance();
+        int PegaMes = c.get(Calendar.MONTH);
+        int aux = 0;
+        int[] meses = {1,2,3,4,5,6,7,8,9,10,11,12};
+        
+        for(int i =0; i<meses.length; i++){
+            if(meses[i] == PegaMes){
+                aux=meses[i+1];
+            } else {
+            }
+        }
 
         //Pegar o parametro
-        String idStr = request.getParameter("idRes");
         String botao = request.getParameter("btn");
-        int codReserva = 0;
-        boolean temErro = false;
-        if (idStr != null && idStr.trim().length() > 0) {
-            try {
-                codReserva = Integer.parseInt(idStr);
-                temErro = false;
-            } catch (StringIndexOutOfBoundsException ex) {
-                temErro = true;
-                //Declaração de Erro
-                idStr = null;
-            }
-        } else {
-            temErro = true;
-            idStr = null;
-        }
-        if (temErro) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuEsta.jsp");
-            dispatcher.forward(request, response);
-        } else {
-            //condição
+
+        //condição
         if (botao != null) {
             //condição
-            if (botao.equals("consultaRes")) {
-                
-                EstabelecimentoDAO estaDAO = new EstabelecimentoDAO();
-                List<Reserva> dadosRes;
-                
+            if (botao.equals("att card")) {
+                response.sendRedirect(request.getContextPath() + "/TelaAltCard");
+            } else if (botao.equals("att dados")) {
+                response.sendRedirect(request.getContextPath() + "/AlteraDadosEsta");
+
+            } else if (botao.equals("sub exclusao")) {
+                response.sendRedirect(request.getContextPath() + "/TelaSolicitaExclusao");
+            } else if (botao.equals("alterar plano")) {
+                int id_esta = 3;
+                PlanosDAO dao = new PlanosDAO();
                 try {
-                    dadosRes = estaDAO.consultaRes(codReserva);
-                    request.setAttribute("consRes", dadosRes);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuEsta.jsp");
+                    List<Planos> listaDados;
+                    listaDados = dao.planosPorID(id_esta);
+                    request.setAttribute("ListaPlano", listaDados);
+                    request.setAttribute("mes_vencimento", aux);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaAltPlano.jsp");
                     dispatcher.forward(request, response);
-                    return;
+
                 } catch (SQLException ex) {
-                    Logger.getLogger(TelaMenuEsta.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(TelaAltPlano.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-               
-        }
         }
     }
-
-        
-    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -184,21 +184,23 @@ public class TelaLoginSenha extends HttpServlet {
                     Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-            } else if (userTipo == 2) {//Se o tipo de usuario for 1 é um Cliente
+            } else if (userTipo == 2) {//Se o tipo de usuario for 2 é um Cliente
                 //VERIFICAR SE É A PRIMEIRA VEZ QUE ELE ESTÁ LOGANDO
                 //verificar se a data do cadastro é igual a data atual
                 //ou seja saber se é a primeira vez que vai logar
                 //se for a true a passamos essa parametro como sessao 
                 //para utilizar na tela LOG senha onde fazemos a chamada da CONFIRMAÇÃO DA RESERVA
                 ClienteDAO actionCli = new ClienteDAO();
-                String retornaDataCadastro = "2021-05-30"; 
+                String retornaDataCadastro = "2021-05-30"; //retorna data cadastro
                 /*actionCli.verificaUser(id);*/
 /*
                 Date dataAtual = new Date();
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 String dataAt = formatter.format(dataAtual);
 */
-                String dataAt = "2021-05-31"; 
+                String dataAt = "2021-05-31"; //pega a data atual e confirma
+                //puxar do banco de dados se é o primeiro acesso é sim ou nao
+                //
                 
                 if (retornaDataCadastro.equals(dataAt)) {
                     

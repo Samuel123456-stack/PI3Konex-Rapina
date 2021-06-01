@@ -44,6 +44,7 @@
                         <div class="form-container">
                             <form action="" name="searching">
                                 <div class="input-block">
+                                    <a href="${pageContext.request.contextPath}/BuscaPorCep">
                                     <input 
                                         type="text" 
                                         id="block-search" 
@@ -55,6 +56,7 @@
                                     <button type="button">
                                         <img src="${pageContext.request.contextPath}/images/icons/search-icon.png" alt="search-image" />
                                     </button>
+                                    </a>
                                 </div>
                                 <div class="input-submit">
                                     <input type="submit" value="Buscar" />

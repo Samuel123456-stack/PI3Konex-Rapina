@@ -51,9 +51,9 @@
                         <p>Você já tem algum lugar favorito?</p>
                         <p>Entre em sua conta e selecione</p>
                         <div style="width: 140px; margin-left: auto; margin-right: auto;">
-                            <a href=""><h4>Entrar ou&nbsp;</h4></a>
+                            <a href="${pageContext.request.contextPath}/LogEmail"><h4>Entrar ou&nbsp;</h4></a>
                             
-                            <a href=""><h4>cadastrar</h4></a>
+                            <a href="${pageContext.request.contextPath}/Pre_Cadastro"><h4>cadastrar</h4></a>
                         </div>
                     </section>
                 </footer>
