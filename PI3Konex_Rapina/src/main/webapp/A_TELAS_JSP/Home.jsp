@@ -127,23 +127,23 @@
                     <div class="grupos">
                         <div class="top10">
                             <h3>A Rapina</h3>
-                            <a href="${pageContext.request.contextPath}/about.html">Site Institucional</a>
+                            <a href="${pageContext.request.contextPath}/Sobre" style="text-decoration: none;">Site Institucional</a>
                             <br><br>
-                            <a href="${pageContext.request.contextPath}/Contato">Fale conosco</a>
+                            <a href="${pageContext.request.contextPath}/Contato" style="text-decoration: none;">Fale conosco</a>
                             <br><br>
-                            <a href="${pageContext.request.contextPath}/TelaTermos">Termos de uso</a>
+                            <a href="${pageContext.request.contextPath}/TelaTermos" style="text-decoration: none;">Termos de uso</a>
                             <br><br>
-                            <a href="${pageContext.request.contextPath}/Privacidade">Política de Privacidade</a>
+                            <a href="${pageContext.request.contextPath}/Privacidade" style="text-decoration: none;">Política de Privacidade</a>
                         </div>
                         <div class="top10">
                             <h3>Voe com a Rapina</h3>
-                            <a href="${pageContext.request.contextPath}/TelaCadastroEsta">Cadastre seu estabelecimento</a>
+                            <a href="${pageContext.request.contextPath}/TelaCadastroEsta" style="text-decoration: none;">Cadastre seu estabelecimento</a>
                             <br><br>
-                            <a href="${pageContext.request.contextPath}/TelaPlanos">Rapina Planos</a>
+                            <a href="${pageContext.request.contextPath}/TelaPlanos" style="text-decoration: none;">Rapina Planos</a>
                             <br><br>
-                            <a href="${pageContext.request.contextPath}/Campanha">Campanha Rapinantes</a>
+                            <a href="${pageContext.request.contextPath}/Campanha" style="text-decoration: none;">Campanha Rapinantes</a>
                             <br><br>
-                            <a href="${pageContext.request.contextPath}/LogEmail">Já sou uma loja parceira</a>
+                            <a href="${pageContext.request.contextPath}/LogEmail" style="text-decoration: none;">Já sou uma loja parceira</a>
                         </div>
                         <div class="top10">
                             <div class="social">
@@ -153,7 +153,6 @@
                                 <a href="" title="Twitter"><svg width="24" height="19" xmlns="http://www.w3.org/2000/svg"><path d="M20.957 4.543v.606c0 6.209-4.777 13.327-13.56 13.327-2.774 0-5.24-.758-7.397-2.12.462 0 .77.15 1.233.15 2.157 0 4.314-.756 6.01-1.968-2.004 0-3.853-1.363-4.47-3.332.309 0 .617.152.925.152.463 0 .463 0 1.079-.152C2.466 10.752.462 8.783.462 6.512c0 .454 1.695.454 2.466.606C1.695 6.209.925 4.846.925 3.18c0-.908.308-1.666.77-2.423 2.311 2.878 6.01 4.695 9.862 4.998-.154-.455-.154-.758-.154-1.06C11.403 2.12 13.56 0 16.18 0c1.387 0 2.62.454 3.544 1.514 1.079-.302 2.004-.605 2.928-1.211-.462 1.211-1.233 1.969-2.003 2.574a14.785 14.785 0 0 0 2.774-.757c-.77.909-1.541 1.817-2.466 2.423z" fill-rule="evenodd"></path></svg></a>
                                 <a href="" title="Youtube"><svg width="24" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M23.8 3.6s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C17 0 12 0 12 0S7 0 3.6.2c-.5.1-1.5.1-2.4 1-.7.7-1 2.4-1 2.4S0 5.5 0 7.5v1.8c0 1.9.2 3.9.2 3.9s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8.2.2 8.2.2s5 0 8.4-.3c.5-.1 1.5-.1 2.4-1 .7-.7 1-2.4 1-2.4s.2-1.9.2-3.9V7.4c0-1.9-.2-3.8-.2-3.8zM9.5 11.5V4.8L16 8.2l-6.5 3.3z" fill-rule="evenodd"></path></svg></a>
                                 <a href="" title="LinkedIn"><svg width="19" height="19" xmlns="http://www.w3.org/2000/svg"><path d="M3.859375 19h-3.5625V5.9375h3.5625V19zM2.078125 4.43175C.931 4.43175 0 3.493625 0 2.337S.931.24225 2.078125.24225 4.15625 1.180375 4.15625 2.337s-.929812 2.09475-2.078125 2.09475zM18.109375 19h-3.5625v-6.65475c0-3.9995-4.75-3.6966875-4.75 0V19h-3.5625V5.9375h3.5625v2.0959375c1.65775-3.070875 8.3125-3.2976875 8.3125 2.94025V19z" fill-rule="nonzero"></path></svg></a>
-
                             </div>
                         </div>
                         <div style="clear: both;">
