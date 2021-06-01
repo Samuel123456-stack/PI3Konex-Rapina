@@ -201,9 +201,20 @@ public class TelaLoginSenha extends HttpServlet {
                 String dataAt = "2021-05-31"; 
                 
                 if (retornaDataCadastro.equals(dataAt)) {
-                    //Seto as informações da reserva
-                    sessaoUser.setAttribute("idUser", id);
+                    
+                    email = logUser.getEmail();
+                    int idUser =0;
+                    try {
+                        
+                        idUser = acesso.retornaIDCli(email);
+                       
+                        logUser.setId_usuario(idUser);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
+                    //Seto as informações da reserva
+                    sessaoUser.setAttribute("idUser", idUser);
                     //SETO os dados da reserva que ele havia preenchido
                     sessaoUser.setAttribute("idEst", idEs);
                     sessaoUser.setAttribute("dataRes", data);
@@ -229,8 +240,9 @@ public class TelaLoginSenha extends HttpServlet {
                         idCartao = acesso.retornaIDCartaoCli(email);
                         cartao.setId_card(idCartao);
                         cli.setId_usuario(idUser);
-
+                        logUser.setId_usuario(idUser);
                         sessaoUser.setAttribute("dadoName", nome);
+                        
 
                         //Faz os carregamentos dos dados
                         ContagemDAO conta = new ContagemDAO();

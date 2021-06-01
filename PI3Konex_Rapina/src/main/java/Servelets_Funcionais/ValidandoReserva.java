@@ -6,6 +6,7 @@
 package Servelets_Funcionais;
 
 import ClassesDAO.EstabelecimentoDAO;
+import ClassesDAO.LoginDAO;
 import ClassesDAO.ReservaDAO;
 import ClassesJavaBean.Estabelecimento;
 import ClassesJavaBean.Login;
@@ -45,15 +46,19 @@ public class ValidandoReserva extends HttpServlet {
         //Sessão
         HttpSession sessao = request.getSession();
         Login logUser = new Login();
-        int idUser = 0;
+        
+        int idUser =0;
+        String email = "";
         
         //verificamos se a session tem algum dado para ser obtido
         if (sessao.getAttribute("dadosAcesso") != null) {
             //trasfiro os dados da session anterio pra o novo objeto
             logUser = (Login) sessao.getAttribute("dadosAcesso");
-
-            //setando os valaores para as variaveis que utilizaremos
+            //setando os valores para as variaveis que utilizaremos
+            email = logUser.getEmail();
+            System.out.println(logUser.getId_usuario());
             idUser = logUser.getId_usuario();
+
               
             //Setando o objeto para parametro
             request.setAttribute("logUser", logUser);
@@ -85,7 +90,8 @@ public class ValidandoReserva extends HttpServlet {
             EstabelecimentoDAO actionEst = new EstabelecimentoDAO();
             
             //var 
-            int codReserva =0;
+            int varRes =0;
+            
             
             Date dataAtual = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -95,7 +101,10 @@ public class ValidandoReserva extends HttpServlet {
             Reserva reservar = new Reserva(idUser, idEs, Acom, dataAt, data,horario);
             
             //aciona o metodo
-            codReserva = actionRes.criaReserva(reservar);
+            varRes = actionRes.criaReserva(reservar);
+            int codReserva= reservar.getNum_reserva();
+            
+           
             
             //puxa o endereço 
             List<Estabelecimento> dados;

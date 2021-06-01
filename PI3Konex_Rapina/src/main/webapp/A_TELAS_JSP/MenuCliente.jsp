@@ -318,10 +318,10 @@
                                             <!--///////////horario\\\\\\\\\\-->
                                             <td><input type="time" name="horaRes" style="width: 90px; padding-left: 5px;"></td>
                                             <td><div class="number-input">
-                                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+                                                    
                                                     <!--///////////horario\\\\\\\\\\-->
-                                                    <input class="quantity" min="0" name="acomRes" value="1" type="number">
-                                                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                                    <input class="quantity" name="acomRes" value="1" type="text">
+                                                    
                                                 </div>
                                             </td>
                                             <td><button style="background: #EE7D14;">Cancelar</button></td>

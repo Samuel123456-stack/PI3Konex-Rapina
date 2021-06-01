@@ -186,7 +186,7 @@ public class ReservaDAO {
     }
     
     public int criaReserva(Reserva dados){
-        int numReserva = 0;
+        int cria = 0;
         ConexaoJDBC conexao = new ConexaoJDBC();    
             
         //declarações do preparedStatement
@@ -205,17 +205,19 @@ public class ReservaDAO {
             
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
-            
+                    int numReserva = 0;
             if(rs.next()){
-                numReserva= rs.getInt("num_reserva");
-                dados.setNum_reserva(numReserva);
+                numReserva= rs.getInt(1);
+                
             }
-
+            dados.setNum_reserva(numReserva);
+            cria = 1;
+            return cria;
         } catch (SQLException e) {
             System.out.println(e);
         }
         
-        return numReserva;
+        return cria;
     }
     
 }
