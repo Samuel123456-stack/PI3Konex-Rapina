@@ -376,7 +376,7 @@ public class ClienteDAO {
     }
     
     public String verificaUser(int id) {
-        //Consulta se o CPF é igual
+        //Consulta se é o primeiro cadastro dele
         ConexaoJDBC conexao = new ConexaoJDBC();
         String verifica = "";
         try {

@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta charset="UTF-8">    
-        <title> Estabelecimento<c:out value="${sessionScope.nomeEst}"/></title>
+        <title> Estabelecimento <c:out value="${sessionScope.nomeEst}"/></title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/selecao.css">
     </head>
     <body>
@@ -31,7 +31,7 @@
         </div>
         <div class="todo">
             <div class="link">
-                <a href="">
+                <a href="${pageContext.request.contextPath}/BuscaPorCep">
                     <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.6771 20.9999C11.3782 21.0007 11.083 20.9512 10.813 20.8552C10.5429 20.7591 10.3051 20.619 10.1168 20.4449L0.455058 11.4458C0.160841 11.1774 0 10.8408 0 10.4934C0 10.146 0.160841 9.80935 0.455058 9.54098L10.4569 0.541827C10.7964 0.235531 11.2843 0.0429128 11.8133 0.00634665C12.3422 -0.0302195 12.8689 0.0922618 13.2774 0.346846C13.6859 0.601429 13.9428 0.967262 13.9915 1.36386C14.0403 1.76047 13.877 2.15535 13.5374 2.46165L4.5958 10.5009L13.2374 18.5401C13.482 18.7603 13.6374 19.0284 13.6851 19.3127C13.7329 19.597 13.671 19.8856 13.5069 20.1443C13.3428 20.4031 13.0832 20.6212 12.7589 20.7728C12.4346 20.9244 12.0592 21.0032 11.6771 20.9999Z" fill="#4361EE"/>
                     </svg>                

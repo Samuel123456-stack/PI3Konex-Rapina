@@ -36,7 +36,7 @@ public class TerminaSession extends HttpServlet {
             Login logUser = (Login) sessao.getAttribute("dadosAcesso");
             tipoUser = logUser.getTipo_usuario();//pega o Tipo do Usuario da Sessao
         }else{
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/Saida_Menus.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/Home.jsp");
             dispatcher.forward(request, response);
         }       
         
@@ -53,7 +53,7 @@ public class TerminaSession extends HttpServlet {
 
             } else if (botao.equals("sair")) {//Se o botao clicado for Sair, invalido a Sessão  e retorno a Home
                 sessao.invalidate();
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaInicial.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/Home.jsp");
                 dispatcher.forward(request, response);
                 return;
             }
