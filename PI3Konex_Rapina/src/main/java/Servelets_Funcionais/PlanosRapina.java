@@ -6,6 +6,7 @@
 package Servelets_Funcionais;
 
 import ClassesDAO.PlanosDAO;
+import ClassesJavaBean.Estabelecimento;
 import ClassesJavaBean.Planos;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,19 +35,19 @@ public class PlanosRapina extends HttpServlet {
         //boas praticas
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");  
-        int idesta=1;
+        
+        Estabelecimento esta = new Estabelecimento();
+        int idesta=0;
         int idplanos =0;
         
         //Buscar o id do estabelecimento da Session anterior
         HttpSession session = request.getSession();
         
-        // Falta buscar o id_esta na sessão
-        //
-        //
-        //
-        //
-        //
-        
+        if(session.getAttribute("esta")!=null){
+            esta = (Estabelecimento) session.getAttribute("esta");
+            idesta = esta.getId_estabelecimento();
+        }
+
 
         //Pegar o parametro
         String botao = request.getParameter("button");
@@ -79,6 +80,10 @@ public class PlanosRapina extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(PlanosRapina.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuEsta.jsp");
+        dispatcher.forward(request, response);
+        return;
 
     }
 

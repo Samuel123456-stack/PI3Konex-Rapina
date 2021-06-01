@@ -38,6 +38,7 @@ public class TerminaSession extends HttpServlet {
         }else{
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/Home.jsp");
             dispatcher.forward(request, response);
+            return;
         }       
         
         String botao = request.getParameter("btn");

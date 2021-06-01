@@ -108,8 +108,7 @@ public class ClienteDAO {
         String sql = "update usuario set nome=?, genero=?, cpf=?, email=?, senha=?,nascimento=?, concordar=? where id_usuario= ?";
         //declarações do preparedStatement
         try (
-                Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement(sql);) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement(sql);) {
             //Executa a Query
             stmt.setString(1, dado.getNome());
             stmt.setString(2, dado.getGenero());
@@ -134,9 +133,8 @@ public class ClienteDAO {
 
         //declarações do preparedStatement
         try (
-                Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("delete from "
-                        + "usuario where id_usuario= ?");) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("delete from "
+                + "usuario where id_usuario= ?");) {
             //Executa a Query
             stmt.setInt(1, valor);
             stmt.executeUpdate();
@@ -213,9 +211,8 @@ public class ClienteDAO {
         Cliente cli = new Cliente();
         int a = 0;
         try (
-                Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("insert into cartao(num_cartao,validade"
-                        + ",cvv,titular) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("insert into cartao(num_cartao,validade"
+                + ",cvv,titular) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
 
             //passa os parametros do cartao
             stmt.setString(1, dadoCartao.getNum_cartao());
@@ -249,8 +246,7 @@ public class ClienteDAO {
         ConexaoJDBC conexao = new ConexaoJDBC();
         String sql = "update usuario set id_cartao= (?) where id_usuario= (?)";
         try (
-                Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt2 = conn.prepareStatement(sql)) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt2 = conn.prepareStatement(sql)) {
 
             //Setando Parametros
             stmt2.setInt(1, dado.getId_card());
@@ -268,9 +264,8 @@ public class ClienteDAO {
 
         //declarações do preparedStatement
         try (
-                Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("update cartao "
-                        + "set num_cartao= ?, validade= ?, cvv= ?, titular= ? where id_cartao= ?");) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update cartao "
+                + "set num_cartao= ?, validade= ?, cvv= ?, titular= ? where id_cartao= ?");) {
 
             //Executa a Query
             stmt.setString(1, dado.getNum_cartao());
@@ -374,21 +369,20 @@ public class ClienteDAO {
         }
         return listaDoaCartao;
     }
-    
+
     public String verificaUser(int id) {
         //Consulta se é o primeiro cadastro dele
         ConexaoJDBC conexao = new ConexaoJDBC();
-        String verifica = "";
+        String verifica = null;
         try {
             Connection conn = conexao.obterConexaoBD();
             PreparedStatement stmt = conn.prepareStatement("Select data_cadastro from usuario where id_usuario = ?");
-            stmt.setInt(1, id); 
-            
+            stmt.setInt(1, id);
+
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 String dataCad = rs.getString("data_cadastro");
-                verifica= dataCad;
-                return verifica;
+                verifica = dataCad;
             }
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
