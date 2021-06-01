@@ -1,3 +1,10 @@
+<%-- 
+    Document   : Sobre
+    Created on : 1 de jun de 2021, 15:56:06
+    Author     : Gabriel
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,7 +15,7 @@
         <meta name="description" content="Crowd Control">
         <meta name="author" content="konex-group">
 
-        <link rel="stylesheet" href="../CSS/about.css">
+        <link rel="stylesheet" href="{pageContext.request.contextPath}/CSS/about.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
@@ -18,7 +25,7 @@
             <div class="background-image">
                 <section class="menu-bar">
                     <div>
-                        <img src="../images/white-logotipo.png" alt="logo-image" class="logo-icon" />
+                        <img src="${pageContext.request.contextPath}/images/white-logotipo.png" alt="logo-image" class="logo-icon" />
                     </div>
                     <div>
                         <ul>
@@ -43,7 +50,7 @@
                 <div class="content-wrapper">
                     <main class="first-grid-container">
                         <section>
-                            <img src="../images/rocket-person.jpg" alt="image-landscape" />
+                            <img src="${pageContext.request.contextPath}/images/rocket-person.jpg" alt="image-landscape" />
                         </section>
                         <div>
                             <h1>Um desejo comum</h1>
@@ -63,7 +70,7 @@
                             </p>
                         </div>
                         <section>
-                            <img src="../images/community.png" alt="image-landscape" />
+                            <img src="${pageContext.request.contextPath}/images/community.png" alt="image-landscape" />
                         </section>
                     </main>
                 </div>
@@ -169,7 +176,7 @@
                 </div>
 
                 <footer>
-                    <img src="../images/rapinante-group.png" alt="image" />
+                    <img src="${pageContext.request.contextPath}/images/rapinante-group.png" alt="image" />
                 </footer>
             </div>
         </div>
@@ -179,23 +186,23 @@
                 <div class="grupos">
                     <div class="top10">
                         <h3>A Rapina</h3>
-                        <a href="about.html" style="text-decoration: none;">Site Institucional</a>
+                        <a href="${pageContext.request.contextPath}/Sobre" style="text-decoration: none;">Site Institucional</a>
                         <br><br>
-                        <a href="contato.html" style="text-decoration: none;">Fale conosco</a>
+                        <a href="${pageContext.request.contextPath}/Contato" style="text-decoration: none;">Fale conosco</a>
                         <br><br>
-                        <a href="termoUso.html" style="text-decoration: none;">Termos de uso</a>
+                        <a href="${pageContext.request.contextPath}/TelaTermos" style="text-decoration: none;">Termos de uso</a>
                         <br><br>
-                        <a href="politicaPrivacidade.html" style="text-decoration: none;">Política de Privacidade</a>
+                        <a href="${pageContext.request.contextPath}/Privacidade" style="text-decoration: none;">Política de Privacidade</a>
                     </div>
                     <div class="top10">
                         <h3>Voe com a Rapina</h3>
-                        <a href="cadastroEsta.html" style="text-decoration: none;">Cadastre seu estabelecimento</a>
+                        <a href="${pageContext.request.contextPath}/TelaCadastroEsta" style="text-decoration: none;">Cadastre seu estabelecimento</a>
                         <br><br>
-                        <a href="rapinaPlanos.html" style="text-decoration: none;">Rapina Planos</a>
+                        <a href="${pageContext.request.contextPath}/TelaPlanos" style="text-decoration: none;">Rapina Planos</a>
                         <br><br>
-                        <a href="RapCampanha.html" style="text-decoration: none;">Campanha Rapinantes</a>
+                        <a href="${pageContext.request.contextPath}/Campanha" style="text-decoration: none;">Campanha Rapinantes</a>
                         <br><br>
-                        <a href="partnerStore.html" style="text-decoration: none;">Já sou uma loja parceira</a>
+                        <a href="${pageContext.request.contextPath}/LogEmail" style="text-decoration: none;">Já sou uma loja parceira</a>
                     </div>
                     <div class="top10">
                         <div class="social">

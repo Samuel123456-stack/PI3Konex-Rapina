@@ -103,11 +103,27 @@ margin-top: 0;
 .itensSerrana P{
     background: #f0f0f0;
 }
+.itensSerrana P:hover{
+    color: white;
+    background: #FF7A00;
+}
+
 .itensRarpy P{
     background: #e8ecf5;
 }
+
+.itensRarpy P:hover{
+    color: white;
+    background: #2AA9E0;
+}
+
 .itensAçor P{
     background: #ffd5af;
+}
+
+.itensAçor P:hover{
+    color: white;
+    background: #f1b522;
 }
 .Serrana{
     width: 348px;
@@ -128,6 +144,20 @@ margin-top: 0;
     background: #444444;
     background: #4361EE;
     border-radius: 100px;
+}
+.Serrana button:hover{
+    color: white;
+    background-color: #444444;
+}
+
+.Rarpy button:hover{
+    color: white;
+    background-color: #2AA9E0;
+}
+
+.Açor button:hover{
+    color: white;
+    background-color: #FF7A00;
 }
 
 .Rarpy{
@@ -201,4 +231,8 @@ margin-top: 0;
     font-weight: 600;
     font-size: 30px;
     line-height: 30px;
+}
+
+p:hover{
+    color: #4361EE;
 }

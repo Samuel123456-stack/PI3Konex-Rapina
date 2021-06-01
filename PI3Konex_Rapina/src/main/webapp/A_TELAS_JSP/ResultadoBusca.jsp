@@ -45,13 +45,7 @@
             </div>
 
             <div class="list-est">
-                <section class="sort-button">
-                    <p>Ordenar por</p>
-                    <button type="button">
-                        <img src="${pageContext.request.contextPath}/images/icons/arrow-down.png" alt="arrow-icon" />
-                    </button>
-                </section>
-
+                
                 <c:forEach var="busca" items="${sessionScope.buscaEstabelecimento}">   
                     <form action="${pageContext.request.contextPath}/ListaRestaurantesBuscados" method="get">
                         <input type="hidden" name="lineCEP" value="${busca.cep_estabelecimento}">
@@ -72,7 +66,33 @@
                                 </div>
                                 
                                 <div style="float: left;margin-right: 79px;margin-left: 70px;">
-                                    <img src="https://picsum.photos/90" style="border-radius: 100px;">
+                                    <c:if test="${busca.id_estabelecimento == 1}">
+                                       <img src="${pageContext.request.contextPath}/images/Ellipse 59.png" alt=""> 
+                                    </c:if>
+                                    <c:if test="${busca.id_estabelecimento == 2}">
+                                       <img src="${pageContext.request.contextPath}/images/Ellipse 60.png" alt=""> 
+                                    </c:if>
+                                    <c:if test="${busca.id_estabelecimento == 3}">
+                                       <img src="${pageContext.request.contextPath}/images/Ellipse 61.png" alt=""> 
+                                    </c:if>
+                                    <c:if test="${busca.id_estabelecimento == 4}">
+                                       <img src="${pageContext.request.contextPath}/images/Ellipse 62.png" alt=""> 
+                                    </c:if>
+                                    <c:if test="${busca.id_estabelecimento == 5}">
+                                       <img src="${pageContext.request.contextPath}/images/Ellipse 63.png" alt=""> 
+                                    </c:if>   
+                                    <c:if test="${busca.id_estabelecimento == 6}">
+                                       <img src="${pageContext.request.contextPath}/images/Ellipse 64.png" alt=""> 
+                                    </c:if> 
+                                    <c:if test="${busca.id_estabelecimento == 7}">
+                                       <img src="${pageContext.request.contextPath}/images/Ellipse 65.png" alt=""> 
+                                    </c:if>
+                                    <c:if test="${busca.id_estabelecimento == 8}">
+                                       <img src="${pageContext.request.contextPath}/images/Ellipse 66.png" alt=""> 
+                                    </c:if>   
+                                    <c:if test="${busca.id_estabelecimento == 9}">
+                                       <img src="${pageContext.request.contextPath}/images/Ellipse 67.png" alt=""> 
+                                    </c:if>    
                                 </div>
 
                                 <div id="passar_mouse"> 
@@ -139,21 +159,21 @@
                         <h3>A Rapina</h3>
                         <a href="about.html">Site Institucional</a>
                         <br><br>
-                        <a href="contato.html">Fale conosco</a>
+                        <a href="${pageContext.request.contextPath}/Contato">Fale conosco</a>
                         <br><br>
-                        <a href="termoUso.html">Termos de uso</a>
+                        <a href="${pageContext.request.contextPath}/TelaTermos">Termos de uso</a>
                         <br><br>
-                        <a href="politicaPrivacidade.html">Política de Privacidade</a>
+                        <a href="${pageContext.request.contextPath}/Privacidade">Política de Privacidade</a>
                     </div>
                     <div class="top10">
                         <h3>Voe com a Rapina</h3>
-                        <a href="cadastroEsta.html">Cadastre seu estabelecimento</a>
+                        <a href="${pageContext.request.contextPath}/TelaCadastroEsta">Cadastre seu estabelecimento</a>
                         <br><br>
-                        <a href="rapinaPlanos.html">Rapina Planos</a>
+                        <a href="${pageContext.request.contextPath}/TelaPlanos">Rapina Planos</a>
                         <br><br>
-                        <a href="RapCampanha.html">Campanha Rapinantes</a>
+                        <a href="${pageContext.request.contextPath}/Campanha">Campanha Rapinantes</a>
                         <br><br>
-                        <a href="partnerStore.html">Já sou uma loja parceira</a>
+                        <a href="${pageContext.request.contextPath}/LogEmail">Já sou uma loja parceira</a>
                     </div>
                     <div class="top10">
                         <div class="social">
