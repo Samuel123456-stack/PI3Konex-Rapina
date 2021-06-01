@@ -40,7 +40,7 @@
                     
                     <div class="code-image">
                         <img src="${pageContext.request.contextPath}/images/qr-code.png" alt="code-image" />
-                        <p>cod.reserva:<!---<c:out value="${sessionScope.codRes}"/>---></p>
+                        <p>cod.reserva:0000<c:out value="${sessionScope.codRes}"/></p>
                     </div>
                     <h1><c:out value="${sessionScope.user}"/></h1>
                 </div>
@@ -48,13 +48,10 @@
 
             <footer>
                 <button type="submit" >
-                    <a href="${pageContext.request.contextPath}/MenuCliente" style="text-decoration: none; color: white;">
+                    <a href="${pageContext.request.contextPath}/LogEmail" style="text-decoration: none; color: white;">
                         <img src="${pageContext.request.contextPath}/images/icons/door-exit.png" alt="door-icon" />
                         <span>Sair</span>
                     <a/>
-                </button>
-                <button type="button">
-                    <p>Orientações Covid-19</p>
                 </button>
             </footer>
             
