@@ -10,29 +10,15 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/rapinaPlanos.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">        
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-
-    <title>Document</title>
+    <title>Planos da Rapina</title>
 </head>
 <body>
     <div class="topo">
         <div id="container-landing">
             <section class="menu-bar">
                 <div>
-                    <img src="${pageContext.request.contextPath}/images/icons/Logotipo-Branco 1.png" alt="logo-image" class="logo-icon" />
+                    <a href="${pageContext.request.contextPath}/Home"><img src="${pageContext.request.contextPath}/images/icons/Logotipo-Branco 1.png" alt="logo-image" class="logo-icon" /></a>
                 </div>
-                <div>
-                    <ul>
-                        <li>Institucional</li>
-                        <li>Voe com a Rapina</li>
-                        <li>Doações</li>
-                        <i class="fas fa-bars"></i>
-                    </ul>
-                </div>
-            </section>
         </div>
 
         <div class="txtRap">
@@ -53,7 +39,7 @@
                 <h1>19,90</h1>
                 <p>/mês</p>
             </div>
-            <a href="${pageContext.request.contextPath}/TelaCadastroEsta" style="text-decoration: none;"><button type="submit" style="cursor: pointer;">Contratar</button></a>
+            <a href="${pageContext.request.contextPath}/Pre_Cadastro" style="text-decoration: none;"><button type="submit" style="cursor: pointer;">Contratar</button></a>
         </div>
         <div class="Rarpy">
             <img src="${pageContext.request.contextPath}/images/RARPY 1 (1).png" alt="">
@@ -71,7 +57,7 @@
                 <h1>49,90</h1>
                 <p>/mês</p>
             </div>
-            <a href="${pageContext.request.contextPath}/TelaCadastroEsta" style="text-decoration: none;"><button type="submit" style="cursor: pointer;" >Contratar</button></a>
+            <a href="${pageContext.request.contextPath}/Pre_Cadastro" style="text-decoration: none;"><button type="submit" style="cursor: pointer;" >Contratar</button></a>
         </div>
         <div class="Açor">
             <img src="${pageContext.request.contextPath}/images/AÇOR 1 (1).png" alt="">
@@ -86,7 +72,7 @@
                 <h1>29,90</h1>
                 <p>/mês</p>
             </div>
-            <a href="${pageContext.request.contextPath}/TelaCadastroEsta" style="text-decoration: none;"><button type="submit" style="cursor: pointer;">Contratar</button></a>
+            <a href="${pageContext.request.contextPath}/Pre_Cadastro" style="text-decoration: none;"><button type="submit" style="cursor: pointer;">Contratar</button></a>
         </div>
     </div>
     <div class="retangulo">

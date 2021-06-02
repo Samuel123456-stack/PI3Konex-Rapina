@@ -217,6 +217,7 @@ public class TelaLoginSenha extends HttpServlet {
 
                     //Seto as informações da reserva
                     sessaoUser.setAttribute("idUser", idUser);
+                    
                     //SETO os dados da reserva que ele havia preenchido
                     sessaoUser.setAttribute("idEst", idEs);
                     sessaoUser.setAttribute("dataRes", data);

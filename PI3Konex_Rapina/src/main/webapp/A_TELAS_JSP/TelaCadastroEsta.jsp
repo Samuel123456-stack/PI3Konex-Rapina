@@ -14,11 +14,6 @@
         <meta charset="UTF-8">
         <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/cadastroEsta.css"/>
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logotipo.png">
-
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">        
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-
         <title>Loja Parceira- Cadastro</title>
 
         <style>
@@ -31,16 +26,9 @@
         <div id="container-landing">
             <section class="menu-bar">
                 <div>
-                    <img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
+                    <a href="${pageContext.request.contextPath}/Home"><img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" /></a>
                 </div>
-                <div>
-                    <svg width="40" height="31" viewBox="0 0 40 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="40" height="3" fill="#4361EE"/>
-                        <rect y="28" width="40" height="3" fill="#4361EE"/>
-                        <rect y="14" width="40" height="3" fill="#4361EE"/>
-                        
-                    </svg>
-                </div>
+                
             </section>
         </div>
         <div class="boy">

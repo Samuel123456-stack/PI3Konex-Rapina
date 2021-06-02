@@ -30,7 +30,7 @@
         <div id="container-landing">
             <section class="menu-bar">
                 <div>
-                    <img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
+                    <a href="${pageContext.request.contextPath}/Home"><img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" /></a>
                 </div>
             </section>
 
