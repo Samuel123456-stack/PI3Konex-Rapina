@@ -95,3 +95,15 @@ TelaCadastroEsta.jsp
 TelaCartaoCli.jsp
 TelaRapinaPlanos.jsp
 Termos.jsp
+
+
+
+
+
+<a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <svg width="40" height="31" viewBox="0 0 40 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="40" height="3" fill="white"/>
+                                <rect y="28" width="40" height="3" fill="white"/>
+                                <rect y="14" width="40" height="3" fill="white"/>
+                            </svg> 
+                        </a>
