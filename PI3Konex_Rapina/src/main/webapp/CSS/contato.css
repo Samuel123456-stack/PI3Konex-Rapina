@@ -1,7 +1,9 @@
 @import url('global.css');
-
+html{
+    height: 100%;
+}
 body{
-    background-image: url('../images/background-color-contact.png');
+    background: linear-gradient(224.77deg, #E9F9FF 19.1%, rgba(188, 209, 228, 0.67) 50.09%, rgba(255, 255, 255, 0) 73.69%), #7598B8;
 }
 .page-container{
     display:flex;
