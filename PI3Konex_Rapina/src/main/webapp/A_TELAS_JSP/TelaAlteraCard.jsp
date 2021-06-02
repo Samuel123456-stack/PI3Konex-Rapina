@@ -37,7 +37,12 @@
             <div class="form-container">
                 <div class="form-block">
                     <section class="form-data">
+                        <c:if test="${sessionScope.cli.tipo_user==2}">
                         <a href="${pageContext.request.contextPath}/MenuCliente" style="text-decoration: none;" >Voltar ao Menu</a>
+                        </c:if>
+                        <c:if test="${sessionScope.esta.tipo_user==3}">
+                        <a href="${pageContext.request.contextPath}/MenuEsta" style="text-decoration: none;" >Voltar ao Menu</a>
+                        </c:if>
                         <form action="${pageContext.request.contextPath}/AlteraCartao" method="get">
                             <div class="input-field ${not empty erro ? 'erroInput' : ''}">
                                 <div class="card">

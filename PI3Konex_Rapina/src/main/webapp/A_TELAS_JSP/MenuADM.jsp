@@ -18,7 +18,7 @@
                     <img src="${pageContext.request.contextPath}/images/icons/Logotipo-Branco 1.png" alt="logo-image" class="logo-icon" />
                 </div>
                 <div class="nomeMenuadm">
-                    <h1>Olá </h1><p>Name user</p><h1>, essa é a sua área :)</h1>
+                    <h1>Olá </h1><p><c:out value="${sessionScope.nomeADM}"/></p><h1>, essa é a sua área :)</h1>
                 </div>
                 <div class="direitamenuadm">
                     <div width="32" height="34" viewBox="0 0 32 34" fill="none"><a style="cursor:pointer;" href="${pageContext.request.contextPath}/CriaTelaResposta"><img src="${pageContext.request.contextPath}/images/edit.svg" color:white></a></div>

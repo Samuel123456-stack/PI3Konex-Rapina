@@ -45,6 +45,11 @@ public class Notification {
         this.mensagem=mensagem;
         this.data= data;
     }
+    public Notification(String mensagem, String data,int id_estabelecimento){
+        this.mensagem=mensagem;
+        this.data= data;
+         this.id_estabelecimento = id_estabelecimento;
+    }
 
     //Getters e Setters
     public int getId_notification() {

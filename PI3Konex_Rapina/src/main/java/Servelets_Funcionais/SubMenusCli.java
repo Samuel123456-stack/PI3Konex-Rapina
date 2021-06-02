@@ -9,7 +9,6 @@ import ClassesDAO.ClienteDAO;
 import ClassesDAO.FavoritoDAO;
 import ClassesJavaBean.Cartao;
 import ClassesJavaBean.Cliente;
-import ClassesJavaBean.Estabelecimento;
 import ClassesJavaBean.Favoritos;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,7 +37,7 @@ public class SubMenusCli extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         Cliente cli = new Cliente();
-        int idCli=0;
+        int idCli = 0;
         Cartao cartao = new Cartao();
         HttpSession session = request.getSession();
 
@@ -60,9 +59,9 @@ public class SubMenusCli extends HttpServlet {
                 session.setAttribute("cli", cli);
                 response.sendRedirect(request.getContextPath() + "/TelaAlteraDados");
 
-            }else if (botao.equals("telaDuvidas")){
+            } else if (botao.equals("telaDuvidas")) {
                 response.sendRedirect(request.getContextPath() + "/CriaTelaDuvidas");
-            }else if(botao.equals("telaDoacao")){
+            } else if (botao.equals("telaDoacao")) {
                 FavoritoDAO favDao = new FavoritoDAO();
                 ClienteDAO cliDao = new ClienteDAO();
                 Favoritos fav = new Favoritos();
@@ -74,10 +73,12 @@ public class SubMenusCli extends HttpServlet {
                     session.setAttribute("listaNomes", listaNomes);
                     session.setAttribute("listaCartao", listaCartao);
                     session.setAttribute("idP", idCli);
-                    response.sendRedirect(request.getContextPath() +"/TelaDoacao");
+                    response.sendRedirect(request.getContextPath() + "/TelaDoacao");
                 } catch (SQLException ex) {
                     Logger.getLogger(SubMenusCli.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            } else if (botao.equals("telaNotifica")) {
+                response.sendRedirect(request.getContextPath() + "/CriaListaNotifica");
             }
         }
     }

@@ -244,4 +244,53 @@ public class NotificaDAO {
         }
         return lista;
     }
+    
+    public int criaPerguntaEsta(Notification dado) {
+        //Elementos para a conexão e verificação
+        int cria = 0;
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        //Declarações do preparedStatement
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("insert into notificacao(id_esta,mensagem,data_noti) values (?,?,?)");) {
+            //Passa os parametros
+            stmt.setInt(1, dado.getId_estabelecimento());
+            stmt.setString(2, dado.getMensagem());
+            stmt.setString(3, dado.getData());
+
+            //Executa a Query
+            stmt.executeUpdate();
+            cria = 1;
+            return cria;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return cria;
+    }
+    public String retornaNome(int id) throws SQLException{
+        //Var auxliadora
+        String retorna = null;
+
+        //Crio a conexao com o bd
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        try (
+                Connection conn = conexao.obterConexaoBD();
+                PreparedStatement stmt = conn.prepareStatement("Select nome from login where id_esta =?");) {
+
+            //passa o parametro recebido para o STMT usando o dado.get(atributo)
+            stmt.setInt(1, id);
+
+            //Executa a Query
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    //verifico se a senha digitada é igual da coluna do BD
+                    String nome = rs.getString("nome");
+                    
+                    retorna = nome; 
+                }
+            }
+        }
+        return retorna;
+    }
 }

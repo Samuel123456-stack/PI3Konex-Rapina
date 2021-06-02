@@ -57,13 +57,14 @@ input[type="submit"]{
     padding:15px;
     margin:50px 0;
 }
-.form-container .submit-block input{
+.form-container button{
+    margin-top:35px;
+    width:100%;
     padding:9px 15px;
+    font-size:15px;
     background: rgba(67, 97, 238, 1);
-    font-size:18px;
     color:#fff;
     border-radius:50px;
-    cursor:pointer;
 }
 .form-container .submit-block input:hover{
     filter:brightness(0.9);

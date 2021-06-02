@@ -13,6 +13,7 @@ import ClassesDAO.FavoritoDAO;
 import ClassesDAO.LoginDAO;
 import ClassesDAO.PagamentoDAO;
 import ClassesDAO.ReservaDAO;
+import ClassesJavaBean.Administrador;
 import ClassesJavaBean.Cartao;
 import ClassesJavaBean.Cliente;
 import ClassesJavaBean.Doacao;
@@ -24,8 +25,6 @@ import ClassesJavaBean.Pagamento_taxa;
 import ClassesJavaBean.Reserva;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,7 +46,7 @@ public class TelaLoginSenha extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         //boas praticas de uso
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -148,13 +147,17 @@ public class TelaLoginSenha extends HttpServlet {
             //prossegue de acordo  tipo de usuario
             if (userTipo == 1) {//Se o tipo de usuario for 1 é um ADM
                 sessaoUser.setAttribute("logUser", userTipo);
-
+                
+                Administrador adm = new Administrador();
                 //Faz os carregamentos dos dados
                 ContagemDAO conta = new ContagemDAO();
                 try {
+                    nome = acesso.retornaNome(email);
                     int qtdSerra = conta.contaPlanoA();
                     int qtdRarpy = conta.contaPlanoB();
                     int qtdAcor = conta.contaPlanoC();
+                    adm.setTipo_user(userTipo);
+                    sessaoUser.setAttribute("nomeADM", nome);
                     sessaoUser.setAttribute("dadosPlano", qtdSerra);
                     sessaoUser.setAttribute("dadosPlanoB", qtdRarpy);
                     sessaoUser.setAttribute("dadosPlanoC", qtdAcor);
@@ -177,6 +180,8 @@ public class TelaLoginSenha extends HttpServlet {
 
                     int qtdUsers = conta.contaUsers();
                     sessaoUser.setAttribute("dadosUsers", qtdUsers);
+                    
+                    sessaoUser.setAttribute("adm",adm);
 
                     response.sendRedirect(request.getContextPath() + "/MenuADM");
 
@@ -314,6 +319,7 @@ public class TelaLoginSenha extends HttpServlet {
                     esta = acesso.pegaDadosEsta(idEsta);
                     cartao = acesso.pegaDadosCartao(idEsta);
                     idCartao = acesso.retornaIDCartaoEsta(email);
+                    logUser.setId_esta(idEsta);
                     cartao.setId_card(idCartao);
                     esta.setId_estabelecimento(idEsta);
                 } catch (SQLException ex) {
