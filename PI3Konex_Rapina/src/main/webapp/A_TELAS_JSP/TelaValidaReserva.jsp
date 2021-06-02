@@ -18,7 +18,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: #E5E5E5;">
     <div class="todo">
         <div class="link">
             <a href="${pageContext.request.contextPath}/MenuEsta">

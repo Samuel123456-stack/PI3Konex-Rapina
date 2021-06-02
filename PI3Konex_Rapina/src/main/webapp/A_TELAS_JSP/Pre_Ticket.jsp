@@ -20,7 +20,7 @@
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     </head>
-    <body>
+    <body style="background-color: #E5E5E5;">
         <div id="only-screen">
             <div class="outline-color">
                 <div class="query-select">

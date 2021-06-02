@@ -18,7 +18,7 @@
 
         <link rel='stylesheet' type='text/css' href="${pageContext.request.contextPath}/CSS/home.css">
         <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
-        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logo.jpeg">
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logotipo.png">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">        
@@ -32,14 +32,25 @@
                 <div class="background-image">
                     <section class="menu-bar">
                         <div>
-                            <img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
+                            <a href="${pageContext.request.contextPath}/Home"><img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" /></a>
                         </div>
                         <div>
-                            <ul>
-                                <div class="bar active"></div>
-                                <div class="bar active"></div>
-                                <div class="bar active"></div>
-                            </ul>
+                            <div class="dropdown mr-5 mt-4" >
+                                <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                    <ul>
+                                        <div class="bar active"></div>
+                                        <div class="bar active"></div>
+                                        <div class="bar active"></div>
+                                    </ul>
+                                </a>
+                              
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                                  <a class="dropdown-item" href="${pageContext.request.contextPath}/Pre_Cadastro">Voe Com a Rapina</a>
+                                  <a class="dropdown-item" href="${pageContext.request.contextPath}/LogEmail">Login</a>
+                                  <a class="dropdown-item" href="${pageContext.request.contextPath}/Campanha">Doações</a>
+                                  <a class="dropdown-item" href="${pageContext.request.contextPath}/Home">Site Institucional</a>
+                                </div>
+                             </div>
                         </div>
                     </section>
 
@@ -144,7 +155,7 @@
                         </div>
                         <div class="top10">
                             <h3>Voe com a Rapina</h3>
-                            <a href="${pageContext.request.contextPath}/TelaCadastroEsta" style="text-decoration: none;">Cadastre seu estabelecimento</a>
+                            <a href="${pageContext.request.contextPath}/Pre_Cadastro" style="text-decoration: none;">Cadastre seu estabelecimento</a>
                             <br><br>
                             <a href="${pageContext.request.contextPath}/TelaPlanos" style="text-decoration: none;">Rapina Planos</a>
                             <br><br>

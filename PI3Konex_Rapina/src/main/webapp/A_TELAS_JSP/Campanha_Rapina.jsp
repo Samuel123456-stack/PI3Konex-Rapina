@@ -16,23 +16,13 @@
         <meta name="author" content="konex-group">
 
         <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/RapCampanha.css">
-        <script src="https://kit.fontawesome.com/194a95388c.js" crossorigin="anonymous"></script>
-        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/icons/logo.jpeg">
-        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="container-landing">
             <div class="background-color">
                 <section class="menu-bar">
                     <div>
-                        <img src="${pageContext.request.contextPath}/images/white-logotipo.png" alt="logo-image" class="logo-icon" />
-                    </div>
-                    <div>
-                        <ul>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                        </ul>
+                        <a href="${pageContext.request.contextPath}/Home"><img src="${pageContext.request.contextPath}/images/icons/Logotipo-Branco 1.png" alt="logo-image" class="logo-icon" /></a>
                     </div>
                 </section>
                 <div class="rapina-campaign">

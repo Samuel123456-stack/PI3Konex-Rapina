@@ -48,7 +48,7 @@ public class ReservaDAO {
 
         //declarações do preparedStatement
         try (
-                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update reserva set reserva_status='Validada' where num_reserva=?");) {
+                Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update reserva set reserva_status='Validada' where num_reserva=?");) {
             //Executa a Query
             stmt.setInt(1, valor);
             stmt.executeUpdate();

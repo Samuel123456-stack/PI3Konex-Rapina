@@ -32,11 +32,22 @@
                     <img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
                 </div>
                 <div>
-                    <ul>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                    </ul>
+                    <div class="dropdown mr-5 mt-4" >
+                        <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                            <ul>
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                                <div class="bar active"></div>
+                            </ul>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/Pre_Cadastro">Voe Com a Rapina</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/LogEmail">Login</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/TelaDoacao">Doações</a>
+                            <a class="dropdown-item" href="${pageContext.request.contextPath}/Home">Site Institucional</a>
+                        </div>
+                    </div>
                 </div>
             </section>
 

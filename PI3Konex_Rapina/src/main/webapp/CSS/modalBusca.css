@@ -1,16 +1,16 @@
 @import url('global.css');
 
 body{
-    background-image:url('../images/track.jpg');
+    background-color: #FAFAFC;
     background-repeat: no-repeat;
     background-size: 100%;
+    
 }
 #modal-container{
     height:100vh;
     display:flex;
     justify-content:center;
     align-items: center;
-    background: rgba(10, 20, 69, 0.75);
 }
 #modal-container .form-container{
     border-radius:.8rem;
@@ -21,8 +21,16 @@ body{
     align-items: center;
     max-width:900px;
     text-align: center;
-    background:#fff;
+    background:#fff; 
+    cursor: pointer;
+    transition: 400ms;
+    
 }
+
+#modal-container .form-container:hover{
+    box-shadow: 0 0 2em rgba(67,97,238, 0.3);
+}
+
 #modal-container .form-container .location-icon{
     float:left;
     width:10%;
