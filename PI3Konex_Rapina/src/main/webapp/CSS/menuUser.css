@@ -617,3 +617,8 @@ input[type="number"] {
     margin-left: 90px;
     margin-right: 0;
 }
+button{
+    border: none;
+    outline: none;
+    background: none;
+}
