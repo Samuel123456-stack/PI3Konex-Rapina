@@ -419,7 +419,23 @@ public class LoginDAO {
         }
         return cartao;
     }
-    
+    public void acessoCliente(String email) {
+
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        //verifica a senha
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("update usuario set acesso = acesso + 1 where email=?");
+
+            stmt.setString(1, email);
+            stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
     
     
     public String getEmail() {

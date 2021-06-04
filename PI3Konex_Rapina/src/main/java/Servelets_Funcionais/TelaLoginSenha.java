@@ -246,6 +246,7 @@ public class TelaLoginSenha extends HttpServlet {
                         cli = acesso.pegaDadosRapina(idUser);
                         cartao = acesso.pegaDadosCartao(idUser);
                         idCartao = acesso.retornaIDCartaoCli(email);
+                        acesso.acessoCliente(email);
                         cartao.setId_card(idCartao);
                         cli.setId_usuario(idUser);
                         logUser.setId_usuario(idUser);
