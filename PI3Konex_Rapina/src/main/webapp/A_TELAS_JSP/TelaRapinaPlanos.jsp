@@ -19,7 +19,6 @@
         <div class="topo">
             <div id="container-landing">
                 <section class="menu-bar">
-                    <section class="menu-bar">
                         <div>
                             <a href="${pageContext.request.contextPath}/Home"><img src="${pageContext.request.contextPath}/images/icons/Logotipo-Branco 1.png" alt="logo-image" class="logo-icon" /></a>
                         </div>
@@ -39,7 +38,6 @@
                                 </div>
                               </div>
                         </div>
-                    </section>
                 </section>
             </div>
 
