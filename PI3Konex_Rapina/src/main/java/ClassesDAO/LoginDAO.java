@@ -435,8 +435,28 @@ public class LoginDAO {
             throw new RuntimeException(ex);
         }
     }
-
     
+    public int  retornaAcesso(String email) {
+        int acess =0;
+        
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+        //verifica a senha
+        try {
+            Connection conn = conexao.obterConexaoBD();
+            PreparedStatement stmt = conn.prepareStatement("select acesso from usuario where email =?" );
+
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                acess = rs.getInt("acesso");
+            }
+
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return acess;
+    }
     
     public String getEmail() {
         return email;
