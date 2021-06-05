@@ -33,18 +33,19 @@
 
                 <div class="pagtop">
                     <h2>Pagamentos em atraso</h2>
-                    <div class="select">
-                        <form action="${pageContext.request.contextPath}/FazListagemPag" method="get">
+                    <form action="${pageContext.request.contextPath}/FazListagemPag" method="get">
+                        <div class="select">
                             <select name="opcoes">
                                 <option>Selecione o Usuario</option>
                                 <option>Rapinista</option>
                                 <option>Estabelecimento</option>
                             </select>
-                            <div id="btn-confirma">
-                                <input type="submit" value="Confirma">
-                            </div>
-                        </form>
-                    </div>
+                            <div class="select__arrow"></div>
+                        </div>
+                        <div id="btn-confirma">
+                            <input type="submit" value="Confirma">
+                        </div>
+                    </form>
 
                 </div>
                 <table class="tabela">
