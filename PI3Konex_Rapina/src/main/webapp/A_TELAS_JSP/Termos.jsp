@@ -26,7 +26,7 @@
         <div id="container-landing">
             <section class="menu-bar">
                 <div>
-                    <a href="${pageContext.request.contextPath}/Home"><img src="${pageContext.request.contextPath}/images/icons/Logotipo-Branco 1.png" alt="logo-image" class="logo-icon" /></a>
+                    <a href="${pageContext.request.contextPath}/Home"><img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" /></a>
                 </div>
                 <div>
             
