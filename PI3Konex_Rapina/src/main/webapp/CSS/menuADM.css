@@ -848,3 +848,15 @@ a:visited{
 hr{
     border: 1px solid #E5E5E5;
 }
+#btn-confirma input[type=submit]{
+    width: 80px;
+    height: 32px;
+    padding: 2px 10px;
+    background: #4361EE;
+    border-radius: 5px;
+    outline: none;
+    color: #fff;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+}
