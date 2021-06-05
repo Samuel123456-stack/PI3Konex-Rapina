@@ -66,8 +66,8 @@ public class ClienteDAO {
                     Connection conn = conexao.obterConexaoBD();
                     PreparedStatement stmt = conn.prepareStatement("insert into usuario(nome,genero,cpf,"
                             + "email,senha,nascimento,concordar,newslatter"
-                            + ",tipo_usuario,data_cadastro)"
-                            + " values(?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
+                            + ",tipo_usuario,data_cadastro,acesso)"
+                            + " values(?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
                 //passa os parametros
                 stmt.setString(1, dado.getNome());
                 stmt.setString(2, dado.getGenero());
@@ -79,6 +79,7 @@ public class ClienteDAO {
                 stmt.setString(8, dado.getConcorda_newstalleter());
                 stmt.setInt(9, dado.getTipo_user());
                 stmt.setString(10, dado.getData_cadastros());
+                stmt.setInt(11, dado.getAcesso());
                 
                 //Executa a Query
                 stmt.executeUpdate();

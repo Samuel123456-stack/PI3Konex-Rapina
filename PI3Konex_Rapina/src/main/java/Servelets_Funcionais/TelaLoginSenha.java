@@ -190,6 +190,7 @@ public class TelaLoginSenha extends HttpServlet {
                 }
 
             } else if (userTipo == 2) {//Se o tipo de usuario for 2 é um Cliente
+                acesso.acessoCliente(email);
                 LoginDAO logi = new LoginDAO();
                 int acss = logi.retornaAcesso(email);
                 
@@ -214,8 +215,6 @@ public class TelaLoginSenha extends HttpServlet {
                     sessaoUser.setAttribute("horaRes", horario);
                     sessaoUser.setAttribute("qtdAcom", Acom);
                     
-                    acesso.acessoCliente(email);
-                    
                     //despacha p/ a tela do pre tiket
                     response.sendRedirect(request.getContextPath() + "/PreTicket");
                 } else {
@@ -233,7 +232,6 @@ public class TelaLoginSenha extends HttpServlet {
                         cli = acesso.pegaDadosRapina(idUser);
                         cartao = acesso.pegaDadosCartao(idUser);
                         idCartao = acesso.retornaIDCartaoCli(email);
-                        acesso.acessoCliente(email);
                         cartao.setId_card(idCartao);
                         cli.setId_usuario(idUser);
                         logUser.setId_usuario(idUser);

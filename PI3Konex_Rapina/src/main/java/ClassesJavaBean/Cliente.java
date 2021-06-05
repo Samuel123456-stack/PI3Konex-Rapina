@@ -21,6 +21,7 @@ public class Cliente {
     public int id_favoritado;
     public int tipo_user;
     public String data_cadastros;
+    public int acesso;
             
             
     //metodo construtor
@@ -145,6 +146,14 @@ public class Cliente {
 
     public void setData_cadastros(String data_cadastros) {
         this.data_cadastros = data_cadastros;
+    }
+
+    public int getAcesso() {
+        return acesso;
+    }
+
+    public void setAcesso(int acesso) {
+        this.acesso = acesso;
     }
     
     

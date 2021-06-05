@@ -65,6 +65,7 @@ public class ControlaClientes extends HttpServlet {
         String dataNascStr = request.getParameter("dataNasc");
         String concordar = request.getParameter("concordar");
         String concordarNews = "Não";
+        int acesso = 0;
 
         //inputs da sessao hidden
         String qtdA = request.getParameter("Acomp");
@@ -183,6 +184,7 @@ public class ControlaClientes extends HttpServlet {
         //Instancia as Classes
         Cliente cliente = new Cliente(nome, cpf, email, genero,
                 dataNascStr, senha, concordar, concordarNews, tipoCli);
+        cliente.setAcesso(acesso);
         
         Date dataAtual = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
