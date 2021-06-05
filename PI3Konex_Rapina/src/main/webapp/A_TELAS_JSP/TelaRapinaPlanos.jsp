@@ -19,11 +19,25 @@
         <div class="topo">
             <div id="container-landing">
                 <section class="menu-bar">
-                    <div>
-                        <a href="${pageContext.request.contextPath}/Home"><img src="${pageContext.request.contextPath}/images/icons/Logotipo-Branco 1.png" alt="logo-image" class="logo-icon" /></a>
-                    </div>
-                    <div>
-
+                        <div>
+                            <a href="${pageContext.request.contextPath}/Home"><img src="${pageContext.request.contextPath}/images/icons/Logotipo-Branco 1.png" alt="logo-image" class="logo-icon" /></a>
+                        </div>
+                        <div>
+            
+                            <div class="dropdown">
+                                <button class="dropbtn"><svg width="40" height="31" viewBox="0 0 40 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="40" height="3" fill="white"/>
+                                  <rect y="28" width="40" height="3" fill="white"/>
+                                  <rect y="14" width="40" height="3" fill="white"/>
+                              </svg> </button>
+                                <div class="dropdown-content">
+                                    <a href="${pageContext.request.contextPath}/Pre_Cadastro">Voe Com a Rapina</a>
+                                    <a href="${pageContext.request.contextPath}/LogEmail">Login</a>
+                                    <a href="${pageContext.request.contextPath}/TelaDoacao">Doações</a>
+                                    <a href="${pageContext.request.contextPath}/Home">Site Institucional</a>
+                                </div>
+                              </div>
+                        </div>
                 </section>
             </div>
 

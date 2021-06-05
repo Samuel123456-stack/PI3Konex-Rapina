@@ -20,13 +20,10 @@ body{
 #container-landing{
     max-width:1150px;
     margin:auto;
-    background-image: url('../images/person-walking.png');
-    background-repeat: no-repeat;
-    background-size:30%;
-    background-position: 20% 50%;
+    
 }
 #container-landing .background-image{
-    background-image: url('../images/shadow.png');
+    background-image: url('../images/Group\ 407.png');
     background-repeat: no-repeat;
     background-size:30%;
     background-position: 20% 93%;
