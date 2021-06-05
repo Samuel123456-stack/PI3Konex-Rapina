@@ -190,25 +190,10 @@ public class TelaLoginSenha extends HttpServlet {
                 }
 
             } else if (userTipo == 2) {//Se o tipo de usuario for 2 é um Cliente
-                //VERIFICAR SE É A PRIMEIRA VEZ QUE ELE ESTÁ LOGANDO
-                //verificar se a data do cadastro é igual a data atual
-                //ou seja saber se é a primeira vez que vai logar
-                //se for a true a passamos essa parametro como sessao 
-                //para utilizar na tela LOG senha onde fazemos a chamada da CONFIRMAÇÃO DA RESERVA
-                ClienteDAO actionCli = new ClienteDAO();
-                String retornaDataCadastro = "2021-05-30"; //retorna data cadastro
-                /*actionCli.verificaUser(id);*/
-/*
-                Date dataAtual = new Date();
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                String dataAt = formatter.format(dataAtual);
-*/
-                String dataAt = "2021-05-31"; //pega a data atual e confirma
-                //puxar do banco de dados se é o primeiro acesso é sim ou nao
-                //
+                LoginDAO logi = new LoginDAO();
+                int acss = logi.retornaAcesso(email);
                 
-                if (retornaDataCadastro.equals(dataAt)) {
-                    
+                if (acss == 1) {
                     email = logUser.getEmail();
                     int idUser =0;
                     try {
@@ -228,6 +213,8 @@ public class TelaLoginSenha extends HttpServlet {
                     sessaoUser.setAttribute("dataRes", data);
                     sessaoUser.setAttribute("horaRes", horario);
                     sessaoUser.setAttribute("qtdAcom", Acom);
+                    
+                    acesso.acessoCliente(email);
                     
                     //despacha p/ a tela do pre tiket
                     response.sendRedirect(request.getContextPath() + "/PreTicket");
