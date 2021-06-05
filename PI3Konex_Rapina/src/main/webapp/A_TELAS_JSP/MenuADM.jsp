@@ -29,7 +29,7 @@
         </div>
 
         <div class="todo">
-            <div class="pagamento">
+            <div class="pagamento invisible-scrollbar">
 
                 <div class="pagtop">
                     <h2>Pagamentos em atraso</h2>
@@ -40,9 +40,10 @@
                                 <option>Rapinista</option>
                                 <option>Estabelecimento</option>
                             </select>
-                            <input type="submit" value="Confirma">
+                            <div id="btn-confirma">
+                                <input type="submit" value="Confirma">
+                            </div>
                         </form>
-
                     </div>
 
                 </div>
