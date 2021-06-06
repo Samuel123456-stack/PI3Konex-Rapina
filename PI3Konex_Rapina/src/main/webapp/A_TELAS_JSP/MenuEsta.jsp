@@ -70,14 +70,8 @@
     </div>
 
 <div class="todo">    
-    <div class="tabela">
+    <div class="tabela invisible-scrollbar">
         <p>Reservas agendadas</p>
-        <div class="select">
-            <select>
-            <option>Ordenar por status</option>
-            </select>
-            <div class="select__arrow"></div>
-        </div>
         <table class="tbreservas">
             <thead>
                 <tr>
@@ -105,7 +99,7 @@
         </table>
     </div>
 
-    <div class="tabelas" style="background: #567BFC; box-shadow: 0px 6px 15px 7px rgba(53, 88, 170, 0.2);">
+    <div class="tabelas invisible-scrollbar" style="background: #567BFC; box-shadow: 0px 6px 15px 7px rgba(53, 88, 170, 0.2);">
         <p style="color: #fff; ">Minhas jornadas</p>
         <form action="${pageContext.request.contextPath}/TelaLogSenha" method="get">
         <table class="tbminjor">
@@ -151,7 +145,7 @@
       </form>
     </div>
 
-    <div class="tabelas2">
+    <div class="tabelas2 invisible-scrollbar">
         <div class="limpar">
             <h1>Consultar reservas</h1>
         </div>
@@ -189,7 +183,7 @@
         </table>
     </div>
 
-    <div class="tabelas2">
+    <div class="tabelas2 invisible-scrollbar">
         <p>Doações Recebidas</p>
         <table class="tbDorec">
             
@@ -210,14 +204,8 @@
         </table>
     </div>
 
-    <div class="tabelas">
+    <div class="tabelas invisible-scrollbar" >
         <p style="float: left;">meus pagamentos</p>
-        <div class="select" style="margin-left: 49px; width :110px;">
-            <select style="width :110px;">
-            <option>Período</option>
-            </select>
-            <div class="select__arrow"></div>
-        </div>
         <table class="tbmeuspag">
         <thead>
             <tr>

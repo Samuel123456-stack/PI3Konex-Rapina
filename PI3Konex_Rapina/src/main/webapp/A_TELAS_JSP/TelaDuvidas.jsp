@@ -7,6 +7,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,9 +30,19 @@
                     <img src="${pageContext.request.contextPath}/images/icons/logotipo.png" alt="logo-image" class="logo-icon" />
                 </div>
                 <div>
-                    <ul>
-                        <a href="${pageContext.request.contextPath}/Pre_Cadastro"><img src="${pageContext.request.contextPath}/images/icons/arrow-left.png" alt="arrow-left" /></a>
-                    </ul>
+                    <c:if test="${sessionScope.cli.tipo_user==2}">
+                        <ul>
+                            <a href="${pageContext.request.contextPath}/MenuCliente"><img src="${pageContext.request.contextPath}/images/icons/arrow-left.png" alt="arrow-left" /></a>
+                        </ul>    
+                    </c:if>
+                    <c:if test="${sessionScope.esta.tipo_user==3}">
+                        <ul>
+                            <a href="${pageContext.request.contextPath}/MenuEsta"><img src="${pageContext.request.contextPath}/images/icons/arrow-left.png" alt="arrow-left" /></a>
+                        </ul>
+                    </c:if>
+
+                    
+
                 </div>
             </section>
 
