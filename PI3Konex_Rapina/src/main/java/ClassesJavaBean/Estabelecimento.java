@@ -13,6 +13,7 @@ public class Estabelecimento {
     private String email;
     private String senha;
     public int capacidade;
+    private int lotacao;
     public String cep_estabelecimento;
     public String logadouro_estabelecimento;
     public String numero;
@@ -153,6 +154,16 @@ public class Estabelecimento {
     public void setCapacidade(int capacidade) {
         this.capacidade = capacidade;
     }
+
+    public int getLotacao() {
+        return lotacao;
+    }
+
+    public void setLotacao(int lotacao) {
+        this.lotacao = lotacao;
+    }
+    
+    
 
     public float getTaxa_cancelamento() {
         return taxa_cancelamento;

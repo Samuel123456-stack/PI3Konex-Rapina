@@ -73,8 +73,15 @@
                         
                         <button type="submit" style="background: transparent;float: left;" name="btn" value="selectRest">
                             <div class="cartao">
+                                <!--FAZER IF TESTE PARA SABER O NIVEL DA AGLOMERAÇÃO-->
                                 <div style="float: left;">
-                                    <img src="${pageContext.request.contextPath}/images/Ellipse 10.png" alt="">
+                                    <c:if test="${busca.lotacao <=  (busca.capacidade * 4)/10}">
+                                        <img src="${pageContext.request.contextPath}/images/Ellipse 10.png" alt="">
+                                    </c:if>
+                                        
+                                    <c:if test="${busca.lotacao >=  (busca.capacidade * 4)/10}">
+                                        <img src="${pageContext.request.contextPath}/images/Ellipse 10 (2).png" alt="">
+                                    </c:if>
                                 </div>
                                 
                                 <div style="float: left;margin-right: 79px;margin-left: 70px;">
@@ -138,8 +145,9 @@
                                     <path d="M3 7.27518C2.6054 7.98642 2.39888 8.78662 2.4 9.59998V12H2.12576e-07V9.59998C-0.000153974 9.23362 0.0835707 8.87208 0.244758 8.54307C0.405945 8.21407 0.640315 7.92633 0.929907 7.70192C1.2195 7.4775 1.55662 7.32237 1.91545 7.2484C2.27427 7.17443 2.64527 7.18359 3 7.27518Z" fill="black" fill-opacity="0.8"/>
                                     </svg>
                                 </div>
-                                <p>20 de <c:out value="${busca.capacidade}"/></p>
+                                <p><c:out value="${busca.lotacao}"/> de <c:out value="${busca.capacidade}"/></p>
 
+                                
 
                                 <div class="acessi">
                                     <c:if test="${busca.acessi_auditiva == 'Sim'}">

@@ -552,7 +552,7 @@ public class EstabelecimentoDAO {
                 esta.setEmail(rs.getString("email"));
                 esta.setCelular(rs.getString("celular"));
                 esta.setCapacidade(rs.getInt("capacidade"));
-                
+                esta.setLotacao(rs.getInt("lotacao"));
                 esta.setCnpj(rs.getString("cnpj"));
                 esta.setHorario_funcionamento(rs.getString("horario_de_fun"));
                 esta.setTaxa_cancelamento(rs.getFloat("taxa_cancelamento"));
