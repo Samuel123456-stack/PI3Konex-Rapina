@@ -67,25 +67,27 @@ public class EstabelecimentoDAO {
 
             //declarações do prepareStatement
             try (
-                     Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("insert into estabelecimento(nome_esta,cnpj,email,senha,capacidade,endereco,cep,numero,celular,horario_de_fun,disponibilidade,taxa_cancelamento,concordar,newslatter,def_aud,def_fis,tipo_usuario) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
+                     Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("insert into estabelecimento(nome_esta,cnpj,email,senha,capacidade,lotacao,endereco,cep,numero,celular,horario_de_fun,disponibilidade,taxa_cancelamento,concordar,newslatter,def_aud,def_fis,tipo_usuario) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
                 //passa os parametros
                 stmt.setString(1, dado.getNome_estabelecimento());
                 stmt.setString(2, dado.getCnpj());
                 stmt.setString(3, dado.getEmail());
                 stmt.setString(4, dado.getSenha());
                 stmt.setInt(5, dado.getCapacidade());
-                stmt.setString(6, dado.getLogadouro_estabelecimento());
-                stmt.setString(7, dado.getCep_estabelecimento());
-                stmt.setString(8, dado.getNumero());
-                stmt.setString(9, dado.getCelular());
-                stmt.setString(10, dado.getHorario_funcionamento());
-                stmt.setString(11, dado.getDisponibilidade());
-                stmt.setFloat(12, dado.getTaxa_cancelamento());
-                stmt.setString(13, dado.getConcorda());
-                stmt.setString(14, dado.getConcorda_newstalleter());
-                stmt.setString(15, dado.getAcessi_auditiva());
-                stmt.setString(16, dado.getAcessi_fisico());
-                stmt.setInt(17, dado.getTipo_user());
+                stmt.setInt(6, dado.getLotacao());
+                stmt.setString(7, dado.getLogadouro_estabelecimento());
+                stmt.setString(8, dado.getCep_estabelecimento());
+                stmt.setString(9, dado.getNumero());
+                stmt.setString(10, dado.getCelular());
+                stmt.setString(11, dado.getHorario_funcionamento());
+                stmt.setString(12, dado.getDisponibilidade());
+                stmt.setFloat(13, dado.getTaxa_cancelamento());
+                stmt.setString(14, dado.getConcorda());
+                stmt.setString(15, dado.getConcorda_newstalleter());
+                stmt.setString(16, dado.getAcessi_auditiva());
+                stmt.setString(17, dado.getAcessi_fisico());
+                stmt.setInt(18, dado.getTipo_user());
+                
                 //Executa a Query
                 cadastrado = stmt.executeUpdate();
                 //Pega o id inserido no bd da tabela estabelecimento

@@ -217,7 +217,7 @@ public class ControlaCartao extends HttpServlet {
                 
                 response.sendRedirect(request.getContextPath() + "/LogEmail");
             } else if (tipoUsuario == 3) {//Redireciona para o MenuEsta
-                response.sendRedirect(request.getContextPath() + "/MenuEsta");
+                response.sendRedirect(request.getContextPath() + "/LogEmail");
             }
         }
     }

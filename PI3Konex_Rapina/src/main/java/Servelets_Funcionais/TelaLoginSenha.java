@@ -5,7 +5,6 @@
  */
 package Servelets_Funcionais;
 
-import ClassesDAO.ClienteDAO;
 import ClassesDAO.ContagemDAO;
 import ClassesDAO.DoacaoDAO;
 import ClassesDAO.EstabelecimentoDAO;

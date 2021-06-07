@@ -71,6 +71,7 @@ public class ControlaEsta extends HttpServlet {
         String defAud = request.getParameter("defAud");
         String defFis = request.getParameter("defFis");
         String disponibilidade = "Sim";
+        int lotacao = 0;
 
         //VAR AUXS
         int tipoUsuario = tipoEsta;
@@ -275,6 +276,7 @@ public class ControlaEsta extends HttpServlet {
         Estabelecimento esta = new Estabelecimento(nomeEst, cnpj, cep, endereco,
                 numeroStr, defAud, defFis, horario, capEst, taxaCancela, cel, email, senha,
                 concordar, concordarNews, disponibilidade, tipoUsuario);
+        esta.setLotacao(lotacao);
         
         //Objeto DAO estabelecimento
         EstabelecimentoDAO casEsta = new EstabelecimentoDAO();

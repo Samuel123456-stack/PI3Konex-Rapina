@@ -6,14 +6,11 @@
 package Servelets_Funcionais;
 
 import ClassesDAO.EstabelecimentoDAO;
-import ClassesDAO.PlanosDAO;
 import ClassesJavaBean.Estabelecimento;
-import ClassesJavaBean.Planos;
 import ClassesJavaBean.Reserva;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
