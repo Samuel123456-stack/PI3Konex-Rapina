@@ -152,12 +152,12 @@ public class TelaLoginSenha extends HttpServlet {
                 //Faz os carregamentos dos dados
                 ContagemDAO conta = new ContagemDAO();
                 try {
-                    nome = acesso.retornaNome(email);
                     int qtdSerra = conta.contaPlanoA();
                     int qtdRarpy = conta.contaPlanoB();
                     int qtdAcor = conta.contaPlanoC();
+                   
                     adm.setTipo_user(userTipo);
-                    sessaoUser.setAttribute("nomeADM", nome);
+
                     sessaoUser.setAttribute("dadosPlano", qtdSerra);
                     sessaoUser.setAttribute("dadosPlanoB", qtdRarpy);
                     sessaoUser.setAttribute("dadosPlanoC", qtdAcor);
@@ -169,8 +169,11 @@ public class TelaLoginSenha extends HttpServlet {
                     }
 
                     //CARREGA DADOS INFORMATIVOS
+                    nome = acesso.retornaNome(email);
+                    sessaoUser.setAttribute("nomeADM", nome);
+                    
                     int qtdReservaAtivas = conta.contaReservas();
-                    sessaoUser.setAttribute("DadosReserva", qtdReservaAtivas);
+                    sessaoUser.setAttribute("dadosReserva", qtdReservaAtivas);
 
                     int qtdDoacoes = conta.contaDoacoes();
                     sessaoUser.setAttribute("dadosDoacoes", qtdDoacoes);

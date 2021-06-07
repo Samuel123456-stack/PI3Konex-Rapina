@@ -30,7 +30,7 @@ public class EstabelecimentoDAO {
     ArrayList<Reserva> consRes = new ArrayList<>();
     ArrayList<Pagamento_mensalidade> listaMensal = new ArrayList<>();
     ArrayList<Doacao> listaDoa = new ArrayList<>();
-    
+
     public EstabelecimentoDAO() {
 
     }
@@ -67,8 +67,7 @@ public class EstabelecimentoDAO {
 
             //declarações do prepareStatement
             try (
-                    Connection conn = conexao.obterConexaoBD();
-                    PreparedStatement stmt = conn.prepareStatement("insert into estabelecimento(nome_esta,cnpj,email,senha,capacidade,endereco,cep,numero,celular,horario_de_fun,disponibilidade,taxa_cancelamento,concordar,newslatter,def_aud,def_fis,tipo_usuario) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
+                     Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("insert into estabelecimento(nome_esta,cnpj,email,senha,capacidade,endereco,cep,numero,celular,horario_de_fun,disponibilidade,taxa_cancelamento,concordar,newslatter,def_aud,def_fis,tipo_usuario) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
                 //passa os parametros
                 stmt.setString(1, dado.getNome_estabelecimento());
                 stmt.setString(2, dado.getCnpj());
@@ -105,13 +104,13 @@ public class EstabelecimentoDAO {
         }
         return cadastrado;
     }
+
     public void atualiazaStatus(String st, int id) throws SQLException {
-        
+
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
         try (
-                Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("update estabelecimento set esta_status=? where id_esta=?");) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update estabelecimento set esta_status=? where id_esta=?");) {
             //passa os parametros
             stmt.setString(1, st);
             stmt.setInt(2, id);
@@ -121,6 +120,7 @@ public class EstabelecimentoDAO {
             System.out.println(e);
         }
     }
+
     public int atualiazaEst(Estabelecimento dado) throws SQLException {
         //Atualiza o Estabelecimento 
         //Elementos para a conexão e verificação
@@ -129,8 +129,7 @@ public class EstabelecimentoDAO {
         int atualiza = 0;
         //declarações do prepareStatement
         try (
-                Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("update estabelecimento set nome_esta=?,email=?, senha=?, capacidade=?, endereco=?, cep=?, numero=?, celular=?, horario_de_fun=?,taxa_cancelamento=?,concordar=?,def_aud=?, def_fis=? where id_esta=?");) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update estabelecimento set nome_esta=?,email=?, senha=?, capacidade=?, endereco=?, cep=?, numero=?, celular=?, horario_de_fun=?,taxa_cancelamento=?,concordar=?,def_aud=?, def_fis=? where id_esta=?");) {
             //passa os parametros
             stmt.setString(1, dado.getNome_estabelecimento());
             stmt.setString(2, dado.getEmail());
@@ -163,9 +162,8 @@ public class EstabelecimentoDAO {
 
         //declarações do preparedStatement
         try (
-                Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("delete from "
-                        + "estabelecimento where id_esta= ?");) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("delete from "
+                + "estabelecimento where id_esta= ?");) {
             //Executa a Query
             stmt.setInt(1, valor);
             stmt.executeUpdate();
@@ -256,9 +254,8 @@ public class EstabelecimentoDAO {
         Estabelecimento esta = new Estabelecimento();
         int a = 0;
         try (
-                Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("insert into cartao(num_cartao,validade"
-                        + ",cvv,titular) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("insert into cartao(num_cartao,validade"
+                + ",cvv,titular) values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
 
             //passa os parametros do cartao
             stmt.setString(1, dadoCartao.getNum_cartao());
@@ -292,8 +289,7 @@ public class EstabelecimentoDAO {
         ConexaoJDBC conexao = new ConexaoJDBC();
         String sql = "update estabelecimento set id_cartao= (?) where id_esta= (?)";
         try (
-                Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt2 = conn.prepareStatement(sql)) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt2 = conn.prepareStatement(sql)) {
 
             //Setando Parametros
             stmt2.setInt(1, dado.getId_card());
@@ -309,9 +305,8 @@ public class EstabelecimentoDAO {
         //var verificador
         //declarações do preparedStatement
         try (
-                Connection conn = conexao.obterConexaoBD();
-                PreparedStatement stmt = conn.prepareStatement("update cartao "
-                        + "set num_cartao= ?, validade= ?, cvv= ?, titular= ? where id_cartao= ?");) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update cartao "
+                + "set num_cartao= ?, validade= ?, cvv= ?, titular= ? where id_cartao= ?");) {
 
             //Executa a Query
             stmt.setString(1, dado.getNum_cartao());
@@ -420,6 +415,7 @@ public class EstabelecimentoDAO {
         }
         return lista;
     }
+
     /*Menu Esta*/
     public List<Reserva> listarDadosRes(int id) throws SQLException {
         //Lista os Estabelecimento
@@ -447,7 +443,7 @@ public class EstabelecimentoDAO {
                 res.setReserva_status(rs.getString("reserva_status"));
                 //endereco
                 res.setNome_reservado(rs.getString("nome"));
-               
+
                 listaRes.add(res);
             }
 
@@ -456,22 +452,23 @@ public class EstabelecimentoDAO {
         }
         return listaRes;
     }
-        public List<Reserva> consultaRes(int id) throws SQLException {
+
+    public List<Reserva> consultaRes(int num, int idEsta) throws SQLException {
         //Lista os Estabelecimento
         ConexaoJDBC conexao = new ConexaoJDBC();
         try {
             Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("select data_reserva,hora_reserva,reserva_status from reserva where num_reserva=?");
-            stmt.setInt(1, id);
+            PreparedStatement stmt = conn.prepareStatement("select data_reserva,hora_reserva,reserva_status from reserva where num_reserva=? and id_esta=?");
+            stmt.setInt(1, num);
+            stmt.setInt(2, idEsta);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Reserva conRes = new Reserva();
 
-
                 conRes.setData_reservada(rs.getString("data_reserva"));
                 conRes.setHorario_reservado(rs.getString("hora_reserva"));
                 conRes.setReserva_status(rs.getString("reserva_status"));
-                
+
                 consRes.add(conRes);
             }
 
@@ -480,6 +477,7 @@ public class EstabelecimentoDAO {
         }
         return consRes;
     }
+
     public List<Doacao> listaDadosDoa(int id) throws SQLException {
         //Lista os Estabelecimento
         ConexaoJDBC conexao = new ConexaoJDBC();
@@ -495,7 +493,7 @@ public class EstabelecimentoDAO {
                 doa.setValor(rs.getFloat("valor"));
                 //Nome
                 doa.setNome(rs.getString("nome"));
-               
+
                 listaDoa.add(doa);
             }
 
@@ -504,6 +502,7 @@ public class EstabelecimentoDAO {
         }
         return listaDoa;
     }
+
     public List<Pagamento_mensalidade> listaPagMensal(int id) throws SQLException {
         //Lista os Estabelecimento
         ConexaoJDBC conexao = new ConexaoJDBC();
@@ -519,8 +518,7 @@ public class EstabelecimentoDAO {
                 pm.setData_cobranca(rs.getString("data_cobranca"));
                 //Horario de Reserva
                 pm.setValor(rs.getFloat("valor"));
-               
-               
+
                 listaMensal.add(pm);
             }
 
@@ -529,19 +527,19 @@ public class EstabelecimentoDAO {
         }
         return listaMensal;
     }
-    
-    public List<Estabelecimento> retornaRestCep( String cep ) throws SQLException {
+
+    public List<Estabelecimento> retornaRestCep(String cep) throws SQLException {
         //Lista os Estabelecimento
         ConexaoJDBC conexao = new ConexaoJDBC();
         try {
             Connection conn = conexao.obterConexaoBD();
             PreparedStatement stmt = conn.prepareStatement("select*from estabelecimento where cep= ? order by id_planos");
             stmt.setString(1, cep);
-            
+
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Estabelecimento esta = new Estabelecimento();
-                
+
                 esta.setCep_estabelecimento(rs.getString("cep"));
                 esta.setId_estabelecimento(rs.getInt("id_esta"));
                 esta.setNome_estabelecimento(rs.getString("nome_esta"));
@@ -557,8 +555,7 @@ public class EstabelecimentoDAO {
                 esta.setHorario_funcionamento(rs.getString("horario_de_fun"));
                 esta.setTaxa_cancelamento(rs.getFloat("taxa_cancelamento"));
                 esta.setId_planos(rs.getInt("id_planos"));
-                
-                
+
                 lista.add(esta);
             }
 
@@ -566,5 +563,5 @@ public class EstabelecimentoDAO {
             System.out.println(erro);
         }
         return lista;
-    }        
+    }
 }

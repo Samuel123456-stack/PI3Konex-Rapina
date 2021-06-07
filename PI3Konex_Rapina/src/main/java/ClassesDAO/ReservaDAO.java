@@ -20,17 +20,18 @@ import java.util.List;
  * @author gusta
  */
 public class ReservaDAO {
-    
+
     ArrayList<Reserva> lista = new ArrayList<>();
 
-    public int ConsultaReserva(int dado) {
+    public int ConsultaReserva(int dado, int idEsta) {
         //Consulta se o CPF é igual
         ConexaoJDBC conexao = new ConexaoJDBC();
         int verifica = 0;
         try {
             Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("Select*from reserva where num_reserva = ? and reserva_status='Ativa'" );
+            PreparedStatement stmt = conn.prepareStatement("Select*from reserva where num_reserva = ? and id_esta=?");
             stmt.setInt(1, dado);
+            stmt.setInt(2, idEsta);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 verifica = 1;
@@ -42,15 +43,68 @@ public class ReservaDAO {
         return verifica;
     }
 
-    public void atualizaStatus(int valor) throws SQLException {
+    public void atualizaValida(int valor, int idEsta) throws SQLException {
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
 
         //declarações do preparedStatement
         try (
-                Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update reserva set reserva_status='Validada' where num_reserva=?");) {
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update reserva set reserva_status='Validada' where num_reserva=? and id_esta=? and reserva_status='Ativa'");) {
             //Executa a Query
             stmt.setInt(1, valor);
+            stmt.setInt(2, idEsta);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+    }
+
+    public void atualizaSaida(int valor, int idEsta) throws SQLException {
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        //declarações do preparedStatement
+        try (
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update reserva set reserva_status='Aplicada' where num_reserva=? and id_esta=? and reserva_status='Validada'");) {
+            //Executa a Query
+            stmt.setInt(1, valor);
+            stmt.setInt(2, idEsta);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+    }
+
+    public void entraEsta(int idEsta) throws SQLException {
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        //declarações do preparedStatement
+        try (
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update estabelecimento set lotacao=lotacao+1 where id_esta=?");) {
+            //Executa a Query
+            stmt.setInt(1, idEsta);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+    }
+
+    public void saiEsta(int idEsta) throws SQLException {
+        //Elementos para a conexão e verificação
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
+        //declarações do preparedStatement
+        try (
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("update estabelecimento set lotacao=lotacao-1 where id_esta=?");) {
+            //Executa a Query
+            stmt.setInt(1, idEsta);
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -89,7 +143,7 @@ public class ReservaDAO {
         }
         return lista;
     }
-    
+
     public List<Reserva> listarReservaCli(int id) throws SQLException {
         //Lista as Reservas
         ConexaoJDBC conexao = new ConexaoJDBC();
@@ -103,37 +157,37 @@ public class ReservaDAO {
 
                 //num reserva
                 res.setNum_reserva(rs.getInt("num_reserva"));
-                
+
                 //qtd de acompanhates
                 res.setQtd_acompanhantes(rs.getInt("quant_pessoas"));
-                
+
                 //id do estabelecimento
                 res.setId_estabelecimento(rs.getInt("id_esta"));
-                
+
                 //data reservada
                 res.setData_reservada(rs.getString("data_reserva"));
-                
+
                 //horario reservado
                 res.setHorario_reservado(rs.getString("hora_reserva"));
-                
+
                 //nome do estabelecimento
                 res.setNome_Restaurante(rs.getString("nome_esta"));
-                
+
                 //endereço
                 res.setEndereco(rs.getString("nome_esta"));
-                
+
                 //cep
                 res.setCep(rs.getString("cep"));
-                
+
                 //numero
                 res.setNumero(rs.getInt("numero"));
-                
+
                 //celular estabelecimento
                 res.setContato_Rest(rs.getString("celular"));
-                
+
                 //valor da taxa
                 res.setValor_taxa(rs.getFloat("taxa_cancelamento"));
-                
+
                 lista.add(res);
             }
 
@@ -142,15 +196,15 @@ public class ReservaDAO {
         }
         return lista;
     }
+
     public void cancelaReserva(int valor) throws SQLException {
         //Elementos para a conexão e verificação
         ConexaoJDBC conexao = new ConexaoJDBC();
 
         //declarações do preparedStatement
         try (
-            Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("UPDATE reserva SET reserva_status = 'Cancelada' WHERE num_reserva =?");) {
-            
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("UPDATE reserva SET reserva_status = 'Cancelada' WHERE num_reserva =?");) {
+
             //Executa a Query
             stmt.setInt(1, valor);
             stmt.executeUpdate();
@@ -184,16 +238,15 @@ public class ReservaDAO {
         }
         return altera;
     }
-    
-    public int criaReserva(Reserva dados){
+
+    public int criaReserva(Reserva dados) {
         int cria = 0;
-        ConexaoJDBC conexao = new ConexaoJDBC();    
-            
+        ConexaoJDBC conexao = new ConexaoJDBC();
+
         //declarações do preparedStatement
         try (
-            Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("insert into reserva (quant_pessoas, data_criacao, reserva_status, data_reserva, hora_reserva, id_usuario, id_esta) value (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
-            
+                 Connection conn = conexao.obterConexaoBD();  PreparedStatement stmt = conn.prepareStatement("insert into reserva (quant_pessoas, data_criacao, reserva_status, data_reserva, hora_reserva, id_usuario, id_esta) value (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);) {
+
             //Executa a Query
             stmt.setInt(1, dados.getQtd_acompanhantes());
             stmt.setString(2, dados.getData_criada());
@@ -202,13 +255,13 @@ public class ReservaDAO {
             stmt.setString(5, dados.getHorario_reservado());
             stmt.setInt(6, dados.getId_cliente());
             stmt.setInt(7, dados.getId_estabelecimento());
-            
+
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
-                    int numReserva = 0;
-            if(rs.next()){
-                numReserva= rs.getInt(1);
-                
+            int numReserva = 0;
+            if (rs.next()) {
+                numReserva = rs.getInt(1);
+
             }
             dados.setNum_reserva(numReserva);
             cria = 1;
@@ -216,8 +269,8 @@ public class ReservaDAO {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        
+
         return cria;
     }
-    
+
 }

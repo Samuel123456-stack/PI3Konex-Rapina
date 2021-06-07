@@ -7,6 +7,7 @@ package Servelets_Funcionais;
 
 import ClassesDAO.EstabelecimentoDAO;
 import ClassesDAO.PlanosDAO;
+import ClassesJavaBean.Estabelecimento;
 import ClassesJavaBean.Planos;
 import ClassesJavaBean.Reserva;
 import java.io.IOException;
@@ -22,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,7 +38,16 @@ public class TelaMenuEsta extends HttpServlet {
         //boas praticas
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        
+        //var que serão usadas para a sessao
+        Estabelecimento esta =new Estabelecimento();
+        int idEsta=0;
 
+        HttpSession session = request.getSession();
+        if(session.getAttribute("esta")!=null){
+            esta = (Estabelecimento) session.getAttribute("esta");
+            idEsta = esta.getId_estabelecimento();
+        }
         //Pegar o parametro
         String idStr = request.getParameter("idRes");
         String botao = request.getParameter("btn");
@@ -70,7 +81,7 @@ public class TelaMenuEsta extends HttpServlet {
                     List<Reserva> dadosRes;
 
                     try {
-                        dadosRes = estaDAO.consultaRes(codReserva);
+                        dadosRes = estaDAO.consultaRes(codReserva,idEsta);
                         request.setAttribute("consRes", dadosRes);
                         RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/MenuEsta.jsp");
                         dispatcher.forward(request, response);

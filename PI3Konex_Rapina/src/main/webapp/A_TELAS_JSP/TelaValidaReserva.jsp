@@ -33,6 +33,7 @@
             <form action="${pageContext.request.contextPath}/ValidaReserva" method="get">
                 <input type="text" placeholder="Digite o código da reserva" name="numReserva">
                 <button name="btn" value="confirmaReserva" >Validar reserva</button>
+                <button name="btn" value="registraSaida" >Registrar Saida</button>
             </form>
             </div> 
             <c:forEach var="a" items="${lista}">
