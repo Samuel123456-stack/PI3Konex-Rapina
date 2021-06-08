@@ -45,19 +45,19 @@ public class FiltroLogin implements Filter {
             //Se não estiver logado redireciona para a tela de Email
             serveletResponse.sendRedirect(serveletRequest.getContextPath() + "/LogEmail");
             return;
-        }else{
-        //Se ele tiver logado redireciona para a respectiva tela de cada um
-        Login login = (Login) session.getAttribute("dadosAcesso");
-        if (verificaLogin(login, serveletRequest, serveletResponse)) {
-            //Segue o fluxo
-            chain.doFilter(request, response);
         } else {
-            //Logica de Erro = Tela de Erro
-            serveletResponse.sendRedirect(serveletRequest.getContextPath() + "/");
+            //Se ele tiver logado redireciona para a respectiva tela de cada um
+            Login login = (Login) session.getAttribute("dadosAcesso");
+            if (verificaLogin(login, serveletRequest, serveletResponse)) {
+                //Segue o fluxo
+                chain.doFilter(request, response);
+            } else {
+                //Logica de Erro = Tela de Erro
+                serveletResponse.sendRedirect(serveletRequest.getContextPath() + "/CriaTelaErro404");
+            }
+
         }
 
-    }
-        
     }
 
     private boolean verificaLogin(Login login, HttpServletRequest serveletRequest, HttpServletResponse serveletResponse) {
