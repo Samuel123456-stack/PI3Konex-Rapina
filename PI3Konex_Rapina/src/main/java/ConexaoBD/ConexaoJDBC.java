@@ -20,7 +20,7 @@ public class ConexaoJDBC {
         Alteração 2: nome do user trocado para tads, referente a uma questão do Apache*/
         Connection conexao = DriverManager.getConnection("jdbc:mysql://local"
                 + "host:3306/rapina?useUnicode=yes&"
-                + "characterEncoding=UTF-8&useTimezone=America/Sao_Paulo", "senac", "tads");
+                + "characterEncoding=UTF-8&useTimezone=America/Sao_Paulo", "tads", "senac");
         return conexao;
 
     }

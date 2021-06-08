@@ -58,7 +58,6 @@ public class TelaMenuCliente extends HttpServlet {
             } else if (botao.equals("sub exclusao")) {
                 response.sendRedirect(request.getContextPath() + "/TelaSolicitaExclusao");//Redireciona para a Solicita Exclusão
             } else if (botao.equals("envia doacao")) {
-                id = 2;
                 FavoritoDAO favDao = new FavoritoDAO();
                 Favoritos fav = new Favoritos();
                 fav.setId_cliente(id);
