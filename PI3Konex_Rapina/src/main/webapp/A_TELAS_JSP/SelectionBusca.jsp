@@ -69,7 +69,7 @@
                         <path d="M3.66667 8.89197C3.18438 9.76126 2.93196 10.7393 2.93333 11.7334V14.6667H2.59815e-07V11.7334C-0.000188191 11.2856 0.102142 10.8437 0.299148 10.4416C0.496155 10.0395 0.782607 9.68782 1.13655 9.41354C1.4905 9.13925 1.90254 8.94964 2.3411 8.85923C2.77966 8.76883 3.2331 8.78003 3.66667 8.89197Z" fill="#4EBAB5"/>
                         </svg>
 
-                        <c:out value="${sessionScope.lotacao}" /> de <c:out value="${sessionScope.capac}"/></p>
+                        <c:out value="${sessionScope.lotacao}"/> de <c:out value="${sessionScope.capac}"/></p>
                 </div>
                 <div class="nota">
                     <p>
@@ -87,7 +87,7 @@
                 <form action="${pageContext.request.contextPath}/Reservando" method="get">
                     <div class="number-input" style="width: 45px; border: 2px solid;">
                         <!--Acompanhantes-->
-                        <input class="quantity" min="0" name="acompanhantes" value="1" type="number" style="border:none; ">
+                        <input class="quantity" min="0" name="acompanhantes" value="1" type="number" style="border:none;">
                     </div>
                     <!--DATA-->
                     <input class="data" style="width: 150px; margin-left: 20px;" type="date" name="dataReserva">

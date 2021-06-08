@@ -43,11 +43,12 @@ public class ListaRestaurantesBuscados extends HttpServlet {
         String email = request.getParameter("lineEmail"); 
         String cel = request.getParameter("lineCel");
         String cap = request.getParameter("lineCap");
-        
+        String lot = request.getParameter("lineLota");
         //parametros a serem convertidos
         int capa=0;
         int num=0;
         int idEstab=0;
+        int lota=0;
         
         //verifica os parametros
         if(id_estab != null && id_estab.trim().length() > 0){
@@ -60,6 +61,10 @@ public class ListaRestaurantesBuscados extends HttpServlet {
             //proxima verificação
             if(cap != null && cap.trim().length() > 0){
                capa=Integer.parseInt(cap);
+            }
+            //proxima verificação
+            if(lot != null && lot.trim().length() > 0){
+               lota=Integer.parseInt(lot);
             }
             
             if (botao.equals("selectRest")) {
@@ -74,6 +79,7 @@ public class ListaRestaurantesBuscados extends HttpServlet {
                 sessao.setAttribute("defC", defCad);
                 sessao.setAttribute("celu", cel);
                 sessao.setAttribute("email", email);
+                sessao.setAttribute("lotacao", lota);
                 
                 //despacha a tela de seleção 
                 response.sendRedirect(request.getContextPath() + "/SelectionBusca");

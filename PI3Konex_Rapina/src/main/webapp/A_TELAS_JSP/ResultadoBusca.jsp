@@ -70,7 +70,7 @@
                         <input type="hidden" name="lineEmail" value="${busca.email}">
                         <input type="hidden" name="lineCel" value="${busca.celular}">
                         <input type="hidden" name="lineCap" value="${busca.capacidade}">
-                        
+                        <input type="hidden" name="lineLota" value="${busca.lotacao}">
                         <button type="submit" style="background: transparent;float: left;" name="btn" value="selectRest">
                             <div class="cartao">
                                 <!--FAZER IF TESTE PARA SABER O NIVEL DA AGLOMERAÇÃO-->
@@ -84,7 +84,7 @@
                                     </c:if>
                                 </div>
                                 
-                                <div style="float: left;margin-right: 79px;margin-left: 70px;">
+                                <div style="float: left;margin-right: 79px;margin-left: 74px;">
                                     <c:if test="${busca.id_estabelecimento == 1}">
                                        <img src="${pageContext.request.contextPath}/images/Ellipse 59.png" alt=""> 
                                     </c:if>
@@ -120,12 +120,7 @@
                                         Este estabelecimento está localizado na Rua:<c:out value="${busca.logadouro_estabelecimento}"/>-Nº <c:out value="${busca.numero}"/>
                                     </div>
                                 </div>
-                                
-                                <circle cx="2.21418" cy="13.2143" r="1.78572" transform="rotate(-90 2.21418 13.2143)" fill="#C4C4C4"/>
-                                <circle cx="2.21418" cy="7.49993" r="1.78572" transform="rotate(-90 2.21418 7.49993)" fill="#C4C4C4"/>
-                                <circle cx="2.21418" cy="1.78582" r="1.78572" transform="rotate(-90 2.21418 1.78582)" fill="#C4C4C4"/>
-                                </svg>                            
-
+                                   
                                 <h1><c:out value="${busca.nome_estabelecimento}"/></h1>
                                 <div id="estrela">
                                     <svg width="16" height="15" viewBox="0 0 16 15" fill="#FFD600" xmlns="http://www.w3.org/2000/svg">
@@ -147,8 +142,6 @@
                                 </div>
                                 <p><c:out value="${busca.lotacao}"/> de <c:out value="${busca.capacidade}"/></p>
 
-                                
-
                                 <div class="acessi">
                                     <c:if test="${busca.acessi_auditiva == 'Sim'}">
                                         <img src="${pageContext.request.contextPath}/images/cadeiraOn.png" alt="">
@@ -164,6 +157,14 @@
                                         <img src="${pageContext.request.contextPath}/images/audOff.png" alt="">
                                     </c:if>
                                 </div>
+                                
+                                <div style="width: 300px; height: 300px; background: none; margin-top: -200px; margin-left: -40px;" id="passar_mouse2">
+                                    <div class="Reservar" id="mostrar2">
+                                        <p>Reservar</p>
+                                    </div>   
+                                </div>
+                                
+                               
                                 
                             </div>
                         </button>

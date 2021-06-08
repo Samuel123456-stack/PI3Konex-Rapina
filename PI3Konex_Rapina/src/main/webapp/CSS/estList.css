@@ -132,11 +132,27 @@ html{
     color: #D9D9D9;
 }
 
+#mostrar2{
+    display: none;
+}
+#passar_mouse:hover #mostrar{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: left;
+    color: #D9D9D9;
+}
+#passar_mouse2:hover #mostrar2{
+    display: block;
+    color: #D9D9D9;
+    color: #000;
+}
+
 .Reservar{
     width: 142px;
     height: 39px;
     padding-top: 7px;
-    margin: 0 auto;
+    margin: 254px auto 0 108px;
     background: #FFD600;
     border-radius: 100px;
     clear: both;
