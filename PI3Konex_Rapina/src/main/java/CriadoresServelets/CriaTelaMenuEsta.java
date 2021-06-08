@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Gabriel
  */
-@WebServlet(name = "CriaTelaMenuEsta", urlPatterns = {"/MenuEsta"})
+@WebServlet(name = "CriaTelaMenuEsta", urlPatterns = {"/segura/MenuEsta"})
 public class CriaTelaMenuEsta extends HttpServlet {
     
     @Override

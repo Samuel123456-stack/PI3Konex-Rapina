@@ -32,12 +32,12 @@
                 <div>
                     <c:if test="${sessionScope.cli.tipo_user==2}">
                         <ul>
-                            <a href="${pageContext.request.contextPath}/MenuCliente"><img src="${pageContext.request.contextPath}/images/icons/arrow-left.png" alt="arrow-left" /></a>
+                            <a href="${pageContext.request.contextPath}/segura/MenuCliente"><img src="${pageContext.request.contextPath}/images/icons/arrow-left.png" alt="arrow-left" /></a>
                         </ul>    
                     </c:if>
                     <c:if test="${sessionScope.esta.tipo_user==3}">
                         <ul>
-                            <a href="${pageContext.request.contextPath}/MenuEsta"><img src="${pageContext.request.contextPath}/images/icons/arrow-left.png" alt="arrow-left" /></a>
+                            <a href="${pageContext.request.contextPath}/segura/MenuEsta"><img src="${pageContext.request.contextPath}/images/icons/arrow-left.png" alt="arrow-left" /></a>
                         </ul>
                     </c:if>
 

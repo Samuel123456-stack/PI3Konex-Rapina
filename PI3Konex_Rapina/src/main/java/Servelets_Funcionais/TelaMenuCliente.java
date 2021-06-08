@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Gabriel
  */
-@WebServlet(name = "TelaMenuCliente", urlPatterns = {"/Menu"})
+@WebServlet(name = "TelaMenuCliente", urlPatterns = {"/segura/Menu"})
 public class TelaMenuCliente extends HttpServlet {
 
     @Override

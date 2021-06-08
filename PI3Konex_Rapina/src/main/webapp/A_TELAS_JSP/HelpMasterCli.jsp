@@ -26,7 +26,7 @@
                 <div class="form-content">
                     <div class="header">
                         <div class="arrow-left-icon">
-                            <a href="${pageContext.request.contextPath}/MenuCliente">
+                            <a href="${pageContext.request.contextPath}/segura/MenuCliente">
                                 <img src="${pageContext.request.contextPath}/images/icons/arrow-left.png" alt="arrow" />
                             </a>
                         </div>

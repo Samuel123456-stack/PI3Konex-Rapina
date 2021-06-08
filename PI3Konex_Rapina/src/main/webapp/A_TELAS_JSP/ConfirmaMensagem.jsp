@@ -27,7 +27,7 @@
                         <h3>
                             A mensagem foi enviada com sucesso!
                         </h3>
-                        <button name="btn"><a style="text-decoration: none;" href="${pageContext.request.contextPath}/MenuEsta">Voltar</a></button>
+                        <button name="btn"><a style="text-decoration: none;" href="${pageContext.request.contextPath}/segura/MenuEsta">Voltar</a></button>
                     </section>
                 </div>
             </div>

@@ -185,7 +185,7 @@ public class TelaLoginSenha extends HttpServlet {
                     
                     sessaoUser.setAttribute("adm",adm);
 
-                    response.sendRedirect(request.getContextPath() + "/MenuADM");
+                    response.sendRedirect(request.getContextPath() + "/segura/MenuADM");
 
                 } catch (SQLException ex) {
                     Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
@@ -293,7 +293,7 @@ public class TelaLoginSenha extends HttpServlet {
                         Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
-                    response.sendRedirect(request.getContextPath() + "/MenuCliente");
+                    response.sendRedirect(request.getContextPath() + "/segura/MenuCliente");
                 }
 
             } else if (userTipo == 3) {//Se o tipo de usuario for 3 é um Estabelecimento
@@ -351,7 +351,7 @@ public class TelaLoginSenha extends HttpServlet {
                     Logger.getLogger(TelaLoginSenha.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                response.sendRedirect(request.getContextPath() + "/MenuEsta");
+                response.sendRedirect(request.getContextPath() + "/segura/MenuEsta");
             }
         }
     }
