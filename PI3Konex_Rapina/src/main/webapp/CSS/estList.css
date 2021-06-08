@@ -132,4 +132,17 @@ html{
     color: #D9D9D9;
 }
 
-
+.Reservar{
+    width: 142px;
+    height: 39px;
+    padding-top: 7px;
+    margin: 0 auto;
+    background: #FFD600;
+    border-radius: 100px;
+    clear: both;
+}
+.Reservar p{
+    width: 142px;
+    text-align: center;
+    font-size: 20px;
+}
