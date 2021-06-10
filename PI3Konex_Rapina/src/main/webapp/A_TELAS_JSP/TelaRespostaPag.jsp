@@ -4,36 +4,56 @@
     Author     : gusta
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Recado Estabelecimento</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="HTML, CSS, JAVASCRIPT">
+        <meta name="description" content="Crowd Control">
+        <meta name="author" content="konex-group">
+
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/Message.css">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <form action="${pageContext.request.contextPath}/NotificaPagamento" method="get">
-            <p>Você deseja enviar a seguinte mensagem? <c:out value="${sessionScope.dadosPag.nomeUser}"/></p>
-            
-            <c:if test="${sessionScope.dadosPag.id_usuario!=null}">
-                <p><c:out value="${sessionScope.dadosPag.id_usuario}"/></p>
-            </c:if>
-            <c:if test="${sessionScope.dadosPag.id_estabelecimento!=null}">
-                <p><c:out value="${sessionScope.dadosPag.id_estabelecimento}"/></p>
-            </c:if>
-                
-            <p>Tipo de Usuário:<c:out value="${sessionScope.dadosPag.tipo_user}"/></p>
-            
-            <textarea name="msg">Caro, <c:out value="${sessionScope.dadosPag.nomeUser}"/>, consta em nosso sistema
-            um atraso referente a sua fatura no valor de: <c:out value="${sessionScope.dadosPag.valor_total}"/>
-            ,que se encontra vencida desde: <c:out value="${sessionScope.dadosPag.data_cobranca}"/>.
-            Ficamos no Aguardo da Regularização desta pendencia.
-            Atenciosamente Grato,
-            Rapina.
-            </textarea>
+        <div id="container-landing">
+            <div class="form-container">
+                <div class="form-content">
+                    <div class="header">
+                        <div class="arrow-left-icon">
+                            <a href="${pageContext.request.contextPath}/segura/MenuADM">
+                                <img src="${pageContext.request.contextPath}/images/icons/arrow-left.png" alt="arrow" />
+                            </a>
+                        </div>
+                        <div class="header-text">
+                            <h2>Recado</h2>
+                        </div>
+                    </div>
+                    <form action="${pageContext.request.contextPath}/NotificaPagamento" method="get">
+                        <div class="textarea-field">
+                            <article>
+                                <p>Caro, <c:out value="${sessionScope.dadosPag.nomeUser}"/>, consta em nosso sistema
+                                    um atraso referente a sua fatura no valor de: <c:out value="${sessionScope.dadosPag.valor_total}"/>
+                                    ,que se encontra vencida desde: <c:out value="${sessionScope.dadosPag.data_cobranca}"/>.
+                                    Ficamos no Aguardo da Regularização desta pendencia.
+                                    Atenciosamente Grato,
+                                    Rapina.
+                                </p>
+                                <input type="hidden" name="mensagem" value="Caro, <c:out value="${sessionScope.dadosPag.nomeUser}"/>, consta em nosso sistema um atraso referente a sua fatura no valor de: <c:out value="${sessionScope.dadosPag.valor_total}"/> ,que se encontra vencida desde: <c:out value="${sessionScope.dadosPag.data_cobranca}"/>. Ficamos no Aguardo da Regularização desta pendencia. Atenciosamente Grato, Rapina."  >
+                            </article>
+                        </div>
 
-            <input type="submit">
-        </form>
+                        <button name="btn" value="enviaNotiEsta">
+                            Envia
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

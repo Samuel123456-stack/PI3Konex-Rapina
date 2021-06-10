@@ -6,6 +6,7 @@
 package Servelets_Funcionais;
 
 import ClassesDAO.NotificaDAO;
+import ClassesJavaBean.Login;
 import ClassesJavaBean.Notification;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,6 +34,14 @@ public class ListaNotifica extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        
+        Login log = new Login();
+        int tipoUser=0;
+        HttpSession session = request.getSession();
+        if(session.getAttribute("dadosAcesso")!=null){
+            log = (Login) session.getAttribute("dadosAcesso");
+            tipoUser = log.getTipo_usuario();
+        }
 
         String botao = request.getParameter("btn");
         String identifica = request.getParameter("id");
@@ -68,7 +78,7 @@ public class ListaNotifica extends HttpServlet {
             identifica = null;
         }
         //Lista os Cli
-        if (valor == 2) {
+        if (valor == 2 && tipoUser==1) {
             try {
                 lista = notiDao.listarCli();
                 request.setAttribute("listaNoti", lista);
@@ -80,7 +90,7 @@ public class ListaNotifica extends HttpServlet {
                 Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
             }
             //Lista os Esta
-        } else if (valor == 3) {
+        } else if (valor == 3 && tipoUser==1) {
             try {
                 lista = notiDao.listarEsta();
                 request.setAttribute("listaNoti", lista);
@@ -92,40 +102,31 @@ public class ListaNotifica extends HttpServlet {
                 Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
             }
             valor = 0;
-        }
-        //Procura ID Mensagem do Cli
-        if (valorID > 0) {
-            try {
-                lista = notiDao.listarCliPorID(valorID);
+        }else if(valor>0 && tipoUser==2){
+                try {
+                lista = notiDao.listarCliPorID(valor);
                 request.setAttribute("listaNoti", lista);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaNotificacoes.jsp");
                 dispatcher.forward(request, response);
-            } catch (SQLException ex) {
-                Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            //procura ID do Esta
-        } else if (valor == 3 && valorID > 0) {
-            try {
-                lista = notiDao.listarEstaPorID(valorID);
-                request.setAttribute("listaNoti", lista);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaNotificacoes.jsp");
-                dispatcher.forward(request, response);
-            } catch (SQLException ex) {
-                Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        /*
-        if (action.equalsIgnoreCase("deletar")) {
-            int idNoti = Integer.parseInt(request.getParameter("id_notification"));
-            try {
-                notiDao.removeNoti(idNoti);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaNotificacoes.jsp");
-                dispatcher.forward(request, response);
+                return;
 
             } catch (SQLException ex) {
                 Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }*/
+            
+        }else if(valor>0 && tipoUser==3){
+            try {
+                lista = notiDao.listarEstaPorID(valor);
+                request.setAttribute("listaNoti", lista);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaNotificacoes.jsp");
+                dispatcher.forward(request, response);
+                return;
+
+            } catch (SQLException ex) {
+                Logger.getLogger(ListaNotifica.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
 
         if (temErro) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/TelaNotificacoes.jsp");

@@ -44,7 +44,7 @@
                         <input type="hidden" name="dataReserva" value="${sessionScope.dataRes}">
                         <input type="hidden" name="horaReserva" value="${sessionScope.horaRes}">
                         <input type="hidden" name="Acomp" value="${sessionScope.qtdAcom}">
-                        <button type="submit" name="btn" value="cadastrar" style="margin-left: -15px ">Cadastrar</button>
+                        <button type="submit" name="btn" value="cadastrar" style="margin-left: 0px ">Cadastrar</button>
                     </form>
                 </footer>
             </div>

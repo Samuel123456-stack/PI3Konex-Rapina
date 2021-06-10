@@ -30,7 +30,7 @@
                 <footer class="option">
                     <form action="${pageContext.request.contextPath}/CancelarReserva" method="get">
                         <input type="hidden" name="lineIdReserva" value="${sessionScope.numReserva}">
-                        <button type="submit" name="btn" value="Voltar">Voltar</button>
+                        <button type="submit" name="btn" value="Voltar">Voltar &nbsp;</button>
                         <button type="submit" name="btn" value="Confirmar">Confirmar</button>
                     </form>
                 </footer>

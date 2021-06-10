@@ -43,7 +43,7 @@
                                     Este Pagamento ja foi Debitado, porque estou sendo cobrado?<br><br>
                                     Atenciosamente<br><br>
                                 </p>
-                                <input type="hidden" name="mensagem" value="Caro,Rapina Master, consta em meu sistema um atraso referente a fatura,no valor de: <c:out value="${sessionScope.dadosPagMes.valor}"/> Este Pagamento ja foi Debitado, porque estou sendo cobrado <c:out value="${sessionScope.dadosPagMes.nome}"/> Atenciosamente. />">
+                                <input type="hidden" name="mensagem" value="Caro,Rapina Master, consta em meu sistema um atraso referente a fatura,no valor de: <c:out value="${sessionScope.dadosPagMes.valor}"/> Este Pagamento ja foi Debitado, porque estou sendo cobrado <c:out value="${sessionScope.dadosPagMes.nome}"/> Atenciosamente.">
                                     
                             </article>
                         </div>

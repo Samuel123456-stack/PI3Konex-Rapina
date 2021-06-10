@@ -44,23 +44,32 @@
                 <form action="${pageContext.request.contextPath}/FazListagem" method="get">
                     <!--BUSCA MENSAGEM  TIPO DE USUARIO-->
                     <div style="float: left; margin-right: 100px;">
-                        <h3>Busca Mensagem por tipo de usuário</h3><br><br>
-                        <input type="text" name="btn" placeholder="Qual é o tipo de usuário" class="inputR">
-                        <button type="submit" class="btn1">Mostrar</button>
+                        <c:if test="${sessionScope.adm.tipo_user==1}">
+                            <h3>Busca Mensagem por tipo de usuário</h3><br><br>
+                            <input type="text" name="btn" placeholder="Qual é o tipo de usuário" class="inputR">
+                            <button type="submit" class="btn1">Mostrar</button>
+                        </c:if>
+                        <c:if test="${sessionScope.cli.tipo_user==2}">
+                            <h3>Busca Mensagem por ID de Cliente</h3><br><br>
+                            <input type="text" name="btn" placeholder="Qual é o ID do Cliente" class="inputR">
+                            <button type="submit" class="btn1">Mostrar</button>
+                        </c:if>
+                        <c:if test="${sessionScope.esta.tipo_user==3}">
+                            <h3>Busca Mensagem por ID de Estabelecimento</h3><br><br>
+                            <input type="text" name="btn" placeholder="Qual é o ID de Estabelecimento" class="inputR">
+                            <button type="submit" class="btn1">Mostrar</button>
+                        </c:if>
                     </div>
-                    <div>
-                        <h3>Selecionar Mensagem por ID</h3><br><br>
-                        <input type="text" name="id" placeholder="Digite o id da notificação" class="inputR">
-                        <button type="submit" class="btn2">Identificar</button><br><br>
-                    </div>
-                    <div style="margin-top: 50px;">
-                        <h3>Cliente identificado: </h3><br><br>
-                        <button type="submit" class="btn3"><a href="${pageContext.request.contextPath}/CriaTelaResposta" style="color:white; text-decoration: none;">Responder Mensagem</a></button>
-                    </div>
+                    <c:if test="${sessionScope.adm.tipo_user==1}">
+                        <div style="margin-top: 50px;">
+                            <h3>Cliente identificado: </h3><br><br>
+                            <button type="submit" class="btn3"><a href="${pageContext.request.contextPath}/CriaTelaResposta" style="color:white; text-decoration: none;">Responder Mensagem</a></button>
+                        </div>
+                    </c:if>
                 </form>
             </div>    
             <br><br><br><br>
-            <div class="tabela">
+            <div class="tabela invisible-scrollbar">
                 <table>
                     <thead>
                         <tr>

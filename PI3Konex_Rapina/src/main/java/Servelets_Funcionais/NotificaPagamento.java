@@ -37,7 +37,7 @@ public class NotificaPagamento extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         
         //parametro
-        String msgText = request.getParameter("msg");
+        String msgText = request.getParameter("mensagem");
         
         //sessao
         HttpSession sessao = request.getSession();
@@ -81,7 +81,7 @@ public class NotificaPagamento extends HttpServlet {
             //criamos a notificação
             cobranca.criaResposta(dadosNotifica);
             
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/SucessMsg.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/ConfirmaMensagem.jsp");
             dispatcher.forward(request, response);
         }else{
             String data = formatter.format(dataAtual);
@@ -94,7 +94,7 @@ public class NotificaPagamento extends HttpServlet {
             //criamos a notificação para o estabelecimento
             cobranca.criaRespostaEsta(dadosNotifica);
             
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/SucessMsg.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/ConfirmaMensagem.jsp");
             dispatcher.forward(request, response);
         }
         

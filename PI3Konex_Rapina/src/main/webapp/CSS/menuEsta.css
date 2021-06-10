@@ -398,12 +398,18 @@ body{
 .ativa{
     background-color: #49d983;
 }
-
-.desativada{
-    background-color: #ee7d14;
+.validada{
+    background-color: #4361EE;
+}
+.aplicada{
+    background-color: #EE7D14;
 }
 
-.ativa, .desativada{
+.desativada{
+    background-color: red;
+}
+
+.ativa, .desativada, .aplicada, .validada{
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -416,10 +422,17 @@ body{
 }
 
 .desativada2{
-    background-color: #ee7d14;
+    background-color: red;
 }
 
-.ativa2, .desativada2{
+.validada2{
+    background-color: #4361EE;
+}
+.aplicada2{
+    background-color: #EE7D14;
+}
+
+.ativa2, .desativada2, .aplicada2, .validada2{
     width: 20px;
     height: 20px;
     border-radius: 50%;

@@ -56,7 +56,11 @@ body{
     background: #FFF;
     box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.08);
     border-radius: 25px;
-    
+    overflow:auto;  
+}
+
+.invisible-scrollbar::-webkit-scrollbar{
+    display: none;
 }
 
 .tabela table{
@@ -75,7 +79,7 @@ body{
     height: 80px;
 }
 .tabela td{
-    background: rgba(196, 196, 196, 0.15);
+    background: none;
 }
 .selec{
     width: 142px;

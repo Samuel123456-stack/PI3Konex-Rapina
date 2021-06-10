@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,7 +28,15 @@
                         <h3>
                             A mensagem foi enviada com sucesso!
                         </h3>
-                        <button name="btn"><a style="text-decoration: none;" href="${pageContext.request.contextPath}/segura/MenuEsta">Voltar</a></button>
+                        <c:if test="${sessionScope.adm.tipo_user==1}">
+                            <button name="btn"><a style="text-decoration: none;" href="${pageContext.request.contextPath}/segura/MenuADM">Voltar</a></button>
+                        </c:if>
+                        <c:if test="${sessionScope.cli.tipo_user==2}">
+                            <button name="btn"><a style="text-decoration: none;" href="${pageContext.request.contextPath}/segura/MenuCliente">Voltar</a></button>
+                        </c:if>
+                        <c:if test="${sessionScope.esta.tipo_user==3}">
+                            <button name="btn"><a style="text-decoration: none;" href="${pageContext.request.contextPath}/segura/MenuEsta">Voltar</a></button>
+                        </c:if>
                     </section>
                 </div>
             </div>

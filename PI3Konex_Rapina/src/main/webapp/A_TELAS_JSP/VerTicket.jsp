@@ -1,11 +1,11 @@
 <%-- 
-    Document   : Ticket
-    Created on : 31 de mai de 2021, 13:18:51
-    Author     : Gabriel
+    Document   : VerTicket
+    Created on : 9 de jun de 2021, 17:18:04
+    Author     : gusta
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,15 +27,14 @@
             <main class="main-container" style="margin-top:200px;">
                 <div class="main-information">
                     <div class="code-reservation">
-                        <p>Reserva realizada com sucesso</p>
+                        <p>Sua Reserva</p>
                         <h2>Veja as informações</h2>
-                        <br>
-                        <p>Data Reservada:<c:out value="${sessionScope.dataRes}"/>   Horário Reservado:<c:out value="${sessionScope.horaRes}"/></p>
-                        <br>
-                        <c:forEach var="a" items="${sessionScope.dados}" >
-                            <p>Nome do restaurante: <c:out value="${a.nome_estabelecimento}"/></p>
-                            <p style="margin-top: 5px;">Endereço: <c:out value="${a.logadouro_estabelecimento}"/>,Nº <c:out value="${a.numero}"/></p>
-                        </c:forEach>
+                            <br>
+                            <p>Data Reservada:<c:out value="${sessionScope.dataRes}"/>   Horário Reservado:<c:out value="${sessionScope.horaRes}"/></p>
+                            <br>
+
+                            <p>Nome do restaurante: <c:out value="${sessionScope.estaRes}"/></p>
+                            <p style="margin-top: 5px;">Endereço: <c:out value="${sessionScope.endRes}"/>,Nº <c:out value="${sessionScope.numRes}"/></p>
                     </div>
 
                     <div class="code-image">
@@ -47,7 +46,7 @@
 
             <footer>
                 <button type="submit" >
-                    <a href="${pageContext.request.contextPath}/LogEmail" style="text-decoration: none; color: white;">
+                    <a href="${pageContext.request.contextPath}/segura/MenuCliente" style="text-decoration: none; color: white;">
                         <img src="${pageContext.request.contextPath}/images/icons/door-exit.png" alt="door-icon" />
                         <span>Sair</span>
                         <a/>

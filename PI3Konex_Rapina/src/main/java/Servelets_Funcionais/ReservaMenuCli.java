@@ -62,7 +62,12 @@ public class ReservaMenuCli extends HttpServlet {
         String idLine = request.getParameter("lineIdReserva");
         String taxa = request.getParameter("lineValorTaxa");
         String btn = request.getParameter("btn");
-
+        //Parametros para Ver
+        String nomeRes = request.getParameter("lineNomeRest");
+        String enderecoRes = request.getParameter("lineEndereco");
+        String numResStr = request.getParameter("lineNumero");
+        String dataRes = request.getParameter("lineDataRes");
+        String horaRes = request.getParameter("lineHoraRes");
         //verifica se o idLinha é diferente de null
         if (idLine != null && idLine.trim().length() > 0) {
             //prossegue com a jornada verificando qual botão foi acionado
@@ -91,7 +96,21 @@ public class ReservaMenuCli extends HttpServlet {
                 }
                 
             } else if (btn.equals("verTicket")) {
-                //despacha a sessaoUser e chama a tela
+                //converte var
+                int codReserva= Integer.parseInt(idLine);
+                int numRes = Integer.parseInt(numResStr);
+                
+                //puxa os dados
+                //seto os parametros
+                sessaoUser.setAttribute("codRes", codReserva); 
+                sessaoUser.setAttribute("horaRes", horaRes); 
+                sessaoUser.setAttribute("dataRes", dataRes); 
+                sessaoUser.setAttribute("estaRes", nomeRes); 
+                sessaoUser.setAttribute("endRes", enderecoRes); 
+                sessaoUser.setAttribute("numRes", numRes); 
+
+                //chama a tela
+                response.sendRedirect(request.getContextPath() + "/CriaTelaVerTicket");
             }
 
         }

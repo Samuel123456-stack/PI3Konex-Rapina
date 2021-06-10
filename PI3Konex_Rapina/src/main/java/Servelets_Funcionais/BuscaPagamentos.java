@@ -101,7 +101,7 @@ public class BuscaPagamentos extends HttpServlet {
                         }
                         
                         //constroe a sessao
-                        response.sendRedirect(request.getContextPath() + "/MenuADM");
+                        response.sendRedirect(request.getContextPath() + "/segura/MenuADM");
                     }
                 }
             }

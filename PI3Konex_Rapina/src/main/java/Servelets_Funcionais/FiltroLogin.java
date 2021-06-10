@@ -22,8 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author gusta
  */
-//se a sessao for
-@WebFilter(filterName = "FiltroLogin", urlPatterns = "/segura/*", servletNames = "LogSenha")
+@WebFilter(filterName = "FiltroLogin", urlPatterns = "/segura/*", servletNames = "LoginEmail")
 public class FiltroLogin implements Filter {
 
     @Override

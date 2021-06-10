@@ -179,7 +179,7 @@ public class NotificaDAO {
         ConexaoJDBC conexao = new ConexaoJDBC();
         try {
             Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("select n.id_noti, n.id_usuario, n.mensagem, n.data_noti, l.nome from notificacao as n join login as l on n.id_usuario=l.id_usuario where id_noti=?");
+            PreparedStatement stmt = conn.prepareStatement("select n.id_noti, n.id_usuario, n.mensagem, n.data_noti, l.nome from notificacao as n join login as l on n.id_usuario=l.id_usuario where n.id_usuario=?");
             stmt.setInt(1, valor);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -203,7 +203,7 @@ public class NotificaDAO {
         ConexaoJDBC conexao = new ConexaoJDBC();
         try {
             Connection conn = conexao.obterConexaoBD();
-            PreparedStatement stmt = conn.prepareStatement("select n.id_noti, n.id_esta, n.mensagem, n.data_noti, l.nome from notificacao as n join login as l on n.id_esta=l.id_esta where id_noti=?");
+            PreparedStatement stmt = conn.prepareStatement("select n.id_noti, n.id_esta, n.mensagem, n.data_noti, l.nome from notificacao as n join login as l on n.id_esta=l.id_esta where n.id_esta=?");
             stmt.setInt(1, valor);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {

@@ -79,7 +79,7 @@ public class ClienteNotificaHelp extends HttpServlet {
         
         if(envia==1){
             //despacha a atela
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/SucessMsg.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/A_TELAS_JSP/ConfirmaMensagem.jsp");
             dispatcher.forward(request, response);
         }
     }

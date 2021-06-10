@@ -174,7 +174,7 @@ public class ReservaDAO {
                 res.setNome_Restaurante(rs.getString("nome_esta"));
 
                 //endereço
-                res.setEndereco(rs.getString("nome_esta"));
+                res.setEndereco(rs.getString("endereco"));
 
                 //cep
                 res.setCep(rs.getString("cep"));
