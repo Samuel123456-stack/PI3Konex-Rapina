@@ -45,11 +45,11 @@ public class TerminaSession extends HttpServlet {
         if (botao != null) {
             if (botao.equals("cancela")) {//Se o botao clicado for o Cancelado, pego o ID e verifica
                 if (tipoUser == 1) { //Redireciona para o MenuADM caso o 1
-                    response.sendRedirect(request.getContextPath() + "/MenuADM");
+                    response.sendRedirect(request.getContextPath() + "/segura/MenuADM");
                 } else if (tipoUser == 2) {//Redireciona para o MenuCliente caso o 2
-                    response.sendRedirect(request.getContextPath() + "/MenuCliente");
+                    response.sendRedirect(request.getContextPath() + "/segura/MenuCliente");
                 } else if (tipoUser == 3) {//Redireciona para o MenuEsta caso o 3
-                    response.sendRedirect(request.getContextPath() + "/MenuEsta");
+                    response.sendRedirect(request.getContextPath() + "/segura/MenuEsta");
                 }
 
             } else if (botao.equals("sair")) {//Se o botao clicado for Sair, invalido a Sessão  e retorno a Home
